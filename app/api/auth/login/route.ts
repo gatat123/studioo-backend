@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
 
     const refreshToken = generateRefreshToken(user.id);
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       message: "로그인이 완료되었습니다.",
       user: {
         id: user.id,
@@ -79,7 +79,16 @@ export async function POST(req: NextRequest) {
       } : null,
       accessToken,
       refreshToken,
+      token: accessToken
     });
+    
+    // Add CORS headers
+    response.headers.set('Access-Control-Allow-Origin', process.env.NODE_ENV === 'production' 
+      ? 'https://studioo-production-eb03.up.railway.app' 
+      : '*');
+    response.headers.set('Access-Control-Allow-Credentials', 'true');
+    
+    return response;
 
   } catch (error) {
     console.error("Login error:", error);

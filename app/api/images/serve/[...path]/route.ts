@@ -23,11 +23,10 @@ export async function GET(
     let baseDir: string;
 
     // 썸네일인지 원본 이미지인지 구분
-    if (filePath.startsWith("thumb/")) {
-      // 썸네일 경로
+    if (filePath.includes("_thumb")) {
+      // 썸네일 경로 (파일명에 _thumb 포함)
       baseDir = path.join(process.cwd(), "uploads", "thumbnails");
-      const thumbnailPath = filePath.replace("thumb/", "");
-      fullPath = path.join(baseDir, thumbnailPath);
+      fullPath = path.join(baseDir, filePath);
     } else {
       // 원본 이미지 경로
       baseDir = path.join(process.cwd(), "uploads", "images");

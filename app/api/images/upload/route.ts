@@ -144,7 +144,7 @@ async function uploadImage(req: AuthenticatedRequest) {
         filename: file.name,
         originalFilename: file.name,
         url: `/api/images/serve/${filename}`,
-        thumbnailUrl: `/api/images/serve/thumb/${thumbnailFilename}`,
+        thumbnailUrl: `/api/images/serve/${thumbnailFilename}`,
         fileSize: file.size,
         mimeType: file.type,
         width: imageMetadata.width || 0,

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma/db';
 import { hashPassword } from '@/lib/utils/password';
+import { generateToken } from '@/lib/utils/jwt';
 import { registerSchema } from '@/lib/utils/validation';
 import { ApiResponse } from '@/types';
 
@@ -61,15 +62,30 @@ export async function POST(request: NextRequest) {
     });
 
     const { passwordHash: _, ...userWithoutPassword } = user;
+    
+    // Generate JWT token
+    const token = generateToken({ userId: user.id });
 
-    return NextResponse.json<ApiResponse>(
+    const response = NextResponse.json<ApiResponse>(
       {
         success: true,
-        data: userWithoutPassword,
+        data: {
+          user: userWithoutPassword,
+          token,
+          accessToken: token
+        },
         message: 'User registered successfully',
       },
       { status: 201 }
     );
+    
+    // Add CORS headers
+    response.headers.set('Access-Control-Allow-Origin', process.env.NODE_ENV === 'production' 
+      ? 'https://studioo-production-eb03.up.railway.app' 
+      : '*');
+    response.headers.set('Access-Control-Allow-Credentials', 'true');
+    
+    return response;
   } catch (error) {
     console.error('Registration error:', error);
     return NextResponse.json<ApiResponse>(

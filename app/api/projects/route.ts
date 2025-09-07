@@ -15,10 +15,10 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
 
       const where: any = {
         OR: [
-          { creatorId: req.user.req.user.userId },
+          { creatorId: req.user.userId },
           {
             participants: {
-              some: { req.user.userId: req.user.req.user.userId }
+              some: { userId: req.user.userId }
             }
           }
         ]
@@ -143,7 +143,7 @@ export const POST = withAuth(async (req: AuthenticatedRequest) => {
       await prisma.projectParticipant.create({
         data: {
           projectId: project.id,
-          req.user.userId,
+          userId: req.user.userId,
           role: 'owner',
         },
       });
@@ -151,7 +151,7 @@ export const POST = withAuth(async (req: AuthenticatedRequest) => {
       await prisma.collaborationLog.create({
         data: {
           projectId: project.id,
-          req.user.userId,
+          userId: req.user.userId,
           actionType: 'PROJECT_CREATED',
           targetType: 'project',
           targetId: project.id,
