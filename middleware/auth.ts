@@ -15,6 +15,16 @@ export async function withAuth(
   handler: (req: AuthenticatedRequest, ...params: string[]) => Promise<NextResponse>
 ) {
   return async (request: NextRequest, context?: { params: any }) => {
+    // Add CORS headers to all responses
+    const corsHeaders = {
+      'Access-Control-Allow-Origin': process.env.NODE_ENV === 'production' 
+        ? 'https://studioo-production-eb03.up.railway.app' 
+        : '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Allow-Credentials': 'true',
+    };
+
     const session = await getServerSession(authOptions);
     let userId: string;
     let isAdmin = false;
@@ -25,7 +35,7 @@ export async function withAuth(
       if (!authHeader || !authHeader.startsWith('Bearer ')) {
         return NextResponse.json(
           { success: false, error: 'Unauthorized' },
-          { status: 401 }
+          { status: 401, headers: corsHeaders }
         );
       }
 
@@ -43,7 +53,7 @@ export async function withAuth(
       } catch (error) {
         return NextResponse.json(
           { success: false, error: 'Invalid token' },
-          { status: 401 }
+          { status: 401, headers: corsHeaders }
         );
       }
     } else {
@@ -58,7 +68,14 @@ export async function withAuth(
     const params = context?.params || {};
     const paramValues = Object.values(params);
     
-    return handler(authenticatedRequest, ...paramValues);
+    const response = await handler(authenticatedRequest, ...paramValues);
+    
+    // Add CORS headers to successful responses
+    Object.entries(corsHeaders).forEach(([key, value]) => {
+      response.headers.set(key, value);
+    });
+    
+    return response;
   };
 }
 

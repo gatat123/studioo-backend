@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma/db';
-import { withAuth } from '@/middleware/auth';
+import { withAuth, AuthenticatedRequest } from '@/middleware/auth';
 import { createProjectSchema } from '@/lib/utils/validation';
 import { generateInviteCode } from '@/lib/utils/inviteCode';
 import { ApiResponse } from '@/types';
 
-export async function GET(request: NextRequest) {
-  return withAuth(request, async (req, userId) => {
+export const GET = withAuth(async (req: AuthenticatedRequest) => {
     try {
       const { searchParams } = new URL(req.url);
       const page = parseInt(searchParams.get('page') || '1');
@@ -16,10 +15,10 @@ export async function GET(request: NextRequest) {
 
       const where: any = {
         OR: [
-          { creatorId: userId },
+          { creatorId: req.user.req.user.userId },
           {
             participants: {
-              some: { userId }
+              some: { req.user.userId: req.user.req.user.userId }
             }
           }
         ]
@@ -86,11 +85,9 @@ export async function GET(request: NextRequest) {
         { status: 500 }
       );
     }
-  });
-}
+});
 
-export async function POST(request: NextRequest) {
-  return withAuth(request, async (req, userId) => {
+export const POST = withAuth(async (req: AuthenticatedRequest) => {
     try {
       const body = await req.json();
       const validationResult = createProjectSchema.safeParse(body);
@@ -109,7 +106,7 @@ export async function POST(request: NextRequest) {
       const { name, description, deadline, tag } = validationResult.data;
 
       const user = await prisma.user.findUnique({
-        where: { id: userId },
+        where: { id: req.user.userId },
         include: { studio: true },
       });
 
@@ -123,7 +120,7 @@ export async function POST(request: NextRequest) {
       const project = await prisma.project.create({
         data: {
           studioId: user.studio.id,
-          creatorId: userId,
+          creatorId: req.user.userId,
           name,
           description,
           deadline: deadline ? new Date(deadline) : undefined,
@@ -146,7 +143,7 @@ export async function POST(request: NextRequest) {
       await prisma.projectParticipant.create({
         data: {
           projectId: project.id,
-          userId,
+          req.user.userId,
           role: 'owner',
         },
       });
@@ -154,7 +151,7 @@ export async function POST(request: NextRequest) {
       await prisma.collaborationLog.create({
         data: {
           projectId: project.id,
-          userId,
+          req.user.userId,
           actionType: 'PROJECT_CREATED',
           targetType: 'project',
           targetId: project.id,
@@ -177,5 +174,19 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
+});
+
+// Handle preflight requests
+export async function OPTIONS(request: NextRequest) {
+  return new NextResponse(null, { 
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': process.env.NODE_ENV === 'production' 
+        ? 'https://studioo-production-eb03.up.railway.app' 
+        : '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Allow-Credentials': 'true',
+    },
   });
 }
