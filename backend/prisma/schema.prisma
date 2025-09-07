@@ -1,0 +1,271 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String   @id @default(uuid())
+  username          String   @unique @db.VarChar(50)
+  email             String   @unique @db.VarChar(255)
+  passwordHash      String   @map("password_hash") @db.VarChar(255)
+  nickname          String   @db.VarChar(100)
+  profileImageUrl   String?  @map("profile_image_url") @db.Text
+  isAdmin           Boolean  @default(false) @map("is_admin")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+  lastLoginAt       DateTime? @map("last_login_at")
+  isActive          Boolean  @default(true) @map("is_active")
+
+  studio            Studio?
+  createdProjects   Project[] @relation("ProjectCreator")
+  participations    ProjectParticipant[]
+  createdScenes     Scene[] @relation("SceneCreator")
+  uploadedImages    Image[] @relation("ImageUploader")
+  imageHistory      ImageHistory[]
+  comments          Comment[]
+  annotations       Annotation[]
+  presence          UserPresence[]
+  collaborationLogs CollaborationLog[]
+  notifications     Notification[]
+
+  @@index([username])
+  @@index([email])
+  @@map("users")
+}
+
+model Studio {
+  id          String   @id @default(uuid())
+  userId      String   @unique @map("user_id")
+  name        String   @db.VarChar(255)
+  description String?  @db.Text
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projects    Project[]
+
+  @@index([userId])
+  @@map("studios")
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  studioId    String   @map("studio_id")
+  creatorId   String   @map("creator_id")
+  name        String   @db.VarChar(255)
+  description String?  @db.Text
+  deadline    DateTime? @db.Date
+  tag         String?  @db.VarChar(50)
+  inviteCode  String?  @unique @map("invite_code") @db.VarChar(20)
+  status      String   @default("active") @db.VarChar(50)
+  hasUpdates  Boolean  @default(false) @map("has_updates")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  studio            Studio     @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  creator           User       @relation("ProjectCreator", fields: [creatorId], references: [id])
+  participants      ProjectParticipant[]
+  scenes            Scene[]
+  comments          Comment[]
+  presence          UserPresence[]
+  collaborationLogs CollaborationLog[]
+  notifications     Notification[]
+
+  @@index([studioId])
+  @@index([creatorId])
+  @@index([inviteCode])
+  @@map("projects")
+}
+
+model ProjectParticipant {
+  id           String   @id @default(uuid())
+  projectId    String   @map("project_id")
+  userId       String   @map("user_id")
+  role         String   @default("member") @db.VarChar(50)
+  joinedAt     DateTime @default(now()) @map("joined_at")
+  lastViewedAt DateTime? @map("last_viewed_at")
+
+  project      Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, userId])
+  @@index([projectId])
+  @@index([userId])
+  @@map("project_participants")
+}
+
+model Scene {
+  id          String   @id @default(uuid())
+  projectId   String   @map("project_id")
+  sceneNumber Int      @map("scene_number")
+  description String?  @db.Text
+  notes       String?  @db.Text
+  createdBy   String   @map("created_by")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  project      Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  creator      User          @relation("SceneCreator", fields: [createdBy], references: [id])
+  images       Image[]
+  imageHistory ImageHistory[]
+  comments     Comment[]
+  presence     UserPresence[]
+
+  @@unique([projectId, sceneNumber])
+  @@index([projectId])
+  @@map("scenes")
+}
+
+model Image {
+  id         String   @id @default(uuid())
+  sceneId    String   @map("scene_id")
+  type       String   @db.VarChar(20)
+  fileUrl    String   @map("file_url") @db.Text
+  fileSize   BigInt?  @map("file_size")
+  width      Int?
+  height     Int?
+  format     String?  @db.VarChar(10)
+  isCurrent  Boolean  @default(true) @map("is_current")
+  uploadedBy String   @map("uploaded_by")
+  uploadedAt DateTime @default(now()) @map("uploaded_at")
+  metadata   Json?
+
+  scene        Scene          @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+  uploader     User           @relation("ImageUploader", fields: [uploadedBy], references: [id])
+  history      ImageHistory[]
+  annotations  Annotation[]
+
+  @@index([sceneId])
+  @@index([type])
+  @@index([sceneId, type, isCurrent])
+  @@map("images")
+}
+
+model ImageHistory {
+  id                String   @id @default(uuid())
+  imageId           String   @map("image_id")
+  sceneId           String   @map("scene_id")
+  versionNumber     Int      @map("version_number")
+  fileUrl           String   @map("file_url") @db.Text
+  uploadedBy        String   @map("uploaded_by")
+  uploadedAt        DateTime @default(now()) @map("uploaded_at")
+  changeDescription String?  @map("change_description") @db.Text
+
+  image     Image  @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  scene     Scene  @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+  uploader  User   @relation(fields: [uploadedBy], references: [id])
+
+  @@index([imageId])
+  @@index([sceneId])
+  @@map("image_history")
+}
+
+model Comment {
+  id              String   @id @default(uuid())
+  projectId       String?  @map("project_id")
+  sceneId         String?  @map("scene_id")
+  parentCommentId String?  @map("parent_comment_id")
+  userId          String   @map("user_id")
+  content         String   @db.Text
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+  isEdited        Boolean  @default(false) @map("is_edited")
+  isDeleted       Boolean  @default(false) @map("is_deleted")
+
+  project       Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  scene         Scene?    @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+  parentComment Comment?  @relation("CommentReplies", fields: [parentCommentId], references: [id], onDelete: Cascade)
+  user          User      @relation(fields: [userId], references: [id])
+  replies       Comment[] @relation("CommentReplies")
+
+  @@index([projectId])
+  @@index([sceneId])
+  @@index([userId])
+  @@map("comments")
+}
+
+model Annotation {
+  id          String   @id @default(uuid())
+  imageId     String   @map("image_id")
+  userId      String   @map("user_id")
+  type        String   @db.VarChar(50)
+  positionX   Float    @map("position_x")
+  positionY   Float    @map("position_y")
+  width       Float?
+  height      Float?
+  content     String?  @db.Text
+  drawingData Json?    @map("drawing_data")
+  color       String?  @db.VarChar(7)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  image Image @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id])
+
+  @@index([imageId])
+  @@map("annotations")
+}
+
+model UserPresence {
+  id           String   @id @default(uuid())
+  userId       String   @map("user_id")
+  projectId    String?  @map("project_id")
+  sceneId      String?  @map("scene_id")
+  status       String?  @db.VarChar(20)
+  cursorX      Float?   @map("cursor_x")
+  cursorY      Float?   @map("cursor_y")
+  isTyping     Boolean  @default(false) @map("is_typing")
+  lastActivity DateTime @default(now()) @map("last_activity")
+  socketId     String?  @map("socket_id") @db.VarChar(255)
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  scene   Scene?   @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, projectId])
+  @@index([projectId])
+  @@index([status])
+  @@map("user_presence")
+}
+
+model CollaborationLog {
+  id         String   @id @default(uuid())
+  projectId  String   @map("project_id")
+  userId     String   @map("user_id")
+  actionType String   @map("action_type") @db.VarChar(50)
+  targetType String?  @map("target_type") @db.VarChar(50)
+  targetId   String?  @map("target_id")
+  description String? @db.Text
+  metadata   Json?
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id])
+
+  @@index([projectId])
+  @@index([userId])
+  @@index([createdAt(sort: Desc)])
+  @@map("collaboration_logs")
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  projectId String?  @map("project_id")
+  type      String   @db.VarChar(50)
+  title     String   @db.VarChar(255)
+  content   String?  @db.Text
+  isRead    Boolean  @default(false) @map("is_read")
+  createdAt DateTime @default(now()) @map("created_at")
+  readAt    DateTime? @map("read_at")
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead])
+  @@map("notifications")
+}

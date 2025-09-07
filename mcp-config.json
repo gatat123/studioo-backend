@@ -1,0 +1,125 @@
+{
+  "project": "Studio Collaboration System",
+  "description": "백엔드 개발을 위한 MCP 서버 설정",
+  "mcp_servers": {
+    "primary": {
+      "sequential_thinking": {
+        "usage": "모든 작업의 시작점, 체계적인 분석",
+        "activation": "always_first"
+      },
+      "task_master_ai": {
+        "usage": "복잡한 백엔드 작업 분해 및 일정 관리",
+        "activation": "complex_tasks"
+      },
+      "github": {
+        "usage": "버전 관리, PR 생성, 이슈 트래킹",
+        "activation": "code_management"
+      },
+      "desktop_commander": {
+        "usage": "파일 시스템 작업, 프로세스 관리",
+        "activation": "file_operations"
+      },
+      "windows_cli": {
+        "usage": "명령 실행, npm 스크립트, 테스트 실행",
+        "activation": "cli_operations"
+      }
+    },
+    "development": {
+      "context7": {
+        "usage": "Next.js, Prisma, Socket.io 문서 참조",
+        "activation": "library_documentation"
+      },
+      "eslint_mcp": {
+        "usage": "TypeScript 코드 품질 검사",
+        "activation": "code_quality"
+      },
+      "npm_mcp": {
+        "usage": "패키지 관리, 의존성 분석",
+        "activation": "package_management"
+      },
+      "sourcesage_mcp": {
+        "usage": "코드베이스 분석, 아키텍처 이해",
+        "activation": "codebase_analysis"
+      }
+    },
+    "testing_monitoring": {
+      "lighthouse_mcp": {
+        "usage": "API 성능 테스트, 최적화",
+        "activation": "performance_testing"
+      },
+      "code_checker_mcp": {
+        "usage": "코드 품질 검사, 테스트 실행",
+        "activation": "testing"
+      }
+    },
+    "deployment": {
+      "railway_mcp": {
+        "usage": "Railway 배포, 환경변수 설정, DB 연결",
+        "activation": "deployment_phase",
+        "install_url": "https://docs.railway.com/reference/mcp-server",
+        "credentials": {
+          "user": "gatat123",
+          "project": "Studio"
+        }
+      },
+      "brave_search": {
+        "usage": "Railway 문서, 배포 가이드 검색",
+        "activation": "documentation_search"
+      }
+    },
+    "database": {
+      "sqlite": {
+        "usage": "로컬 개발 DB 관리 (선택적)",
+        "activation": "local_development"
+      },
+      "filesystem": {
+        "usage": "마이그레이션 파일, 시드 데이터 관리",
+        "activation": "db_migration"
+      }
+    },
+    "memory": {
+      "claude_memory": {
+        "usage": "중요 결정사항, 패턴 저장",
+        "activation": "knowledge_retention"
+      }
+    }
+  },
+  "workflow_patterns": {
+    "backend_api_development": [
+      "sequential_thinking",
+      "task_master_ai",
+      "context7",
+      "eslint_mcp",
+      "npm_mcp",
+      "github",
+      "desktop_commander"
+    ],
+    "websocket_implementation": [
+      "sequential_thinking",
+      "context7 (Socket.io docs)",
+      "sourcesage_mcp",
+      "eslint_mcp",
+      "code_checker_mcp"
+    ],
+    "database_setup": [
+      "sequential_thinking",
+      "context7 (Prisma docs)",
+      "filesystem",
+      "windows_cli",
+      "railway_mcp"
+    ],
+    "deployment": [
+      "sequential_thinking",
+      "railway_mcp",
+      "github",
+      "brave_search",
+      "lighthouse_mcp"
+    ]
+  },
+  "task_priorities": {
+    "phase_1": "Core API Development (프로젝트, 씬, 이미지 API)",
+    "phase_2": "WebSocket Implementation (실시간 협업)",
+    "phase_3": "Integration Testing (통합 테스트)",
+    "phase_4": "Railway Deployment (배포)"
+  }
+}
