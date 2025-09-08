@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { verifyAuth } from '@/middleware/auth';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
-import { randomUUID } from 'crypto';
 
 export async function POST(
   request: NextRequest,
@@ -54,27 +51,21 @@ export async function POST(
       return NextResponse.json({ error: 'Access denied' }, { status: 403 });
     }
 
-    // Process file upload
+    // Process file upload - Convert to base64 for Railway compatibility
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
+    const base64 = buffer.toString('base64');
+    const dataUri = `data:${file.type};base64,${base64}`;
 
-    // Create unique filename
+    // Get file extension
     const fileExtension = file.name.split('.').pop();
-    const fileName = `${randomUUID()}.${fileExtension}`;
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'images', sceneId);
-    
-    // Create directory if it doesn't exist
-    await mkdir(uploadDir, { recursive: true });
-    
-    const filePath = path.join(uploadDir, fileName);
-    await writeFile(filePath, buffer);
 
-    // Save to database
+    // Save to database with base64 data
     const image = await prisma.image.create({
       data: {
         sceneId,
         type,
-        fileUrl: `/uploads/images/${sceneId}/${fileName}`,
+        fileUrl: dataUri, // Store as data URI for Railway
         fileSize: file.size,
         format: fileExtension,
         isCurrent: true,
