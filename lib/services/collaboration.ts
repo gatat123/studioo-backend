@@ -552,13 +552,13 @@ export class CollaborationService {
 
       for (const [target, activities] of targetActivities) {
         if (activities.length > 1) {
-          const uniqueUsers = new Set(activities.map(a => a.userId));
+          const uniqueUsers = new Set(activities.map((a: any) => a.userId));
           if (uniqueUsers.size > 1) {
             potentialConflicts.push({
               type: "concurrent_editing",
               target,
               users: Array.from(uniqueUsers).map(userId => 
-                activities.find(a => a.userId === userId)?.user
+                activities.find((a: any) => a.userId === userId)?.user
               ),
               activities: activities.slice(0, 5), // 최근 5개만
             });
