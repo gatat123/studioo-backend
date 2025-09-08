@@ -554,10 +554,10 @@ export class CommentEventHandler {
           title: "댓글에서 언급",
           content: `댓글에서 회원님이 언급되었습니다.`,
           projectId: data.projectId,
-          sceneId: data.sceneId,
-          imageId: data.imageId,
-          commentId: data.commentId,
           metadata: {
+            sceneId: data.sceneId,
+            imageId: data.imageId,
+            commentId: data.commentId,
             mentionedBy: authorId,
             content: data.content.substring(0, 100),
           },
