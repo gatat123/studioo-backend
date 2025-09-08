@@ -4,6 +4,11 @@ import { hashPassword } from '@/lib/utils/password';
 import { generateToken } from '@/lib/utils/jwt';
 import { registerSchema } from '@/lib/utils/validation';
 import { ApiResponse } from '@/types';
+import { handleOptions, withCORS } from '@/lib/utils/cors';
+
+export async function OPTIONS(request: NextRequest) {
+  return handleOptions(request);
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -11,14 +16,14 @@ export async function POST(request: NextRequest) {
     
     const validationResult = registerSchema.safeParse(body);
     if (!validationResult.success) {
-      return NextResponse.json<ApiResponse>(
+      return withCORS(NextResponse.json<ApiResponse>(
         {
           success: false,
           error: 'Validation failed',
           message: validationResult.error.errors[0].message,
         },
         { status: 400 }
-      );
+      ), request);
     }
 
     const { username, email, password, nickname } = validationResult.data;
@@ -30,7 +35,7 @@ export async function POST(request: NextRequest) {
     });
 
     if (existingUser) {
-      return NextResponse.json<ApiResponse>(
+      return withCORS(NextResponse.json<ApiResponse>(
         {
           success: false,
           error: 'User already exists',
@@ -39,7 +44,7 @@ export async function POST(request: NextRequest) {
             : 'Email already registered',
         },
         { status: 409 }
-      );
+      ), request);
     }
 
     const passwordHash = await hashPassword(password);
@@ -66,7 +71,7 @@ export async function POST(request: NextRequest) {
     // Generate JWT token
     const token = generateToken({ userId: user.id });
 
-    const response = NextResponse.json<ApiResponse>(
+    return withCORS(NextResponse.json<ApiResponse>(
       {
         success: true,
         data: {
@@ -77,15 +82,7 @@ export async function POST(request: NextRequest) {
         message: 'User registered successfully',
       },
       { status: 201 }
-    );
-    
-    // Add CORS headers
-    response.headers.set('Access-Control-Allow-Origin', process.env.NODE_ENV === 'production' 
-      ? 'https://studioo-production-eb03.up.railway.app' 
-      : '*');
-    response.headers.set('Access-Control-Allow-Credentials', 'true');
-    
-    return response;
+    ), request);
   } catch (error) {
     console.error('Registration error:', error);
     return NextResponse.json<ApiResponse>(
@@ -95,6 +92,6 @@ export async function POST(request: NextRequest) {
         message: 'Failed to register user',
       },
       { status: 500 }
-    );
+    ), request);
   }
 }

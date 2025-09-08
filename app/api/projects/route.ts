@@ -4,6 +4,7 @@ import { withAuth, AuthenticatedRequest } from '@/middleware/auth';
 import { createProjectSchema } from '@/lib/utils/validation';
 import { generateInviteCode } from '@/lib/utils/inviteCode';
 import { ApiResponse } from '@/types';
+import { handleOptions } from '@/lib/utils/cors';
 
 export const GET = withAuth(async (req: AuthenticatedRequest) => {
     try {
@@ -178,15 +179,5 @@ export const POST = withAuth(async (req: AuthenticatedRequest) => {
 
 // Handle preflight requests
 export async function OPTIONS(request: NextRequest) {
-  return new NextResponse(null, { 
-    status: 200,
-    headers: {
-      'Access-Control-Allow-Origin': process.env.NODE_ENV === 'production' 
-        ? 'https://studioo-production-eb03.up.railway.app' 
-        : '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      'Access-Control-Allow-Credentials': 'true',
-    },
-  });
+  return handleOptions(request);
 }
