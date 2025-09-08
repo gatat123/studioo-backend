@@ -43,14 +43,6 @@ async function getAnnotation(
             profileImageUrl: true,
           },
         },
-        resolvedBy: {
-          select: {
-            id: true,
-            username: true,
-            nickname: true,
-            profileImageUrl: true,
-          },
-        },
         image: {
           include: {
             scene: {
