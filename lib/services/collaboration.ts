@@ -121,13 +121,6 @@ export class CollaborationService {
                 name: true,
               },
             },
-            scene: {
-              select: {
-                id: true,
-                sceneNumber: true,
-                description: true,
-              },
-            },
           },
           orderBy: { createdAt: "desc" },
           take: limit,
