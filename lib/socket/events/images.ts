@@ -2,7 +2,6 @@ import { Server as SocketIOServer } from "socket.io";
 import { AuthenticatedSocket } from "../auth";
 import { NotificationService } from "@/lib/services/notification";
 import { CollaborationService } from "@/lib/services/collaboration";
-import { ImageHistoryService } from "@/lib/services/imageHistory";
 import RoomManager from "../rooms";
 import { prisma } from "@/lib/prisma";
 import PresenceManager from "../presence";
@@ -266,11 +265,10 @@ export class ImageEventHandler {
       // 프로젝트 참여자들에게 알림
       const projectId = await this.getProjectId(data.sceneId);
       if (projectId) {
-        await NotificationService.notifyImageUpload(
+        await NotificationService.createImageUploadNotification(
           data.imageId,
-          socket.userId,
           projectId,
-          data.sceneId
+          socket.userId
         );
       }
 
