@@ -199,6 +199,13 @@ export class ImageHistoryService {
                 nickname: true,
               },
             },
+            scene: {
+              select: {
+                id: true,
+                sceneNumber: true,
+                projectId: true,
+              },
+            },
           },
         });
 
