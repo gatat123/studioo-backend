@@ -55,7 +55,7 @@ async function getNotifications(req: AuthenticatedRequest) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { success: false, error: "잘못된 쿼리 파라미터입니다.", details: error.errors },
+        { success: false, error: "잘못된 쿼리 파라미터입니다.", details: error.issues },
         { status: 400 }
       );
     }
@@ -108,7 +108,7 @@ async function updateNotifications(req: AuthenticatedRequest) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
         { status: 400 }
       );
     }

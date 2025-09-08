@@ -5,12 +5,12 @@ import { lookup } from "mime-types";
 
 // GET /api/images/serve/[...path] - 이미지 파일 서빙
 export async function GET(
-  request: NextRequest,
-  context: { params: Promise<{ path: string[] }> }
+  _request: NextRequest,
+  { params }: { params: Promise<{ path: string[] }> }
 ) {
   try {
-    const params = await context.params;
-    const filePath = params.path.join("/");
+    const resolvedParams = await params;
+    const filePath = resolvedParams.path.join("/");
     
     // 보안: 상위 디렉토리 접근 차단
     if (filePath.includes("..") || filePath.includes("\\")) {
@@ -69,7 +69,7 @@ export async function GET(
       headers.set("X-Content-Type-Options", "nosniff");
     }
 
-    return new NextResponse(fileBuffer, {
+    return new NextResponse(new Uint8Array(fileBuffer), {
       headers,
       status: 200,
     });

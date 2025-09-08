@@ -3,7 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { withAuth, type AuthenticatedRequest } from "@/middleware/auth";
 
 // GET /api/images/[id]/history - 이미지 버전 히스토리 조회
-async function getImageHistory(req: AuthenticatedRequest, imageId: string) {
+async function getImageHistory(req: AuthenticatedRequest, context: { params: any }) {
+  const imageId = context.params.id;
   try {
     // 현재 이미지 정보 조회
     const currentImage = await prisma.image.findUnique({
@@ -62,10 +63,9 @@ async function getImageHistory(req: AuthenticatedRequest, imageId: string) {
           },
         },
       },
-      orderBy: [
-        { version: "desc" },
-        { createdAt: "desc" },
-      ],
+      orderBy: {
+        id: "desc"
+      },
     });
 
     // 협업 로그에서 이미지 관련 활동 조회
@@ -107,9 +107,6 @@ async function getImageHistory(req: AuthenticatedRequest, imageId: string) {
       if (!previousVersion) {
         changes.push("최초 업로드");
       } else {
-        if (image.description !== previousVersion.description) {
-          changes.push("설명 변경");
-        }
         if (image._count.annotations > previousVersion._count.annotations) {
           changes.push(`어노테이션 ${image._count.annotations - previousVersion._count.annotations}개 추가`);
         } else if (image._count.annotations < previousVersion._count.annotations) {
@@ -133,8 +130,6 @@ async function getImageHistory(req: AuthenticatedRequest, imageId: string) {
         statistics: {
           totalVersions: imageHistory.length,
           totalAnnotations: imageHistory.reduce((sum, img) => sum + img._count.annotations, 0),
-          firstUpload: imageHistory[imageHistory.length - 1]?.createdAt,
-          lastUpdate: imageHistory[0]?.createdAt,
         },
       },
     });

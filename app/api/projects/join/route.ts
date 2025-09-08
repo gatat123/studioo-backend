@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { withAuth, type AuthenticatedRequest } from "@/middleware/auth";
 
 const joinProjectSchema = z.object({
-  inviteCode: z.string().length(8, "초대 코드는 8자리여야 합니다."),
+  inviteCode: z.string().min(1, "초대 코드는 필수입니다."),
 });
 
 // POST /api/projects/join - 초대 코드로 프로젝트 참여
@@ -13,57 +13,32 @@ async function joinProject(req: AuthenticatedRequest) {
     const body = await req.json();
     const { inviteCode } = joinProjectSchema.parse(body);
 
-    // 초대 코드 유효성 확인
-    const invite = await prisma.projectInvite.findUnique({
-      where: { code: inviteCode },
+    // 초대 코드로 프로젝트 찾기
+    const project = await prisma.project.findUnique({
+      where: { inviteCode: inviteCode.toUpperCase() },
       include: {
-        project: {
-          include: {
-            creator: {
-              select: {
-                id: true,
-                username: true,
-                nickname: true,
-                profileImageUrl: true,
-              },
-            },
-            studio: {
-              select: {
-                id: true,
-                name: true,
-              },
-            },
-            participants: true,
+        creator: {
+          select: {
+            id: true,
+            username: true,
+            nickname: true,
+            profileImageUrl: true,
           },
         },
+        studio: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+        participants: true,
       },
     });
 
-    if (!invite) {
+    if (!project) {
       return NextResponse.json(
         { success: false, error: "유효하지 않은 초대 코드입니다." },
         { status: 404 }
-      );
-    }
-
-    if (!invite.isActive) {
-      return NextResponse.json(
-        { success: false, error: "비활성화된 초대 코드입니다." },
-        { status: 400 }
-      );
-    }
-
-    if (invite.expiresAt < new Date()) {
-      return NextResponse.json(
-        { success: false, error: "만료된 초대 코드입니다." },
-        { status: 400 }
-      );
-    }
-
-    if (invite.maxUses && invite.usedCount >= invite.maxUses) {
-      return NextResponse.json(
-        { success: false, error: "사용 제한에 도달한 초대 코드입니다." },
-        { status: 400 }
       );
     }
 
@@ -71,7 +46,7 @@ async function joinProject(req: AuthenticatedRequest) {
     const existingParticipation = await prisma.projectParticipant.findUnique({
       where: {
         projectId_userId: {
-          projectId: invite.projectId,
+          projectId: project.id,
           userId: req.user.userId,
         },
       },
@@ -85,7 +60,7 @@ async function joinProject(req: AuthenticatedRequest) {
     }
 
     // 프로젝트가 활성 상태인지 확인
-    if (invite.project.status !== "active") {
+    if (project.status !== "active") {
       return NextResponse.json(
         { success: false, error: "비활성 상태인 프로젝트에는 참여할 수 없습니다." },
         { status: 400 }
@@ -97,7 +72,7 @@ async function joinProject(req: AuthenticatedRequest) {
       // 참여자 추가
       const participation = await tx.projectParticipant.create({
         data: {
-          projectId: invite.projectId,
+          projectId: project.id,
           userId: req.user.userId,
           role: "member", // 기본적으로 member 역할
         },
@@ -113,26 +88,20 @@ async function joinProject(req: AuthenticatedRequest) {
         },
       });
 
-      // 초대 코드 사용 횟수 증가
-      await tx.projectInvite.update({
-        where: { id: invite.id },
-        data: { usedCount: { increment: 1 } },
-      });
-
       // 협업 로그 기록
       await tx.collaborationLog.create({
         data: {
-          projectId: invite.projectId,
+          projectId: project.id,
           userId: req.user.userId,
           actionType: "join_project",
           targetType: "project",
-          targetId: invite.projectId,
+          targetId: project.id,
           description: `초대 코드를 통해 프로젝트에 참여했습니다.`,
           metadata: { inviteCode },
         },
       });
 
-      return { participation, project: invite.project };
+      return { participation, project };
     });
 
     return NextResponse.json({
@@ -155,7 +124,7 @@ async function joinProject(req: AuthenticatedRequest) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
         { status: 400 }
       );
     }

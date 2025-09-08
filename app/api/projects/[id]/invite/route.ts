@@ -5,15 +5,15 @@ import { withProjectAccess, type AuthenticatedRequest } from "@/middleware/auth"
 import { v4 as uuidv4 } from "uuid";
 
 const generateInviteCodeSchema = z.object({
-  expiresInDays: z.number().min(1).max(30).default(7),
-  maxUses: z.number().min(1).max(100).optional(),
+  regenerate: z.boolean().optional().default(false),
 });
 
 // POST /api/projects/[id]/invite - 초대 코드 생성
-async function generateInviteCode(req: AuthenticatedRequest, projectId: string) {
+async function generateInviteCode(req: AuthenticatedRequest, context: { params: { id: string } }) {
+  const projectId = context.params.id;
   try {
     const body = await req.json();
-    const { expiresInDays, maxUses } = generateInviteCodeSchema.parse(body);
+    const { regenerate } = generateInviteCodeSchema.parse(body);
 
     // 권한 확인 - owner 또는 admin만 초대 코드 생성 가능
     const participation = await prisma.projectParticipant.findUnique({
@@ -34,69 +34,51 @@ async function generateInviteCode(req: AuthenticatedRequest, projectId: string) 
       }
     }
 
-    // 기존 활성 초대 코드 확인
-    const existingInvite = await prisma.projectInvite.findFirst({
-      where: {
-        projectId,
-        isActive: true,
-        expiresAt: {
-          gt: new Date(),
-        },
-        OR: [
-          { maxUses: null },
-          { 
-            AND: [
-              { maxUses: { not: null } },
-              { usedCount: { lt: prisma.$queryRaw`max_uses` } }
-            ]
-          }
-        ]
+    // 기존 초대 코드 확인
+    const existingProject = await prisma.project.findUnique({
+      where: { id: projectId },
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        inviteCode: true,
       },
     });
 
-    if (existingInvite) {
+    if (!existingProject) {
+      return NextResponse.json(
+        { success: false, error: "프로젝트를 찾을 수 없습니다." },
+        { status: 404 }
+      );
+    }
+
+    // 기존 초대 코드가 있고 regenerate가 false인 경우
+    if (existingProject.inviteCode && !regenerate) {
       return NextResponse.json({
         success: true,
-        message: "기존 활성 초대 코드가 있습니다.",
+        message: "기존 초대 코드가 있습니다.",
         invite: {
-          code: existingInvite.code,
-          expiresAt: existingInvite.expiresAt,
-          maxUses: existingInvite.maxUses,
-          usedCount: existingInvite.usedCount,
+          code: existingProject.inviteCode,
+          project: {
+            id: existingProject.id,
+            name: existingProject.name,
+            description: existingProject.description,
+          },
         },
       });
     }
 
     // 새로운 초대 코드 생성
     const code = uuidv4().substring(0, 8).toUpperCase();
-    const expiresAt = new Date();
-    expiresAt.setDate(expiresAt.getDate() + expiresInDays);
 
-    const invite = await prisma.projectInvite.create({
-      data: {
-        projectId,
-        code,
-        createdBy: req.user.userId,
-        expiresAt,
-        maxUses,
-        usedCount: 0,
-        isActive: true,
-      },
-      include: {
-        project: {
-          select: {
-            id: true,
-            name: true,
-            description: true,
-          },
-        },
-        creator: {
-          select: {
-            id: true,
-            username: true,
-            nickname: true,
-          },
-        },
+    const updatedProject = await prisma.project.update({
+      where: { id: projectId },
+      data: { inviteCode: code },
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        inviteCode: true,
       },
     });
 
@@ -105,27 +87,29 @@ async function generateInviteCode(req: AuthenticatedRequest, projectId: string) 
       data: {
         projectId,
         userId: req.user.userId,
-        actionType: "create_invite",
-        targetType: "invite",
-        targetId: invite.id,
-        description: `초대 코드를 생성했습니다 (${expiresInDays}일 유효).`,
+        actionType: regenerate ? "regenerate_invite" : "create_invite",
+        targetType: "project",
+        targetId: projectId,
+        description: regenerate 
+          ? "초대 코드를 재생성했습니다."
+          : "초대 코드를 생성했습니다.",
         metadata: { 
-          inviteCode: code, 
-          expiresInDays,
-          maxUses 
+          inviteCode: code,
+          regenerate,
         },
       },
     });
 
     return NextResponse.json({
       success: true,
-      message: "초대 코드가 생성되었습니다.",
+      message: regenerate ? "초대 코드가 재생성되었습니다." : "초대 코드가 생성되었습니다.",
       invite: {
-        code: invite.code,
-        expiresAt: invite.expiresAt,
-        maxUses: invite.maxUses,
-        usedCount: invite.usedCount,
-        project: invite.project,
+        code: updatedProject.inviteCode,
+        project: {
+          id: updatedProject.id,
+          name: updatedProject.name,
+          description: updatedProject.description,
+        },
       },
     });
 
@@ -134,7 +118,7 @@ async function generateInviteCode(req: AuthenticatedRequest, projectId: string) 
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
         { status: 400 }
       );
     }

@@ -23,12 +23,11 @@ const createAnnotationSchema = z.object({
     fill: z.boolean().default(false),
   }).optional(),
   content: z.string().max(1000, "내용은 1000자를 초과할 수 없습니다.").optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
 });
 
 const getAnnotationsSchema = z.object({
   imageId: z.string().uuid("유효한 이미지 ID가 필요합니다."),
-  includeResolved: z.string().optional().transform((val) => val === "true"),
 });
 
 // GET /api/annotations - 이미지의 주석 목록 조회
@@ -36,7 +35,7 @@ async function getAnnotations(req: AuthenticatedRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const query = Object.fromEntries(searchParams.entries());
-    const { imageId, includeResolved } = getAnnotationsSchema.parse(query);
+    const { imageId } = getAnnotationsSchema.parse(query);
 
     // 이미지 접근 권한 확인
     const image = await prisma.image.findUnique({
@@ -76,10 +75,6 @@ async function getAnnotations(req: AuthenticatedRequest) {
 
     // 주석 조회 조건 구성
     const where: any = { imageId };
-    
-    if (!includeResolved) {
-      where.isResolved = false;
-    }
 
     const annotations = await prisma.annotation.findMany({
       where,
@@ -92,33 +87,6 @@ async function getAnnotations(req: AuthenticatedRequest) {
             profileImageUrl: true,
           },
         },
-        resolvedBy: {
-          select: {
-            id: true,
-            username: true,
-            nickname: true,
-            profileImageUrl: true,
-          },
-        },
-        comments: {
-          include: {
-            user: {
-              select: {
-                id: true,
-                username: true,
-                nickname: true,
-                profileImageUrl: true,
-              },
-            },
-          },
-          orderBy: { createdAt: "desc" },
-          take: 5, // 최근 댓글 5개만
-        },
-        _count: {
-          select: {
-            comments: true,
-          },
-        },
       },
       orderBy: { createdAt: "desc" },
     });
@@ -129,14 +97,12 @@ async function getAnnotations(req: AuthenticatedRequest) {
         annotations,
         image: {
           id: image.id,
-          filename: image.filename,
+          fileUrl: image.fileUrl,
           width: image.width,
           height: image.height,
         },
         statistics: {
           total: annotations.length,
-          unresolved: annotations.filter(a => !a.isResolved).length,
-          resolved: annotations.filter(a => a.isResolved).length,
         },
       },
     });
@@ -146,7 +112,7 @@ async function getAnnotations(req: AuthenticatedRequest) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { success: false, error: "잘못된 쿼리 파라미터입니다.", details: error.errors },
+        { success: false, error: "잘못된 쿼리 파라미터입니다.", details: error.issues },
         { status: 400 }
       );
     }
@@ -208,7 +174,8 @@ async function createAnnotation(req: AuthenticatedRequest) {
     }
 
     // 좌표 유효성 검사 (이미지 범위 내인지 확인)
-    if (validatedData.position.x > image.width || validatedData.position.y > image.height) {
+    if (image.width && image.height && 
+        (validatedData.position.x > image.width || validatedData.position.y > image.height)) {
       return NextResponse.json(
         { success: false, error: "주석 위치가 이미지 범위를 벗어났습니다." },
         { status: 400 }
@@ -222,11 +189,13 @@ async function createAnnotation(req: AuthenticatedRequest) {
           imageId: validatedData.imageId,
           userId: req.user.userId,
           type: validatedData.type,
-          position: validatedData.position,
-          dimensions: validatedData.dimensions,
-          style: validatedData.style,
-          content: validatedData.content,
-          metadata: validatedData.metadata,
+          positionX: validatedData.position.x,
+          positionY: validatedData.position.y,
+          width: validatedData.dimensions?.width || 0,
+          height: validatedData.dimensions?.height || 0,
+          content: validatedData.content || '',
+          drawingData: validatedData.type === 'freehand' && validatedData.metadata ? validatedData.metadata : undefined,
+          color: validatedData.style?.color || '#FF0000',
         },
         include: {
           user: {
@@ -235,12 +204,6 @@ async function createAnnotation(req: AuthenticatedRequest) {
               username: true,
               nickname: true,
               profileImageUrl: true,
-            },
-          },
-          comments: true,
-          _count: {
-            select: {
-              comments: true,
             },
           },
         },
@@ -254,7 +217,6 @@ async function createAnnotation(req: AuthenticatedRequest) {
           actionType: "create_annotation",
           targetType: "image",
           targetId: validatedData.imageId,
-          sceneId: image.sceneId,
           description: `이미지에 ${validatedData.type} 주석을 추가했습니다.`,
           metadata: {
             annotationType: validatedData.type,
@@ -277,7 +239,7 @@ async function createAnnotation(req: AuthenticatedRequest) {
       {
         annotationId: annotation.id,
         annotationType: validatedData.type,
-        imageFilename: image.filename,
+        imageFileUrl: image.fileUrl,
       }
     );
 
@@ -292,7 +254,7 @@ async function createAnnotation(req: AuthenticatedRequest) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
         { status: 400 }
       );
     }

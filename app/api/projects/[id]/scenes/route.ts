@@ -9,7 +9,8 @@ const createSceneSchema = z.object({
 });
 
 // GET /api/projects/[id]/scenes - 프로젝트의 씬 목록 조회
-async function getScenes(req: AuthenticatedRequest, projectId: string) {
+async function getScenes(req: AuthenticatedRequest, context: { params: { id: string } }) {
+  const projectId = context.params.id;
   try {
     const url = new URL(req.url);
     const includeImages = url.searchParams.get("include_images") === "true";
@@ -67,7 +68,8 @@ async function getScenes(req: AuthenticatedRequest, projectId: string) {
 }
 
 // POST /api/projects/[id]/scenes - 새 씬 생성
-async function createScene(req: AuthenticatedRequest, projectId: string) {
+async function createScene(req: AuthenticatedRequest, context: { params: { id: string } }) {
+  const projectId = context.params.id;
   try {
     const body = await req.json();
     const { description, notes } = createSceneSchema.parse(body);
@@ -141,7 +143,7 @@ async function createScene(req: AuthenticatedRequest, projectId: string) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+        { error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
         { status: 400 }
       );
     }

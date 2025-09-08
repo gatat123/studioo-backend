@@ -8,7 +8,8 @@ const updateCommentSchema = z.object({
 });
 
 // PUT /api/comments/[id] - 댓글 수정
-async function updateComment(req: AuthenticatedRequest, commentId: string) {
+async function updateComment(req: AuthenticatedRequest, context: { params: { id: string } }) {
+  const commentId = context.params.id;
   try {
     const body = await req.json();
     const { content } = updateCommentSchema.parse(body);
@@ -43,7 +44,7 @@ async function updateComment(req: AuthenticatedRequest, commentId: string) {
     }
 
     // 프로젝트 활성 상태 확인
-    if (comment.project.status !== "active") {
+    if (comment.project && comment.project.status !== "active") {
       return NextResponse.json(
         { success: false, error: "활성 상태인 프로젝트의 댓글만 수정할 수 있습니다." },
         { status: 400 }
@@ -99,12 +100,12 @@ async function updateComment(req: AuthenticatedRequest, commentId: string) {
     });
 
     // 협업 로그 기록
-    const targetType = comment.imageId ? "image" : comment.sceneId ? "scene" : "project";
-    const targetId = comment.imageId || comment.sceneId || comment.projectId;
+    const targetType = comment.sceneId ? "scene" : "project";
+    const targetId = comment.sceneId || comment.projectId;
 
     await prisma.collaborationLog.create({
       data: {
-        projectId: comment.projectId,
+        projectId: comment.projectId || "",
         userId: req.user.userId,
         actionType: "update_comment",
         targetType,
@@ -129,7 +130,7 @@ async function updateComment(req: AuthenticatedRequest, commentId: string) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
         { status: 400 }
       );
     }
@@ -142,7 +143,8 @@ async function updateComment(req: AuthenticatedRequest, commentId: string) {
 }
 
 // DELETE /api/comments/[id] - 댓글 삭제
-async function deleteComment(req: AuthenticatedRequest, commentId: string) {
+async function deleteComment(req: AuthenticatedRequest, context: { params: { id: string } }) {
+  const commentId = context.params.id;
   try {
     // 댓글 정보 조회
     const comment = await prisma.comment.findUnique({
@@ -167,9 +169,9 @@ async function deleteComment(req: AuthenticatedRequest, commentId: string) {
     }
 
     // 권한 확인 - 댓글 작성자, 프로젝트 owner/admin, 또는 시스템 관리자만 삭제 가능
-    const participation = comment.project.participants[0];
+    const participation = comment.project?.participants[0];
     const isAuthor = comment.userId === req.user.userId;
-    const isProjectOwner = comment.project.creatorId === req.user.userId;
+    const isProjectOwner = comment.project?.creatorId === req.user.userId;
     const isProjectAdmin = participation?.role === "admin";
 
     if (!isAuthor && !isProjectOwner && !isProjectAdmin && !req.user.isAdmin) {
@@ -219,12 +221,12 @@ async function deleteComment(req: AuthenticatedRequest, commentId: string) {
       });
 
       // 협업 로그 기록
-      const targetType = comment.imageId ? "image" : comment.sceneId ? "scene" : "project";
-      const targetId = comment.imageId || comment.sceneId || comment.projectId;
+      const targetType = comment.sceneId ? "scene" : "project";
+      const targetId = comment.sceneId || comment.projectId;
 
       await prisma.collaborationLog.create({
         data: {
-          projectId: comment.projectId,
+          projectId: comment.projectId || "",
           userId: req.user.userId,
           actionType: "delete_comment",
           targetType,
@@ -250,12 +252,12 @@ async function deleteComment(req: AuthenticatedRequest, commentId: string) {
       });
 
       // 협업 로그 기록
-      const targetType = comment.imageId ? "image" : comment.sceneId ? "scene" : "project";
-      const targetId = comment.imageId || comment.sceneId || comment.projectId;
+      const targetType = comment.sceneId ? "scene" : "project";
+      const targetId = comment.sceneId || comment.projectId;
 
       await prisma.collaborationLog.create({
         data: {
-          projectId: comment.projectId,
+          projectId: comment.projectId || "",
           userId: req.user.userId,
           actionType: "delete_comment",
           targetType,
