@@ -96,7 +96,7 @@ async function validateToken(token: string): Promise<SocketUser | null> {
       where: { 
         id: decoded.userId,
         // 활성 사용자만 허용
-        status: 'active',
+        isActive: true,
       },
       select: {
         id: true,
