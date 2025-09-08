@@ -1,4 +1,4 @@
-import { User, Project, Scene, Image, Comment, Annotation, ProjectParticipant, ProjectInvite, CollaborationLog } from '@prisma/client';
+import { User, Project, Scene, Image, Comment, Annotation, ProjectParticipant, CollaborationLog } from '@prisma/client';
 
 export interface AuthUser {
   id: string;
@@ -68,8 +68,10 @@ export type ProjectParticipantWithUser = ProjectParticipant & {
   user: UserPublic;
 };
 
-export type ProjectInviteWithRelations = ProjectInvite & {
-  project?: {
+// ProjectInvite is not in the schema, using Project with inviteCode instead
+export type ProjectInviteInfo = {
+  inviteCode: string;
+  project: {
     id: string;
     name: string;
     description?: string | null;

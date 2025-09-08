@@ -25,7 +25,7 @@ async function getNotifications(req: AuthenticatedRequest) {
     
     const validatedQuery = getNotificationsSchema.parse(query);
 
-    const result = await NotificationService.getNotifications(
+    const result = await NotificationService.getUserNotifications(
       req.user.userId,
       {
         isRead: validatedQuery.isRead,
@@ -38,8 +38,7 @@ async function getNotifications(req: AuthenticatedRequest) {
 
     // 읽지 않은 알림 개수도 함께 반환
     const unreadCount = await NotificationService.getUnreadCount(
-      req.user.userId,
-      validatedQuery.projectId
+      req.user.userId
     );
 
     return NextResponse.json({
@@ -77,10 +76,10 @@ async function updateNotifications(req: AuthenticatedRequest) {
 
     if (markAllAsRead) {
       // 모든 알림 읽음 처리
-      result = await NotificationService.markAllAsRead(req.user.userId, projectId);
+      result = await NotificationService.markAllAsRead(req.user.userId);
     } else if (notificationIds && notificationIds.length > 0) {
       // 특정 알림들 읽음 처리
-      result = await NotificationService.markMultipleAsRead(notificationIds, req.user.userId);
+      result = await NotificationService.markManyAsRead(notificationIds, req.user.userId);
     } else {
       return NextResponse.json(
         { success: false, error: "처리할 알림을 지정해주세요." },
@@ -90,8 +89,7 @@ async function updateNotifications(req: AuthenticatedRequest) {
 
     // 업데이트된 읽지 않은 알림 개수 반환
     const unreadCount = await NotificationService.getUnreadCount(
-      req.user.userId,
-      projectId
+      req.user.userId
     );
 
     return NextResponse.json({
