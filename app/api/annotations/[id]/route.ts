@@ -58,24 +58,6 @@ async function getAnnotation(
             },
           },
         },
-        comments: {
-          include: {
-            user: {
-              select: {
-                id: true,
-                username: true,
-                nickname: true,
-                profileImageUrl: true,
-              },
-            },
-          },
-          orderBy: { createdAt: "asc" },
-        },
-        _count: {
-          select: {
-            comments: true,
-          },
-        },
       },
     });
     if (!annotation) {
@@ -163,7 +145,7 @@ async function updateAnnotation(
     // 좌표 유효성 검사 (위치가 변경되는 경우)
     if (validatedData.position) {
       const { width, height } = annotation.image;
-      if (validatedData.position.x > width || validatedData.position.y > height) {
+      if (width && height && (validatedData.position.x > width || validatedData.position.y > height)) {
         return NextResponse.json(
           { success: false, error: "주석 위치가 이미지 범위를 벗어났습니다." },
           { status: 400 }
