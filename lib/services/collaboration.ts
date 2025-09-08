@@ -507,7 +507,8 @@ export class CollaborationService {
       const recentActivities = await prisma.collaborationLog.findMany({
         where: {
           projectId,
-          sceneId,
+          targetType: 'scene',
+          targetId: sceneId,
           createdAt: {
             gte: fiveMinutesAgo,
           },
