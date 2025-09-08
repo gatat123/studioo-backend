@@ -300,37 +300,33 @@ export class CollaborationService {
         LIMIT 30
       `;
 
-      // 씬별 활동
+      // 씬별 활동 - targetType이 'scene'인 경우만 필터링
       const sceneActivity = await prisma.collaborationLog.findMany({
         where: {
           projectId,
-          sceneId: { not: null },
+          targetType: 'scene',
           createdAt: {
             gte: startDate,
           },
         },
         select: {
-          sceneId: true,
-          scene: {
-            select: {
-              sceneNumber: true,
-              description: true,
-            },
-          },
+          targetId: true,
+          actionType: true,
         },
       });
 
+      // targetId(sceneId)로 그룹화
       const sceneStats = sceneActivity.reduce((acc, activity) => {
-        const sceneId = activity.sceneId!;
-        if (!acc[sceneId]) {
-          acc[sceneId] = {
-            sceneId,
-            sceneNumber: activity.scene?.sceneNumber,
-            description: activity.scene?.description,
-            count: 0,
-          };
+        const sceneId = activity.targetId;
+        if (sceneId) {
+          if (!acc[sceneId]) {
+            acc[sceneId] = {
+              sceneId,
+              count: 0,
+            };
+          }
+          acc[sceneId].count++;
         }
-        acc[sceneId].count++;
         return acc;
       }, {} as Record<string, any>);
 
