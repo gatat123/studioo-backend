@@ -6,9 +6,10 @@ import { lookup } from "mime-types";
 // GET /api/images/serve/[...path] - 이미지 파일 서빙
 export async function GET(
   request: NextRequest,
-  { params }: { params: { path: string[] } }
+  context: { params: Promise<{ path: string[] }> }
 ) {
   try {
+    const params = await context.params;
     const filePath = params.path.join("/");
     
     // 보안: 상위 디렉토리 접근 차단
