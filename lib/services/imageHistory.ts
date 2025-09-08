@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
-import { ImageType, ImageStatus } from "@prisma/client";
-import { uploadService } from "./upload";
+// ImageType and ImageStatus are defined as string literals in the Image model
+// import { uploadService } from "./upload";  // Not used
 import { NotificationService } from "./notification";
 
 export interface CreateImageHistoryData {
