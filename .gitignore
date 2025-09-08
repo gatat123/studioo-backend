@@ -1,5 +1,6 @@
-# Node.js
-node_modules/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
 /node_modules
 /.pnp
 .pnp.*
@@ -29,84 +30,14 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# Environment Variables
-.env
-.env.*
-!.env.example
+# env files (can opt-in for committing if needed)
+.env*
 
-# Dependencies
-/.pnp
-.pnp.*
+# vercel
+.vercel
 
-# Production builds
-build/
-dist/
-out/
-.next/
-
-# Testing
-coverage/
-.nyc_output
-
-# Misc
-.DS_Store
-Thumbs.db
-*.pem
-
-# TypeScript
+# typescript
 *.tsbuildinfo
 next-env.d.ts
 
-# IDE / Editor
-.vscode/
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Logs
-logs
-*.log
-
-# Database
-*.db
-*.sqlite
-
-# Railway deployment
-railway-*
-!railway-*.md
-
-# Temporary files
-*.tmp
-*.temp
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Backup files
-*.bak
-*.backup
-
-# Cache directories
-.cache/
-.parcel-cache/
-
-# Vercel
-.vercel
-
-# Local development
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Template files (not needed for collaboration platform)
-ignite-*/
-*-template-*/
-*.txt
-
-# Prisma generated files
 /app/generated/prisma
