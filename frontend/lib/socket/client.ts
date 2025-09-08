@@ -65,20 +65,20 @@ class SocketClient {
 
   // Project room management
   joinProject(projectId: string) {
-    this.socket?.emit('join:project', { projectId });
+    this.socket?.emit('join_project', { projectId });
   }
 
   leaveProject(projectId: string) {
-    this.socket?.emit('leave:project', { projectId });
+    this.socket?.emit('leave_room', { roomId: `project:${projectId}` });
   }
 
   // Scene room management
-  joinScene(sceneId: string) {
-    this.socket?.emit('join:scene', { sceneId });
+  joinScene(projectId: string, sceneId: string) {
+    this.socket?.emit('join_scene', { projectId, sceneId });
   }
 
   leaveScene(sceneId: string) {
-    this.socket?.emit('leave:scene', { sceneId });
+    this.socket?.emit('leave_room', { roomId: `scene:${sceneId}` });
   }
 
   // Cursor tracking

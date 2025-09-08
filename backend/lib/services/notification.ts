@@ -63,7 +63,7 @@ export class NotificationService {
           image: {
             select: {
               id: true,
-              filename: true,
+              fileUrl: true,
             },
           },
         },
@@ -138,7 +138,7 @@ export class NotificationService {
             image: {
               select: {
                 id: true,
-                filename: true,
+                fileUrl: true,
               },
             },
           },
@@ -354,7 +354,7 @@ export class NotificationService {
           },
           image: {
             select: {
-              filename: true,
+              fileUrl: true,
             },
           },
         },
@@ -370,7 +370,8 @@ export class NotificationService {
         location += ` - 씬 ${comment.scene.sceneNumber}`;
       }
       if (comment.image) {
-        location += ` - ${comment.image.filename}`;
+        const filename = comment.image.fileUrl.split('/').pop() || 'image';
+        location += ` - ${filename}`;
       }
 
       await this.notifyProjectParticipants(
@@ -394,7 +395,7 @@ export class NotificationService {
   // 이미지 업로드 알림
   static async notifyImageUpload(
     imageId: string,
-    uploaderId: string,
+    uploadedBy: string,
     projectId: string,
     sceneId: string
   ) {
@@ -432,10 +433,10 @@ export class NotificationService {
         "image_uploaded",
         "새 이미지 업로드",
         `${uploaderName}님이 ${location}에 이미지를 업로드했습니다.`,
-        uploaderId,
+        uploadedBy,
         {
           imageId,
-          filename: image.filename,
+          fileUrl: image.fileUrl,
           uploaderName,
           location,
         }

@@ -12,20 +12,15 @@ const uploadImageSchema = z.object({
   changeDescription: z.string().optional(),
 });
 
-interface ImageRouteParams {
-  params: {
-    id: string;
-    sceneId: string;
-  };
-}
 
 // GET /api/projects/[id]/scenes/[sceneId]/images - 씬의 이미지 목록 조회
 export async function GET(
   req: NextRequest,
-  { params }: ImageRouteParams
+  context: { params: Promise<{ id: string; sceneId: string }> }
 ) {
-  return withAuth(async (authReq: AuthenticatedRequest) => {
+  return withAuth(async (authReq: AuthenticatedRequest, ctx: { params: any }) => {
     try {
+      const params = ctx.params;
       const { id: projectId, sceneId } = params;
       const url = new URL(req.url);
       const type = url.searchParams.get("type");
@@ -114,16 +109,17 @@ export async function GET(
         { status: 500 }
       );
     }
-  })(req);
+  })(req, context);
 }
 
 // POST /api/projects/[id]/scenes/[sceneId]/images - 새 이미지 업로드
 export async function POST(
   req: NextRequest,
-  { params }: ImageRouteParams
+  context: { params: Promise<{ id: string; sceneId: string }> }
 ) {
-  return withAuth(async (authReq: AuthenticatedRequest) => {
+  return withAuth(async (authReq: AuthenticatedRequest, ctx: { params: any }) => {
     try {
+      const params = ctx.params;
       const { id: projectId, sceneId } = params;
 
       // 프로젝트 접근 권한 확인
@@ -210,7 +206,7 @@ export async function POST(
       await writeFile(filePath, buffer);
 
       // Sharp를 사용하여 이미지 메타데이터 추출
-      let width, height, format;
+      let width: number | undefined, height: number | undefined, format: string | undefined;
       try {
         const metadata = await sharp(buffer).metadata();
         width = metadata.width;
@@ -316,7 +312,7 @@ export async function POST(
 
       if (error instanceof z.ZodError) {
         return NextResponse.json(
-          { error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+          { error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
           { status: 400 }
         );
       }
@@ -326,5 +322,5 @@ export async function POST(
         { status: 500 }
       );
     }
-  })(req);
+  })(req, context);
 }

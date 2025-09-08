@@ -78,13 +78,17 @@ async function getScenes(req: AuthenticatedRequest) {
           images: {
             select: {
               id: true,
-              filename: true,
-              url: true,
-              thumbnailUrl: true,
-              version: true,
-              createdAt: true,
+              type: true,
+              fileUrl: true,
+              fileSize: true,
+              width: true,
+              height: true,
+              format: true,
+              isCurrent: true,
+              uploadedAt: true,
             },
-            orderBy: { version: "desc" },
+            where: { isCurrent: true },
+            orderBy: { uploadedAt: "desc" },
             take: 1, // 최신 버전만
           },
           comments: {
@@ -205,6 +209,7 @@ async function createScene(req: AuthenticatedRequest) {
         sceneNumber,
         description,
         notes,
+        createdBy: req.user.userId,
       },
       include: {
         project: {
@@ -247,7 +252,7 @@ async function createScene(req: AuthenticatedRequest) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
         { status: 400 }
       );
     }

@@ -11,9 +11,10 @@ const restoreImageSchema = z.object({
 // POST /api/images/[id]/restore - 이미지 버전 복원
 async function restoreImageVersion(
   req: AuthenticatedRequest,
-  { params }: { params: { id: string } }
+  ctx: { params: any }
 ) {
   try {
+    const params = ctx.params;
     const imageId = params.id;
     const body = await req.json();
     const { versionId } = restoreImageSchema.parse(body);
@@ -67,7 +68,6 @@ async function restoreImageVersion(
       message: "이미지 버전이 성공적으로 복원되었습니다.",
       data: {
         image: restoredImage,
-        restoredVersion: restoredImage.version,
       },
     });
 
@@ -76,12 +76,12 @@ async function restoreImageVersion(
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
         { status: 400 }
       );
     }
 
-    if (error.message === "Version not found or does not belong to this image") {
+    if (error instanceof Error && error.message === "Version not found or does not belong to this image") {
       return NextResponse.json(
         { success: false, error: "복원할 버전을 찾을 수 없습니다." },
         { status: 404 }

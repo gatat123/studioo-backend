@@ -2,6 +2,7 @@
 
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -42,8 +43,10 @@ import Link from 'next/link'
 import { projectsAPI, ProjectWithParticipants } from '@/lib/api/projects'
 import { scenesAPI } from '@/lib/api/scenes'
 import { commentsAPI } from '@/lib/api/comments'
+import { socketClient } from '@/lib/socket/client'
 import { useToast } from '@/hooks/use-toast'
-import { Scene, Comment } from '@/types'
+import { Scene, Comment, Image } from '@/types'
+import { useUIStore } from '@/store/useUIStore'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -52,17 +55,26 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { cn } from '@/lib/utils'
 
-// Image type definition
+// Dynamic import for AnnotationLayer (client-side only)
+const AnnotationLayer = dynamic(
+  () => import('@/components/editor/AnnotationLayer').then(mod => mod.AnnotationLayer),
+  { ssr: false }
+)
+
+// Extended Image type for project
 interface ProjectImage {
   id: string
   sceneId: string
-  projectId: string
+  projectId?: string
   kind: 'line' | 'art'
-  version: number
-  url: string
+  version?: number
+  fileUrl: string
+  url?: string
   thumbnailUrl?: string
-  createdAt: string
-  uploadedBy: {
+  createdAt: string | Date
+  uploadedAt?: string | Date
+  uploadedBy: string
+  uploader?: {
     id: string
     username: string
     nickname?: string
@@ -71,7 +83,6 @@ interface ProjectImage {
 
 // Scene with images
 interface SceneWithImages extends Scene {
-  images: ProjectImage[]
   lineArtImages?: ProjectImage[]
   artImages?: ProjectImage[]
 }
@@ -80,6 +91,7 @@ export default function ProjectDetailPage() {
   const params = useParams()
   const router = useRouter()
   const { toast } = useToast()
+  const { setSidebarOpen } = useUIStore()
   const projectId = params.id as string
   const [project, setProject] = useState<ProjectWithParticipants | null>(null)
   const [scenes, setScenes] = useState<SceneWithImages[]>([])
@@ -99,13 +111,80 @@ export default function ProjectDetailPage() {
   const [uploadProgress, setUploadProgress] = useState(0)
   const [compareMode, setCompareMode] = useState(false)
   const [compareImages, setCompareImages] = useState<[ProjectImage | null, ProjectImage | null]>([null, null])
-  const [showAnnotations, setShowAnnotations] = useState(true)
+  const [showAnnotations, setShowAnnotations] = useState(false)
+  const [annotationMode, setAnnotationMode] = useState(false)
   const [newSceneName, setNewSceneName] = useState('')
   const [newSceneDescription, setNewSceneDescription] = useState('')
   const [isAddingScene, setIsAddingScene] = useState(false)
 
   useEffect(() => {
+    // Minimize sidebar when entering project page
+    setSidebarOpen(false)
+    
     fetchProjectDetails()
+    
+    // Connect to Socket.io and join project room
+    const socket = socketClient.connect()
+    socketClient.joinProject(projectId)
+    
+    // Set up real-time event listeners
+    socketClient.on('comment:created', (data: any) => {
+      if (data.projectId === projectId) {
+        setComments(prev => [data.comment, ...prev])
+        toast({
+          title: '새 댓글',
+          description: `${data.comment.author?.nickname || 'Someone'}님이 댓글을 작성했습니다.`
+        })
+      }
+    })
+    
+    socketClient.on('scene:created', (data: any) => {
+      if (data.projectId === projectId) {
+        const processedScene = {
+          ...data.scene,
+          lineArtImages: [],
+          artImages: []
+        }
+        setScenes(prev => [...prev, processedScene])
+      }
+    })
+    
+    socketClient.on('image:uploaded', (data: any) => {
+      if (data.projectId === projectId) {
+        // Update the specific scene with the new image
+        setScenes(prevScenes => 
+          prevScenes.map(scene => {
+            if (scene.id === data.sceneId) {
+              const updatedScene = { ...scene }
+              if (data.image.kind === 'line' || data.image.type === 'lineart') {
+                updatedScene.lineArtImages = [...(scene.lineArtImages || []), data.image]
+              } else {
+                updatedScene.artImages = [...(scene.artImages || []), data.image]
+              }
+              return updatedScene
+            }
+            return scene
+          })
+        )
+        toast({
+          title: '새 이미지',
+          description: '새로운 이미지가 업로드되었습니다.'
+        })
+      }
+    })
+    
+    socketClient.on('annotation:created', (data: any) => {
+      console.log('New annotation created:', data)
+    })
+    
+    // Cleanup on unmount
+    return () => {
+      socketClient.leaveProject(projectId)
+      socketClient.off('comment:created')
+      socketClient.off('scene:created')
+      socketClient.off('image:uploaded')
+      socketClient.off('annotation:created')
+    }
   }, [projectId])
 
   const fetchProjectDetails = async () => {
@@ -119,8 +198,8 @@ export default function ProjectDetailPage() {
       // Process scenes to separate line art and art images
       const processedScenes = scenesData.map((scene: any) => ({
         ...scene,
-        lineArtImages: scene.images?.filter((img: ProjectImage) => img.kind === 'line') || [],
-        artImages: scene.images?.filter((img: ProjectImage) => img.kind === 'art') || []
+        lineArtImages: scene.images?.filter((img: any) => img.kind === 'line' || img.type === 'lineart') || [],
+        artImages: scene.images?.filter((img: any) => img.kind === 'art' || img.type === 'art') || []
       }))
       
       setProject(projectData)
@@ -298,9 +377,7 @@ export default function ProjectDetailPage() {
     try {
       const comment = await commentsAPI.createComment({
         projectId,
-        content: newComment,
-        targetType: 'project',
-        targetId: projectId
+        content: newComment
       })
       setComments([comment, ...comments])
       setNewComment('')
@@ -424,14 +501,14 @@ export default function ProjectDetailPage() {
             <div className="grid grid-cols-2 gap-4">
               <div className="border-2 border-dashed rounded-lg p-4 min-h-[200px] flex items-center justify-center">
                 {compareImages[0] ? (
-                  <img src={compareImages[0].url} alt="Compare 1" className="max-w-full h-auto" />
+                  <img src={compareImages[0].url || compareImages[0].fileUrl} alt="Compare 1" className="max-w-full h-auto" />
                 ) : (
                   <p className="text-muted-foreground">첫 번째 이미지 선택</p>
                 )}
               </div>
               <div className="border-2 border-dashed rounded-lg p-4 min-h-[200px] flex items-center justify-center">
                 {compareImages[1] ? (
-                  <img src={compareImages[1].url} alt="Compare 2" className="max-w-full h-auto" />
+                  <img src={compareImages[1].url || compareImages[1].fileUrl} alt="Compare 2" className="max-w-full h-auto" />
                 ) : (
                   <p className="text-muted-foreground">두 번째 이미지 선택</p>
                 )}
@@ -729,7 +806,7 @@ export default function ProjectDetailPage() {
                                       {new Date(img.createdAt).toLocaleString()}
                                     </p>
                                     <p className="text-xs text-muted-foreground">
-                                      업로드: {img.uploadedBy.nickname || img.uploadedBy.username}
+                                      업로드: {img.uploader?.nickname || img.uploader?.username || 'Unknown'}
                                     </p>
                                   </div>
                                   <Button size="sm" variant="ghost">
@@ -765,7 +842,7 @@ export default function ProjectDetailPage() {
                                       {new Date(img.createdAt).toLocaleString()}
                                     </p>
                                     <p className="text-xs text-muted-foreground">
-                                      업로드: {img.uploadedBy.nickname || img.uploadedBy.username}
+                                      업로드: {img.uploader?.nickname || img.uploader?.username || 'Unknown'}
                                     </p>
                                   </div>
                                   <Button size="sm" variant="ghost">
@@ -855,62 +932,89 @@ export default function ProjectDetailPage() {
       {selectedImage && (
         <div 
           className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+          onClick={() => !annotationMode && setSelectedImage(null)}
         >
-          <div className="relative max-w-[90vw] max-h-[90vh]">
-            <img 
-              src={selectedImage.url} 
-              alt="Image viewer"
-              className="max-w-full max-h-full object-contain"
-              onClick={(e) => e.stopPropagation()}
-            />
-            <div className="absolute top-4 right-4 flex gap-2">
-              <Button
-                size="icon"
-                variant="secondary"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  // Implement zoom functionality
-                }}
-              >
-                <ZoomIn className="h-4 w-4" />
-              </Button>
-              <Button
-                size="icon"
-                variant="secondary"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setShowAnnotations(!showAnnotations)
-                }}
-              >
-                <Pencil className="h-4 w-4" />
-              </Button>
-              <Button
-                size="icon"
-                variant="secondary"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  // Implement download
-                }}
-              >
-                <Download className="h-4 w-4" />
-              </Button>
-              <Button
-                size="icon"
-                variant="secondary"
-                onClick={() => setSelectedImage(null)}
-              >
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
-            <div className="absolute bottom-4 left-4 bg-background/90 p-2 rounded">
-              <p className="text-sm font-medium">
-                {selectedImage.kind === 'line' ? '선화' : '아트'} - 버전 {selectedImage.version}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                업로드: {selectedImage.uploadedBy.nickname || selectedImage.uploadedBy.username}
-              </p>
-            </div>
+          <div className="relative max-w-[90vw] max-h-[90vh] bg-white rounded-lg overflow-hidden">
+            {annotationMode ? (
+              <div className="p-4">
+                <AnnotationLayer
+                  imageUrl={selectedImage.url || selectedImage.fileUrl}
+                  imageId={selectedImage.id}
+                  onSave={(annotations) => {
+                    console.log('Saving annotations:', annotations)
+                    // TODO: Save annotations to backend
+                    setAnnotationMode(false)
+                  }}
+                  currentUser={{
+                    id: '1',
+                    username: 'current-user',
+                    nickname: 'User'
+                  }}
+                />
+                <Button 
+                  className="mt-4"
+                  onClick={() => setAnnotationMode(false)}
+                >
+                  Close Annotation Mode
+                </Button>
+              </div>
+            ) : (
+              <>
+                <img 
+                  src={selectedImage.url || selectedImage.fileUrl} 
+                  alt="Image viewer"
+                  className="max-w-full max-h-full object-contain"
+                  onClick={(e) => e.stopPropagation()}
+                />
+                <div className="absolute top-4 right-4 flex gap-2">
+                  <Button
+                    size="icon"
+                    variant="secondary"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      // Implement zoom functionality
+                    }}
+                  >
+                    <ZoomIn className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    size="icon"
+                    variant="secondary"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setAnnotationMode(true)
+                    }}
+                  >
+                    <Pencil className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    size="icon"
+                    variant="secondary"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      // Implement download
+                    }}
+                  >
+                    <Download className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    size="icon"
+                    variant="secondary"
+                    onClick={() => setSelectedImage(null)}
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                </div>
+                <div className="absolute bottom-4 left-4 bg-background/90 p-2 rounded">
+                  <p className="text-sm font-medium">
+                    {selectedImage.kind === 'line' ? '선화' : '아트'} - 버전 {selectedImage.version}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    업로드: {selectedImage.uploader?.nickname || selectedImage.uploader?.username || 'Unknown'}
+                  </p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}

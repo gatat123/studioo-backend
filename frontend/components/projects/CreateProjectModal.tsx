@@ -100,11 +100,13 @@ export function CreateProjectModal({ open, onOpenChange }: CreateProjectModalPro
       setIsLoading(true)
       
       // Create project through API
-      const response = await fetch('/api/projects', {
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
+      const response = await fetch(`${backendUrl}/api/projects`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           name: data.name,
           description: data.description,

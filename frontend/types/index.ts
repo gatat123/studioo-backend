@@ -72,10 +72,12 @@ export interface ProjectParticipant {
 export interface Scene {
   id: string;
   projectId: string;
-  sceneNumber: number;
+  sceneNumber?: number;
+  index?: number;
+  title?: string;
   description?: string | null;
   notes?: string | null;
-  createdBy: string;
+  createdBy?: string;
   createdAt: string | Date;
   updatedAt: string | Date;
   project?: Project;
@@ -133,12 +135,13 @@ export interface Comment {
   content: string;
   createdAt: string;
   updatedAt: string;
-  isEdited: boolean;
-  isDeleted: boolean;
+  isEdited?: boolean;
+  isDeleted?: boolean;
   project?: Project;
   scene?: Scene;
   parentComment?: Comment;
   user?: User;
+  author?: User;  // Some APIs return author instead of user
   replies?: Comment[];
 }
 

@@ -24,7 +24,7 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.username || !credentials?.password) {
-          throw new Error('Invalid credentials');
+          return null;
         }
 
         const user = await prisma.user.findUnique({
@@ -32,13 +32,13 @@ export const authOptions: NextAuthOptions = {
         });
 
         if (!user || !user.isActive) {
-          throw new Error('User not found or inactive');
+          return null;
         }
 
         const isPasswordValid = await comparePassword(credentials.password, user.passwordHash);
 
         if (!isPasswordValid) {
-          throw new Error('Invalid password');
+          return null;
         }
 
         await prisma.user.update({
@@ -51,7 +51,11 @@ export const authOptions: NextAuthOptions = {
           email: user.email,
           name: user.nickname,
           image: user.profileImageUrl,
-        };
+          username: user.username,
+          nickname: user.nickname,
+          profileImageUrl: user.profileImageUrl,
+          isAdmin: user.isAdmin,
+        } as any;
       },
     }),
   ],

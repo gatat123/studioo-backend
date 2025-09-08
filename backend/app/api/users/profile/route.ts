@@ -251,8 +251,8 @@ async function handleDeactivateAccount(request: NextRequest) {
     // 비밀번호 확인 스키마
     const deactivateSchema = z.object({
       password: z.string().min(1, 'Password is required'),
-      confirmDeactivation: z.literal(true, {
-        errorMap: () => ({ message: 'Account deactivation confirmation required' })
+      confirmDeactivation: z.literal(true).refine(val => val === true, {
+        message: 'Account deactivation confirmation required'
       })
     });
 

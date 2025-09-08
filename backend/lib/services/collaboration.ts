@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
-import { ActionType } from "@prisma/client";
+
+type ActionType = string;
 
 export interface CollaborationLogData {
   projectId: string;

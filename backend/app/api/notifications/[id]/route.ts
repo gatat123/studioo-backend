@@ -5,9 +5,10 @@ import { NotificationService } from "@/lib/services/notification";
 // PUT /api/notifications/[id] - 특정 알림 읽음 처리
 async function markNotificationAsRead(
   req: AuthenticatedRequest,
-  { params }: { params: { id: string } }
+  ctx: { params: any }
 ) {
   try {
+    const params = ctx.params;
     const notificationId = params.id;
 
     if (!notificationId) {
@@ -38,7 +39,7 @@ async function markNotificationAsRead(
     console.error("Mark notification as read error:", error);
 
     // Prisma에서 해당 알림을 찾을 수 없는 경우
-    if (error.code === "P2025") {
+    if ((error as any).code === "P2025") {
       return NextResponse.json(
         { success: false, error: "알림을 찾을 수 없거나 접근 권한이 없습니다." },
         { status: 404 }
@@ -55,9 +56,10 @@ async function markNotificationAsRead(
 // DELETE /api/notifications/[id] - 특정 알림 삭제
 async function deleteNotification(
   req: AuthenticatedRequest,
-  { params }: { params: { id: string } }
+  ctx: { params: any }
 ) {
   try {
+    const params = ctx.params;
     const notificationId = params.id;
 
     if (!notificationId) {
@@ -84,7 +86,7 @@ async function deleteNotification(
     console.error("Delete notification error:", error);
 
     // Prisma에서 해당 알림을 찾을 수 없는 경우
-    if (error.code === "P2025") {
+    if ((error as any).code === "P2025") {
       return NextResponse.json(
         { success: false, error: "알림을 찾을 수 없거나 접근 권한이 없습니다." },
         { status: 404 }

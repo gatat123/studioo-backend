@@ -7,21 +7,14 @@ const updateParticipantSchema = z.object({
   role: z.enum(["member", "admin"]),
 });
 
-interface ParticipantRouteParams {
-  params: {
-    id: string;
-    userId: string;
-  };
-}
-
 // PUT /api/projects/[id]/participants/[userId] - 참여자 역할 수정
 export async function PUT(
   req: NextRequest,
-  { params }: ParticipantRouteParams
+  context: { params: Promise<{ id: string; userId: string }> }
 ) {
-  return withAuth(async (authReq: AuthenticatedRequest) => {
+  return withAuth(async (authReq: AuthenticatedRequest, ctx: { params: any }) => {
     try {
-      const { id: projectId, userId: targetUserId } = params;
+      const { id: projectId, userId: targetUserId } = ctx.params;
       const body = await authReq.json();
       const { role } = updateParticipantSchema.parse(body);
 
@@ -135,7 +128,7 @@ export async function PUT(
 
       if (error instanceof z.ZodError) {
         return NextResponse.json(
-          { error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+          { error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
           { status: 400 }
         );
       }
@@ -145,17 +138,17 @@ export async function PUT(
         { status: 500 }
       );
     }
-  })(req);
+  })(req, context);
 }
 
 // DELETE /api/projects/[id]/participants/[userId] - 참여자 제거
 export async function DELETE(
   req: NextRequest,
-  { params }: ParticipantRouteParams
+  context: { params: Promise<{ id: string; userId: string }> }
 ) {
-  return withAuth(async (authReq: AuthenticatedRequest) => {
+  return withAuth(async (authReq: AuthenticatedRequest, ctx: { params: any }) => {
     try {
-      const { id: projectId, userId: targetUserId } = params;
+      const { id: projectId, userId: targetUserId } = ctx.params;
 
       // 현재 사용자의 권한 확인
       const currentParticipation = await prisma.projectParticipant.findUnique({
@@ -259,5 +252,5 @@ export async function DELETE(
         { status: 500 }
       );
     }
-  })(req);
+  })(req, context);
 }

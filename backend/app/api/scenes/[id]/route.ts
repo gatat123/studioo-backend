@@ -72,8 +72,8 @@ async function getScene(req: AuthenticatedRequest, sceneId: string) {
             },
           },
           orderBy: [
-            { version: "desc" },
-            { createdAt: "desc" },
+            { isCurrent: "desc" },
+            { uploadedAt: "desc" },
           ],
         },
         comments: {
@@ -261,7 +261,7 @@ async function updateScene(req: AuthenticatedRequest, sceneId: string) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
         { status: 400 }
       );
     }

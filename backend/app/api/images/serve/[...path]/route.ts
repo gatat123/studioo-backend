@@ -5,11 +5,12 @@ import { lookup } from "mime-types";
 
 // GET /api/images/serve/[...path] - 이미지 파일 서빙
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { path: string[] } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ path: string[] }> }
 ) {
   try {
-    const filePath = params.path.join("/");
+    const resolvedParams = await params;
+    const filePath = resolvedParams.path.join("/");
     
     // 보안: 상위 디렉토리 접근 차단
     if (filePath.includes("..") || filePath.includes("\\")) {
@@ -23,11 +24,10 @@ export async function GET(
     let baseDir: string;
 
     // 썸네일인지 원본 이미지인지 구분
-    if (filePath.startsWith("thumb/")) {
-      // 썸네일 경로
+    if (filePath.includes("_thumb")) {
+      // 썸네일 경로 (파일명에 _thumb 포함)
       baseDir = path.join(process.cwd(), "uploads", "thumbnails");
-      const thumbnailPath = filePath.replace("thumb/", "");
-      fullPath = path.join(baseDir, thumbnailPath);
+      fullPath = path.join(baseDir, filePath);
     } else {
       // 원본 이미지 경로
       baseDir = path.join(process.cwd(), "uploads", "images");
@@ -69,7 +69,7 @@ export async function GET(
       headers.set("X-Content-Type-Options", "nosniff");
     }
 
-    return new NextResponse(fileBuffer, {
+    return new NextResponse(new Uint8Array(fileBuffer), {
       headers,
       status: 200,
     });

@@ -8,12 +8,10 @@ const inviteParticipantSchema = z.object({
   role: z.enum(["member", "admin"]).default("member"),
 });
 
-const updateParticipantSchema = z.object({
-  role: z.enum(["member", "admin"]),
-});
 
 // GET /api/projects/[id]/participants - 프로젝트 참여자 목록 조회
-async function getParticipants(req: AuthenticatedRequest, projectId: string) {
+async function getParticipants(_req: AuthenticatedRequest, context: { params: { id: string } }) {
+  const projectId = context.params.id;
   try {
     const participants = await prisma.projectParticipant.findMany({
       where: { projectId },
@@ -47,7 +45,8 @@ async function getParticipants(req: AuthenticatedRequest, projectId: string) {
 }
 
 // POST /api/projects/[id]/participants - 새 참여자 초대
-async function inviteParticipant(req: AuthenticatedRequest, projectId: string) {
+async function inviteParticipant(req: AuthenticatedRequest, context: { params: { id: string } }) {
+  const projectId = context.params.id;
   try {
     const body = await req.json();
     const { email, role } = inviteParticipantSchema.parse(body);
@@ -151,7 +150,7 @@ async function inviteParticipant(req: AuthenticatedRequest, projectId: string) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+        { error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
         { status: 400 }
       );
     }

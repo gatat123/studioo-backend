@@ -12,7 +12,8 @@ const updateProjectSchema = z.object({
 });
 
 // GET /api/projects/[id] - 프로젝트 상세 정보 조회
-async function getProject(req: AuthenticatedRequest, projectId: string) {
+async function getProject(req: AuthenticatedRequest, context: { params: { id: string } }) {
+  const projectId = context.params.id;
   try {
     const project = await prisma.project.findUnique({
       where: { id: projectId },
@@ -123,7 +124,8 @@ async function getProject(req: AuthenticatedRequest, projectId: string) {
 }
 
 // PUT /api/projects/[id] - 프로젝트 정보 수정
-async function updateProject(req: AuthenticatedRequest, projectId: string) {
+async function updateProject(req: AuthenticatedRequest, context: { params: { id: string } }) {
+  const projectId = context.params.id;
   try {
     const body = await req.json();
     const validatedData = updateProjectSchema.parse(body);
@@ -194,7 +196,7 @@ async function updateProject(req: AuthenticatedRequest, projectId: string) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+        { error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
         { status: 400 }
       );
     }
@@ -207,7 +209,8 @@ async function updateProject(req: AuthenticatedRequest, projectId: string) {
 }
 
 // DELETE /api/projects/[id] - 프로젝트 삭제
-async function deleteProject(req: AuthenticatedRequest, projectId: string) {
+async function deleteProject(req: AuthenticatedRequest, context: { params: { id: string } }) {
+  const projectId = context.params.id;
   try {
     // 권한 확인 - owner 또는 시스템 관리자만 삭제 가능
     const project = await prisma.project.findUnique({

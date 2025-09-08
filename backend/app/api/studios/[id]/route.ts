@@ -291,8 +291,8 @@ async function handleDeleteStudio(request: NextRequest, context: any) {
 
     // 삭제 확인 스키마
     const deleteSchema = z.object({
-      confirmDelete: z.literal(true, {
-        errorMap: () => ({ message: 'Studio deletion confirmation required' })
+      confirmDelete: z.literal(true).refine(val => val === true, {
+        message: 'Studio deletion confirmation required'
       })
     });
 

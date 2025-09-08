@@ -11,10 +11,20 @@ export interface AuthenticatedRequest extends NextRequest {
   };
 }
 
-export async function withAuth(
-  handler: (req: AuthenticatedRequest, ...params: string[]) => Promise<NextResponse>
+export function withAuth(
+  handler: (req: AuthenticatedRequest, context: { params: any }) => Promise<NextResponse>
 ) {
-  return async (request: NextRequest, context?: { params: any }) => {
+  return async (request: NextRequest, context: { params: Promise<any> }) => {
+    // Add CORS headers to all responses
+    const corsHeaders = {
+      'Access-Control-Allow-Origin': process.env.NODE_ENV === 'production' 
+        ? 'https://studioo-production-eb03.up.railway.app' 
+        : '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Allow-Credentials': 'true',
+    };
+
     const session = await getServerSession(authOptions);
     let userId: string;
     let isAdmin = false;
@@ -25,7 +35,7 @@ export async function withAuth(
       if (!authHeader || !authHeader.startsWith('Bearer ')) {
         return NextResponse.json(
           { success: false, error: 'Unauthorized' },
-          { status: 401 }
+          { status: 401, headers: corsHeaders }
         );
       }
 
@@ -43,7 +53,7 @@ export async function withAuth(
       } catch (error) {
         return NextResponse.json(
           { success: false, error: 'Invalid token' },
-          { status: 401 }
+          { status: 401, headers: corsHeaders }
         );
       }
     } else {
@@ -54,19 +64,33 @@ export async function withAuth(
     const authenticatedRequest = request as AuthenticatedRequest;
     authenticatedRequest.user = { userId, isAdmin };
 
-    // Handle parameters from dynamic routes
-    const params = context?.params || {};
-    const paramValues = Object.values(params);
+    // Await params if it's a Promise (Next.js 15.5+)
+    const resolvedParams = await context.params;
     
-    return handler(authenticatedRequest, ...paramValues);
+    const response = await handler(authenticatedRequest, { params: resolvedParams });
+    
+    // Add CORS headers to successful responses
+    Object.entries(corsHeaders).forEach(([key, value]) => {
+      response.headers.set(key, value);
+    });
+    
+    return response;
   };
 }
 
-export async function withProjectAccess(
-  handler: (req: AuthenticatedRequest, projectId: string) => Promise<NextResponse>
+export function withProjectAccess(
+  handler: (req: AuthenticatedRequest, context: { params: { id: string } }) => Promise<NextResponse>
 ) {
-  return withAuth(async (req: AuthenticatedRequest, projectId: string) => {
+  return withAuth(async (req: AuthenticatedRequest, context: { params: any }) => {
     try {
+      const projectId = context.params.id;
+      if (!projectId) {
+        return NextResponse.json(
+          { success: false, error: 'Project ID is required' },
+          { status: 400 }
+        );
+      }
+      
       // Check if user has access to the project
       const hasAccess = await prisma.project.findFirst({
         where: {
@@ -89,7 +113,7 @@ export async function withProjectAccess(
         );
       }
 
-      return handler(req, projectId);
+      return handler(req, { params: { id: projectId } });
     } catch (error) {
       console.error('Project access check error:', error);
       return NextResponse.json(
@@ -100,10 +124,11 @@ export async function withProjectAccess(
   });
 }
 
-export async function withSceneAccess(
+export function withSceneAccess(
   handler: (req: AuthenticatedRequest, sceneId: string) => Promise<NextResponse>
 ) {
-  return withAuth(async (req: AuthenticatedRequest, sceneId: string) => {
+  return withAuth(async (req: AuthenticatedRequest, context: { params: any }) => {
+    const sceneId = context.params.id;
     try {
       // Check if user has access to the scene through project
       const scene = await prisma.scene.findUnique({

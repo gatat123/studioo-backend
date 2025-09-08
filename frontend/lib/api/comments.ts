@@ -22,7 +22,12 @@ export const commentsAPI = {
    * Get project comments
    */
   async getProjectComments(projectId: string): Promise<Comment[]> {
-    return api.get(`/api/projects/${projectId}/comments`);
+    try {
+      return await api.get(`/api/comments?projectId=${projectId}`);
+    } catch (error) {
+      console.error('Failed to get project comments:', error);
+      return [];
+    }
   },
 
   /**
@@ -36,18 +41,7 @@ export const commentsAPI = {
    * Create comment
    */
   async createComment(data: CreateCommentDto): Promise<Comment> {
-    if (data.projectId) {
-      return api.post(`/api/projects/${data.projectId}/comments`, {
-        content: data.content,
-        parentCommentId: data.parentCommentId
-      });
-    } else if (data.sceneId) {
-      return api.post(`/api/scenes/${data.sceneId}/comments`, {
-        content: data.content,
-        parentCommentId: data.parentCommentId
-      });
-    }
-    throw new Error('Either projectId or sceneId is required');
+    return api.post(`/api/comments`, data);
   },
 
   /**

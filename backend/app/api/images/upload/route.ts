@@ -19,6 +19,7 @@ async function uploadImage(req: AuthenticatedRequest) {
     const file = formData.get("file") as File;
     const sceneId = formData.get("sceneId") as string;
     const description = formData.get("description") as string;
+    const type = (formData.get("type") as string) || "art";
 
     if (!file) {
       return NextResponse.json(
@@ -28,7 +29,7 @@ async function uploadImage(req: AuthenticatedRequest) {
     }
 
     // 입력 데이터 검증
-    const { sceneId: validSceneId, description: validDescription } = uploadImageSchema.parse({
+    const { sceneId: validSceneId } = uploadImageSchema.parse({
       sceneId,
       description: description || undefined,
     });
@@ -127,30 +128,19 @@ async function uploadImage(req: AuthenticatedRequest) {
     const thumbnailPath = path.join(thumbnailDir, thumbnailFilename);
     await writeFile(thumbnailPath, thumbnailBuffer);
 
-    // 기존 이미지들의 최대 버전 확인
-    const latestImage = await prisma.image.findFirst({
-      where: { sceneId: validSceneId },
-      orderBy: { version: "desc" },
-      select: { version: true },
-    });
-
-    const version = (latestImage?.version || 0) + 1;
+    // version 필드가 없으므로 버전 관리 로직은 생략
 
     // 데이터베이스에 이미지 정보 저장
     const image = await prisma.image.create({
       data: {
         sceneId: validSceneId,
-        uploaderId: req.user.userId,
-        filename: file.name,
-        originalFilename: file.name,
-        url: `/api/images/serve/${filename}`,
-        thumbnailUrl: `/api/images/serve/thumb/${thumbnailFilename}`,
+        uploadedBy: req.user.userId,
+        fileUrl: `/api/images/serve/${filename}`,
         fileSize: file.size,
-        mimeType: file.type,
-        width: imageMetadata.width || 0,
-        height: imageMetadata.height || 0,
-        version,
-        description: validDescription,
+        format: file.type.split('/')[1] || 'unknown',
+        width: imageMetadata.width || undefined,
+        height: imageMetadata.height || undefined,
+        type,
       },
       include: {
         uploader: {
@@ -187,7 +177,6 @@ async function uploadImage(req: AuthenticatedRequest) {
         description: `씬 ${scene.sceneNumber}에 이미지를 업로드했습니다.`,
         metadata: { 
           filename: file.name,
-          version,
           fileSize: file.size,
         },
       },
@@ -204,7 +193,7 @@ async function uploadImage(req: AuthenticatedRequest) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
         { status: 400 }
       );
     }

@@ -1,10 +1,10 @@
 import { AuthenticatedSocket } from "./auth";
 import { Server as SocketIOServer } from "socket.io";
+import { prisma } from "@/lib/prisma";
 
 export interface RoomData {
   id: string;
   type: "project" | "scene" | "image";
-import { prisma } from "@/lib/prisma";
   resourceId: string;
   projectId: string;
   sceneId?: string;

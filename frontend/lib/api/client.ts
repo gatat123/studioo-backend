@@ -6,7 +6,7 @@
 // Authentication will be handled via localStorage token
 
 // API Base URL from environment
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 // Custom error class for API errors
 export class APIError extends Error {
@@ -102,6 +102,7 @@ class APIClient {
             ...fetchOptions,
             headers: requestHeaders,
             signal: controller.signal,
+            credentials: 'include',
           });
 
           clearTimeout(timeoutId);

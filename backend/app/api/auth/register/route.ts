@@ -1,8 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma/db';
 import { hashPassword } from '@/lib/utils/password';
+import { generateAccessToken } from '@/lib/jwt';
 import { registerSchema } from '@/lib/utils/validation';
 import { ApiResponse } from '@/types';
+import { handleOptions, withCORS } from '@/lib/utils/cors';
+
+export async function OPTIONS(request: NextRequest) {
+  return handleOptions(request);
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,14 +16,14 @@ export async function POST(request: NextRequest) {
     
     const validationResult = registerSchema.safeParse(body);
     if (!validationResult.success) {
-      return NextResponse.json<ApiResponse>(
+      return withCORS(NextResponse.json<ApiResponse>(
         {
           success: false,
           error: 'Validation failed',
-          message: validationResult.error.errors[0].message,
+          message: validationResult.error.issues[0].message,
         },
         { status: 400 }
-      );
+      ), request);
     }
 
     const { username, email, password, nickname } = validationResult.data;
@@ -29,7 +35,7 @@ export async function POST(request: NextRequest) {
     });
 
     if (existingUser) {
-      return NextResponse.json<ApiResponse>(
+      return withCORS(NextResponse.json<ApiResponse>(
         {
           success: false,
           error: 'User already exists',
@@ -38,7 +44,7 @@ export async function POST(request: NextRequest) {
             : 'Email already registered',
         },
         { status: 409 }
-      );
+      ), request);
     }
 
     const passwordHash = await hashPassword(password);
@@ -61,24 +67,37 @@ export async function POST(request: NextRequest) {
     });
 
     const { passwordHash: _, ...userWithoutPassword } = user;
+    
+    // Generate JWT token
+    const token = generateAccessToken({ 
+      userId: user.id,
+      email: user.email,
+      username: user.username,
+      nickname: user.nickname || user.username,
+      isAdmin: user.isAdmin
+    });
 
-    return NextResponse.json<ApiResponse>(
+    return withCORS(NextResponse.json<ApiResponse>(
       {
         success: true,
-        data: userWithoutPassword,
+        data: {
+          user: userWithoutPassword,
+          token,
+          accessToken: token
+        },
         message: 'User registered successfully',
       },
       { status: 201 }
-    );
+    ), request);
   } catch (error) {
     console.error('Registration error:', error);
-    return NextResponse.json<ApiResponse>(
+    return withCORS(NextResponse.json<ApiResponse>(
       {
         success: false,
         error: 'Internal server error',
         message: 'Failed to register user',
       },
       { status: 500 }
-    );
+    ), request);
   }
 }

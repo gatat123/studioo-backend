@@ -7,7 +7,6 @@ const createCommentSchema = z.object({
   content: z.string().min(1, "댓글 내용이 필요합니다.").max(2000, "댓글은 2000자를 초과할 수 없습니다."),
   projectId: z.string().uuid("유효한 프로젝트 ID가 필요합니다.").optional(),
   sceneId: z.string().uuid("유효한 씬 ID가 필요합니다.").optional(),
-  imageId: z.string().uuid("유효한 이미지 ID가 필요합니다.").optional(),
   parentCommentId: z.string().uuid("유효한 부모 댓글 ID가 필요합니다.").optional(),
 });
 
@@ -17,7 +16,6 @@ async function getComments(req: AuthenticatedRequest) {
     const url = new URL(req.url);
     const projectId = url.searchParams.get("projectId");
     const sceneId = url.searchParams.get("sceneId");
-    const imageId = url.searchParams.get("imageId");
     const parentCommentId = url.searchParams.get("parentCommentId");
     const page = parseInt(url.searchParams.get("page") ?? "1");
     const limit = parseInt(url.searchParams.get("limit") ?? "20");
@@ -25,9 +23,9 @@ async function getComments(req: AuthenticatedRequest) {
     const order = url.searchParams.get("order") ?? "desc";
 
     // 최소한 하나의 컨텍스트 ID가 필요함
-    if (!projectId && !sceneId && !imageId) {
+    if (!projectId && !sceneId) {
       return NextResponse.json(
-        { success: false, error: "projectId, sceneId, 또는 imageId 중 하나가 필요합니다." },
+        { success: false, error: "projectId 또는 sceneId 중 하나가 필요합니다." },
         { status: 400 }
       );
     }
@@ -35,37 +33,7 @@ async function getComments(req: AuthenticatedRequest) {
     let accessCheck = null;
 
     // 접근 권한 확인
-    if (imageId) {
-      accessCheck = await prisma.image.findUnique({
-        where: { id: imageId },
-        include: {
-          scene: {
-            include: {
-              project: {
-                include: {
-                  participants: {
-                    where: { userId: req.user.userId },
-                  },
-                },
-              },
-            },
-          },
-        },
-      });
-
-      if (accessCheck) {
-        const hasAccess = accessCheck.scene.project.creatorId === req.user.userId ||
-          accessCheck.scene.project.participants.length > 0 ||
-          req.user.isAdmin;
-
-        if (!hasAccess) {
-          return NextResponse.json(
-            { success: false, error: "댓글 조회 권한이 없습니다." },
-            { status: 403 }
-          );
-        }
-      }
-    } else if (sceneId) {
+    if (sceneId) {
       accessCheck = await prisma.scene.findUnique({
         where: { id: sceneId },
         include: {
@@ -132,9 +100,7 @@ async function getComments(req: AuthenticatedRequest) {
       where.parentCommentId = null; // 최상위 댓글만
     }
 
-    if (imageId) {
-      where.imageId = imageId;
-    } else if (sceneId) {
+    if (sceneId) {
       where.sceneId = sceneId;
     } else if (projectId) {
       where.projectId = projectId;
@@ -205,12 +171,12 @@ async function getComments(req: AuthenticatedRequest) {
 async function createComment(req: AuthenticatedRequest) {
   try {
     const body = await req.json();
-    const { content, projectId, sceneId, imageId, parentCommentId } = createCommentSchema.parse(body);
+    const { content, projectId, sceneId, parentCommentId } = createCommentSchema.parse(body);
 
     // 최소한 하나의 컨텍스트 ID가 필요함
-    if (!projectId && !sceneId && !imageId) {
+    if (!projectId && !sceneId) {
       return NextResponse.json(
-        { success: false, error: "projectId, sceneId, 또는 imageId 중 하나가 필요합니다." },
+        { success: false, error: "projectId 또는 sceneId 중 하나가 필요합니다." },
         { status: 400 }
       );
     }
@@ -219,45 +185,7 @@ async function createComment(req: AuthenticatedRequest) {
     let accessCheck = null;
 
     // 접근 권한 확인 및 프로젝트 ID 확인
-    if (imageId) {
-      accessCheck = await prisma.image.findUnique({
-        where: { id: imageId },
-        include: {
-          scene: {
-            include: {
-              project: {
-                include: {
-                  participants: {
-                    where: { userId: req.user.userId },
-                  },
-                },
-              },
-            },
-          },
-        },
-      });
-
-      if (accessCheck) {
-        targetProjectId = accessCheck.scene.project.id;
-        const hasAccess = accessCheck.scene.project.creatorId === req.user.userId ||
-          accessCheck.scene.project.participants.length > 0 ||
-          req.user.isAdmin;
-
-        if (!hasAccess) {
-          return NextResponse.json(
-            { success: false, error: "댓글 작성 권한이 없습니다." },
-            { status: 403 }
-          );
-        }
-
-        if (accessCheck.scene.project.status !== "active") {
-          return NextResponse.json(
-            { success: false, error: "활성 상태인 프로젝트에만 댓글을 작성할 수 있습니다." },
-            { status: 400 }
-          );
-        }
-      }
-    } else if (sceneId) {
+    if (sceneId) {
       accessCheck = await prisma.scene.findUnique({
         where: { id: sceneId },
         include: {
@@ -343,9 +271,8 @@ async function createComment(req: AuthenticatedRequest) {
 
       // 부모 댓글이 같은 컨텍스트에 있는지 확인
       const sameContext = 
-        (imageId && parentComment.imageId === imageId) ||
-        (sceneId && !imageId && parentComment.sceneId === sceneId) ||
-        (projectId && !sceneId && !imageId && parentComment.projectId === projectId);
+        (sceneId && parentComment.sceneId === sceneId) ||
+        (projectId && !sceneId && parentComment.projectId === projectId);
 
       if (!sameContext) {
         return NextResponse.json(
@@ -361,7 +288,6 @@ async function createComment(req: AuthenticatedRequest) {
         userId: req.user.userId,
         projectId: targetProjectId,
         sceneId: sceneId || undefined,
-        imageId: imageId || undefined,
         parentCommentId: parentCommentId || undefined,
       },
       include: {
@@ -395,8 +321,8 @@ async function createComment(req: AuthenticatedRequest) {
     });
 
     // 협업 로그 기록
-    const targetType = imageId ? "image" : sceneId ? "scene" : "project";
-    const targetId = imageId || sceneId || projectId;
+    const targetType = sceneId ? "scene" : "project";
+    const targetId = sceneId || projectId;
     const description = parentCommentId ? "답글을 작성했습니다." : "댓글을 작성했습니다.";
 
     await prisma.collaborationLog.create({
@@ -425,7 +351,7 @@ async function createComment(req: AuthenticatedRequest) {
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.errors },
+        { success: false, error: "입력 데이터가 유효하지 않습니다.", details: error.issues },
         { status: 400 }
       );
     }
