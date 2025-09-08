@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
     ), request);
   } catch (error) {
     console.error('Registration error:', error);
-    return NextResponse.json<ApiResponse>(
+    return withCORS(NextResponse.json<ApiResponse>(
       {
         success: false,
         error: 'Internal server error',
