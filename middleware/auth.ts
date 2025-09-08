@@ -124,10 +124,11 @@ export function withProjectAccess(
   });
 }
 
-export async function withSceneAccess(
+export function withSceneAccess(
   handler: (req: AuthenticatedRequest, sceneId: string) => Promise<NextResponse>
 ) {
-  return withAuth(async (req: AuthenticatedRequest, sceneId: string) => {
+  return withAuth(async (req: AuthenticatedRequest, context: { params: any }) => {
+    const sceneId = context.params.id;
     try {
       // Check if user has access to the scene through project
       const scene = await prisma.scene.findUnique({

@@ -5,9 +5,10 @@ import { NotificationService } from "@/lib/services/notification";
 // PUT /api/notifications/[id] - 특정 알림 읽음 처리
 async function markNotificationAsRead(
   req: AuthenticatedRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await context.params;
     const notificationId = params.id;
 
     if (!notificationId) {
@@ -55,9 +56,10 @@ async function markNotificationAsRead(
 // DELETE /api/notifications/[id] - 특정 알림 삭제
 async function deleteNotification(
   req: AuthenticatedRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await context.params;
     const notificationId = params.id;
 
     if (!notificationId) {

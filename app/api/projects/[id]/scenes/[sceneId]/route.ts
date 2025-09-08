@@ -8,20 +8,15 @@ const updateSceneSchema = z.object({
   notes: z.string().optional(),
 });
 
-interface SceneRouteParams {
-  params: {
-    id: string;
-    sceneId: string;
-  };
-}
 
 // GET /api/projects/[id]/scenes/[sceneId] - 씬 상세 정보 조회
 export async function GET(
   req: NextRequest,
-  { params }: SceneRouteParams
+  context: { params: Promise<{ id: string; sceneId: string }> }
 ) {
   return withAuth(async (authReq: AuthenticatedRequest) => {
     try {
+      const params = await context.params;
       const { id: projectId, sceneId } = params;
 
       // 프로젝트 접근 권한 확인
@@ -181,10 +176,11 @@ export async function GET(
 // PUT /api/projects/[id]/scenes/[sceneId] - 씬 정보 수정
 export async function PUT(
   req: NextRequest,
-  { params }: SceneRouteParams
+  context: { params: Promise<{ id: string; sceneId: string }> }
 ) {
   return withAuth(async (authReq: AuthenticatedRequest) => {
     try {
+      const params = await context.params;
       const { id: projectId, sceneId } = params;
       const body = await authReq.json();
       const validatedData = updateSceneSchema.parse(body);
@@ -289,10 +285,11 @@ export async function PUT(
 // DELETE /api/projects/[id]/scenes/[sceneId] - 씬 삭제
 export async function DELETE(
   req: NextRequest,
-  { params }: SceneRouteParams
+  context: { params: Promise<{ id: string; sceneId: string }> }
 ) {
   return withAuth(async (authReq: AuthenticatedRequest) => {
     try {
+      const params = await context.params;
       const { id: projectId, sceneId } = params;
 
       // 권한 확인 - admin 역할 또는 시스템 관리자만 삭제 가능

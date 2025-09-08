@@ -12,20 +12,15 @@ const uploadImageSchema = z.object({
   changeDescription: z.string().optional(),
 });
 
-interface ImageRouteParams {
-  params: {
-    id: string;
-    sceneId: string;
-  };
-}
 
 // GET /api/projects/[id]/scenes/[sceneId]/images - 씬의 이미지 목록 조회
 export async function GET(
   req: NextRequest,
-  { params }: ImageRouteParams
+  context: { params: Promise<{ id: string; sceneId: string }> }
 ) {
   return withAuth(async (authReq: AuthenticatedRequest) => {
     try {
+      const params = await context.params;
       const { id: projectId, sceneId } = params;
       const url = new URL(req.url);
       const type = url.searchParams.get("type");
@@ -120,10 +115,11 @@ export async function GET(
 // POST /api/projects/[id]/scenes/[sceneId]/images - 새 이미지 업로드
 export async function POST(
   req: NextRequest,
-  { params }: ImageRouteParams
+  context: { params: Promise<{ id: string; sceneId: string }> }
 ) {
   return withAuth(async (authReq: AuthenticatedRequest) => {
     try {
+      const params = await context.params;
       const { id: projectId, sceneId } = params;
 
       // 프로젝트 접근 권한 확인

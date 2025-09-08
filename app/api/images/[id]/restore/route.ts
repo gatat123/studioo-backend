@@ -11,9 +11,10 @@ const restoreImageSchema = z.object({
 // POST /api/images/[id]/restore - 이미지 버전 복원
 async function restoreImageVersion(
   req: AuthenticatedRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await context.params;
     const imageId = params.id;
     const body = await req.json();
     const { versionId } = restoreImageSchema.parse(body);

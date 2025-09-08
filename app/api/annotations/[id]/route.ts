@@ -22,7 +22,7 @@ const updateAnnotationSchema = z.object({
   }).optional(),
   content: z.string().max(1000, "내용은 1000자를 초과할 수 없습니다.").optional(),
   isResolved: z.boolean().optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
 });
 // GET /api/annotations/[id] - 특정 주석 상세 조회
 async function getAnnotation(
