@@ -51,7 +51,6 @@ export class CollaborationService {
           actionType: data.actionType,
           targetType: data.targetType,
           targetId: data.targetId,
-          sceneId: data.sceneId,
           description: data.description,
           metadata: data.metadata,
         },
