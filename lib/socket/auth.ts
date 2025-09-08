@@ -96,7 +96,7 @@ async function validateToken(token: string): Promise<SocketUser | null> {
       where: { 
         id: decoded.userId,
         // 활성 사용자만 허용
-        isActive: true,
+        status: 'active',
       },
       select: {
         id: true,
@@ -233,7 +233,7 @@ export async function checkProjectAccess(userId: string, projectId: string): Pro
           },
         ],
         // 활성 프로젝트만
-        isActive: true,
+        status: 'active',
       },
     });
 
@@ -264,7 +264,7 @@ export async function checkSceneAccess(userId: string, projectId: string, sceneI
               },
             },
           ],
-          isActive: true,
+          status: 'active',
         },
       },
     });
@@ -285,7 +285,7 @@ export async function checkProjectOwnership(userId: string, projectId: string): 
       where: {
         id: projectId,
         creatorId: userId,
-        isActive: true,
+        status: 'active',
       },
     });
 
