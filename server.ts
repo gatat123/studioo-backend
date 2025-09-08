@@ -5,7 +5,7 @@ import { initializeSocketServer } from "./lib/socket/server";
 import { initializeStorage } from "./lib/storage";
 
 const dev = process.env.NODE_ENV !== "production";
-const hostname = process.env.HOSTNAME || "localhost";
+const hostname = process.env.HOSTNAME || "0.0.0.0";
 const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
 
 const app = next({ dev, hostname, port });
