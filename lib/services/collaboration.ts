@@ -243,9 +243,9 @@ export class CollaborationService {
           },
         },
       });
-    } catch (error) {
+    } catch (error: any) {
       // 이미 존재하지 않는 경우는 무시
-      if (error.code !== "P2025") {
+      if (error?.code !== "P2025") {
         console.error("Failed to remove user presence:", error);
       }
     }
