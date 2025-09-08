@@ -440,8 +440,8 @@ export class CommentEventHandler {
           title: "댓글에서 언급",
           content: `${socket.user.nickname || socket.user.username}님이 댓글에서 회원님을 언급했습니다.`,
           projectId: data.projectId,
-          commentId: data.commentId,
           metadata: {
+            commentId: data.commentId,
             mentionedBy: socket.userId,
             mentionedByName: socket.user.nickname || socket.user.username,
           },
