@@ -6,9 +6,10 @@ const UPLOAD_DIR = process.env.UPLOAD_DIR || './uploads';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { path: string[] } }
+  context: { params: Promise<{ path: string[] }> }
 ) {
   try {
+    const params = await context.params;
     // 파일 경로 구성
     const filePath = path.join(UPLOAD_DIR, ...params.path);
     

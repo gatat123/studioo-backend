@@ -11,10 +11,10 @@ export interface AuthenticatedRequest extends NextRequest {
   };
 }
 
-export async function withAuth(
-  handler: (req: AuthenticatedRequest, ...params: string[]) => Promise<NextResponse>
+export function withAuth(
+  handler: (req: AuthenticatedRequest, context: { params: any }) => Promise<NextResponse>
 ) {
-  return async (request: NextRequest, context?: { params: any }) => {
+  return async (request: NextRequest, context: { params: Promise<any> }) => {
     // Add CORS headers to all responses
     const corsHeaders = {
       'Access-Control-Allow-Origin': process.env.NODE_ENV === 'production' 
@@ -64,11 +64,10 @@ export async function withAuth(
     const authenticatedRequest = request as AuthenticatedRequest;
     authenticatedRequest.user = { userId, isAdmin };
 
-    // Handle parameters from dynamic routes
-    const params = context?.params || {};
-    const paramValues = Object.values(params);
+    // Await params if it's a Promise (Next.js 15.5+)
+    const resolvedParams = await context.params;
     
-    const response = await handler(authenticatedRequest, ...paramValues);
+    const response = await handler(authenticatedRequest, { params: resolvedParams });
     
     // Add CORS headers to successful responses
     Object.entries(corsHeaders).forEach(([key, value]) => {
@@ -79,11 +78,19 @@ export async function withAuth(
   };
 }
 
-export async function withProjectAccess(
-  handler: (req: AuthenticatedRequest, projectId: string) => Promise<NextResponse>
+export function withProjectAccess(
+  handler: (req: AuthenticatedRequest, context: { params: { id: string } }) => Promise<NextResponse>
 ) {
-  return withAuth(async (req: AuthenticatedRequest, projectId: string) => {
+  return withAuth(async (req: AuthenticatedRequest, context: { params: any }) => {
     try {
+      const projectId = context.params.id;
+      if (!projectId) {
+        return NextResponse.json(
+          { success: false, error: 'Project ID is required' },
+          { status: 400 }
+        );
+      }
+      
       // Check if user has access to the project
       const hasAccess = await prisma.project.findFirst({
         where: {
@@ -106,7 +113,7 @@ export async function withProjectAccess(
         );
       }
 
-      return handler(req, projectId);
+      return handler(req, { params: { id: projectId } });
     } catch (error) {
       console.error('Project access check error:', error);
       return NextResponse.json(
