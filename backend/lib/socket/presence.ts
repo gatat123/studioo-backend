@@ -416,13 +416,13 @@ export class PresenceManager {
    */
   private async updateDatabasePresence(presence: UserPresence): Promise<void> {
     try {
-      if (presence.projectId) {
+      if (presence.projectId && presence.status !== "offline") {
         await CollaborationService.updateUserPresence({
           userId: presence.userId,
           projectId: presence.projectId,
           sceneId: presence.sceneId,
           imageId: presence.imageId,
-          status: presence.status,
+          status: presence.status as "active" | "idle" | "away",
           cursorPosition: presence.cursorPosition,
           currentTool: presence.selectedTool,
           metadata: {
