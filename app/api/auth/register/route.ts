@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma/db';
 import { hashPassword } from '@/lib/utils/password';
-import { generateToken } from '@/lib/utils/jwt';
+import { generateAccessToken } from '@/lib/jwt';
 import { registerSchema } from '@/lib/utils/validation';
 import { ApiResponse } from '@/types';
 import { handleOptions, withCORS } from '@/lib/utils/cors';
@@ -69,7 +69,13 @@ export async function POST(request: NextRequest) {
     const { passwordHash: _, ...userWithoutPassword } = user;
     
     // Generate JWT token
-    const token = generateToken({ userId: user.id });
+    const token = generateAccessToken({ 
+      userId: user.id,
+      email: user.email,
+      username: user.username,
+      nickname: user.nickname || user.username,
+      isAdmin: user.isAdmin
+    });
 
     return withCORS(NextResponse.json<ApiResponse>(
       {

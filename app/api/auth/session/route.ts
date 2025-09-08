@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma/db';
-import { verifyToken } from '@/lib/utils/jwt';
+import { verifyAccessToken } from '@/lib/jwt';
 import { handleOptions, withCORS } from '@/lib/utils/cors';
 
 export async function OPTIONS(request: NextRequest) {
@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
     }
 
     try {
-      const decoded = verifyToken(token);
+      const decoded = verifyAccessToken(token);
       
       if (!decoded || !decoded.userId) {
         return withCORS(NextResponse.json(
