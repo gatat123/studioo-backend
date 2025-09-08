@@ -7,18 +7,12 @@ const updateParticipantSchema = z.object({
   role: z.enum(["member", "admin"]),
 });
 
-interface ParticipantRouteParams {
-  params: {
-    id: string;
-    userId: string;
-  };
-}
-
 // PUT /api/projects/[id]/participants/[userId] - 참여자 역할 수정
 export async function PUT(
   req: NextRequest,
-  { params }: ParticipantRouteParams
+  context: { params: Promise<{ id: string; userId: string }> }
 ) {
+  const params = await context.params;
   return withAuth(async (authReq: AuthenticatedRequest) => {
     try {
       const { id: projectId, userId: targetUserId } = params;
@@ -151,8 +145,9 @@ export async function PUT(
 // DELETE /api/projects/[id]/participants/[userId] - 참여자 제거
 export async function DELETE(
   req: NextRequest,
-  { params }: ParticipantRouteParams
+  context: { params: Promise<{ id: string; userId: string }> }
 ) {
+  const params = await context.params;
   return withAuth(async (authReq: AuthenticatedRequest) => {
     try {
       const { id: projectId, userId: targetUserId } = params;
