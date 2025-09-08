@@ -1,16 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { verifyAuth } from '@/middleware/auth';
+import jwt from 'jsonwebtoken';
 
 export async function POST(
   request: NextRequest,
   { params }: { params: { sceneId: string } }
 ) {
   try {
-    // Authenticate user
-    const authResult = await verifyAuth(request);
-    if (!authResult.success || !authResult.user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    // Get authorization header
+    const authHeader = request.headers.get('authorization');
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return NextResponse.json({ error: 'No token provided' }, { status: 401 });
+    }
+
+    // Verify JWT token
+    const token = authHeader.substring(7);
+    let userId: string;
+    
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key') as any;
+      userId = decoded.userId;
+    } catch (error) {
+      console.error('JWT verification error:', error);
+      return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
     const { sceneId } = params;
@@ -44,7 +56,7 @@ export async function POST(
 
     // Check if user is a participant
     const isParticipant = scene.project.participants.some(
-      p => p.userId === authResult.user.userId
+      p => p.userId === userId
     );
 
     if (!isParticipant) {
@@ -69,7 +81,7 @@ export async function POST(
         fileSize: file.size,
         format: fileExtension,
         isCurrent: true,
-        uploadedBy: authResult.user.userId,
+        uploadedBy: userId,
         metadata: {
           originalName: file.name,
           mimeType: file.type
@@ -101,10 +113,16 @@ export async function POST(
     return NextResponse.json(image);
   } catch (error) {
     console.error('Image upload error:', error);
-    return NextResponse.json(
-      { error: 'Failed to upload image' },
-      { status: 500 }
-    );
+    
+    // Return more detailed error for debugging
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorDetails = {
+      error: 'Failed to upload image',
+      message: errorMessage,
+      details: process.env.NODE_ENV === 'development' ? error : undefined
+    };
+    
+    return NextResponse.json(errorDetails, { status: 500 });
   }
 }
 
