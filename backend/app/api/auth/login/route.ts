@@ -6,7 +6,7 @@ import { generateAccessToken, generateRefreshToken } from "@/lib/jwt";
 import { handleOptions, withCORS } from "@/lib/utils/cors";
 
 const loginSchema = z.object({
-  email: z.string().email(),
+  username: z.string().min(1),
   password: z.string().min(1),
 });
 
@@ -17,11 +17,11 @@ export async function OPTIONS(request: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { email, password } = loginSchema.parse(body);
+    const { username, password } = loginSchema.parse(body);
 
     // 사용자 찾기
     const user = await prisma.user.findUnique({
-      where: { email },
+      where: { username },
       include: {
         studio: true,
       },
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
 
     if (!user) {
       return withCORS(NextResponse.json(
-        { error: "이메일 또는 비밀번호가 올바르지 않습니다." },
+        { error: "사용자명 또는 비밀번호가 올바르지 않습니다." },
         { status: 401 }
       ), req);
     }
@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
     const isPasswordValid = await compare(password, user.passwordHash);
     if (!isPasswordValid) {
       return withCORS(NextResponse.json(
-        { error: "이메일 또는 비밀번호가 올바르지 않습니다." },
+        { error: "사용자명 또는 비밀번호가 올바르지 않습니다." },
         { status: 401 }
       ), req);
     }

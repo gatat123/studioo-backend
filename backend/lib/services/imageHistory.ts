@@ -1,26 +1,13 @@
 import { prisma } from "@/lib/prisma";
-import { ImageType, ImageStatus } from "@prisma/client";
-import { uploadService } from "./upload";
 import { NotificationService } from "./notification";
 
 export interface CreateImageHistoryData {
   imageId: string;
-  action: "upload" | "replace" | "restore" | "delete";
-  description: string;
-  userId: string;
-  metadata?: Record<string, any>;
-}
-
-export interface ImageVersionData {
-  filename: string;
+  sceneId: string;
+  versionNumber: number;
   fileUrl: string;
-  fileSize: number;
-  format: string;
-  width: number;
-  height: number;
-  uploadedBy: string;
-  description?: string;
-  metadata?: Record<string, any>;
+  changeDescription?: string;
+  userId: string;
 }
 
 export class ImageHistoryService {
@@ -32,13 +19,14 @@ export class ImageHistoryService {
       const historyEntry = await prisma.imageHistory.create({
         data: {
           imageId: data.imageId,
-          action: data.action,
-          description: data.description,
-          userId: data.userId,
-          metadata: data.metadata,
+          sceneId: data.sceneId,
+          versionNumber: data.versionNumber,
+          fileUrl: data.fileUrl,
+          uploadedBy: data.userId,
+          changeDescription: data.changeDescription,
         },
         include: {
-          user: {
+          uploader: {
             select: {
               id: true,
               username: true,
@@ -49,8 +37,14 @@ export class ImageHistoryService {
           image: {
             select: {
               id: true,
-              filename: true,
+              fileUrl: true,
               sceneId: true,
+            },
+          },
+          scene: {
+            select: {
+              id: true,
+              sceneNumber: true,
               projectId: true,
             },
           },
@@ -74,7 +68,7 @@ export class ImageHistoryService {
           imageId,
         },
         include: {
-          user: {
+          uploader: {
             select: {
               id: true,
               username: true,
@@ -84,7 +78,7 @@ export class ImageHistoryService {
           },
         },
         orderBy: {
-          createdAt: "desc",
+          uploadedAt: "desc",
         },
         take: limit,
       });
@@ -103,12 +97,10 @@ export class ImageHistoryService {
     try {
       const historyEntries = await prisma.imageHistory.findMany({
         where: {
-          image: {
-            sceneId,
-          },
+          sceneId,
         },
         include: {
-          user: {
+          uploader: {
             select: {
               id: true,
               username: true,
@@ -119,13 +111,13 @@ export class ImageHistoryService {
           image: {
             select: {
               id: true,
-              filename: true,
+              fileUrl: true,
               type: true,
             },
           },
         },
         orderBy: {
-          createdAt: "desc",
+          uploadedAt: "desc",
         },
         take: limit,
       });
@@ -142,7 +134,13 @@ export class ImageHistoryService {
    */
   static async createNewImageVersion(
     imageId: string,
-    newVersionData: ImageVersionData,
+    newVersionData: {
+      fileUrl: string;
+      fileSize?: bigint;
+      width?: number;
+      height?: number;
+      format?: string;
+    },
     userId: string
   ) {
     try {
@@ -158,12 +156,6 @@ export class ImageHistoryService {
                 projectId: true,
               },
             },
-            project: {
-              select: {
-                id: true,
-                name: true,
-              },
-            },
           },
         });
 
@@ -171,20 +163,19 @@ export class ImageHistoryService {
           throw new Error("Image not found");
         }
 
-        // 기존 이미지를 히스토리로 백업
-        await tx.imageVersion.create({
+        // 이전 버전을 히스토리에 기록
+        const historyCount = await tx.imageHistory.count({
+          where: { imageId },
+        });
+
+        await tx.imageHistory.create({
           data: {
             imageId: existingImage.id,
-            filename: existingImage.filename,
+            sceneId: existingImage.sceneId,
+            versionNumber: historyCount + 1,
             fileUrl: existingImage.fileUrl,
-            fileSize: existingImage.fileSize,
-            format: existingImage.format,
-            width: existingImage.width,
-            height: existingImage.height,
             uploadedBy: existingImage.uploadedBy,
-            version: existingImage.version,
-            isBackup: true,
-            createdAt: existingImage.uploadedAt,
+            changeDescription: `Version ${historyCount + 1} - Previous version backup`,
           },
         });
 
@@ -192,16 +183,13 @@ export class ImageHistoryService {
         const updatedImage = await tx.image.update({
           where: { id: imageId },
           data: {
-            filename: newVersionData.filename,
             fileUrl: newVersionData.fileUrl,
             fileSize: newVersionData.fileSize,
-            format: newVersionData.format,
             width: newVersionData.width,
             height: newVersionData.height,
-            uploadedBy: newVersionData.uploadedBy,
+            format: newVersionData.format,
+            uploadedBy: userId,
             uploadedAt: new Date(),
-            version: { increment: 1 },
-            status: "active",
           },
           include: {
             uploader: {
@@ -211,53 +199,39 @@ export class ImageHistoryService {
                 nickname: true,
               },
             },
+            scene: {
+              select: {
+                id: true,
+                sceneNumber: true,
+                projectId: true,
+              },
+            },
           },
         });
 
         // 새 버전 히스토리 기록
-        await tx.imageVersion.create({
+        await tx.imageHistory.create({
           data: {
             imageId: updatedImage.id,
-            filename: newVersionData.filename,
+            sceneId: updatedImage.sceneId,
+            versionNumber: historyCount + 2,
             fileUrl: newVersionData.fileUrl,
-            fileSize: newVersionData.fileSize,
-            format: newVersionData.format,
-            width: newVersionData.width,
-            height: newVersionData.height,
-            uploadedBy: newVersionData.uploadedBy,
-            version: updatedImage.version,
-            isBackup: false,
-            description: newVersionData.description,
-            metadata: newVersionData.metadata,
-          },
-        });
-
-        // 이미지 히스토리 기록
-        await this.createHistoryEntry({
-          imageId,
-          action: "replace",
-          description: `이미지를 새 버전으로 교체했습니다. (v${updatedImage.version})`,
-          userId,
-          metadata: {
-            previousVersion: updatedImage.version - 1,
-            newVersion: updatedImage.version,
-            filename: newVersionData.filename,
+            uploadedBy: userId,
+            changeDescription: `Version ${historyCount + 2} - New version uploaded`,
           },
         });
 
         // 협업 로그 기록
         await tx.collaborationLog.create({
           data: {
-            projectId: existingImage.projectId,
+            projectId: existingImage.scene.projectId,
             userId,
             actionType: "replace_image",
             targetType: "image",
             targetId: imageId,
-            sceneId: existingImage.sceneId,
             description: `씬 ${existingImage.scene.sceneNumber}의 이미지를 교체했습니다.`,
             metadata: {
-              filename: newVersionData.filename,
-              version: updatedImage.version,
+              fileUrl: newVersionData.fileUrl,
               sceneNumber: existingImage.scene.sceneNumber,
             },
           },
@@ -267,19 +241,25 @@ export class ImageHistoryService {
       });
 
       // 프로젝트 참여자들에게 알림 전송
-      if (result.scene && result.project) {
-        await NotificationService.notifyProjectParticipants(
-          result.projectId,
-          "image_updated",
-          "이미지 업데이트",
-          `${result.project.name} - 씬 ${result.scene.sceneNumber}의 이미지가 새 버전으로 교체되었습니다.`,
-          userId,
-          {
-            imageId,
-            filename: newVersionData.filename,
-            version: result.version,
-          }
-        );
+      if (result.scene) {
+        const project = await prisma.project.findUnique({
+          where: { id: result.scene.projectId },
+          select: { id: true, name: true },
+        });
+
+        if (project) {
+          await NotificationService.notifyProjectParticipants(
+            result.scene.projectId,
+            "image_updated",
+            "이미지 업데이트",
+            `${project.name} - 씬 ${result.scene.sceneNumber}의 이미지가 새 버전으로 교체되었습니다.`,
+            userId,
+            {
+              imageId,
+              fileUrl: newVersionData.fileUrl,
+            }
+          );
+        }
       }
 
       return result;
@@ -292,12 +272,12 @@ export class ImageHistoryService {
   /**
    * 이미지 버전 복원
    */
-  static async restoreImageVersion(imageId: string, versionId: string, userId: string) {
+  static async restoreImageVersion(imageId: string, historyId: string, userId: string) {
     try {
       const result = await prisma.$transaction(async (tx) => {
-        // 복원할 버전 조회
-        const versionToRestore = await tx.imageVersion.findUnique({
-          where: { id: versionId },
+        // 복원할 히스토리 조회
+        const historyToRestore = await tx.imageHistory.findUnique({
+          where: { id: historyId },
           include: {
             image: {
               include: {
@@ -308,36 +288,29 @@ export class ImageHistoryService {
                     projectId: true,
                   },
                 },
-                project: {
-                  select: {
-                    id: true,
-                    name: true,
-                  },
-                },
               },
             },
           },
         });
 
-        if (!versionToRestore || versionToRestore.imageId !== imageId) {
-          throw new Error("Version not found or does not belong to this image");
+        if (!historyToRestore || historyToRestore.imageId !== imageId) {
+          throw new Error("History not found or does not belong to this image");
         }
 
         // 현재 이미지 정보를 히스토리로 백업
-        const currentImage = versionToRestore.image;
-        await tx.imageVersion.create({
+        const currentImage = historyToRestore.image;
+        const historyCount = await tx.imageHistory.count({
+          where: { imageId },
+        });
+
+        await tx.imageHistory.create({
           data: {
             imageId: currentImage.id,
-            filename: currentImage.filename,
+            sceneId: currentImage.sceneId,
+            versionNumber: historyCount + 1,
             fileUrl: currentImage.fileUrl,
-            fileSize: currentImage.fileSize,
-            format: currentImage.format,
-            width: currentImage.width,
-            height: currentImage.height,
             uploadedBy: currentImage.uploadedBy,
-            version: currentImage.version,
-            isBackup: true,
-            createdAt: currentImage.uploadedAt,
+            changeDescription: `Version ${historyCount + 1} - Backup before restoration`,
           },
         });
 
@@ -345,16 +318,9 @@ export class ImageHistoryService {
         const restoredImage = await tx.image.update({
           where: { id: imageId },
           data: {
-            filename: versionToRestore.filename,
-            fileUrl: versionToRestore.fileUrl,
-            fileSize: versionToRestore.fileSize,
-            format: versionToRestore.format,
-            width: versionToRestore.width,
-            height: versionToRestore.height,
-            uploadedBy: userId, // 복원한 사용자로 설정
+            fileUrl: historyToRestore.fileUrl,
+            uploadedBy: userId,
             uploadedAt: new Date(),
-            version: { increment: 1 },
-            status: "active",
           },
           include: {
             uploader: {
@@ -368,31 +334,28 @@ export class ImageHistoryService {
         });
 
         // 복원 히스토리 기록
-        await this.createHistoryEntry({
-          imageId,
-          action: "restore",
-          description: `버전 ${versionToRestore.version}로 복원했습니다.`,
-          userId,
-          metadata: {
-            restoredFromVersion: versionToRestore.version,
-            newVersion: restoredImage.version,
-            originalUploader: versionToRestore.uploadedBy,
+        await tx.imageHistory.create({
+          data: {
+            imageId,
+            sceneId: currentImage.sceneId,
+            versionNumber: historyCount + 2,
+            fileUrl: historyToRestore.fileUrl,
+            uploadedBy: userId,
+            changeDescription: `Version ${historyCount + 2} - Restored from version ${historyToRestore.versionNumber}`,
           },
         });
 
         // 협업 로그 기록
         await tx.collaborationLog.create({
           data: {
-            projectId: currentImage.projectId,
+            projectId: currentImage.scene.projectId,
             userId,
             actionType: "restore_image",
             targetType: "image",
             targetId: imageId,
-            sceneId: currentImage.sceneId,
             description: `씬 ${currentImage.scene.sceneNumber}의 이미지를 이전 버전으로 복원했습니다.`,
             metadata: {
-              restoredFromVersion: versionToRestore.version,
-              newVersion: restoredImage.version,
+              restoredFromVersion: historyToRestore.versionNumber,
               sceneNumber: currentImage.scene.sceneNumber,
             },
           },
@@ -413,7 +376,7 @@ export class ImageHistoryService {
    */
   static async getImageVersions(imageId: string) {
     try {
-      const versions = await prisma.imageVersion.findMany({
+      const versions = await prisma.imageHistory.findMany({
         where: {
           imageId,
         },
@@ -428,7 +391,7 @@ export class ImageHistoryService {
           },
         },
         orderBy: {
-          version: "desc",
+          versionNumber: "desc",
         },
       });
 
@@ -448,22 +411,17 @@ export class ImageHistoryService {
       });
 
       if (currentImage) {
+        const maxVersion = versions[0]?.versionNumber || 0;
         const currentVersion = {
           id: `current-${currentImage.id}`,
           imageId: currentImage.id,
-          filename: currentImage.filename,
+          sceneId: currentImage.sceneId,
+          versionNumber: maxVersion + 1,
           fileUrl: currentImage.fileUrl,
-          fileSize: currentImage.fileSize,
-          format: currentImage.format,
-          width: currentImage.width,
-          height: currentImage.height,
           uploadedBy: currentImage.uploadedBy,
-          version: currentImage.version,
-          isBackup: false,
+          uploadedAt: currentImage.uploadedAt,
+          changeDescription: "Current version",
           isCurrent: true,
-          description: null,
-          metadata: null,
-          createdAt: currentImage.uploadedAt,
           uploader: currentImage.uploader,
         };
 
@@ -483,14 +441,9 @@ export class ImageHistoryService {
   static async softDeleteImage(imageId: string, userId: string) {
     try {
       const result = await prisma.$transaction(async (tx) => {
-        // 이미지 상태를 삭제됨으로 변경
-        const deletedImage = await tx.image.update({
+        // 이미지 조회
+        const image = await tx.image.findUnique({
           where: { id: imageId },
-          data: {
-            status: "deleted",
-            deletedAt: new Date(),
-            deletedBy: userId,
-          },
           include: {
             scene: {
               select: {
@@ -499,40 +452,49 @@ export class ImageHistoryService {
                 projectId: true,
               },
             },
-            project: {
-              select: {
-                id: true,
-                name: true,
-              },
-            },
           },
         });
 
+        if (!image) {
+          throw new Error("Image not found");
+        }
+
         // 삭제 히스토리 기록
-        await this.createHistoryEntry({
-          imageId,
-          action: "delete",
-          description: "이미지가 삭제되었습니다.",
-          userId,
-          metadata: {
-            filename: deletedImage.filename,
-            deletedAt: new Date(),
+        const historyCount = await tx.imageHistory.count({
+          where: { imageId },
+        });
+
+        await tx.imageHistory.create({
+          data: {
+            imageId,
+            sceneId: image.sceneId,
+            versionNumber: historyCount + 1,
+            fileUrl: image.fileUrl,
+            uploadedBy: userId,
+            changeDescription: `Version ${historyCount + 1} - Image deleted`,
+          },
+        });
+
+        // 이미지를 isCurrent = false로 업데이트 (소프트 삭제)
+        const deletedImage = await tx.image.update({
+          where: { id: imageId },
+          data: {
+            isCurrent: false,
           },
         });
 
         // 협업 로그 기록
         await tx.collaborationLog.create({
           data: {
-            projectId: deletedImage.projectId,
+            projectId: image.scene.projectId,
             userId,
             actionType: "delete_image",
             targetType: "image",
             targetId: imageId,
-            sceneId: deletedImage.sceneId,
-            description: `씬 ${deletedImage.scene.sceneNumber}의 이미지를 삭제했습니다.`,
+            description: `씬 ${image.scene.sceneNumber}의 이미지를 삭제했습니다.`,
             metadata: {
-              filename: deletedImage.filename,
-              sceneNumber: deletedImage.scene.sceneNumber,
+              fileUrl: image.fileUrl,
+              sceneNumber: image.scene.sceneNumber,
             },
           },
         });
@@ -553,14 +515,9 @@ export class ImageHistoryService {
   static async restoreDeletedImage(imageId: string, userId: string) {
     try {
       const result = await prisma.$transaction(async (tx) => {
-        // 이미지 상태를 활성으로 복원
-        const restoredImage = await tx.image.update({
+        // 이미지 조회
+        const image = await tx.image.findUnique({
           where: { id: imageId },
-          data: {
-            status: "active",
-            deletedAt: null,
-            deletedBy: null,
-          },
           include: {
             scene: {
               select: {
@@ -569,40 +526,49 @@ export class ImageHistoryService {
                 projectId: true,
               },
             },
-            project: {
-              select: {
-                id: true,
-                name: true,
-              },
-            },
           },
         });
 
+        if (!image) {
+          throw new Error("Image not found");
+        }
+
         // 복원 히스토리 기록
-        await this.createHistoryEntry({
-          imageId,
-          action: "restore",
-          description: "삭제된 이미지가 복원되었습니다.",
-          userId,
-          metadata: {
-            filename: restoredImage.filename,
-            restoredAt: new Date(),
+        const historyCount = await tx.imageHistory.count({
+          where: { imageId },
+        });
+
+        await tx.imageHistory.create({
+          data: {
+            imageId,
+            sceneId: image.sceneId,
+            versionNumber: historyCount + 1,
+            fileUrl: image.fileUrl,
+            uploadedBy: userId,
+            changeDescription: `Version ${historyCount + 1} - Image restored`,
+          },
+        });
+
+        // 이미지를 isCurrent = true로 업데이트 (복원)
+        const restoredImage = await tx.image.update({
+          where: { id: imageId },
+          data: {
+            isCurrent: true,
           },
         });
 
         // 협업 로그 기록
         await tx.collaborationLog.create({
           data: {
-            projectId: restoredImage.projectId,
+            projectId: image.scene.projectId,
             userId,
             actionType: "restore_image",
             targetType: "image",
             targetId: imageId,
-            sceneId: restoredImage.sceneId,
-            description: `씬 ${restoredImage.scene.sceneNumber}의 삭제된 이미지를 복원했습니다.`,
+            description: `씬 ${image.scene.sceneNumber}의 삭제된 이미지를 복원했습니다.`,
             metadata: {
-              filename: restoredImage.filename,
-              sceneNumber: restoredImage.scene.sceneNumber,
+              fileUrl: image.fileUrl,
+              sceneNumber: image.scene.sceneNumber,
             },
           },
         });
@@ -622,23 +588,20 @@ export class ImageHistoryService {
    */
   static async getImageStatistics(imageId: string) {
     try {
-      const stats = await prisma.imageVersion.aggregate({
-        where: { imageId },
-        _count: {
-          id: true,
-        },
-        _max: {
-          version: true,
-        },
-      });
-
       const historyCount = await prisma.imageHistory.count({
         where: { imageId },
       });
 
+      const maxVersion = await prisma.imageHistory.aggregate({
+        where: { imageId },
+        _max: {
+          versionNumber: true,
+        },
+      });
+
       return {
-        totalVersions: stats._count.id,
-        latestVersion: stats._max.version || 1,
+        totalVersions: historyCount,
+        latestVersion: maxVersion._max.versionNumber || 1,
         historyEntries: historyCount,
       };
     } catch (error) {

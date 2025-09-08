@@ -184,13 +184,14 @@ export class AnnotationEventHandler {
       }
 
       // 협업 로그 기록
+      const sceneId = await this.getSceneId(data.imageId);
       await CollaborationService.logActivity({
         projectId: await this.getProjectId(data.imageId),
         userId: socket.userId,
         actionType: "create_annotation",
         targetType: "image",
         targetId: data.imageId,
-        sceneId: await this.getSceneId(data.imageId),
+        sceneId: sceneId || undefined,
         description: `${data.type} 주석을 생성했습니다.`,
         metadata: {
           annotationId: data.annotationId,
@@ -236,13 +237,14 @@ export class AnnotationEventHandler {
       socket.to(imageRoomId).emit("annotation:updated", updateData);
 
       // 협업 로그 기록
+      const sceneId2 = await this.getSceneId(data.imageId);
       await CollaborationService.logActivity({
         projectId: await this.getProjectId(data.imageId),
         userId: socket.userId,
         actionType: "update_annotation",
         targetType: "annotation",
         targetId: data.annotationId,
-        sceneId: await this.getSceneId(data.imageId),
+        sceneId: sceneId2 || undefined,
         description: "주석을 수정했습니다.",
         metadata: {
           annotationId: data.annotationId,
@@ -285,13 +287,14 @@ export class AnnotationEventHandler {
       socket.to(imageRoomId).emit("annotation:deleted", deleteData);
 
       // 협업 로그 기록
+      const sceneId3 = await this.getSceneId(data.imageId);
       await CollaborationService.logActivity({
         projectId: await this.getProjectId(data.imageId),
         userId: socket.userId,
         actionType: "delete_annotation",
         targetType: "annotation",
         targetId: data.annotationId,
-        sceneId: await this.getSceneId(data.imageId),
+        sceneId: sceneId3 || undefined,
         description: "주석을 삭제했습니다.",
         metadata: {
           annotationId: data.annotationId,
@@ -337,13 +340,14 @@ export class AnnotationEventHandler {
       const actionType = data.isResolved ? "resolve_annotation" : "reopen_annotation";
       const description = data.isResolved ? "주석을 해결로 표시했습니다." : "주석을 다시 열었습니다.";
 
+      const sceneId4 = await this.getSceneId(data.imageId);
       await CollaborationService.logActivity({
         projectId: await this.getProjectId(data.imageId),
         userId: socket.userId,
         actionType: actionType as any,
         targetType: "annotation",
         targetId: data.annotationId,
-        sceneId: await this.getSceneId(data.imageId),
+        sceneId: sceneId4 || undefined,
         description,
         metadata: {
           annotationId: data.annotationId,
@@ -437,13 +441,14 @@ export class AnnotationEventHandler {
 
       if (data.saveAsAnnotation) {
         // 협업 로그 기록
+        const sceneId5 = await this.getSceneId(data.imageId);
         await CollaborationService.logActivity({
           projectId: await this.getProjectId(data.imageId),
           userId: socket.userId,
           actionType: "create_annotation",
           targetType: "image",
           targetId: data.imageId,
-          sceneId: await this.getSceneId(data.imageId),
+          sceneId: sceneId5 || undefined,
           description: "자유 그리기 주석을 생성했습니다.",
           metadata: {
             sessionId: data.sessionId,
@@ -552,13 +557,14 @@ export class AnnotationEventHandler {
       socket.to(imageRoomId).emit("annotation:group_changed", groupData);
 
       // 협업 로그 기록
+      const sceneId6 = await this.getSceneId(data.imageId);
       await CollaborationService.logActivity({
         projectId: await this.getProjectId(data.imageId),
         userId: socket.userId,
         actionType: data.action === "group" ? "group_annotations" : "ungroup_annotations",
         targetType: "image",
         targetId: data.imageId,
-        sceneId: await this.getSceneId(data.imageId),
+        sceneId: sceneId6 || undefined,
         description: `주석을 ${data.action === "group" ? "그룹화" : "그룹 해제"}했습니다.`,
         metadata: {
           annotationIds: data.annotationIds,

@@ -96,7 +96,7 @@ async function validateToken(token: string): Promise<SocketUser | null> {
       where: { 
         id: decoded.userId,
         // 활성 사용자만 허용
-        deletedAt: null,
+        isActive: true,
       },
       select: {
         id: true,
@@ -104,15 +104,10 @@ async function validateToken(token: string): Promise<SocketUser | null> {
         nickname: true,
         profileImageUrl: true,
         isAdmin: true,
-        studioMembers: {
+        studio: {
           select: {
-            role: true,
-            studio: {
-              select: {
-                id: true,
-                name: true,
-              },
-            },
+            id: true,
+            name: true,
           },
         },
       },
@@ -126,13 +121,13 @@ async function validateToken(token: string): Promise<SocketUser | null> {
       id: user.id,
       username: user.username,
       nickname: user.nickname,
-      profileImageUrl: user.profileImageUrl,
+      profileImageUrl: user.profileImageUrl || undefined,
       isAdmin: user.isAdmin,
-      studios: user.studioMembers.map(member => ({
-        id: member.studio.id,
-        name: member.studio.name,
-        role: member.role,
-      })),
+      studios: user.studio ? [{
+        id: user.studio.id,
+        name: user.studio.name,
+        role: 'owner',
+      }] : [],
     };
 
   } catch (error) {
@@ -233,13 +228,12 @@ export async function checkProjectAccess(userId: string, projectId: string): Pro
               some: { 
                 userId,
                 // 활성 참여자만
-                leftAt: null,
               },
             },
           },
         ],
         // 활성 프로젝트만
-        deletedAt: null,
+        status: 'active',
       },
     });
 
@@ -266,12 +260,11 @@ export async function checkSceneAccess(userId: string, projectId: string, sceneI
               participants: {
                 some: { 
                   userId,
-                  leftAt: null,
-                },
+                  },
               },
             },
           ],
-          deletedAt: null,
+          status: 'active',
         },
       },
     });
@@ -292,7 +285,7 @@ export async function checkProjectOwnership(userId: string, projectId: string): 
       where: {
         id: projectId,
         creatorId: userId,
-        deletedAt: null,
+        status: 'active',
       },
     });
 
@@ -314,7 +307,6 @@ export async function getUserPermissionLevel(userId: string, projectId: string):
         participants: {
           where: { 
             userId,
-            leftAt: null,
           },
         },
       },

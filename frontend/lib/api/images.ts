@@ -51,7 +51,7 @@ export const imagesAPI = {
 
       xhr.onerror = () => reject(new Error('Upload failed'));
 
-      xhr.open('POST', `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/scenes/${sceneId}/images`);
+      xhr.open('POST', `${process.env.NEXT_PUBLIC_BACKEND_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/scenes/${sceneId}/images`);
       
       // Add auth token if available
       const token = localStorage.getItem('token');

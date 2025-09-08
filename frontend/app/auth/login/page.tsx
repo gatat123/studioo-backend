@@ -29,7 +29,7 @@ export default function LoginPage() {
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: '',
+      username: '',
       password: '',
       rememberMe: false
     }
@@ -41,7 +41,7 @@ export default function LoginPage() {
     clearError();
     try {
       await login({
-        email: data.email,
+        username: data.username,
         password: data.password
       });
       
@@ -73,17 +73,17 @@ export default function LoginPage() {
               )}
               
               <div className="space-y-2">
-                <Label htmlFor="email">이메일</Label>
+                <Label htmlFor="username">사용자명</Label>
                 <Input
-                  id="email"
-                  type="email"
-                  placeholder="이메일을 입력하세요"
-                  {...register('email')}
+                  id="username"
+                  type="text"
+                  placeholder="사용자명을 입력하세요"
+                  {...register('username')}
                   disabled={isLoading}
-                  className={errors.email ? 'border-red-500' : ''}
+                  className={errors.username ? 'border-red-500' : ''}
                 />
-                {errors.email && (
-                  <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>
+                {errors.username && (
+                  <p className="text-sm text-red-500 mt-1">{errors.username.message}</p>
                 )}
               </div>
 

@@ -237,7 +237,7 @@ export interface PaginatedResponse<T> {
 
 // Auth types
 export interface LoginCredentials {
-  email: string;
+  username: string;
   password: string;
 }
 

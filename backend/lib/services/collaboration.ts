@@ -29,7 +29,7 @@ export interface UserPresenceData {
   projectId: string;
   sceneId?: string;
   imageId?: string;
-  status: "active" | "idle" | "away";
+  status: "active" | "idle" | "away" | "offline";
   cursorPosition?: {
     x: number;
     y: number;
@@ -51,7 +51,6 @@ export class CollaborationService {
           actionType: data.actionType,
           targetType: data.targetType,
           targetId: data.targetId,
-          sceneId: data.sceneId,
           description: data.description,
           metadata: data.metadata,
         },
@@ -122,13 +121,6 @@ export class CollaborationService {
                 name: true,
               },
             },
-            scene: {
-              select: {
-                id: true,
-                sceneNumber: true,
-                description: true,
-              },
-            },
           },
           orderBy: { createdAt: "desc" },
           take: limit,
@@ -162,22 +154,18 @@ export class CollaborationService {
         },
         update: {
           sceneId: data.sceneId,
-          imageId: data.imageId,
           status: data.status,
-          cursorPosition: data.cursorPosition,
-          currentTool: data.currentTool,
-          metadata: data.metadata,
+          cursorX: data.cursorPosition?.x,
+          cursorY: data.cursorPosition?.y,
           lastActivity: new Date(),
         },
         create: {
           userId: data.userId,
           projectId: data.projectId,
           sceneId: data.sceneId,
-          imageId: data.imageId,
           status: data.status,
-          cursorPosition: data.cursorPosition,
-          currentTool: data.currentTool,
-          metadata: data.metadata,
+          cursorX: data.cursorPosition?.x,
+          cursorY: data.cursorPosition?.y,
           lastActivity: new Date(),
         },
         include: {
@@ -255,9 +243,9 @@ export class CollaborationService {
           },
         },
       });
-    } catch (error) {
+    } catch (error: any) {
       // 이미 존재하지 않는 경우는 무시
-      if (error.code !== "P2025") {
+      if (error?.code !== "P2025") {
         console.error("Failed to remove user presence:", error);
       }
     }
@@ -312,37 +300,33 @@ export class CollaborationService {
         LIMIT 30
       `;
 
-      // 씬별 활동
+      // 씬별 활동 - targetType이 'scene'인 경우만 필터링
       const sceneActivity = await prisma.collaborationLog.findMany({
         where: {
           projectId,
-          sceneId: { not: null },
+          targetType: 'scene',
           createdAt: {
             gte: startDate,
           },
         },
         select: {
-          sceneId: true,
-          scene: {
-            select: {
-              sceneNumber: true,
-              description: true,
-            },
-          },
+          targetId: true,
+          actionType: true,
         },
       });
 
+      // targetId(sceneId)로 그룹화
       const sceneStats = sceneActivity.reduce((acc, activity) => {
-        const sceneId = activity.sceneId!;
-        if (!acc[sceneId]) {
-          acc[sceneId] = {
-            sceneId,
-            sceneNumber: activity.scene?.sceneNumber,
-            description: activity.scene?.description,
-            count: 0,
-          };
+        const sceneId = activity.targetId;
+        if (sceneId) {
+          if (!acc[sceneId]) {
+            acc[sceneId] = {
+              sceneId,
+              count: 0,
+            };
+          }
+          acc[sceneId].count++;
         }
-        acc[sceneId].count++;
         return acc;
       }, {} as Record<string, any>);
 
@@ -479,13 +463,6 @@ export class CollaborationService {
               profileImageUrl: true,
             },
           },
-          scene: {
-            select: {
-              id: true,
-              sceneNumber: true,
-              description: true,
-            },
-          },
         },
         orderBy: { createdAt: "desc" },
         take: limit,
@@ -530,7 +507,8 @@ export class CollaborationService {
       const recentActivities = await prisma.collaborationLog.findMany({
         where: {
           projectId,
-          sceneId,
+          targetType: 'scene',
+          targetId: sceneId,
           createdAt: {
             gte: fiveMinutesAgo,
           },
@@ -574,13 +552,13 @@ export class CollaborationService {
 
       for (const [target, activities] of targetActivities) {
         if (activities.length > 1) {
-          const uniqueUsers = new Set(activities.map(a => a.userId));
+          const uniqueUsers = new Set(activities.map((a: any) => a.userId));
           if (uniqueUsers.size > 1) {
             potentialConflicts.push({
               type: "concurrent_editing",
               target,
               users: Array.from(uniqueUsers).map(userId => 
-                activities.find(a => a.userId === userId)?.user
+                activities.find((a: any) => a.userId === userId)?.user
               ),
               activities: activities.slice(0, 5), // 최근 5개만
             });

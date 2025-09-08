@@ -101,7 +101,10 @@ export class SocketServer {
 
         // 소켓에 사용자 정보 추가
         (socket as AuthenticatedSocket).userId = user.id;
-        (socket as AuthenticatedSocket).user = user;
+        (socket as AuthenticatedSocket).user = {
+          ...user,
+          profileImageUrl: user.profileImageUrl || undefined,
+        };
 
         next();
       } catch (error) {
@@ -121,36 +124,44 @@ export class SocketServer {
    * 이벤트 핸들러 설정
    */
   private setupEventHandlers() {
-    this.io.on("connection", (socket: AuthenticatedSocket) => {
-      console.log(`User ${socket.user.username} connected with socket ${socket.id}`);
+    this.io.on("connection", (socket: Socket) => {
+      // 타입 가드로 인증된 소켓인지 확인
+      if (!this.isAuthenticatedSocket(socket)) {
+        console.log(`Unauthenticated socket connected: ${socket.id}`);
+        socket.disconnect();
+        return;
+      }
+      
+      const authSocket = socket as AuthenticatedSocket;
+      console.log(`User ${authSocket.user.username} connected with socket ${authSocket.id}`);
 
       // 사용자 연결 관리
-      this.handleUserConnection(socket);
+      this.handleUserConnection(authSocket);
 
       // 기본 이벤트 핸들러
-      this.setupBasicEventHandlers(socket);
+      this.setupBasicEventHandlers(authSocket);
 
       // 룸 관리 이벤트 핸들러
-      this.setupRoomEventHandlers(socket);
+      this.setupRoomEventHandlers(authSocket);
 
       // 프레젠스 이벤트 핸들러
-      this.setupPresenceEventHandlers(socket);
+      this.setupPresenceEventHandlers(authSocket);
 
       // 실시간 협업 이벤트 핸들러
-      this.setupCollaborationEventHandlers(socket);
+      this.setupCollaborationEventHandlers(authSocket);
 
       // 댓글 실시간 이벤트 핸들러
-      this.setupCommentEventHandlers(socket);
+      this.setupCommentEventHandlers(authSocket);
 
       // 주석 실시간 이벤트 핸들러
-      this.setupAnnotationEventHandlers(socket);
+      this.setupAnnotationEventHandlers(authSocket);
 
       // 이미지 실시간 이벤트 핸들러
-      this.setupImageEventHandlers(socket);
+      this.setupImageEventHandlers(authSocket);
 
       // 연결 해제 처리
       socket.on("disconnect", (reason) => {
-        this.handleUserDisconnection(socket, reason);
+        this.handleUserDisconnection(authSocket, reason);
       });
     });
   }
@@ -787,6 +798,13 @@ export class SocketServer {
         lastActivity: room.lastActivity,
       })),
     };
+  }
+
+  /**
+   * 인증된 소켓인지 확인하는 타입 가드
+   */
+  private isAuthenticatedSocket(socket: Socket): socket is AuthenticatedSocket {
+    return 'userId' in socket && 'user' in socket;
   }
 
   /**

@@ -12,7 +12,7 @@ class SocketClient {
     }
 
     const token = authAPI.getToken();
-    const socketUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    const socketUrl = process.env.NEXT_PUBLIC_BACKEND_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
     this.socket = io(socketUrl, {
       auth: {

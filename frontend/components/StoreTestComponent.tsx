@@ -12,11 +12,11 @@ export default function StoreTestComponent() {
   const { theme, setTheme } = useUIPreferences();
   const notification = useNotification();
   
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    await login({ email, password });
+    await login({ username, password });
     notification.success('Login successful!', `Welcome back!`);
   };
 
@@ -45,10 +45,10 @@ export default function StoreTestComponent() {
         {!isAuthenticated ? (
           <div className="space-y-2">
             <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="px-3 py-2 border rounded"
             />
             <input

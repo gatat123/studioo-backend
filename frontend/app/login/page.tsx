@@ -15,7 +15,7 @@ export default function LoginPage() {
   const router = useRouter();
   const { login, isLoading, error, clearError } = useAuthStore();
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: '',
   });
 
@@ -56,13 +56,13 @@ export default function LoginPage() {
             )}
             
             <div className="space-y-2">
-              <Label htmlFor="email">이메일</Label>
+              <Label htmlFor="username">사용자명</Label>
               <Input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="name@example.com"
-                value={formData.email}
+                id="username"
+                name="username"
+                type="text"
+                placeholder="username"
+                value={formData.username}
                 onChange={handleInputChange}
                 required
                 disabled={isLoading}

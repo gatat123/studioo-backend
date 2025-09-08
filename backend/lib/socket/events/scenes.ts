@@ -150,12 +150,17 @@ export class SceneEventHandler {
         },
       });
 
-      // 씬 업데이트 알림
-      await NotificationService.notifySceneUpdate(
-        data.sceneId,
-        socket.userId,
+      // 씬 업데이트 알림 - 프로젝트 참여자들에게 알림
+      await NotificationService.notifyProjectParticipants(
         data.projectId,
-        "created"
+        "scene_created",
+        "새로운 씬이 생성되었습니다",
+        `${socket.user.nickname || socket.user.username}님이 씬 ${data.sceneNumber}을 생성했습니다.`,
+        socket.userId,
+        {
+          sceneId: data.sceneId,
+          sceneNumber: data.sceneNumber
+        }
       );
 
       socket.emit("scene:create_success", {
@@ -211,12 +216,17 @@ export class SceneEventHandler {
         },
       });
 
-      // 씬 업데이트 알림
-      await NotificationService.notifySceneUpdate(
-        data.sceneId,
-        socket.userId,
+      // 씬 업데이트 알림 - 프로젝트 참여자들에게 알림
+      await NotificationService.notifyProjectParticipants(
         data.projectId,
-        "updated"
+        "scene_updated",
+        "씬이 업데이트되었습니다",
+        `${socket.user.nickname || socket.user.username}님이 씬을 업데이트했습니다.`,
+        socket.userId,
+        {
+          sceneId: data.sceneId,
+          changes: data.changes
+        }
       );
 
       socket.emit("scene:update_success", {
@@ -286,11 +296,15 @@ export class SceneEventHandler {
       });
 
       // 씬 업데이트 알림
-      await NotificationService.notifySceneUpdate(
-        data.sceneId,
-        socket.userId,
+      await NotificationService.notifyProjectParticipants(
         data.projectId,
-        "deleted"
+        "scene_deleted",
+        "씬이 삭제되었습니다",
+        `${socket.user.nickname || socket.user.username}님이 씬을 삭제했습니다.`,
+        socket.userId,
+        {
+          sceneId: data.sceneId
+        }
       );
 
       socket.emit("scene:delete_success", {

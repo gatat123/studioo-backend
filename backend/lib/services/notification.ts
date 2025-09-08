@@ -1,15 +1,14 @@
 import { prisma } from "@/lib/prisma";
-import { NotificationType } from "@prisma/client";
+
+// NotificationType은 일반 string으로 정의
+type NotificationType = string;
 
 export interface CreateNotificationData {
   userId: string;
   type: NotificationType;
   title: string;
-  content: string;
+  content?: string;
   projectId?: string;
-  sceneId?: string;
-  commentId?: string;
-  imageId?: string;
   metadata?: Record<string, any>;
 }
 
@@ -34,10 +33,6 @@ export class NotificationService {
           title: data.title,
           content: data.content,
           projectId: data.projectId,
-          sceneId: data.sceneId,
-          commentId: data.commentId,
-          imageId: data.imageId,
-          metadata: data.metadata,
           isRead: false,
         },
         include: {
@@ -47,23 +42,12 @@ export class NotificationService {
               name: true,
             },
           },
-          scene: {
+          user: {
             select: {
               id: true,
-              sceneNumber: true,
-              description: true,
-            },
-          },
-          comment: {
-            select: {
-              id: true,
-              content: true,
-            },
-          },
-          image: {
-            select: {
-              id: true,
-              fileUrl: true,
+              username: true,
+              nickname: true,
+              profileImageUrl: true,
             },
           },
         },
@@ -79,13 +63,16 @@ export class NotificationService {
   /**
    * 사용자의 알림 목록 조회
    */
-  static async getNotifications(userId: string, filters: NotificationFilters = {}) {
+  static async getUserNotifications(
+    userId: string,
+    filters: NotificationFilters = {}
+  ) {
     try {
       const {
         isRead,
         type,
         projectId,
-        limit = 20,
+        limit = 50,
         offset = 0,
       } = filters;
 
@@ -115,30 +102,12 @@ export class NotificationService {
                 name: true,
               },
             },
-            scene: {
+            user: {
               select: {
                 id: true,
-                sceneNumber: true,
-                description: true,
-              },
-            },
-            comment: {
-              select: {
-                id: true,
-                content: true,
-                user: {
-                  select: {
-                    id: true,
-                    username: true,
-                    nickname: true,
-                  },
-                },
-              },
-            },
-            image: {
-              select: {
-                id: true,
-                fileUrl: true,
+                username: true,
+                nickname: true,
+                profileImageUrl: true,
               },
             },
           },
@@ -157,7 +126,7 @@ export class NotificationService {
         hasMore: offset + limit < total,
       };
     } catch (error) {
-      console.error("Failed to get notifications:", error);
+      console.error("Failed to get user notifications:", error);
       throw error;
     }
   }
@@ -170,7 +139,7 @@ export class NotificationService {
       const notification = await prisma.notification.update({
         where: {
           id: notificationId,
-          userId, // 권한 확인
+          userId,
         },
         data: {
           isRead: true,
@@ -188,13 +157,14 @@ export class NotificationService {
   /**
    * 여러 알림 읽음 처리
    */
-  static async markMultipleAsRead(notificationIds: string[], userId: string) {
+  static async markManyAsRead(notificationIds: string[], userId: string) {
     try {
       const result = await prisma.notification.updateMany({
         where: {
-          id: { in: notificationIds },
-          userId, // 권한 확인
-          isRead: false,
+          id: {
+            in: notificationIds,
+          },
+          userId,
         },
         data: {
           isRead: true,
@@ -212,19 +182,13 @@ export class NotificationService {
   /**
    * 모든 알림 읽음 처리
    */
-  static async markAllAsRead(userId: string, projectId?: string) {
+  static async markAllAsRead(userId: string) {
     try {
-      const where: any = {
-        userId,
-        isRead: false,
-      };
-
-      if (projectId) {
-        where.projectId = projectId;
-      }
-
       const result = await prisma.notification.updateMany({
-        where,
+        where: {
+          userId,
+          isRead: false,
+        },
         data: {
           isRead: true,
           readAt: new Date(),
@@ -246,7 +210,7 @@ export class NotificationService {
       const notification = await prisma.notification.delete({
         where: {
           id: notificationId,
-          userId, // 권한 확인
+          userId,
         },
       });
 
@@ -258,32 +222,104 @@ export class NotificationService {
   }
 
   /**
-   * 읽지 않은 알림 개수 조회
+   * 오래된 알림 삭제
    */
-  static async getUnreadCount(userId: string, projectId?: string) {
+  static async deleteOldNotifications(days: number = 30) {
     try {
-      const where: any = {
-        userId,
-        isRead: false,
-      };
+      const cutoffDate = new Date();
+      cutoffDate.setDate(cutoffDate.getDate() - days);
 
-      if (projectId) {
-        where.projectId = projectId;
-      }
+      const result = await prisma.notification.deleteMany({
+        where: {
+          createdAt: {
+            lt: cutoffDate,
+          },
+          isRead: true,
+        },
+      });
 
-      const count = await prisma.notification.count({ where });
-      return count;
+      return result;
     } catch (error) {
-      console.error("Failed to get unread count:", error);
+      console.error("Failed to delete old notifications:", error);
       throw error;
     }
   }
 
   /**
-   * 프로젝트 관련 알림 생성 헬퍼들
+   * 읽지 않은 알림 개수 조회
    */
-  
-  // 프로젝트 참여자에게 알림 전송
+  static async getUnreadCount(userId: string) {
+    try {
+      const count = await prisma.notification.count({
+        where: {
+          userId,
+          isRead: false,
+        },
+      });
+
+      return count;
+    } catch (error) {
+      console.error("Failed to get unread notification count:", error);
+      throw error;
+    }
+  }
+
+  /**
+   * 프로젝트 관련 알림 조회
+   */
+  static async getProjectNotifications(projectId: string, limit: number = 50) {
+    try {
+      const notifications = await prisma.notification.findMany({
+        where: {
+          projectId,
+        },
+        include: {
+          user: {
+            select: {
+              id: true,
+              username: true,
+              nickname: true,
+              profileImageUrl: true,
+            },
+          },
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+        take: limit,
+      });
+
+      return notifications;
+    } catch (error) {
+      console.error("Failed to get project notifications:", error);
+      throw error;
+    }
+  }
+
+  /**
+   * 알림 설정 업데이트
+   */
+  static async updateNotificationSettings(
+    userId: string,
+    settings: {
+      projectUpdates?: boolean;
+      commentMentions?: boolean;
+      newMembers?: boolean;
+    }
+  ) {
+    try {
+      // 실제 구현은 사용자 설정 테이블이 필요함
+      // 현재는 placeholder
+      return settings;
+    } catch (error) {
+      console.error("Failed to update notification settings:", error);
+      throw error;
+    }
+  }
+
+  /**
+   * 프로젝트 참여자에게 알림 전송
+   */
   static async notifyProjectParticipants(
     projectId: string,
     type: NotificationType,
@@ -293,6 +329,7 @@ export class NotificationService {
     metadata?: Record<string, any>
   ) {
     try {
+      // 프로젝트 참여자 조회
       const participants = await prisma.projectParticipant.findMany({
         where: {
           projectId,
@@ -303,6 +340,7 @@ export class NotificationService {
         },
       });
 
+      // 각 참여자에게 알림 생성
       const notifications = await Promise.all(
         participants.map((participant) =>
           this.createNotification({
@@ -323,13 +361,13 @@ export class NotificationService {
     }
   }
 
-  // 새 댓글 알림
-  static async notifyNewComment(
+  /**
+   * 댓글 알림 생성 (언급, 답글 등)
+   */
+  static async createCommentNotification(
     commentId: string,
-    authorId: string,
-    projectId: string,
-    sceneId?: string,
-    imageId?: string
+    type: "comment_mention" | "comment_reply",
+    targetUserId: string
   ) {
     try {
       const comment = await prisma.comment.findUnique({
@@ -337,67 +375,54 @@ export class NotificationService {
         include: {
           user: {
             select: {
-              nickname: true,
+              id: true,
               username: true,
+              nickname: true,
             },
           },
           project: {
             select: {
+              id: true,
               name: true,
-            },
-          },
-          scene: {
-            select: {
-              sceneNumber: true,
-              description: true,
-            },
-          },
-          image: {
-            select: {
-              fileUrl: true,
             },
           },
         },
       });
 
-      if (!comment) return;
-
-      const authorName = comment.user.nickname || comment.user.username;
-      const projectName = comment.project.name;
-      let location = projectName;
-
-      if (comment.scene) {
-        location += ` - 씬 ${comment.scene.sceneNumber}`;
-      }
-      if (comment.image) {
-        const filename = comment.image.fileUrl.split('/').pop() || 'image';
-        location += ` - ${filename}`;
+      if (!comment) {
+        throw new Error("Comment not found");
       }
 
-      await this.notifyProjectParticipants(
-        projectId,
-        "comment_created",
-        "새 댓글",
-        `${authorName}님이 ${location}에 댓글을 작성했습니다.`,
-        authorId,
-        {
+      const title = type === "comment_mention" 
+        ? `${comment.user.nickname || comment.user.username}님이 회원님을 언급했습니다`
+        : `${comment.user.nickname || comment.user.username}님이 답글을 남겼습니다`;
+
+      const notification = await this.createNotification({
+        userId: targetUserId,
+        type,
+        title,
+        content: comment.content.substring(0, 100),
+        projectId: comment.projectId || undefined,
+        metadata: {
           commentId,
-          commentContent: comment.content.substring(0, 100),
-          authorName,
-          location,
-        }
-      );
+          commentUserId: comment.userId,
+        },
+      });
+
+      return notification;
     } catch (error) {
-      console.error("Failed to notify new comment:", error);
+      console.error("Failed to create comment notification:", error);
+      throw error;
     }
   }
 
-  // 이미지 업로드 알림
-  static async notifyImageUpload(
+  /**
+   * 이미지 업로드 알림 생성
+   */
+  static async createImageUploadNotification(
     imageId: string,
-    uploadedBy: string,
     projectId: string,
-    sceneId: string
+    uploaderId: string
   ) {
     try {
       const image = await prisma.image.findUnique({
@@ -405,53 +430,57 @@ export class NotificationService {
         include: {
           uploader: {
             select: {
-              nickname: true,
+              id: true,
               username: true,
+              nickname: true,
             },
           },
           scene: {
             select: {
+              id: true,
               sceneNumber: true,
-              description: true,
-            },
-          },
-          project: {
-            select: {
-              name: true,
+              projectId: true,
             },
           },
         },
       });
 
-      if (!image) return;
+      if (!image) {
+        throw new Error("Image not found");
+      }
 
-      const uploaderName = image.uploader.nickname || image.uploader.username;
-      const location = `${image.project.name} - 씬 ${image.scene.sceneNumber}`;
+      const project = await prisma.project.findUnique({
+        where: { id: projectId },
+        select: { name: true },
+      });
+
+      const title = `${image.uploader.nickname || image.uploader.username}님이 새 이미지를 업로드했습니다`;
+      const content = project ? `${project.name} - 씬 ${image.scene.sceneNumber}` : undefined;
 
       await this.notifyProjectParticipants(
         projectId,
-        "image_uploaded",
-        "새 이미지 업로드",
-        `${uploaderName}님이 ${location}에 이미지를 업로드했습니다.`,
-        uploadedBy,
+        "image_upload",
+        title,
+        content || "",
+        uploaderId,
         {
           imageId,
-          fileUrl: image.fileUrl,
-          uploaderName,
-          location,
+          sceneId: image.sceneId,
         }
       );
     } catch (error) {
-      console.error("Failed to notify image upload:", error);
+      console.error("Failed to create image upload notification:", error);
+      throw error;
     }
   }
 
-  // 프로젝트 초대 알림
-  static async notifyProjectInvite(
-    userId: string,
+  /**
+   * 프로젝트 초대 알림 생성
+   */
+  static async createInviteNotification(
     projectId: string,
-    inviterUserId: string,
-    inviteCode: string
+    invitedUserId: string,
+    inviterUserId: string
   ) {
     try {
       const [project, inviter] = await Promise.all([
@@ -461,92 +490,76 @@ export class NotificationService {
         }),
         prisma.user.findUnique({
           where: { id: inviterUserId },
-          select: { nickname: true, username: true },
+          select: { username: true, nickname: true },
         }),
       ]);
 
-      if (!project || !inviter) return;
+      if (!project || !inviter) {
+        throw new Error("Project or inviter not found");
+      }
 
-      const inviterName = inviter.nickname || inviter.username;
+      const title = `${inviter.nickname || inviter.username}님이 프로젝트에 초대했습니다`;
+      const content = `${project.name} 프로젝트에 참여하세요`;
 
-      await this.createNotification({
-        userId,
+      const notification = await this.createNotification({
+        userId: invitedUserId,
         type: "project_invite",
-        title: "프로젝트 초대",
-        content: `${inviterName}님이 "${project.name}" 프로젝트에 초대했습니다.`,
+        title,
+        content,
         projectId,
         metadata: {
-          inviteCode,
-          inviterName,
-          projectName: project.name,
+          inviterUserId,
         },
       });
+
+      return notification;
     } catch (error) {
-      console.error("Failed to notify project invite:", error);
+      console.error("Failed to create invite notification:", error);
+      throw error;
     }
   }
 
-  // 씬 업데이트 알림
-  static async notifySceneUpdate(
-    sceneId: string,
-    editorId: string,
-    projectId: string,
-    changeType: "created" | "updated" | "deleted"
+  /**
+   * 시스템 알림 생성
+   */
+  static async createSystemNotification(
+    userId: string,
+    title: string,
+    content: string
   ) {
     try {
-      const scene = await prisma.scene.findUnique({
-        where: { id: sceneId },
-        include: {
-          project: {
-            select: {
-              name: true,
-            },
-          },
-        },
+      const notification = await this.createNotification({
+        userId,
+        type: "system",
+        title,
+        content,
       });
 
-      const editor = await prisma.user.findUnique({
-        where: { id: editorId },
-        select: {
-          nickname: true,
-          username: true,
-        },
-      });
-
-      if (!scene || !editor) return;
-
-      const editorName = editor.nickname || editor.username;
-      const projectName = scene.project.name;
-      
-      let actionText = "";
-      switch (changeType) {
-        case "created":
-          actionText = "생성했습니다";
-          break;
-        case "updated":
-          actionText = "수정했습니다";
-          break;
-        case "deleted":
-          actionText = "삭제했습니다";
-          break;
-      }
-
-      await this.notifyProjectParticipants(
-        projectId,
-        "scene_updated",
-        "씬 업데이트",
-        `${editorName}님이 ${projectName}의 씬 ${scene.sceneNumber}을 ${actionText}.`,
-        editorId,
-        {
-          sceneId,
-          sceneNumber: scene.sceneNumber,
-          changeType,
-          editorName,
-          projectName,
-        }
-      );
+      return notification;
     } catch (error) {
-      console.error("Failed to notify scene update:", error);
+      console.error("Failed to create system notification:", error);
+      throw error;
+    }
+  }
+
+  /**
+   * 배치 알림 생성
+   */
+  static async createBatchNotifications(
+    notifications: CreateNotificationData[]
+  ) {
+    try {
+      const createdNotifications = await prisma.notification.createMany({
+        data: notifications.map((n) => ({
+          ...n,
+          isRead: false,
+        })),
+      });
+
+      return createdNotifications;
+    } catch (error) {
+      console.error("Failed to create batch notifications:", error);
+      throw error;
     }
   }
 }

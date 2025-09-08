@@ -95,7 +95,7 @@ export class PresenceManager {
   /**
    * 사용자 상태 업데이트
    */
-  updateUserStatus(userId: string, status: "active" | "idle" | "away"): void {
+  updateUserStatus(userId: string, status: "active" | "idle" | "away" | "offline"): void {
     const presence = this.userPresence.get(userId);
     if (!presence) return;
 
@@ -450,7 +450,7 @@ export class PresenceManager {
     this.userPresence.forEach((presence, userId) => {
       const timeSinceLastActivity = now.getTime() - presence.lastActivity.getTime();
 
-      let newStatus: "active" | "idle" | "away" = presence.status as any;
+      let newStatus: "active" | "idle" | "away" | "offline" = presence.status;
 
       if (timeSinceLastActivity > awayThreshold) {
         newStatus = "away";

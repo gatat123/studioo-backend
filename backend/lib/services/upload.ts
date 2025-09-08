@@ -366,7 +366,7 @@ export class UploadService {
       // 이미지 파일인 경우 처리
       if (file.type.startsWith('image/')) {
         const result = await this.processImage(fileBuffer, options.resizeOptions);
-        processedBuffer = result.buffer;
+        processedBuffer = Buffer.from(result.buffer);
         dimensions = result.dimensions;
       }
 
