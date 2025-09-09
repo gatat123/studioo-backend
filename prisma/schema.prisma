@@ -171,6 +171,7 @@ model Comment {
   parentCommentId String?  @map("parent_comment_id")
   userId          String   @map("user_id")
   content         String   @db.Text
+  metadata        Json?    @map("metadata")
   createdAt       DateTime @default(now()) @map("created_at")
   updatedAt       DateTime @updatedAt @map("updated_at")
   isEdited        Boolean  @default(false) @map("is_edited")

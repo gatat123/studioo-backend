@@ -4,10 +4,11 @@ import { prisma } from "@/lib/prisma";
 import { withAuth, type AuthenticatedRequest } from "@/middleware/auth";
 
 const createCommentSchema = z.object({
-  content: z.string().min(1, "댓글 내용이 필요합니다.").max(2000, "댓글은 2000자를 초과할 수 없습니다."),
+  content: z.string().min(1, "댓글 내용이 필요합니다.").max(20000, "댓글은 20000자를 초과할 수 없습니다."), // Increased for annotation data
   projectId: z.string().uuid("유효한 프로젝트 ID가 필요합니다.").optional(),
   sceneId: z.string().uuid("유효한 씬 ID가 필요합니다.").optional(),
   parentCommentId: z.string().uuid("유효한 부모 댓글 ID가 필요합니다.").optional(),
+  metadata: z.any().optional(), // For annotation data
 });
 
 // GET /api/comments - 댓글 목록 조회
@@ -171,7 +172,7 @@ async function getComments(req: AuthenticatedRequest) {
 async function createComment(req: AuthenticatedRequest) {
   try {
     const body = await req.json();
-    const { content, projectId, sceneId, parentCommentId } = createCommentSchema.parse(body);
+    const { content, projectId, sceneId, parentCommentId, metadata } = createCommentSchema.parse(body);
 
     // 최소한 하나의 컨텍스트 ID가 필요함
     if (!projectId && !sceneId) {
@@ -289,6 +290,7 @@ async function createComment(req: AuthenticatedRequest) {
         projectId: targetProjectId,
         sceneId: sceneId || undefined,
         parentCommentId: parentCommentId || undefined,
+        metadata: metadata || undefined,
       },
       include: {
         user: {
