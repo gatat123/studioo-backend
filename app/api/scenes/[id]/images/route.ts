@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import { writeFile, mkdir } from "fs/promises";
+import { existsSync } from "fs";
+import path from "path";
 import { prisma } from "@/lib/prisma";
 import { withAuth, type AuthenticatedRequest } from "@/middleware/auth";
 import { z } from "zod";
+import sharp from "sharp";
 
 const uploadImageSchema = z.object({
   type: z.enum(["lineart", "art", "storyboard", "reference", "concept"]),
@@ -74,22 +78,57 @@ export async function POST(
         );
       }
 
-      // Process file upload - Convert to base64 for Railway compatibility
+      // Process file upload to file system
       const bytes = await file.arrayBuffer();
       const buffer = Buffer.from(bytes);
-      const base64 = buffer.toString("base64");
-      const dataUri = `data:${file.type};base64,${base64}`;
+
+      // Create upload directory structure
+      const uploadDir = process.env.UPLOAD_DIR || "./uploads";
+      const projectId = scene.projectId;
+      const projectDir = path.join(uploadDir, projectId);
+      const sceneDir = path.join(projectDir, sceneId);
+
+      // Ensure directories exist
+      if (!existsSync(uploadDir)) await mkdir(uploadDir, { recursive: true });
+      if (!existsSync(projectDir)) await mkdir(projectDir, { recursive: true });
+      if (!existsSync(sceneDir)) await mkdir(sceneDir, { recursive: true });
+
+      // Generate unique filename
+      const timestamp = Date.now();
+      const safeFileName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+      const fileName = `${timestamp}_${safeFileName}`;
+      const filePath = path.join(sceneDir, fileName);
+      const fileUrl = `/api/images/serve/${projectId}/${sceneId}/${fileName}`;
+
+      // Save file to disk
+      await writeFile(filePath, buffer);
+
+      // Extract image metadata using sharp
+      let width: number | undefined;
+      let height: number | undefined;
+      let format: string | undefined;
+      
+      try {
+        const metadata = await sharp(buffer).metadata();
+        width = metadata.width;
+        height = metadata.height;
+        format = metadata.format;
+      } catch (err) {
+        console.log("Could not extract image metadata:", err);
+      }
 
       // Get file extension
-      const fileExtension = file.name.split(".").pop() || "jpg";
+      const fileExtension = file.name.split(".").pop() || format || "jpg";
 
       // Create the image record
       const image = await prisma.image.create({
         data: {
           sceneId,
           type,
-          fileUrl: dataUri,
+          fileUrl,
           fileSize: BigInt(file.size),
+          width,
+          height,
           format: fileExtension,
           isCurrent: true,
           uploadedBy: authReq.user.userId,
@@ -97,6 +136,7 @@ export async function POST(
             originalName: file.name,
             mimeType: file.type,
             changeDescription: changeDescription || undefined,
+            filePath: filePath,
           },
         },
         include: {
