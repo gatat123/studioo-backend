@@ -20,19 +20,13 @@ export async function GET(
       );
     }
 
-    let fullPath: string;
-    let baseDir: string;
-
-    // 썸네일인지 원본 이미지인지 구분
-    if (filePath.includes("_thumb")) {
-      // 썸네일 경로 (파일명에 _thumb 포함)
-      baseDir = path.join(process.cwd(), "uploads", "thumbnails");
-      fullPath = path.join(baseDir, filePath);
-    } else {
-      // 원본 이미지 경로
-      baseDir = path.join(process.cwd(), "uploads", "images");
-      fullPath = path.join(baseDir, filePath);
-    }
+    // uploads 기본 디렉토리 설정
+    const uploadDir = process.env.UPLOAD_DIR || "./uploads";
+    const baseDir = path.resolve(uploadDir);
+    
+    // 전체 경로 구성
+    // 경로 형식: /api/images/serve/[projectId]/[sceneId]/[fileName]
+    const fullPath = path.join(baseDir, filePath);
 
     // 파일 존재 확인
     try {
