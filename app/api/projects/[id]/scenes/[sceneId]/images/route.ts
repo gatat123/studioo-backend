@@ -100,7 +100,17 @@ export async function GET(
         ],
       });
 
-      return NextResponse.json({ images });
+      // Convert BigInt to string for JSON serialization
+      const serializedImages = images.map(image => ({
+        ...image,
+        fileSize: image.fileSize ? image.fileSize.toString() : null,
+        history: image.history ? image.history.map((h: any) => ({
+          ...h,
+          fileSize: h.fileSize ? h.fileSize.toString() : null,
+        })) : undefined,
+      }));
+
+      return NextResponse.json({ images: serializedImages });
 
     } catch (error) {
       console.error("Images fetch error:", error);
@@ -302,9 +312,15 @@ export async function POST(
         return newImage;
       });
 
+      // Convert BigInt to string for JSON serialization
+      const serializedResult = {
+        ...result,
+        fileSize: result.fileSize ? result.fileSize.toString() : null,
+      };
+
       return NextResponse.json({
         message: "이미지가 업로드되었습니다.",
-        image: result,
+        image: serializedResult,
       });
 
     } catch (error) {
