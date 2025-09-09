@@ -680,13 +680,17 @@ export class SocketServer {
 
     // 이미지 업로드 완료
     socket.on("image_uploaded", (data: {
+      projectId: string;
       imageId: string;
       sceneId: string;
       filename: string;
       type: string;
     }) => {
-      socket.to(`scene:${data.sceneId}`).emit("new_image", {
+      // 프로젝트 룸으로 방송하여 모든 프로젝트 참여자가 받을 수 있도록
+      const projectRoomId = `project:${data.projectId}`;
+      socket.to(projectRoomId).emit("new_image", {
         imageId: data.imageId,
+        sceneId: data.sceneId,
         filename: data.filename,
         type: data.type,
         uploader: {
@@ -696,6 +700,8 @@ export class SocketServer {
         },
         timestamp: new Date(),
       });
+      
+      console.log(`Image uploaded by ${socket.user.username} in project ${data.projectId}, scene ${data.sceneId}`);
     });
   }
 
