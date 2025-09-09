@@ -30,18 +30,25 @@ export async function POST(request: NextRequest) {
 
     const existingUser = await prisma.user.findFirst({
       where: {
-        OR: [{ username }, { email }],
+        OR: [{ username }, { email }, { nickname }],
       },
     });
 
     if (existingUser) {
+      let message = 'User already exists';
+      if (existingUser.username === username) {
+        message = 'Username already taken';
+      } else if (existingUser.email === email) {
+        message = 'Email already registered';
+      } else if (existingUser.nickname === nickname) {
+        message = 'Nickname already taken';
+      }
+      
       return withCORS(NextResponse.json<ApiResponse>(
         {
           success: false,
           error: 'User already exists',
-          message: existingUser.username === username 
-            ? 'Username already taken' 
-            : 'Email already registered',
+          message,
         },
         { status: 409 }
       ), request);

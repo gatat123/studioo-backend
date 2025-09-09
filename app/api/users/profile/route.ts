@@ -4,11 +4,10 @@ import { hash, compare } from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 import { withAuth, ApiResponse } from '@/lib/middleware/auth';
 
-// 프로필 업데이트 스키마
+// 프로필 업데이트 스키마 - nickname과 username 제거 (변경 불가)
 const updateProfileSchema = z.object({
-  nickname: z.string()
-    .min(2, 'Nickname must be at least 2 characters')
-    .max(100, 'Nickname must be less than 100 characters')
+  bio: z.string()
+    .max(500, 'Bio must be less than 500 characters')
     .optional(),
   email: z.string()
     .email('Invalid email format')
@@ -16,11 +15,6 @@ const updateProfileSchema = z.object({
   currentPassword: z.string().optional(),
   newPassword: z.string()
     .min(8, 'Password must be at least 8 characters')
-    .optional(),
-  username: z.string()
-    .min(3, 'Username must be at least 3 characters')
-    .max(50, 'Username must be less than 50 characters')
-    .regex(/^[a-zA-Z0-9_]+$/, 'Username can only contain letters, numbers, and underscores')
     .optional(),
 }).refine((data) => {
   // 비밀번호 변경 시 현재 비밀번호 필요
@@ -146,25 +140,9 @@ async function handleUpdateProfile(request: NextRequest) {
       return ApiResponse.notFound('User not found');
     }
 
-    // 닉네임 업데이트
-    if (data.nickname) {
-      updateData.nickname = data.nickname;
-    }
-
-    // 사용자명 업데이트 (중복 검사)
-    if (data.username && data.username !== currentUser.username) {
-      const existingUser = await prisma.user.findFirst({
-        where: {
-          username: data.username,
-          id: { not: user.id }
-        }
-      });
-
-      if (existingUser) {
-        return ApiResponse.error('Username already taken');
-      }
-
-      updateData.username = data.username;
+    // bio 업데이트
+    if (data.bio !== undefined) {
+      updateData.bio = data.bio;
     }
 
     // 이메일 업데이트 (중복 검사)
