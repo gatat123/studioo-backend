@@ -4,6 +4,18 @@ import { existsSync } from "fs";
 import path from "path";
 import { lookup } from "mime-types";
 
+// OPTIONS /api/images/serve/[...path] - CORS preflight
+export async function OPTIONS(request: NextRequest) {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      "Access-Control-Allow-Origin": process.env.FRONTEND_URL || "*",
+      "Access-Control-Allow-Methods": "GET, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+    },
+  });
+}
+
 // GET /api/images/serve/[...path] - 이미지 파일 서빙
 export async function GET(
   _request: NextRequest,
@@ -65,6 +77,10 @@ export async function GET(
       "Content-Type": mimeType,
       "Cache-Control": "public, max-age=31536000, immutable", // 1년 캐시
       "Content-Length": fileBuffer.length.toString(),
+      // CORS 헤더 추가
+      "Access-Control-Allow-Origin": process.env.FRONTEND_URL || "*",
+      "Access-Control-Allow-Methods": "GET, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
     });
 
     // 이미지 파일인 경우 추가 헤더
