@@ -100,6 +100,18 @@ export async function GET(
         ],
       });
 
+      console.log('GET /api/projects/[id]/scenes/[sceneId]/images - Found images:', {
+        projectId,
+        sceneId,
+        count: images.length,
+        images: images.map(img => ({
+          id: img.id,
+          type: img.type,
+          fileUrl: img.fileUrl,
+          isCurrent: img.isCurrent
+        }))
+      });
+
       // Convert BigInt to string for JSON serialization
       const serializedImages = images.map(image => ({
         ...image,

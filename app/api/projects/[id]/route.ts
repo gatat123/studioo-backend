@@ -56,6 +56,27 @@ async function getProject(req: AuthenticatedRequest, context: { params: { id: st
             description: true,
             createdAt: true,
             updatedAt: true,
+            images: {
+              where: { isCurrent: true },
+              select: {
+                id: true,
+                type: true,
+                fileUrl: true,
+                fileSize: true,
+                width: true,
+                height: true,
+                format: true,
+                isCurrent: true,
+                uploadedAt: true,
+                uploader: {
+                  select: {
+                    id: true,
+                    username: true,
+                    nickname: true,
+                  },
+                },
+              },
+            },
             _count: {
               select: {
                 images: true,
@@ -107,9 +128,41 @@ async function getProject(req: AuthenticatedRequest, context: { params: { id: st
       (p) => p.userId === req.user.userId
     );
 
+    // Process images in scenes for BigInt and URL format
+    const processedProject = {
+      ...project,
+      scenes: project.scenes.map(scene => ({
+        ...scene,
+        images: scene.images.map(image => {
+          // Handle URL format
+          let processedUrl = image.fileUrl;
+          if (!image.fileUrl.startsWith('data:') && !image.fileUrl.startsWith('http')) {
+            const backendUrl = process.env.BACKEND_URL || 'http://localhost:3001';
+            const fileName = image.fileUrl.split('/').pop();
+            processedUrl = `${backendUrl}/api/images/serve/${projectId}/${scene.id}/${fileName}`;
+          }
+          
+          return {
+            ...image,
+            fileUrl: processedUrl,
+            fileSize: image.fileSize ? image.fileSize.toString() : null,
+          };
+        }),
+      })),
+    };
+
+    console.log('GET /api/projects/[id] - Returning project with scenes:', {
+      projectId,
+      scenesCount: project.scenes.length,
+      imagesPerScene: project.scenes.map(s => ({
+        sceneId: s.id,
+        imagesCount: s.images.length
+      }))
+    });
+
     return NextResponse.json({
       project: {
-        ...project,
+        ...processedProject,
         currentUserRole: currentUserParticipation?.role || null,
       },
     });
