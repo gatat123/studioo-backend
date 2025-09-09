@@ -88,10 +88,30 @@ export async function POST(
       const projectDir = path.join(uploadDir, projectId);
       const sceneDir = path.join(projectDir, sceneId);
 
+      console.log('Upload directories:', {
+        uploadDir,
+        projectDir,
+        sceneDir,
+        exists: {
+          uploadDir: existsSync(uploadDir),
+          projectDir: existsSync(projectDir),
+          sceneDir: existsSync(sceneDir)
+        }
+      });
+
       // Ensure directories exist
-      if (!existsSync(uploadDir)) await mkdir(uploadDir, { recursive: true });
-      if (!existsSync(projectDir)) await mkdir(projectDir, { recursive: true });
-      if (!existsSync(sceneDir)) await mkdir(sceneDir, { recursive: true });
+      if (!existsSync(uploadDir)) {
+        await mkdir(uploadDir, { recursive: true });
+        console.log('Created uploadDir:', uploadDir);
+      }
+      if (!existsSync(projectDir)) {
+        await mkdir(projectDir, { recursive: true });
+        console.log('Created projectDir:', projectDir);
+      }
+      if (!existsSync(sceneDir)) {
+        await mkdir(sceneDir, { recursive: true });
+        console.log('Created sceneDir:', sceneDir);
+      }
 
       // Generate unique filename
       const timestamp = Date.now();
@@ -104,7 +124,13 @@ export async function POST(
       const fileUrl = `${backendUrl}/api/images/serve/${projectId}/${sceneId}/${fileName}`;
 
       // Save file to disk
+      console.log('Saving file to:', filePath);
       await writeFile(filePath, buffer);
+      console.log('File saved successfully, size:', buffer.length);
+      
+      // Verify file exists after writing
+      const fileExists = existsSync(filePath);
+      console.log('File exists after write:', fileExists);
 
       // Extract image metadata using sharp
       let width: number | undefined;

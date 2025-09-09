@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readFile, stat } from "fs/promises";
+import { existsSync } from "fs";
 import path from "path";
 import { lookup } from "mime-types";
 
@@ -27,6 +28,14 @@ export async function GET(
     // 전체 경로 구성
     // 경로 형식: /api/images/serve/[projectId]/[sceneId]/[fileName]
     const fullPath = path.join(baseDir, filePath);
+    
+    console.log('Serve API - Attempting to serve:', {
+      uploadDir,
+      baseDir,
+      filePath,
+      fullPath,
+      exists: existsSync(fullPath)
+    });
 
     // 파일 존재 확인
     try {
