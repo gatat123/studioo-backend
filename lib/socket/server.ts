@@ -156,6 +156,9 @@ export class SocketServer {
       // 주석 실시간 이벤트 핸들러
       this.setupAnnotationEventHandlers(authSocket);
 
+      // 씬 실시간 이벤트 핸들러
+      this.setupSceneEventHandlers(authSocket);
+
       // 이미지 실시간 이벤트 핸들러
       this.setupImageEventHandlers(authSocket);
 
@@ -596,6 +599,62 @@ export class SocketServer {
         userId: socket.userId,
         drawingData: data.drawingData,
         isComplete: data.isComplete,
+        timestamp: new Date(),
+      });
+    });
+  }
+
+  /**
+   * 씬 실시간 이벤트 핸들러 설정
+   */
+  private setupSceneEventHandlers(socket: AuthenticatedSocket) {
+    // 씬 생성 이벤트
+    socket.on("scene_created", (data: {
+      projectId: string;
+      scene: any;
+    }) => {
+      const projectRoomId = `project:${data.projectId}`;
+      
+      // 프로젝트 룸의 모든 사용자에게 브로드캐스트
+      socket.to(projectRoomId).emit("new_scene", {
+        scene: data.scene,
+        user: {
+          id: socket.userId,
+          username: socket.user.username,
+          nickname: socket.user.nickname,
+        },
+        timestamp: new Date(),
+      });
+      
+      console.log(`Scene created by ${socket.user.username} in project ${data.projectId}`);
+    });
+
+    // 씬 업데이트 이벤트
+    socket.on("scene_updated", (data: {
+      projectId: string;
+      sceneId: string;
+      changes: any;
+    }) => {
+      const projectRoomId = `project:${data.projectId}`;
+      
+      socket.to(projectRoomId).emit("scene_updated", {
+        sceneId: data.sceneId,
+        changes: data.changes,
+        updatedBy: socket.userId,
+        timestamp: new Date(),
+      });
+    });
+
+    // 씬 삭제 이벤트
+    socket.on("scene_deleted", (data: {
+      projectId: string;
+      sceneId: string;
+    }) => {
+      const projectRoomId = `project:${data.projectId}`;
+      
+      socket.to(projectRoomId).emit("scene_deleted", {
+        sceneId: data.sceneId,
+        deletedBy: socket.userId,
         timestamp: new Date(),
       });
     });
