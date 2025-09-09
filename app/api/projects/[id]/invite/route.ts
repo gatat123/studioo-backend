@@ -15,54 +15,54 @@ async function generateInviteCode(req: AuthenticatedRequest, context: { params: 
     const body = await req.json();
     const { regenerate } = generateInviteCodeSchema.parse(body);
 
-    // 권한 확인 - owner 또는 admin만 초대 코드 생성 가능
-    const participation = await prisma.projectParticipant.findUnique({
-      where: {
-        projectId_userId: {
-          projectId,
-          userId: req.user.userId,
-        },
-      },
-    });
-
-    if (!participation || !["owner", "admin"].includes(participation.role)) {
-      if (!req.user.isAdmin) {
-        return NextResponse.json(
-          { success: false, error: "초대 코드 생성 권한이 없습니다." },
-          { status: 403 }
-        );
-      }
-    }
-
-    // 기존 초대 코드 확인
-    const existingProject = await prisma.project.findUnique({
+    // 프로젝트 확인 및 권한 검증
+    const project = await prisma.project.findUnique({
       where: { id: projectId },
       select: {
         id: true,
         name: true,
         description: true,
         inviteCode: true,
+        creatorId: true,
+        participants: {
+          where: { userId: req.user.userId },
+          select: { role: true }
+        }
       },
     });
 
-    if (!existingProject) {
+    if (!project) {
       return NextResponse.json(
         { success: false, error: "프로젝트를 찾을 수 없습니다." },
         { status: 404 }
       );
     }
 
+    // 권한 확인 - 프로젝트 생성자, owner/admin 참여자, 또는 시스템 관리자
+    const isCreator = project.creatorId === req.user.userId;
+    const participation = project.participants[0];
+    const hasPermission = isCreator || 
+                          (participation && ["owner", "admin"].includes(participation.role)) || 
+                          req.user.isAdmin;
+
+    if (!hasPermission) {
+      return NextResponse.json(
+        { success: false, error: "초대 코드 생성 권한이 없습니다." },
+        { status: 403 }
+      );
+    }
+
     // 기존 초대 코드가 있고 regenerate가 false인 경우
-    if (existingProject.inviteCode && !regenerate) {
+    if (project.inviteCode && !regenerate) {
       return NextResponse.json({
         success: true,
         message: "기존 초대 코드가 있습니다.",
         invite: {
-          code: existingProject.inviteCode,
+          code: project.inviteCode,
           project: {
-            id: existingProject.id,
-            name: existingProject.name,
-            description: existingProject.description,
+            id: project.id,
+            name: project.name,
+            description: project.description,
           },
         },
       });
