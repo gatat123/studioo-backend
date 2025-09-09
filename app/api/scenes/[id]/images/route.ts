@@ -121,7 +121,7 @@ export async function POST(
       
       // Use full backend URL for production
       const backendUrl = process.env.NODE_ENV === 'production' 
-        ? 'https://studioo-backend-production.up.railway.app'
+        ? 'https://courageous-spirit-production.up.railway.app'
         : (process.env.BACKEND_URL || 'http://localhost:3001');
       const fileUrl = `${backendUrl}/api/images/serve/${projectId}/${sceneId}/${fileName}`;
 
