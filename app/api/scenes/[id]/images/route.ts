@@ -21,7 +21,7 @@ export async function POST(
       
       const file = formData.get("image") as File;
       const type = formData.get("type") as string;
-      const changeDescription = formData.get("changeDescription") as string;
+      const changeDescription = formData.get("changeDescription") as string | null;
 
       if (!file) {
         return NextResponse.json(
@@ -33,7 +33,7 @@ export async function POST(
       // Validate input
       const validationResult = uploadImageSchema.safeParse({
         type,
-        changeDescription,
+        changeDescription: changeDescription || undefined,
       });
 
       if (!validationResult.success) {
@@ -96,7 +96,7 @@ export async function POST(
           metadata: {
             originalName: file.name,
             mimeType: file.type,
-            changeDescription,
+            changeDescription: changeDescription || undefined,
           },
         },
         include: {
