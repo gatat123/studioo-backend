@@ -20,11 +20,12 @@ export interface AuthenticatedRequest extends NextRequest {
  */
 export async function verifyJWT(token: string) {
   try {
-    if (!process.env.NEXTAUTH_SECRET) {
-      throw new Error('NEXTAUTH_SECRET is not defined');
+    const JWT_SECRET = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET;
+    if (!JWT_SECRET) {
+      throw new Error('JWT_SECRET is not defined');
     }
 
-    const decoded = jwt.verify(token, process.env.NEXTAUTH_SECRET) as any;
+    const decoded = jwt.verify(token, JWT_SECRET) as any;
     return decoded;
   } catch (error) {
     console.error('JWT verification failed:', error);
@@ -37,12 +38,51 @@ export async function verifyJWT(token: string) {
  */
 export async function authenticateUser(request: NextRequest) {
   try {
+    // 먼저 Bearer 토큰 확인
+    const authHeader = request.headers.get('authorization');
+    
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      const token = authHeader.substring(7);
+      const decoded = await verifyJWT(token);
+      
+      if (decoded && decoded.userId) {
+        // JWT 토큰으로 사용자 조회
+        const user = await prisma.user.findUnique({
+          where: { id: decoded.userId },
+          select: {
+            id: true,
+            username: true,
+            nickname: true,
+            email: true,
+            profileImageUrl: true,
+            isAdmin: true,
+            isActive: true
+          }
+        });
+        
+        if (user && user.isActive) {
+          return {
+            success: true,
+            user: {
+              id: user.id,
+              username: user.username,
+              nickname: user.nickname,
+              email: user.email,
+              profileImageUrl: user.profileImageUrl,
+              isAdmin: user.isAdmin
+            }
+          };
+        }
+      }
+    }
+    
+    // Bearer 토큰이 없거나 유효하지 않으면 세션 확인
     const session = await getServerSession(authOptions);
     
     if (!session || !session.user) {
       return {
         success: false,
-        error: 'Unauthorized - No valid session',
+        error: 'Unauthorized - No valid session or token',
         status: 401
       };
     }
