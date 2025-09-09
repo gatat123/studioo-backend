@@ -279,11 +279,36 @@ export async function GET(
         },
       });
 
-      // Convert BigInt to string for JSON serialization
-      const responseData = images.map((image) => ({
-        ...image,
-        fileSize: image.fileSize ? image.fileSize.toString() : null,
-      }));
+      console.log('GET /api/scenes/[id]/images - Found images:', {
+        sceneId,
+        count: images.length,
+        images: images.map(img => ({
+          id: img.id,
+          type: img.type,
+          fileUrl: img.fileUrl,
+          isCurrent: img.isCurrent
+        }))
+      });
+
+      // Convert BigInt to string for JSON serialization and handle different URL formats
+      const responseData = images.map((image) => {
+        // If the fileUrl is a data URI (base64), keep it as is
+        // If it's a relative path, convert to full URL
+        let processedUrl = image.fileUrl;
+        if (!image.fileUrl.startsWith('data:') && !image.fileUrl.startsWith('http')) {
+          // This is likely an old format or relative path, convert it
+          const backendUrl = process.env.BACKEND_URL || 'http://localhost:3001';
+          // Extract just the filename if it's a full path
+          const fileName = image.fileUrl.split('/').pop();
+          processedUrl = `${backendUrl}/api/images/serve/${scene.projectId}/${sceneId}/${fileName}`;
+        }
+        
+        return {
+          ...image,
+          fileUrl: processedUrl,
+          fileSize: image.fileSize ? image.fileSize.toString() : null,
+        };
+      });
 
       return NextResponse.json(responseData);
     } catch (error) {
