@@ -98,7 +98,10 @@ export async function POST(
       const safeFileName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
       const fileName = `${timestamp}_${safeFileName}`;
       const filePath = path.join(sceneDir, fileName);
-      const fileUrl = `/api/images/serve/${projectId}/${sceneId}/${fileName}`;
+      
+      // Use full backend URL for production
+      const backendUrl = process.env.BACKEND_URL || 'http://localhost:3001';
+      const fileUrl = `${backendUrl}/api/images/serve/${projectId}/${sceneId}/${fileName}`;
 
       // Save file to disk
       await writeFile(filePath, buffer);

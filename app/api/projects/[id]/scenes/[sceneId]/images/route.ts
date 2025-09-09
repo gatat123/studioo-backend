@@ -208,7 +208,10 @@ export async function POST(
       const timestamp = Date.now();
       const fileName = `${timestamp}_${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
       const filePath = path.join(sceneDir, fileName);
-      const fileUrl = `/uploads/${projectId}/${sceneId}/${fileName}`;
+      
+      // Use full backend URL for production
+      const backendUrl = process.env.BACKEND_URL || 'http://localhost:3001';
+      const fileUrl = `${backendUrl}/api/images/serve/${projectId}/${sceneId}/${fileName}`;
 
       // 파일 저장
       const bytes = await file.arrayBuffer();
