@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { sceneId: string } }
+  { params }: { params: Promise<{ sceneId: string }> }
 ) {
   try {
     // Get authorization header
@@ -25,7 +25,7 @@ export async function POST(
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
-    const { sceneId } = params;
+    const { sceneId } = await params;
     const formData = await request.formData();
     const file = formData.get('image') as File;
     const type = formData.get('type') as 'lineart' | 'art';
@@ -128,10 +128,10 @@ export async function POST(
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { sceneId: string } }
+  { params }: { params: Promise<{ sceneId: string }> }
 ) {
   try {
-    const { sceneId } = params;
+    const { sceneId } = await params;
 
     // Get all images for the scene
     const images = await prisma.image.findMany({
