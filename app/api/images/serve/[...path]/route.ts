@@ -9,9 +9,11 @@ export async function OPTIONS(request: NextRequest) {
   return new NextResponse(null, {
     status: 200,
     headers: {
-      "Access-Control-Allow-Origin": process.env.FRONTEND_URL || "*",
+      "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Credentials": "true",
+      "Cross-Origin-Resource-Policy": "cross-origin",
     },
   });
 }
@@ -77,10 +79,12 @@ export async function GET(
       "Content-Type": mimeType,
       "Cache-Control": "public, max-age=31536000, immutable", // 1년 캐시
       "Content-Length": fileBuffer.length.toString(),
-      // CORS 헤더 추가
-      "Access-Control-Allow-Origin": process.env.FRONTEND_URL || "*",
+      // CORS 헤더 추가 - Canvas에서 사용할 수 있도록
+      "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Credentials": "true",
+      "Cross-Origin-Resource-Policy": "cross-origin",
     });
 
     // 이미지 파일인 경우 추가 헤더
