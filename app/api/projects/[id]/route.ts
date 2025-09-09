@@ -127,6 +127,21 @@ async function getProject(req: AuthenticatedRequest, context: { params: { id: st
     const currentUserParticipation = project.participants.find(
       (p) => p.userId === req.user.userId
     );
+    
+    // Log raw images from database
+    console.log('Raw images from database for each scene:');
+    for (const scene of project.scenes) {
+      const allImages = await prisma.image.findMany({
+        where: { sceneId: scene.id },
+        select: {
+          id: true,
+          type: true,
+          fileUrl: true,
+          isCurrent: true,
+        }
+      });
+      console.log(`Scene ${scene.id}:`, allImages);
+    }
 
     // Process images in scenes for BigInt and URL format
     const processedProject = {
@@ -134,17 +149,10 @@ async function getProject(req: AuthenticatedRequest, context: { params: { id: st
       scenes: project.scenes.map(scene => ({
         ...scene,
         images: scene.images.map(image => {
-          // Handle URL format
-          let processedUrl = image.fileUrl;
-          if (!image.fileUrl.startsWith('data:') && !image.fileUrl.startsWith('http')) {
-            const backendUrl = process.env.BACKEND_URL || 'http://localhost:3001';
-            const fileName = image.fileUrl.split('/').pop();
-            processedUrl = `${backendUrl}/api/images/serve/${projectId}/${scene.id}/${fileName}`;
-          }
-          
+          // The fileUrl should already be a complete URL from the image upload
+          // No need to process it further
           return {
             ...image,
-            fileUrl: processedUrl,
             fileSize: image.fileSize ? image.fileSize.toString() : null,
           };
         }),
@@ -156,7 +164,13 @@ async function getProject(req: AuthenticatedRequest, context: { params: { id: st
       scenesCount: project.scenes.length,
       imagesPerScene: project.scenes.map(s => ({
         sceneId: s.id,
-        imagesCount: s.images.length
+        imagesCount: s.images.length,
+        images: s.images.map(img => ({
+          id: img.id,
+          type: img.type,
+          fileUrl: img.fileUrl,
+          isCurrent: img.isCurrent
+        }))
       }))
     });
 

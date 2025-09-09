@@ -56,7 +56,16 @@ async function getScenes(req: AuthenticatedRequest, context: { params: { id: str
       orderBy: { sceneNumber: "asc" },
     });
 
-    return NextResponse.json({ scenes });
+    // Convert BigInt to string for images
+    const processedScenes = scenes.map(scene => ({
+      ...scene,
+      images: scene.images ? scene.images.map((img: any) => ({
+        ...img,
+        fileSize: img.fileSize ? img.fileSize.toString() : null
+      })) : undefined
+    }));
+
+    return NextResponse.json({ scenes: processedScenes });
 
   } catch (error) {
     console.error("Scenes fetch error:", error);

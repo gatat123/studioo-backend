@@ -120,7 +120,9 @@ export async function POST(
       const filePath = path.join(sceneDir, fileName);
       
       // Use full backend URL for production
-      const backendUrl = process.env.BACKEND_URL || 'http://localhost:3001';
+      const backendUrl = process.env.NODE_ENV === 'production' 
+        ? 'https://studioo-backend-production.up.railway.app'
+        : (process.env.BACKEND_URL || 'http://localhost:3001');
       const fileUrl = `${backendUrl}/api/images/serve/${projectId}/${sceneId}/${fileName}`;
 
       // Save file to disk
@@ -148,6 +150,15 @@ export async function POST(
 
       // Get file extension
       const fileExtension = file.name.split(".").pop() || format || "jpg";
+
+      console.log('Creating image record with data:', {
+        sceneId,
+        type,
+        fileUrl,
+        fileSize: file.size,
+        isCurrent: true,
+        uploadedBy: authReq.user.userId,
+      });
 
       // Create the image record
       const image = await prisma.image.create({
@@ -191,6 +202,36 @@ export async function POST(
           isCurrent: false,
         },
       });
+
+      // Verify the image was saved
+      const savedImage = await prisma.image.findUnique({
+        where: { id: image.id },
+        select: {
+          id: true,
+          fileUrl: true,
+          isCurrent: true,
+          type: true,
+        }
+      });
+      
+      console.log('Image saved to database:', {
+        id: savedImage?.id,
+        fileUrl: savedImage?.fileUrl,
+        isCurrent: savedImage?.isCurrent,
+        type: savedImage?.type,
+      });
+      
+      // Check all images for this scene
+      const allSceneImages = await prisma.image.findMany({
+        where: { sceneId },
+        select: {
+          id: true,
+          type: true,
+          isCurrent: true,
+          fileUrl: true,
+        }
+      });
+      console.log('All images for scene after save:', allSceneImages);
 
       // Convert BigInt to string for JSON serialization
       const responseData = {
@@ -290,22 +331,11 @@ export async function GET(
         }))
       });
 
-      // Convert BigInt to string for JSON serialization and handle different URL formats
+      // Convert BigInt to string for JSON serialization
       const responseData = images.map((image) => {
-        // If the fileUrl is a data URI (base64), keep it as is
-        // If it's a relative path, convert to full URL
-        let processedUrl = image.fileUrl;
-        if (!image.fileUrl.startsWith('data:') && !image.fileUrl.startsWith('http')) {
-          // This is likely an old format or relative path, convert it
-          const backendUrl = process.env.BACKEND_URL || 'http://localhost:3001';
-          // Extract just the filename if it's a full path
-          const fileName = image.fileUrl.split('/').pop();
-          processedUrl = `${backendUrl}/api/images/serve/${scene.projectId}/${sceneId}/${fileName}`;
-        }
-        
+        // The fileUrl should already be a complete URL from the image upload
         return {
           ...image,
-          fileUrl: processedUrl,
           fileSize: image.fileSize ? image.fileSize.toString() : null,
         };
       });
