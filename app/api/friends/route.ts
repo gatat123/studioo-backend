@@ -80,9 +80,10 @@ export async function GET(request: NextRequest) {
         ? friendship.user2 
         : friendship.user1;
       
-      const memo = friendship.user1Id === decoded.userId 
-        ? friendship.user1Memo 
-        : friendship.user2Memo;
+      // Temporarily comment out memo until database is updated
+      // const memo = friendship.user1Id === decoded.userId 
+      //   ? friendship.user1Memo 
+      //   : friendship.user2Memo;
       
       // 5분 이내 활동을 온라인으로 간주
       const isOnline = friend.lastLoginAt && 
@@ -94,7 +95,7 @@ export async function GET(request: NextRequest) {
           ...friend,
           isOnline // 온라인 상태 추가
         },
-        memo, // 메모 추가
+        memo: null, // 임시로 null 반환
         createdAt: friendship.createdAt
       };
     });

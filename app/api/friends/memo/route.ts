@@ -71,20 +71,20 @@ export async function PUT(request: NextRequest) {
       ), request);
     }
 
-    // Update the memo based on which user is updating
-    const updateData = friendship.user1Id === decoded.userId 
-      ? { user1Memo: memo || null }
-      : { user2Memo: memo || null };
+    // Temporarily disable memo update until database is updated
+    // const updateData = friendship.user1Id === decoded.userId 
+    //   ? { user1Memo: memo || null }
+    //   : { user2Memo: memo || null };
 
-    const updatedFriendship = await prisma.friendship.update({
-      where: { id: friendship.id },
-      data: updateData
-    });
+    // const updatedFriendship = await prisma.friendship.update({
+    //   where: { id: friendship.id },
+    //   data: updateData
+    // });
 
     return withCORS(NextResponse.json({
       success: true,
-      message: 'Memo updated successfully',
-      memo: friendship.user1Id === decoded.userId ? updatedFriendship.user1Memo : updatedFriendship.user2Memo
+      message: 'Memo feature temporarily disabled',
+      memo: null
     }), request);
 
   } catch (error) {
