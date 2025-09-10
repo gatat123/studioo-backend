@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
     
     if (!validationResult.success) {
       return withCORS(NextResponse.json(
-        { success: false, error: 'Invalid input', details: validationResult.error.errors },
+        { success: false, error: 'Invalid input', details: validationResult.error.issues },
         { status: 400 }
       ), request);
     }
