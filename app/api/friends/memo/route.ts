@@ -71,21 +71,34 @@ export async function PUT(request: NextRequest) {
       ), request);
     }
 
-    // Temporarily disable memo update until database is updated
-    // const updateData = friendship.user1Id === decoded.userId 
-    //   ? { user1Memo: memo || null }
-    //   : { user2Memo: memo || null };
+    // Update the memo based on which user is updating
+    const updateData: any = friendship.user1Id === decoded.userId 
+      ? { user1Memo: memo || null }
+      : { user2Memo: memo || null };
 
-    // const updatedFriendship = await prisma.friendship.update({
-    //   where: { id: friendship.id },
-    //   data: updateData
-    // });
+    try {
+      const updatedFriendship = await prisma.friendship.update({
+        where: { id: friendship.id },
+        data: updateData
+      });
 
-    return withCORS(NextResponse.json({
-      success: true,
-      message: 'Memo feature temporarily disabled',
-      memo: null
-    }), request);
+      return withCORS(NextResponse.json({
+        success: true,
+        message: 'Memo updated successfully',
+        memo: friendship.user1Id === decoded.userId ? (updatedFriendship as any).user1Memo : (updatedFriendship as any).user2Memo
+      }), request);
+    } catch (dbError: any) {
+      // If memo columns don't exist, return success but indicate feature is not available
+      if (dbError.code === 'P2022') {
+        console.log('Memo columns not yet added to database');
+        return withCORS(NextResponse.json({
+          success: true,
+          message: 'Memo feature pending database update',
+          memo: null
+        }), request);
+      }
+      throw dbError;
+    }
 
   } catch (error) {
     console.error('Update friend memo error:', error);
