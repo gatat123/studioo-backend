@@ -38,6 +38,10 @@ model User {
   receivedFriendRequests FriendRequest[] @relation("FriendRequestReceiver")
   friendsAsUser1         Friendship[]    @relation("FriendshipUser1")
   friendsAsUser2         Friendship[]    @relation("FriendshipUser2")
+  
+  // Messages
+  sentMessages           Message[]       @relation("MessageSender")
+  receivedMessages       Message[]       @relation("MessageReceiver")
 
   @@index([username])
   @@index([email])
@@ -312,4 +316,23 @@ model Friendship {
   @@index([user1Id])
   @@index([user2Id])
   @@map("friendships")
+}
+
+model Message {
+  id         String   @id @default(uuid())
+  senderId   String   @map("sender_id")
+  receiverId String   @map("receiver_id")
+  content    String   @db.Text
+  isRead     Boolean  @default(false) @map("is_read")
+  readAt     DateTime? @map("read_at")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+  
+  sender   User @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver User @relation("MessageReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  
+  @@index([senderId, receiverId])
+  @@index([receiverId, isRead])
+  @@index([createdAt(sort: Desc)])
+  @@map("messages")
 }

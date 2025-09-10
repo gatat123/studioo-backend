@@ -165,6 +165,9 @@ export class SocketServer {
       // 친구 실시간 이벤트 핸들러
       this.setupFriendEventHandlers(authSocket);
 
+      // 메시지 실시간 이벤트 핸들러
+      this.setupMessageEventHandlers(authSocket);
+
       // 연결 해제 처리
       socket.on("disconnect", (reason) => {
         this.handleUserDisconnection(authSocket, reason);
@@ -801,6 +804,239 @@ export class SocketServer {
 
     // 친구 프레젠스 업데이트 (사용자가 로그인했을 때)
     this.notifyFriendsOfPresence(socket, 'online');
+  }
+
+  /**
+   * 메시지 실시간 이벤트 핸들러 설정
+   */
+  private setupMessageEventHandlers(socket: AuthenticatedSocket) {
+    // 메시지 전송
+    socket.on("send_message", async (data: {
+      receiverId: string;
+      content: string;
+      tempId?: string;
+    }) => {
+      try {
+        // 친구 관계 확인
+        const friendship = await prisma.friendship.findFirst({
+          where: {
+            OR: [
+              { user1Id: socket.userId, user2Id: data.receiverId },
+              { user1Id: data.receiverId, user2Id: socket.userId }
+            ]
+          }
+        });
+
+        if (!friendship) {
+          socket.emit("message_error", {
+            error: "Not friends with this user",
+            tempId: data.tempId
+          });
+          return;
+        }
+
+        // 메시지 생성
+        const message = await prisma.message.create({
+          data: {
+            senderId: socket.userId,
+            receiverId: data.receiverId,
+            content: data.content
+          },
+          include: {
+            sender: {
+              select: {
+                id: true,
+                username: true,
+                nickname: true,
+                profileImageUrl: true
+              }
+            },
+            receiver: {
+              select: {
+                id: true,
+                username: true,
+                nickname: true,
+                profileImageUrl: true
+              }
+            }
+          }
+        });
+
+        // 보낸 사람에게 확인
+        socket.emit("message_sent", {
+          message,
+          tempId: data.tempId
+        });
+
+        // 받는 사람이 온라인이면 실시간으로 전송
+        const receiverSockets = this.activeConnections.get(data.receiverId);
+        if (receiverSockets && receiverSockets.size > 0) {
+          receiverSockets.forEach((socketId) => {
+            this.io.to(socketId).emit("new_message", {
+              message,
+              timestamp: new Date()
+            });
+          });
+        }
+      } catch (error) {
+        console.error("Message send error:", error);
+        socket.emit("message_error", {
+          error: "Failed to send message",
+          tempId: data.tempId
+        });
+      }
+    });
+
+    // 메시지 읽음 처리
+    socket.on("mark_messages_read", async (data: {
+      messageIds: string[];
+      senderId: string;
+    }) => {
+      try {
+        await prisma.message.updateMany({
+          where: {
+            id: { in: data.messageIds },
+            senderId: data.senderId,
+            receiverId: socket.userId,
+            isRead: false
+          },
+          data: {
+            isRead: true,
+            readAt: new Date()
+          }
+        });
+
+        // 보낸 사람에게 읽음 알림
+        const senderSockets = this.activeConnections.get(data.senderId);
+        if (senderSockets && senderSockets.size > 0) {
+          senderSockets.forEach((socketId) => {
+            this.io.to(socketId).emit("messages_read", {
+              messageIds: data.messageIds,
+              readBy: socket.userId,
+              timestamp: new Date()
+            });
+          });
+        }
+      } catch (error) {
+        console.error("Mark messages read error:", error);
+      }
+    });
+
+    // 타이핑 시작
+    socket.on("typing_start_chat", (data: {
+      receiverId: string;
+    }) => {
+      const receiverSockets = this.activeConnections.get(data.receiverId);
+      if (receiverSockets && receiverSockets.size > 0) {
+        receiverSockets.forEach((socketId) => {
+          this.io.to(socketId).emit("user_typing_chat", {
+            userId: socket.userId,
+            user: {
+              username: socket.user.username,
+              nickname: socket.user.nickname,
+              profileImageUrl: socket.user.profileImageUrl
+            },
+            timestamp: new Date()
+          });
+        });
+      }
+    });
+
+    // 타이핑 중지
+    socket.on("typing_stop_chat", (data: {
+      receiverId: string;
+    }) => {
+      const receiverSockets = this.activeConnections.get(data.receiverId);
+      if (receiverSockets && receiverSockets.size > 0) {
+        receiverSockets.forEach((socketId) => {
+          this.io.to(socketId).emit("user_stopped_typing_chat", {
+            userId: socket.userId,
+            timestamp: new Date()
+          });
+        });
+      }
+    });
+
+    // 메시지 내역 요청
+    socket.on("request_message_history", async (data: {
+      friendId: string;
+      limit?: number;
+      offset?: number;
+    }) => {
+      try {
+        // 친구 관계 확인
+        const friendship = await prisma.friendship.findFirst({
+          where: {
+            OR: [
+              { user1Id: socket.userId, user2Id: data.friendId },
+              { user1Id: data.friendId, user2Id: socket.userId }
+            ]
+          }
+        });
+
+        if (!friendship) {
+          socket.emit("message_history_error", {
+            error: "Not friends with this user"
+          });
+          return;
+        }
+
+        // 메시지 조회
+        const messages = await prisma.message.findMany({
+          where: {
+            OR: [
+              { senderId: socket.userId, receiverId: data.friendId },
+              { senderId: data.friendId, receiverId: socket.userId }
+            ]
+          },
+          include: {
+            sender: {
+              select: {
+                id: true,
+                username: true,
+                nickname: true,
+                profileImageUrl: true
+              }
+            },
+            receiver: {
+              select: {
+                id: true,
+                username: true,
+                nickname: true,
+                profileImageUrl: true
+              }
+            }
+          },
+          orderBy: { createdAt: 'desc' },
+          take: data.limit || 50,
+          skip: data.offset || 0
+        });
+
+        // 읽지 않은 메시지 읽음 처리
+        await prisma.message.updateMany({
+          where: {
+            senderId: data.friendId,
+            receiverId: socket.userId,
+            isRead: false
+          },
+          data: {
+            isRead: true,
+            readAt: new Date()
+          }
+        });
+
+        socket.emit("message_history", {
+          friendId: data.friendId,
+          messages: messages.reverse(),
+          timestamp: new Date()
+        });
+      } catch (error) {
+        console.error("Message history error:", error);
+        socket.emit("message_history_error", {
+          error: "Failed to fetch message history"
+        });
+      }
+    });
   }
 
   /**

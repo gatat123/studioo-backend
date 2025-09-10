@@ -1,4 +1,6 @@
 import jwt from "jsonwebtoken";
+import { NextRequest } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 // Use only JWT_SECRET for consistency
 const JWT_SECRET = process.env.JWT_SECRET || "fallback-secret-key";
@@ -81,4 +83,37 @@ export function extractTokenFromHeader(authHeader: string | null): string | null
     return null;
   }
   return authHeader.substring(7);
+}
+
+export async function getCurrentUser(request: NextRequest) {
+  try {
+    const authHeader = request.headers.get("authorization");
+    const token = extractTokenFromHeader(authHeader);
+    
+    if (!token) {
+      return null;
+    }
+    
+    const payload = verifyAccessToken(token);
+    if (!payload) {
+      return null;
+    }
+    
+    const user = await prisma.user.findUnique({
+      where: { id: payload.userId },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        nickname: true,
+        profileImageUrl: true,
+        isAdmin: true,
+      }
+    });
+    
+    return user;
+  } catch (error) {
+    console.error("Error getting current user:", error);
+    return null;
+  }
 }
