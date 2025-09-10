@@ -162,6 +162,9 @@ export class SocketServer {
       // 이미지 실시간 이벤트 핸들러
       this.setupImageEventHandlers(authSocket);
 
+      // 친구 실시간 이벤트 핸들러
+      this.setupFriendEventHandlers(authSocket);
+
       // 연결 해제 처리
       socket.on("disconnect", (reason) => {
         this.handleUserDisconnection(authSocket, reason);
@@ -212,8 +215,12 @@ export class SocketServer {
     if (this.activeConnections.has(userId)) {
       this.activeConnections.get(userId)!.delete(socket.id);
       if (this.activeConnections.get(userId)!.size === 0) {
+        // 모든 연결이 끊어진 경우에만 오프라인 상태로 알림
         this.activeConnections.delete(userId);
         this.userPresence.delete(userId);
+        
+        // 친구들에게 오프라인 상태 알림
+        this.notifyFriendsOfPresence(socket, 'offline');
       }
     }
 
@@ -703,6 +710,144 @@ export class SocketServer {
       
       console.log(`Image uploaded by ${socket.user.username} in project ${data.projectId}, scene ${data.sceneId}`);
     });
+  }
+
+  /**
+   * 친구 실시간 이벤트 핸들러 설정
+   */
+  private setupFriendEventHandlers(socket: AuthenticatedSocket) {
+    // 친구 요청 보내기 알림
+    socket.on("friend_request_sent", async (data: {
+      receiverId: string;
+      message?: string;
+    }) => {
+      try {
+        // 받는 사람이 온라인인지 확인
+        const receiverSockets = this.activeConnections.get(data.receiverId);
+        if (receiverSockets && receiverSockets.size > 0) {
+          // 받는 사람의 모든 소켓에 알림 전송
+          receiverSockets.forEach((socketId) => {
+            this.io.to(socketId).emit("friend_request_received", {
+              sender: {
+                id: socket.userId,
+                username: socket.user.username,
+                nickname: socket.user.nickname,
+                profileImageUrl: socket.user.profileImageUrl,
+              },
+              message: data.message,
+              timestamp: new Date(),
+            });
+          });
+        }
+      } catch (error) {
+        console.error("Friend request notification error:", error);
+      }
+    });
+
+    // 친구 요청 수락 알림
+    socket.on("friend_request_accepted", (data: {
+      senderId: string;
+      requestId: string;
+    }) => {
+      const senderSockets = this.activeConnections.get(data.senderId);
+      if (senderSockets && senderSockets.size > 0) {
+        senderSockets.forEach((socketId) => {
+          this.io.to(socketId).emit("friend_request_accepted", {
+            acceptedBy: {
+              id: socket.userId,
+              username: socket.user.username,
+              nickname: socket.user.nickname,
+              profileImageUrl: socket.user.profileImageUrl,
+            },
+            requestId: data.requestId,
+            timestamp: new Date(),
+          });
+        });
+      }
+    });
+
+    // 친구 삭제 알림
+    socket.on("friend_removed", (data: {
+      friendId: string;
+    }) => {
+      const friendSockets = this.activeConnections.get(data.friendId);
+      if (friendSockets && friendSockets.size > 0) {
+        friendSockets.forEach((socketId) => {
+          this.io.to(socketId).emit("friend_removed", {
+            removedBy: socket.userId,
+            timestamp: new Date(),
+          });
+        });
+      }
+    });
+
+    // 친구 온라인 상태 변경
+    socket.on("request_friend_status", async (data: {
+      friendIds: string[];
+    }) => {
+      try {
+        const onlineFriends = data.friendIds.filter(friendId => 
+          this.activeConnections.has(friendId)
+        );
+
+        socket.emit("friend_status_update", {
+          onlineFriends,
+          timestamp: new Date(),
+        });
+      } catch (error) {
+        console.error("Friend status check error:", error);
+      }
+    });
+
+    // 친구 프레젠스 업데이트 (사용자가 로그인했을 때)
+    this.notifyFriendsOfPresence(socket, 'online');
+  }
+
+  /**
+   * 친구들에게 사용자의 현재 상태 알림
+   */
+  private async notifyFriendsOfPresence(socket: AuthenticatedSocket, status: 'online' | 'offline') {
+    try {
+      // 사용자의 친구 목록 조회
+      const friendships = await prisma.friendship.findMany({
+        where: {
+          OR: [
+            { user1Id: socket.userId },
+            { user2Id: socket.userId }
+          ]
+        },
+        select: {
+          user1Id: true,
+          user2Id: true,
+        }
+      });
+
+      // 친구 ID 목록 추출
+      const friendIds = friendships.map(friendship => 
+        friendship.user1Id === socket.userId ? friendship.user2Id : friendship.user1Id
+      );
+
+      // 온라인 친구들에게 상태 알림
+      friendIds.forEach(friendId => {
+        const friendSockets = this.activeConnections.get(friendId);
+        if (friendSockets && friendSockets.size > 0) {
+          friendSockets.forEach((socketId) => {
+            this.io.to(socketId).emit("friend_presence_update", {
+              userId: socket.userId,
+              user: {
+                username: socket.user.username,
+                nickname: socket.user.nickname,
+                profileImageUrl: socket.user.profileImageUrl,
+              },
+              status,
+              timestamp: new Date(),
+            });
+          });
+        }
+      });
+    } catch (error) {
+      console.error("Friend presence notification error:", error);
+    }
   }
 
   /**
