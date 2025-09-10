@@ -11,17 +11,28 @@ export async function OPTIONS(request: NextRequest) {
 export async function GET(request: NextRequest) {
   try {
     const authHeader = request.headers.get('authorization');
-    const token = authHeader?.replace('Bearer ', '');
     
-    if (!token) {
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      console.error('Search API auth error: No valid authorization header');
       return withCORS(NextResponse.json(
         { success: false, error: 'No token provided' },
+        { status: 401 }
+      ), request);
+    }
+    
+    const token = authHeader.substring(7);
+    
+    if (!token || token === 'undefined' || token === 'null') {
+      console.error('Search API auth error: Invalid token format:', token);
+      return withCORS(NextResponse.json(
+        { success: false, error: 'Invalid token format' },
         { status: 401 }
       ), request);
     }
 
     const decoded = verifyAccessToken(token);
     if (!decoded || !decoded.userId) {
+      console.error('Search API auth error: Token verification failed');
       return withCORS(NextResponse.json(
         { success: false, error: 'Invalid token' },
         { status: 401 }

@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "fallback-secret-key";
+const JWT_SECRET = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET || "fallback-secret-key";
 const JWT_EXPIRES_IN = "24h";
 
 export interface JWTPayload {
@@ -29,10 +29,21 @@ export function generateRefreshToken(userId: string): string {
 
 export function verifyAccessToken(token: string): JWTPayload | null {
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as JWTPayload;
+    // Remove any whitespace
+    const cleanToken = token.trim();
+    
+    // Check if token is valid format
+    if (!cleanToken || cleanToken === 'undefined' || cleanToken === 'null') {
+      console.error("Invalid token format:", cleanToken);
+      return null;
+    }
+    
+    const decoded = jwt.verify(cleanToken, JWT_SECRET) as JWTPayload;
     return decoded;
   } catch (error) {
     console.error("JWT verification failed:", error);
+    console.error("Token was:", token);
+    console.error("JWT_SECRET exists:", !!JWT_SECRET);
     return null;
   }
 }

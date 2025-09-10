@@ -17,11 +17,19 @@ const updateMemoSchema = z.object({
 export async function PUT(request: NextRequest) {
   try {
     const authHeader = request.headers.get('authorization');
-    const token = authHeader?.replace('Bearer ', '');
     
-    if (!token) {
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return withCORS(NextResponse.json(
         { success: false, error: 'No token provided' },
+        { status: 401 }
+      ), request);
+    }
+    
+    const token = authHeader.substring(7);
+    
+    if (!token || token === 'undefined' || token === 'null') {
+      return withCORS(NextResponse.json(
+        { success: false, error: 'Invalid token format' },
         { status: 401 }
       ), request);
     }
