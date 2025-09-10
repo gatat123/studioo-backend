@@ -301,6 +301,8 @@ model Friendship {
   id        String   @id @default(uuid())
   user1Id   String   @map("user1_id")
   user2Id   String   @map("user2_id")
+  user1Memo String?  @map("user1_memo") @db.Text // user1이 user2에 대해 작성한 메모
+  user2Memo String?  @map("user2_memo") @db.Text // user2가 user1에 대해 작성한 메모
   createdAt DateTime @default(now()) @map("created_at")
 
   user1 User @relation("FriendshipUser1", fields: [user1Id], references: [id], onDelete: Cascade)

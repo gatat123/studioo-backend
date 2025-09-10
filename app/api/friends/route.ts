@@ -46,6 +46,7 @@ export async function GET(request: NextRequest) {
             profileImageUrl: true,
             isActive: true,
             lastLoginAt: true,
+            bio: true,
           }
         },
         user2: {
@@ -56,19 +57,33 @@ export async function GET(request: NextRequest) {
             profileImageUrl: true,
             isActive: true,
             lastLoginAt: true,
+            bio: true,
           }
         }
       }
     });
 
-    // Format friends list
+    // Format friends list with online status and memo
     const friends = friendships.map(friendship => {
       const friend = friendship.user1Id === decoded.userId 
         ? friendship.user2 
         : friendship.user1;
+      
+      const memo = friendship.user1Id === decoded.userId 
+        ? friendship.user1Memo 
+        : friendship.user2Memo;
+      
+      // 5분 이내 활동을 온라인으로 간주
+      const isOnline = friend.lastLoginAt && 
+        new Date(friend.lastLoginAt) > new Date(Date.now() - 5 * 60 * 1000);
+      
       return {
         id: friendship.id,
-        friend,
+        friend: {
+          ...friend,
+          isOnline // 온라인 상태 추가
+        },
+        memo, // 메모 추가
         createdAt: friendship.createdAt
       };
     });
