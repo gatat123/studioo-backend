@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     
     if (!validation.success) {
       return withCORS(NextResponse.json(
-        { success: false, error: validation.error.errors[0].message },
+        { success: false, error: validation.error.issues[0].message },
         { status: 400 }
       ), request);
     }
@@ -191,7 +191,7 @@ export async function PUT(request: NextRequest) {
     
     if (!validation.success) {
       return withCORS(NextResponse.json(
-        { success: false, error: validation.error.errors[0].message },
+        { success: false, error: validation.error.issues[0].message },
         { status: 400 }
       ), request);
     }
