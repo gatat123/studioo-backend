@@ -1,7 +1,14 @@
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || process.env.NEXTAUTH_SECRET || "fallback-secret-key";
+// Use only JWT_SECRET for consistency
+const JWT_SECRET = process.env.JWT_SECRET || "fallback-secret-key";
 const JWT_EXPIRES_IN = "24h";
+
+// Debug logging
+if (process.env.NODE_ENV !== 'production') {
+  console.log('JWT_SECRET configured:', !!process.env.JWT_SECRET);
+  console.log('NEXTAUTH_SECRET configured:', !!process.env.NEXTAUTH_SECRET);
+}
 
 export interface JWTPayload {
   userId: string;
@@ -38,12 +45,20 @@ export function verifyAccessToken(token: string): JWTPayload | null {
       return null;
     }
     
-    const decoded = jwt.verify(cleanToken, JWT_SECRET) as JWTPayload;
+    // Log token structure for debugging (first 20 chars only for security)
+    console.log("Verifying token (first 20 chars):", cleanToken.substring(0, 20));
+    console.log("Token parts:", cleanToken.split('.').length);
+    
+    const decoded = jwt.verify(cleanToken, JWT_SECRET, {
+      algorithms: ['HS256']
+    }) as JWTPayload;
+    
+    console.log("Token verified successfully for userId:", decoded.userId);
     return decoded;
-  } catch (error) {
-    console.error("JWT verification failed:", error);
-    console.error("Token was:", token);
-    console.error("JWT_SECRET exists:", !!JWT_SECRET);
+  } catch (error: any) {
+    console.error("JWT verification failed:", error.message);
+    console.error("Token structure:", token.split('.').length, "parts");
+    console.error("JWT_SECRET configured:", !!process.env.JWT_SECRET);
     return null;
   }
 }

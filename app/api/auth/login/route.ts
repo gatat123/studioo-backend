@@ -66,6 +66,11 @@ export async function POST(req: NextRequest) {
     });
 
     const refreshToken = generateRefreshToken(user.id);
+    
+    // Debug logging
+    console.log("Login - Generated token (first 20 chars):", accessToken.substring(0, 20));
+    console.log("Login - Token parts:", accessToken.split('.').length);
+    console.log("Login - User ID:", user.id);
 
     return withCORS(NextResponse.json({
       message: "로그인이 완료되었습니다.",
