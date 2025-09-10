@@ -168,6 +168,9 @@ export class SocketServer {
       // 메시지 실시간 이벤트 핸들러
       this.setupMessageEventHandlers(authSocket);
 
+      // 채널 실시간 이벤트 핸들러
+      this.setupChannelEventHandlers(authSocket);
+
       // 연결 해제 처리
       socket.on("disconnect", (reason) => {
         this.handleUserDisconnection(authSocket, reason);
@@ -1036,6 +1039,280 @@ export class SocketServer {
           error: "Failed to fetch message history"
         });
       }
+    });
+  }
+
+  /**
+   * 채널 실시간 이벤트 핸들러 설정
+   */
+  private setupChannelEventHandlers(socket: AuthenticatedSocket) {
+    // 채널 참여
+    socket.on("join_channel", async (data: { channelId: string }) => {
+      try {
+        // 채널 멤버십 확인
+        const membership = await prisma.channelMember.findUnique({
+          where: {
+            channelId_userId: {
+              channelId: data.channelId,
+              userId: socket.userId
+            }
+          }
+        });
+
+        if (!membership) {
+          socket.emit("error", {
+            type: "channel_access_denied",
+            message: "채널 접근 권한이 없습니다."
+          });
+          return;
+        }
+
+        const roomId = `channel:${data.channelId}`;
+        await socket.join(roomId);
+
+        // 채널의 현재 활성 사용자들 전송
+        const activeUsers = Array.from(this.io.sockets.adapter.rooms.get(roomId) || [])
+          .map((socketId) => {
+            const otherSocket = this.io.sockets.sockets.get(socketId) as AuthenticatedSocket;
+            return otherSocket ? {
+              userId: otherSocket.userId,
+              user: {
+                username: otherSocket.user.username,
+                nickname: otherSocket.user.nickname,
+                profileImageUrl: otherSocket.user.profileImageUrl,
+              }
+            } : null;
+          })
+          .filter(Boolean);
+
+        socket.emit("channel_joined", {
+          channelId: data.channelId,
+          activeUsers,
+          timestamp: new Date()
+        });
+
+        // 다른 멤버들에게 입장 알림
+        socket.to(roomId).emit("member_joined_channel", {
+          userId: socket.userId,
+          user: {
+            username: socket.user.username,
+            nickname: socket.user.nickname,
+            profileImageUrl: socket.user.profileImageUrl
+          },
+          timestamp: new Date()
+        });
+      } catch (error) {
+        console.error("Join channel error:", error);
+        socket.emit("error", {
+          type: "join_channel_failed",
+          message: "채널 참여 중 오류가 발생했습니다."
+        });
+      }
+    });
+
+    // 채널 나가기
+    socket.on("leave_channel", (data: { channelId: string }) => {
+      const roomId = `channel:${data.channelId}`;
+      socket.leave(roomId);
+
+      socket.to(roomId).emit("member_left_channel", {
+        userId: socket.userId,
+        timestamp: new Date()
+      });
+    });
+
+    // 채널 메시지 전송
+    socket.on("send_channel_message", async (data: {
+      channelId: string;
+      content: string;
+      type?: string;
+      metadata?: any;
+      tempId?: string;
+    }) => {
+      try {
+        // 채널 멤버십 확인
+        const membership = await prisma.channelMember.findUnique({
+          where: {
+            channelId_userId: {
+              channelId: data.channelId,
+              userId: socket.userId
+            }
+          }
+        });
+
+        if (!membership) {
+          socket.emit("channel_message_error", {
+            error: "Not a member of this channel",
+            tempId: data.tempId
+          });
+          return;
+        }
+
+        // 메시지 생성
+        const message = await prisma.channelMessage.create({
+          data: {
+            channelId: data.channelId,
+            senderId: socket.userId,
+            content: data.content,
+            type: data.type || 'text',
+            metadata: data.metadata
+          },
+          include: {
+            sender: {
+              select: {
+                id: true,
+                username: true,
+                nickname: true,
+                profileImageUrl: true
+              }
+            },
+            files: true
+          }
+        });
+
+        // 채널 업데이트 시간 갱신
+        await prisma.channel.update({
+          where: { id: data.channelId },
+          data: { updatedAt: new Date() }
+        });
+
+        // 보낸 사람에게 확인
+        socket.emit("channel_message_sent", {
+          message,
+          tempId: data.tempId
+        });
+
+        // 채널의 다른 멤버들에게 브로드캐스트
+        const roomId = `channel:${data.channelId}`;
+        socket.to(roomId).emit("new_channel_message", {
+          message,
+          timestamp: new Date()
+        });
+      } catch (error) {
+        console.error("Channel message send error:", error);
+        socket.emit("channel_message_error", {
+          error: "Failed to send message",
+          tempId: data.tempId
+        });
+      }
+    });
+
+    // 채널 타이핑 시작
+    socket.on("typing_start_channel", (data: {
+      channelId: string;
+    }) => {
+      const roomId = `channel:${data.channelId}`;
+      socket.to(roomId).emit("user_typing_channel", {
+        userId: socket.userId,
+        user: {
+          username: socket.user.username,
+          nickname: socket.user.nickname,
+          profileImageUrl: socket.user.profileImageUrl
+        },
+        timestamp: new Date()
+      });
+    });
+
+    // 채널 타이핑 중지
+    socket.on("typing_stop_channel", (data: {
+      channelId: string;
+    }) => {
+      const roomId = `channel:${data.channelId}`;
+      socket.to(roomId).emit("user_stopped_typing_channel", {
+        userId: socket.userId,
+        timestamp: new Date()
+      });
+    });
+
+    // 채널 메시지 내역 요청
+    socket.on("request_channel_history", async (data: {
+      channelId: string;
+      limit?: number;
+      cursor?: string;
+    }) => {
+      try {
+        // 채널 멤버십 확인
+        const membership = await prisma.channelMember.findUnique({
+          where: {
+            channelId_userId: {
+              channelId: data.channelId,
+              userId: socket.userId
+            }
+          }
+        });
+
+        if (!membership) {
+          socket.emit("channel_history_error", {
+            error: "Not a member of this channel"
+          });
+          return;
+        }
+
+        // 메시지 조회
+        const messages = await prisma.channelMessage.findMany({
+          where: {
+            channelId: data.channelId,
+            deletedAt: null,
+            ...(data.cursor ? { createdAt: { lt: new Date(data.cursor) } } : {})
+          },
+          include: {
+            sender: {
+              select: {
+                id: true,
+                username: true,
+                nickname: true,
+                profileImageUrl: true
+              }
+            },
+            files: true
+          },
+          orderBy: { createdAt: 'desc' },
+          take: data.limit || 50
+        });
+
+        // 마지막 읽은 시간 업데이트
+        await prisma.channelMember.update({
+          where: {
+            channelId_userId: {
+              channelId: data.channelId,
+              userId: socket.userId
+            }
+          },
+          data: {
+            lastReadAt: new Date()
+          }
+        });
+
+        socket.emit("channel_history", {
+          channelId: data.channelId,
+          messages: messages.reverse(),
+          hasMore: messages.length === (data.limit || 50),
+          nextCursor: messages.length > 0 ? messages[0].createdAt.toISOString() : null,
+          timestamp: new Date()
+        });
+      } catch (error) {
+        console.error("Channel history error:", error);
+        socket.emit("channel_history_error", {
+          error: "Failed to fetch channel history"
+        });
+      }
+    });
+
+    // 파일 업로드 진행률
+    socket.on("file_upload_progress", (data: {
+      channelId: string;
+      fileName: string;
+      progress: number;
+      tempId: string;
+    }) => {
+      const roomId = `channel:${data.channelId}`;
+      socket.to(roomId).emit("file_upload_progress", {
+        userId: socket.userId,
+        fileName: data.fileName,
+        progress: data.progress,
+        tempId: data.tempId,
+        timestamp: new Date()
+      });
     });
   }
 

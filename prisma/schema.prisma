@@ -42,6 +42,14 @@ model User {
   // Messages
   sentMessages           Message[]       @relation("MessageSender")
   receivedMessages       Message[]       @relation("MessageReceiver")
+  
+  // Channels
+  createdChannels        Channel[]       @relation("ChannelCreator")
+  channelMemberships     ChannelMember[]
+  channelMessages        ChannelMessage[]
+  uploadedChannelFiles   ChannelFile[]
+  sentChannelInvites     ChannelInvite[] @relation("ChannelInviter")
+  receivedChannelInvites ChannelInvite[] @relation("ChannelInvitee")
 
   @@index([username])
   @@index([email])
@@ -59,6 +67,7 @@ model Studio {
 
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   projects    Project[]
+  channels    Channel[]
 
   @@index([userId])
   @@map("studios")
@@ -335,4 +344,106 @@ model Message {
   @@index([receiverId, isRead])
   @@index([createdAt(sort: Desc)])
   @@map("messages")
+}
+
+model Channel {
+  id          String   @id @default(uuid())
+  name        String   @db.VarChar(100)
+  description String?  @db.Text
+  type        String   @default("public") @db.VarChar(20) // public, private, direct
+  creatorId   String   @map("creator_id")
+  studioId    String?  @map("studio_id")
+  isArchived  Boolean  @default(false) @map("is_archived")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  
+  creator  User              @relation("ChannelCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+  studio   Studio?           @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  members  ChannelMember[]
+  messages ChannelMessage[]
+  files    ChannelFile[]
+  invites  ChannelInvite[]
+  
+  @@index([name])
+  @@index([studioId])
+  @@index([creatorId])
+  @@map("channels")
+}
+
+model ChannelMember {
+  id        String   @id @default(uuid())
+  channelId String   @map("channel_id")
+  userId    String   @map("user_id")
+  role      String   @default("member") @db.VarChar(20) // admin, moderator, member
+  joinedAt  DateTime @default(now()) @map("joined_at")
+  lastReadAt DateTime? @map("last_read_at")
+  
+  channel Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([channelId, userId])
+  @@index([userId])
+  @@index([channelId])
+  @@map("channel_members")
+}
+
+model ChannelMessage {
+  id        String   @id @default(uuid())
+  channelId String   @map("channel_id")
+  senderId  String   @map("sender_id")
+  content   String   @db.Text
+  type      String   @default("text") @db.VarChar(20) // text, image, file, system
+  metadata  Json?    // For file info, image dimensions, etc.
+  editedAt  DateTime? @map("edited_at")
+  deletedAt DateTime? @map("deleted_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  
+  channel Channel       @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  sender  User          @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  files   ChannelFile[]
+  
+  @@index([channelId, createdAt(sort: Desc)])
+  @@index([senderId])
+  @@map("channel_messages")
+}
+
+model ChannelFile {
+  id         String   @id @default(uuid())
+  channelId  String   @map("channel_id")
+  messageId  String?  @map("message_id")
+  uploaderId String   @map("uploader_id")
+  fileName   String   @map("file_name") @db.VarChar(255)
+  fileUrl    String   @map("file_url") @db.Text
+  fileSize   BigInt   @map("file_size")
+  mimeType   String   @map("mime_type") @db.VarChar(100)
+  metadata   Json?    // thumbnails, dimensions for images, etc.
+  createdAt  DateTime @default(now()) @map("created_at")
+  
+  channel  Channel         @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  message  ChannelMessage? @relation(fields: [messageId], references: [id], onDelete: SetNull)
+  uploader User            @relation(fields: [uploaderId], references: [id], onDelete: Cascade)
+  
+  @@index([channelId])
+  @@index([uploaderId])
+  @@map("channel_files")
+}
+
+model ChannelInvite {
+  id         String   @id @default(uuid())
+  channelId  String   @map("channel_id")
+  inviterId  String   @map("inviter_id")
+  inviteeId  String   @map("invitee_id")
+  status     String   @default("pending") @db.VarChar(20) // pending, accepted, rejected, expired
+  expiresAt  DateTime? @map("expires_at")
+  acceptedAt DateTime? @map("accepted_at")
+  createdAt  DateTime @default(now()) @map("created_at")
+  
+  channel Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  inviter User    @relation("ChannelInviter", fields: [inviterId], references: [id], onDelete: Cascade)
+  invitee User    @relation("ChannelInvitee", fields: [inviteeId], references: [id], onDelete: Cascade)
+  
+  @@unique([channelId, inviteeId])
+  @@index([inviteeId, status])
+  @@index([channelId])
+  @@map("channel_invites")
 }
