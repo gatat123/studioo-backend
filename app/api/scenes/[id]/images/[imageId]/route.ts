@@ -206,9 +206,9 @@ export async function GET(
             },
           },
           history: {
-            orderBy: { createdAt: "desc" },
+            orderBy: { uploadedAt: "desc" },
             include: {
-              user: {
+              uploader: {
                 select: {
                   id: true,
                   username: true,
