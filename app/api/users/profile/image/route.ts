@@ -15,31 +15,61 @@ async function handleUploadProfileImage(request: NextRequest) {
     const user = (request as any).user;
     
     console.log('[Profile Image Upload] Starting upload for user:', user?.id);
-    console.log('[Profile Image Upload] Request headers:', Object.fromEntries(request.headers.entries()));
+    console.log('[Profile Image Upload] Content-Type:', request.headers.get('content-type'));
     
-    const formData = await request.formData();
-    const file = formData.get('file') as File;
-
-    console.log('[Profile Image Upload] File received:', {
-      name: file?.name,
-      type: file?.type,
-      size: file?.size
+    let formData: FormData;
+    try {
+      formData = await request.formData();
+      console.log('[Profile Image Upload] FormData parsed successfully');
+      
+      // Log all form data entries
+      const entries = Array.from(formData.entries());
+      console.log('[Profile Image Upload] FormData entries count:', entries.length);
+      entries.forEach(([key, value]) => {
+        if (value instanceof File) {
+          console.log(`[Profile Image Upload] FormData entry - ${key}: File(name=${value.name}, type=${value.type}, size=${value.size})`);
+        } else {
+          console.log(`[Profile Image Upload] FormData entry - ${key}:`, value);
+        }
+      });
+    } catch (parseError) {
+      console.error('[Profile Image Upload] Failed to parse FormData:', parseError);
+      return ApiResponse.badRequest('Failed to parse form data');
+    }
+    
+    const file = formData.get('file');
+    
+    console.log('[Profile Image Upload] File from FormData:', {
+      exists: !!file,
+      isFile: file instanceof File,
+      type: typeof file,
+      constructor: file?.constructor?.name
     });
 
-    if (!file) {
-      console.error('[Profile Image Upload] No file in FormData');
+    if (!file || !(file instanceof File)) {
+      console.error('[Profile Image Upload] No valid file in FormData');
       return ApiResponse.badRequest('No file provided');
     }
 
+    console.log('[Profile Image Upload] File details:', {
+      name: file.name,
+      type: file.type,
+      size: file.size
+    });
+
     // 파일 타입 검증
     if (!ALLOWED_TYPES.includes(file.type)) {
+      console.error('[Profile Image Upload] Invalid file type:', file.type);
       return ApiResponse.badRequest('Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed');
     }
 
     // 파일 크기 검증
     if (file.size > MAX_FILE_SIZE) {
+      console.error('[Profile Image Upload] File too large:', file.size);
       return ApiResponse.badRequest('File size exceeds 5MB limit');
     }
+
+    console.log('[Profile Image Upload] File validation passed');
 
     // 파일을 버퍼로 변환
     const bytes = await file.arrayBuffer();
