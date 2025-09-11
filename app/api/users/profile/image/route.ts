@@ -13,10 +13,21 @@ const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
 async function handleUploadProfileImage(request: NextRequest) {
   try {
     const user = (request as any).user;
+    
+    console.log('[Profile Image Upload] Starting upload for user:', user?.id);
+    console.log('[Profile Image Upload] Request headers:', Object.fromEntries(request.headers.entries()));
+    
     const formData = await request.formData();
     const file = formData.get('file') as File;
 
+    console.log('[Profile Image Upload] File received:', {
+      name: file?.name,
+      type: file?.type,
+      size: file?.size
+    });
+
     if (!file) {
+      console.error('[Profile Image Upload] No file in FormData');
       return ApiResponse.badRequest('No file provided');
     }
 
@@ -146,6 +157,9 @@ async function handleGetProfileImage(request: NextRequest) {
   }
 }
 
+import { handleOptions } from '@/lib/utils/cors';
+
 export const POST = withAuth(handleUploadProfileImage);
 export const DELETE = withAuth(handleDeleteProfileImage);
 export const GET = handleGetProfileImage;
+export const OPTIONS = handleOptions;
