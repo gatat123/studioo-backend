@@ -203,6 +203,18 @@ export async function POST(
         },
       });
 
+      // Create image history entry for the new upload
+      await prisma.imageHistory.create({
+        data: {
+          imageId: image.id,
+          sceneId: sceneId,
+          versionNumber: 1,
+          fileUrl: fileUrl,
+          uploadedBy: authReq.user.userId,
+          changeDescription: changeDescription || "Initial upload",
+        },
+      });
+
       // Verify the image was saved
       const savedImage = await prisma.image.findUnique({
         where: { id: image.id },
