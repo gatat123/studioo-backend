@@ -26,8 +26,9 @@ async function handleUploadProfileImage(request: NextRequest) {
       const entries = Array.from(formData.entries());
       console.log('[Profile Image Upload] FormData entries count:', entries.length);
       entries.forEach(([key, value]) => {
-        if (value instanceof File) {
-          console.log(`[Profile Image Upload] FormData entry - ${key}: File(name=${value.name}, type=${value.type}, size=${value.size})`);
+        // Check if it's a file-like object (has name, type, size properties)
+        if (value && typeof value === 'object' && 'name' in value && 'type' in value && 'size' in value) {
+          console.log(`[Profile Image Upload] FormData entry - ${key}: File(name=${(value as any).name}, type=${(value as any).type}, size=${(value as any).size})`);
         } else {
           console.log(`[Profile Image Upload] FormData entry - ${key}:`, value);
         }
@@ -37,22 +38,23 @@ async function handleUploadProfileImage(request: NextRequest) {
       return ApiResponse.badRequest('Failed to parse form data');
     }
     
-    const file = formData.get('file');
+    const file = formData.get('file') as any;
     
     console.log('[Profile Image Upload] File from FormData:', {
       exists: !!file,
-      isFile: file instanceof File,
       type: typeof file,
-      constructor: file?.constructor?.name
+      constructor: file?.constructor?.name,
+      hasFileProperties: file && typeof file === 'object' && 'name' in file && 'type' in file && 'size' in file
     });
 
-    if (!file || !(file instanceof File)) {
+    // Check if it's a file-like object (Blob/File in Node.js)
+    if (!file || typeof file !== 'object' || !('arrayBuffer' in file) || !('type' in file)) {
       console.error('[Profile Image Upload] No valid file in FormData');
       return ApiResponse.badRequest('No file provided');
     }
 
     console.log('[Profile Image Upload] File details:', {
-      name: file.name,
+      name: file.name || 'unknown',
       type: file.type,
       size: file.size
     });
@@ -72,8 +74,15 @@ async function handleUploadProfileImage(request: NextRequest) {
     console.log('[Profile Image Upload] File validation passed');
 
     // 파일을 버퍼로 변환
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
+    let buffer: Buffer;
+    try {
+      const bytes = await file.arrayBuffer();
+      buffer = Buffer.from(bytes);
+      console.log('[Profile Image Upload] File converted to buffer, size:', buffer.length);
+    } catch (error) {
+      console.error('[Profile Image Upload] Failed to convert file to buffer:', error);
+      return ApiResponse.badRequest('Failed to process file');
+    }
 
     // Sharp로 이미지 처리 (리사이즈 및 최적화)
     const processedImage = await sharp(buffer)
