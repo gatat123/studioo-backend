@@ -140,6 +140,30 @@ export async function PATCH(
         fileSize: updatedImage.fileSize ? updatedImage.fileSize.toString() : null,
       } : null;
 
+      // Emit Socket.io event for real-time sync
+      if (isCurrent && updatedImage) {
+        try {
+          const { getIO } = await import("@/lib/socket/server");
+          const io = getIO();
+          
+          if (io) {
+            io.to(`project:${scene.projectId}`).emit("image_version_changed", {
+              projectId: scene.projectId,
+              sceneId: sceneId,
+              imageId: imageId,
+              imageType: image.type,
+              image: serializedImage,
+              user: {
+                id: authReq.user.userId,
+                username: authReq.user.username,
+              }
+            });
+          }
+        } catch (error) {
+          console.error("Failed to emit socket event:", error);
+        }
+      }
+
       return NextResponse.json({
         success: true,
         image: serializedImage,

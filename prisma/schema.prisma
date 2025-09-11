@@ -74,18 +74,21 @@ model Studio {
 }
 
 model Project {
-  id          String   @id @default(uuid())
-  studioId    String   @map("studio_id")
-  creatorId   String   @map("creator_id")
-  name        String   @db.VarChar(255)
-  description String?  @db.Text
-  deadline    DateTime? @db.Date
-  tag         String?  @db.VarChar(50)
-  inviteCode  String?  @unique @map("invite_code") @db.VarChar(20)
-  status      String   @default("active") @db.VarChar(50)
-  hasUpdates  Boolean  @default(false) @map("has_updates")
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
+  id           String   @id @default(uuid())
+  studioId     String   @map("studio_id")
+  creatorId    String   @map("creator_id")
+  name         String   @db.VarChar(255)
+  description  String?  @db.Text
+  deadline     DateTime? @db.Date
+  tag          String?  @db.VarChar(50)
+  inviteCode   String?  @unique @map("invite_code") @db.VarChar(20)
+  status       String   @default("active") @db.VarChar(50)
+  hasUpdates   Boolean  @default(false) @map("has_updates")
+  overallStory String?  @map("overall_story") @db.Text  // 전체 스토리 (스토리보드용)
+  setList      Json?    @map("set_list")  // 세트 리스트
+  characterList Json?   @map("character_list")  // 캐릭터 리스트
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
 
   studio            Studio     @relation(fields: [studioId], references: [id], onDelete: Cascade)
   creator           User       @relation("ProjectCreator", fields: [creatorId], references: [id])
@@ -125,6 +128,7 @@ model Scene {
   sceneNumber Int      @map("scene_number")
   description String?  @db.Text
   notes       String?  @db.Text
+  script      Json?    @map("script")  // 씬 스크립트 (location, place, time, content)
   createdBy   String   @map("created_by")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
