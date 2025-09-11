@@ -131,6 +131,19 @@ export async function POST(
       return NextResponse.json({ error: 'User is already a member' }, { status: 400 });
     }
 
+    // 이미 보류 중인 초대가 있는지 확인
+    const existingInvite = await prisma.channelInvite.findFirst({
+      where: {
+        channelId: params.channelId,
+        inviteeId: userId,
+        status: 'pending'
+      }
+    });
+
+    if (existingInvite) {
+      return NextResponse.json({ error: 'Invitation already sent to this user' }, { status: 400 });
+    }
+
     // 초대 생성
     const invite = await prisma.channelInvite.create({
       data: {
