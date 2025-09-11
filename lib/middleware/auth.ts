@@ -327,6 +327,13 @@ export class ApiResponse {
     );
   }
 
+  static badRequest(message: string = 'Bad request') {
+    return NextResponse.json(
+      { error: message },
+      { status: 400 }
+    );
+  }
+
   static serverError(message: string = 'Internal server error') {
     return NextResponse.json(
       { error: message },
