@@ -95,12 +95,7 @@ export async function POST(
           userId: invitation.inviterId,
           type: 'channel_invite_accepted',
           title: '채널 초대 수락',
-          message: `${currentUser.nickname}님이 #${invitation.channel.name} 채널 초대를 수락했습니다.`,
-          metadata: {
-            channelId: invitation.channelId,
-            channelName: invitation.channel.name,
-            acceptedBy: currentUser.nickname
-          }
+          content: `${currentUser.nickname}님이 #${invitation.channel.name} 채널 초대를 수락했습니다.`
         }
       });
 

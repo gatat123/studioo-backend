@@ -51,12 +51,7 @@ export async function POST(
         userId: invitation.inviterId,
         type: 'channel_invite_rejected',
         title: '채널 초대 거절',
-        message: `${currentUser.nickname}님이 #${invitation.channel.name} 채널 초대를 거절했습니다.`,
-        metadata: {
-          channelId: invitation.channelId,
-          channelName: invitation.channel.name,
-          rejectedBy: currentUser.nickname
-        }
+        content: `${currentUser.nickname}님이 #${invitation.channel.name} 채널 초대를 거절했습니다.`
       }
     });
 
