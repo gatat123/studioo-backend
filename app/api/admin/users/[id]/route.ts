@@ -5,7 +5,8 @@ import { prisma } from '@/lib/prisma';
 // DELETE /api/admin/users/[id] - Delete a user (Admin only)
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
+  const { id } = await params;
 ) {
   try {
     const currentUser = await getCurrentUser(request);
@@ -14,7 +15,7 @@ export async function DELETE(
     }
 
     // Prevent self-deletion
-    if (params.id === currentUser.id) {
+    if (id === currentUser.id) {
       return NextResponse.json(
         { error: 'Cannot delete your own account' },
         { status: 400 }
@@ -23,7 +24,7 @@ export async function DELETE(
 
     // Delete user and all related data (cascade)
     await prisma.user.delete({
-      where: { id: params.id }
+      where: { id: id }
     });
 
     return NextResponse.json({ message: 'User deleted successfully' });

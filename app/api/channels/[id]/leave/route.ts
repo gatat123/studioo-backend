@@ -5,7 +5,8 @@ import { prisma } from '@/lib/prisma';
 // POST /api/channels/[id]/leave - Leave a channel
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
+  const { id } = await params;
 ) {
   try {
     const currentUser = await getCurrentUser(request);
@@ -17,7 +18,7 @@ export async function POST(
     const membership = await prisma.channelMember.findUnique({
       where: {
         channelId_userId: {
-          channelId: params.id,
+          channelId: id,
           userId: currentUser.id
         }
       }
@@ -31,7 +32,7 @@ export async function POST(
     if (membership.role === 'admin') {
       const otherMembers = await prisma.channelMember.count({
         where: {
-          channelId: params.id,
+          channelId: id,
           userId: { not: currentUser.id }
         }
       });
@@ -49,7 +50,7 @@ export async function POST(
     await prisma.channelMember.delete({
       where: {
         channelId_userId: {
-          channelId: params.id,
+          channelId: id,
           userId: currentUser.id
         }
       }
@@ -57,20 +58,20 @@ export async function POST(
 
     // Check if channel is now empty
     const remainingMembers = await prisma.channelMember.count({
-      where: { channelId: params.id }
+      where: { channelId: id }
     });
 
     if (remainingMembers === 0) {
       // Delete empty channel
       await prisma.channel.update({
-        where: { id: params.id },
+        where: { id: id },
         data: { isArchived: true }
       });
     }
 
     return NextResponse.json({ 
       message: 'Successfully left the channel',
-      channelId: params.id 
+      channelId: id 
     });
   } catch (error) {
     console.error('Error leaving channel:', error);

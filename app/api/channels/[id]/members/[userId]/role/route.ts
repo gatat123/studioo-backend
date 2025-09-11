@@ -5,9 +5,10 @@ import { prisma } from '@/lib/prisma';
 // PATCH /api/channels/[id]/members/[userId]/role - Update member role
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string; userId: string } }
+  { params }: { params: Promise<{ id: string; userId: string }> }
 ) {
   try {
+    const { id, userId } = await params;
     const currentUser = await getCurrentUser(request);
     if (!currentUser) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -24,7 +25,7 @@ export async function PATCH(
     const currentMembership = await prisma.channelMember.findUnique({
       where: {
         channelId_userId: {
-          channelId: params.id,
+          channelId: id,
           userId: currentUser.id
         }
       }
@@ -38,8 +39,8 @@ export async function PATCH(
     const targetMembership = await prisma.channelMember.findUnique({
       where: {
         channelId_userId: {
-          channelId: params.id,
-          userId: params.userId
+          channelId: id,
+          userId: userId
         }
       }
     });
@@ -52,7 +53,7 @@ export async function PATCH(
     if (targetMembership.role === 'admin' && role !== 'admin') {
       const adminCount = await prisma.channelMember.count({
         where: {
-          channelId: params.id,
+          channelId: id,
           role: 'admin'
         }
       });
@@ -66,8 +67,8 @@ export async function PATCH(
     const updatedMembership = await prisma.channelMember.update({
       where: {
         channelId_userId: {
-          channelId: params.id,
-          userId: params.userId
+          channelId: id,
+          userId: userId
         }
       },
       data: { role }

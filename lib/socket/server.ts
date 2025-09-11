@@ -1775,4 +1775,8 @@ export function getSocketServer(): SocketServer | null {
   return socketServer;
 }
 
+export function getSocketInstance(): SocketIOServer | null {
+  return socketServer ? socketServer.getIO() : null;
+}
+
 export default SocketServer;

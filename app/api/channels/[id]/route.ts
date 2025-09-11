@@ -5,9 +5,10 @@ import { prisma } from '@/lib/prisma';
 // PATCH /api/channels/[id] - Update channel info
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const currentUser = await getCurrentUser(request);
     if (!currentUser) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -20,7 +21,7 @@ export async function PATCH(
     const membership = await prisma.channelMember.findUnique({
       where: {
         channelId_userId: {
-          channelId: params.id,
+          channelId: id,
           userId: currentUser.id
         }
       }
@@ -32,7 +33,7 @@ export async function PATCH(
 
     // Update channel
     const updatedChannel = await prisma.channel.update({
-      where: { id: params.id },
+      where: { id: id },
       data: {
         name: name || undefined,
         description: description || undefined
@@ -52,9 +53,10 @@ export async function PATCH(
 // DELETE /api/channels/[id] - Delete channel (admin only)
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const currentUser = await getCurrentUser(request);
     if (!currentUser) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -64,7 +66,7 @@ export async function DELETE(
     const membership = await prisma.channelMember.findUnique({
       where: {
         channelId_userId: {
-          channelId: params.id,
+          channelId: id,
           userId: currentUser.id
         }
       }
@@ -76,7 +78,7 @@ export async function DELETE(
 
     // Archive channel instead of hard delete
     await prisma.channel.update({
-      where: { id: params.id },
+      where: { id: id },
       data: { isArchived: true }
     });
 

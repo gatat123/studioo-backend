@@ -5,9 +5,10 @@ import { prisma } from '@/lib/prisma';
 // DELETE /api/channels/[id]/members/[userId] - Remove member from channel
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string; userId: string } }
+  { params }: { params: Promise<{ id: string; userId: string }> }
 ) {
   try {
+    const { id, userId } = await params;
     const currentUser = await getCurrentUser(request);
     if (!currentUser) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -17,7 +18,7 @@ export async function DELETE(
     const currentMembership = await prisma.channelMember.findUnique({
       where: {
         channelId_userId: {
-          channelId: params.id,
+          channelId: id,
           userId: currentUser.id
         }
       }
@@ -31,8 +32,8 @@ export async function DELETE(
     const targetMembership = await prisma.channelMember.findUnique({
       where: {
         channelId_userId: {
-          channelId: params.id,
-          userId: params.userId
+          channelId: id,
+          userId: userId
         }
       }
     });
@@ -45,7 +46,7 @@ export async function DELETE(
     if (targetMembership.role === 'admin') {
       const adminCount = await prisma.channelMember.count({
         where: {
-          channelId: params.id,
+          channelId: id,
           role: 'admin'
         }
       });
@@ -59,8 +60,8 @@ export async function DELETE(
     await prisma.channelMember.delete({
       where: {
         channelId_userId: {
-          channelId: params.id,
-          userId: params.userId
+          channelId: id,
+          userId: userId
         }
       }
     });

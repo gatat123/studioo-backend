@@ -5,7 +5,8 @@ import { prisma } from '@/lib/prisma';
 // DELETE /api/admin/projects/[id] - Delete a project (Admin only)
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
+  const { id } = await params;
 ) {
   try {
     const currentUser = await getCurrentUser(request);
@@ -15,7 +16,7 @@ export async function DELETE(
 
     // Delete project and all related data (cascade)
     await prisma.project.delete({
-      where: { id: params.id }
+      where: { id: id }
     });
 
     return NextResponse.json({ message: 'Project deleted successfully' });

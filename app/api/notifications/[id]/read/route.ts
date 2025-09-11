@@ -5,7 +5,8 @@ import { prisma } from '@/lib/prisma';
 // PUT /api/notifications/[id]/read - Mark notification as read
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
+  const { id } = await params;
 ) {
   try {
     const currentUser = await getCurrentUser(request);
@@ -16,7 +17,7 @@ export async function PUT(
     // Verify notification belongs to user
     const notification = await prisma.notification.findFirst({
       where: {
-        id: params.id,
+        id: id,
         userId: currentUser.id
       }
     });
@@ -27,7 +28,7 @@ export async function PUT(
 
     // Update notification
     const updated = await prisma.notification.update({
-      where: { id: params.id },
+      where: { id: id },
       data: {
         isRead: true,
         readAt: new Date()

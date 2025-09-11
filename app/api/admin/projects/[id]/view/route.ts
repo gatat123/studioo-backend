@@ -5,7 +5,8 @@ import { prisma } from '@/lib/prisma';
 // POST /api/admin/projects/[id]/view - Admin views a project (invisible join)
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
+  const { id } = await params;
 ) {
   try {
     const currentUser = await getCurrentUser(request);
@@ -15,7 +16,7 @@ export async function POST(
 
     // Check if project exists
     const project = await prisma.project.findUnique({
-      where: { id: params.id }
+      where: { id: id }
     });
 
     if (!project) {
@@ -26,7 +27,7 @@ export async function POST(
     const existingParticipant = await prisma.projectParticipant.findUnique({
       where: {
         projectId_userId: {
-          projectId: params.id,
+          projectId: id,
           userId: currentUser.id
         }
       }
@@ -35,7 +36,7 @@ export async function POST(
     if (!existingParticipant) {
       await prisma.projectParticipant.create({
         data: {
-          projectId: params.id,
+          projectId: id,
           userId: currentUser.id,
           role: 'admin_viewer' // Special role for admin viewing
         }
@@ -44,7 +45,7 @@ export async function POST(
 
     return NextResponse.json({ 
       message: 'Admin viewing mode enabled',
-      projectId: params.id 
+      projectId: id 
     });
   } catch (error) {
     console.error('Error viewing project:', error);
