@@ -6,9 +6,9 @@ import { prisma } from '@/lib/prisma';
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
-  const { id } = await params;
 ) {
   try {
+    const { id } = await params;
     const currentUser = await getCurrentUser(request);
     if (!currentUser || !currentUser.isAdmin) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
