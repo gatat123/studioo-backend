@@ -5,8 +5,9 @@ import { unlink } from "fs/promises";
 import path from "path";
 
 // GET /api/images/[id] - 이미지 상세 정보 조회
-async function getImage(req: AuthenticatedRequest, context: { params: any }) {
-  const imageId = context.params.id;
+async function getImage(req: AuthenticatedRequest, context: { params: Promise<{ id: string }> }) {
+  const params = await context.params;
+  const imageId = params.id;
   try {
     const image = await prisma.image.findUnique({
       where: { id: imageId },
@@ -100,8 +101,9 @@ async function getImage(req: AuthenticatedRequest, context: { params: any }) {
 }
 
 // DELETE /api/images/[id] - 이미지 삭제
-async function deleteImage(req: AuthenticatedRequest, context: { params: any }) {
-  const imageId = context.params.id;
+async function deleteImage(req: AuthenticatedRequest, context: { params: Promise<{ id: string }> }) {
+  const params = await context.params;
+  const imageId = params.id;
   try {
     // 이미지 정보 조회
     const image = await prisma.image.findUnique({

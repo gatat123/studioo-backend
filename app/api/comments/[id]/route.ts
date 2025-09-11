@@ -8,8 +8,9 @@ const updateCommentSchema = z.object({
 });
 
 // PUT /api/comments/[id] - 댓글 수정
-async function updateComment(req: AuthenticatedRequest, context: { params: { id: string } }) {
-  const commentId = context.params.id;
+async function updateComment(req: AuthenticatedRequest, context: { params: Promise<{ id: string }> }) {
+  const params = await context.params;
+  const commentId = params.id;
   try {
     const body = await req.json();
     const { content } = updateCommentSchema.parse(body);
@@ -143,8 +144,9 @@ async function updateComment(req: AuthenticatedRequest, context: { params: { id:
 }
 
 // DELETE /api/comments/[id] - 댓글 삭제
-async function deleteComment(req: AuthenticatedRequest, context: { params: { id: string } }) {
-  const commentId = context.params.id;
+async function deleteComment(req: AuthenticatedRequest, context: { params: Promise<{ id: string }> }) {
+  const params = await context.params;
+  const commentId = params.id;
   try {
     // 댓글 정보 조회
     const comment = await prisma.comment.findUnique({

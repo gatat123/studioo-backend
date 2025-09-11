@@ -6,8 +6,9 @@ import { z } from 'zod';
 // GET: 채널 멤버 목록 조회
 export async function GET(
   request: NextRequest,
-  { params }: { params: { channelId: string } }
+  context: { params: Promise<{ channelId: string }> }
 ) {
+  const params = await context.params;
   try {
     const currentUser = await getCurrentUser(request);
     if (!currentUser) {
@@ -81,8 +82,9 @@ const inviteMemberSchema = z.object({
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { channelId: string } }
+  context: { params: Promise<{ channelId: string }> }
 ) {
+  const params = await context.params;
   try {
     const currentUser = await getCurrentUser(request);
     if (!currentUser) {
@@ -184,8 +186,9 @@ export async function POST(
 // DELETE: 채널 나가기
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { channelId: string } }
+  context: { params: Promise<{ channelId: string }> }
 ) {
+  const params = await context.params;
   try {
     const currentUser = await getCurrentUser(request);
     if (!currentUser) {

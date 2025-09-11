@@ -6,8 +6,9 @@ import { z } from 'zod';
 // GET: 채널 메시지 내역 조회
 export async function GET(
   request: NextRequest,
-  { params }: { params: { channelId: string } }
+  context: { params: Promise<{ channelId: string }> }
 ) {
+  const params = await context.params;
   try {
     const currentUser = await getCurrentUser(request);
     if (!currentUser) {
@@ -96,8 +97,9 @@ const sendMessageSchema = z.object({
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { channelId: string } }
+  context: { params: Promise<{ channelId: string }> }
 ) {
+  const params = await context.params;
   try {
     const currentUser = await getCurrentUser(request);
     if (!currentUser) {

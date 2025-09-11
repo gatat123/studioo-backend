@@ -25,9 +25,9 @@ const updateAnnotationSchema = z.object({
 // GET /api/annotations/[id] - 특정 주석 상세 조회
 async function getAnnotation(
   req: AuthenticatedRequest,
-  context: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
-  const { params } = context;
+  const params = await context.params;
   try {
     const annotationId = params.id;
     const annotation = await prisma.annotation.findUnique({
@@ -89,9 +89,9 @@ async function getAnnotation(
 // PUT /api/annotations/[id] - 주석 수정
 async function updateAnnotation(
   req: AuthenticatedRequest,
-  context: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
-  const { params } = context;
+  const params = await context.params;
   try {
     const annotationId = params.id;
     const body = await req.json();
@@ -228,9 +228,9 @@ async function updateAnnotation(
 // DELETE /api/annotations/[id] - 주석 삭제
 async function deleteAnnotation(
   req: AuthenticatedRequest,
-  context: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
-  const { params } = context;
+  const params = await context.params;
   try {
     const annotationId = params.id;
     // 주석 정보 조회
