@@ -134,9 +134,15 @@ export async function PATCH(
         },
       });
 
+      // Convert BigInt to string for JSON serialization
+      const serializedImage = updatedImage ? {
+        ...updatedImage,
+        fileSize: updatedImage.fileSize ? updatedImage.fileSize.toString() : null,
+      } : null;
+
       return NextResponse.json({
         success: true,
-        image: updatedImage,
+        image: serializedImage,
       });
     } catch (error) {
       console.error("Error updating image:", error);
@@ -227,9 +233,19 @@ export async function GET(
         );
       }
 
+      // Convert BigInt to string for JSON serialization
+      const serializedImage = {
+        ...image,
+        fileSize: image.fileSize ? image.fileSize.toString() : null,
+        history: image.history ? image.history.map((h: any) => ({
+          ...h,
+          // If history has any BigInt fields, convert them here
+        })) : [],
+      };
+
       return NextResponse.json({
         success: true,
-        image: image,
+        image: serializedImage,
       });
     } catch (error) {
       console.error("Error getting image:", error);
