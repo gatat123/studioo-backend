@@ -47,6 +47,7 @@ async function handleGetProfile(request: NextRequest) {
         username: true,
         email: true,
         nickname: true,
+        bio: true,  // bio 필드 추가
         profileImageUrl: true,
         isAdmin: true,
         createdAt: true,
