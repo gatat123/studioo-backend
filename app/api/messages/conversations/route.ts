@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyToken } from '@/lib/utils/jwt';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { getCurrentUser } from '@/lib/jwt';
+import { prisma } from '@/lib/prisma';
 
 // GET /api/messages/conversations - Get all conversations with last message
 export async function GET(request: NextRequest) {
   try {
-    const userId = await verifyToken(request);
-    if (!userId) {
+    const currentUser = await getCurrentUser(request);
+    if (!currentUser) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
+    
+    const userId = currentUser.id;
 
     // Get all messages grouped by conversation
     const messages = await prisma.message.findMany({
