@@ -38,7 +38,16 @@ async function handleUploadProfileImage(request: NextRequest) {
       return ApiResponse.badRequest('Failed to parse form data');
     }
     
-    const file = formData.get('file') as any;
+    // Try both 'file' and 'image' keys as different clients might use different names
+    let file = formData.get('file') as any;
+    if (!file) {
+      file = formData.get('image') as any;
+      if (file) {
+        console.log('[Profile Image Upload] File found under "image" key');
+      }
+    } else {
+      console.log('[Profile Image Upload] File found under "file" key');
+    }
     
     console.log('[Profile Image Upload] File from FormData:', {
       exists: !!file,
