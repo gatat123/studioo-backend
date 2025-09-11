@@ -3,6 +3,7 @@ import { prisma } from '@/lib/prisma/db';
 import { verifyAccessToken } from '@/lib/jwt';
 import { handleOptions, withCORS } from '@/lib/utils/cors';
 import { z } from 'zod';
+import { getSocketInstance } from '@/lib/socket/server';
 
 export async function OPTIONS(request: NextRequest) {
   return handleOptions(request);
@@ -217,6 +218,26 @@ export async function DELETE(request: NextRequest) {
     await prisma.friendship.delete({
       where: { id: friendship.id }
     });
+
+    // Send real-time notification via Socket.io
+    try {
+      const io = getSocketInstance();
+      if (io) {
+        const activeConnections = (io as any).activeConnections as Map<string, Set<string>>;
+        const friendSockets = activeConnections?.get(friendId);
+        
+        if (friendSockets && friendSockets.size > 0) {
+          friendSockets.forEach((socketId) => {
+            io.to(socketId).emit('friend_removed', {
+              removedBy: decoded.userId,
+              timestamp: new Date()
+            });
+          });
+        }
+      }
+    } catch (socketError) {
+      console.error('Socket notification error:', socketError);
+    }
 
     return withCORS(NextResponse.json({
       success: true,

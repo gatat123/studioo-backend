@@ -3,6 +3,7 @@ import { prisma } from '@/lib/prisma/db';
 import { verifyAccessToken } from '@/lib/jwt';
 import { handleOptions, withCORS } from '@/lib/utils/cors';
 import { z } from 'zod';
+import { getSocketInstance } from '@/lib/socket/server';
 
 export async function OPTIONS(request: NextRequest) {
   return handleOptions(request);
@@ -124,6 +125,17 @@ export async function POST(request: NextRequest) {
       ), request);
     }
 
+    // Get sender information
+    const sender = await prisma.user.findUnique({
+      where: { id: decoded.userId },
+      select: {
+        id: true,
+        username: true,
+        nickname: true,
+        profileImageUrl: true
+      }
+    });
+
     // Create new friend request
     const friendRequest = await prisma.friendRequest.create({
       data: {
@@ -140,6 +152,14 @@ export async function POST(request: NextRequest) {
             nickname: true,
             profileImageUrl: true
           }
+        },
+        sender: {
+          select: {
+            id: true,
+            username: true,
+            nickname: true,
+            profileImageUrl: true
+          }
         }
       }
     });
@@ -150,9 +170,33 @@ export async function POST(request: NextRequest) {
         userId: receiverId,
         type: 'friend_request',
         title: 'New Friend Request',
-        content: `${decoded.username || 'Someone'} sent you a friend request`,
+        content: `${sender?.nickname || 'Someone'} sent you a friend request`,
       }
     });
+
+    // Send real-time notification via Socket.io
+    try {
+      const io = getSocketInstance();
+      if (io) {
+        // Find receiver's socket connections
+        const activeConnections = (io as any).activeConnections as Map<string, Set<string>>;
+        const receiverSockets = activeConnections?.get(receiverId);
+        
+        if (receiverSockets && receiverSockets.size > 0) {
+          receiverSockets.forEach((socketId) => {
+            io.to(socketId).emit('friend_request_received', {
+              request: friendRequest,
+              sender: friendRequest.sender,
+              message,
+              timestamp: new Date()
+            });
+          });
+        }
+      }
+    } catch (socketError) {
+      console.error('Socket notification error:', socketError);
+      // Continue even if socket notification fails
+    }
 
     return withCORS(NextResponse.json({
       success: true,
@@ -250,6 +294,17 @@ export async function PUT(request: NextRequest) {
     }
 
     if (action === 'accept') {
+      // Get receiver information
+      const receiver = await prisma.user.findUnique({
+        where: { id: decoded.userId },
+        select: {
+          id: true,
+          username: true,
+          nickname: true,
+          profileImageUrl: true
+        }
+      });
+
       // Accept the request and create friendship
       await prisma.$transaction([
         prisma.friendRequest.update({
@@ -270,10 +325,31 @@ export async function PUT(request: NextRequest) {
             userId: friendRequest.senderId,
             type: 'friend_request_accepted',
             title: 'Friend Request Accepted',
-            content: `${decoded.username || 'Someone'} accepted your friend request`,
+            content: `${receiver?.nickname || 'Someone'} accepted your friend request`,
           }
         })
       ]);
+
+      // Send real-time notification via Socket.io
+      try {
+        const io = getSocketInstance();
+        if (io) {
+          const activeConnections = (io as any).activeConnections as Map<string, Set<string>>;
+          const senderSockets = activeConnections?.get(friendRequest.senderId);
+          
+          if (senderSockets && senderSockets.size > 0) {
+            senderSockets.forEach((socketId) => {
+              io.to(socketId).emit('friend_request_accepted', {
+                receiver,
+                requestId,
+                timestamp: new Date()
+              });
+            });
+          }
+        }
+      } catch (socketError) {
+        console.error('Socket notification error:', socketError);
+      }
 
       return withCORS(NextResponse.json({
         success: true,
@@ -288,6 +364,26 @@ export async function PUT(request: NextRequest) {
           respondedAt: new Date()
         }
       });
+
+      // Send real-time notification via Socket.io
+      try {
+        const io = getSocketInstance();
+        if (io) {
+          const activeConnections = (io as any).activeConnections as Map<string, Set<string>>;
+          const senderSockets = activeConnections?.get(friendRequest.senderId);
+          
+          if (senderSockets && senderSockets.size > 0) {
+            senderSockets.forEach((socketId) => {
+              io.to(socketId).emit('friend_request_rejected', {
+                requestId,
+                timestamp: new Date()
+              });
+            });
+          }
+        }
+      } catch (socketError) {
+        console.error('Socket notification error:', socketError);
+      }
 
       return withCORS(NextResponse.json({
         success: true,

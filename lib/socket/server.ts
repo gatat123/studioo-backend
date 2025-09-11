@@ -1314,6 +1314,228 @@ export class SocketServer {
         timestamp: new Date()
       });
     });
+
+    // 채널 초대 전송
+    socket.on("send_channel_invite", async (data: {
+      channelId: string;
+      inviteeId: string;
+    }) => {
+      try {
+        // 채널 멤버십 확인 (초대하는 사람이 채널 멤버인지)
+        const membership = await prisma.channelMember.findUnique({
+          where: {
+            channelId_userId: {
+              channelId: data.channelId,
+              userId: socket.userId
+            }
+          }
+        });
+
+        if (!membership) {
+          socket.emit("channel_invite_error", {
+            error: "Not a member of this channel"
+          });
+          return;
+        }
+
+        // 이미 멤버인지 확인
+        const existingMember = await prisma.channelMember.findUnique({
+          where: {
+            channelId_userId: {
+              channelId: data.channelId,
+              userId: data.inviteeId
+            }
+          }
+        });
+
+        if (existingMember) {
+          socket.emit("channel_invite_error", {
+            error: "User is already a member"
+          });
+          return;
+        }
+
+        // 이미 초대가 있는지 확인
+        const existingInvite = await prisma.channelInvite.findFirst({
+          where: {
+            channelId: data.channelId,
+            inviteeId: data.inviteeId,
+            status: 'pending'
+          }
+        });
+
+        if (existingInvite) {
+          socket.emit("channel_invite_error", {
+            error: "Invite already sent"
+          });
+          return;
+        }
+
+        // 채널 정보 조회
+        const channel = await prisma.channel.findUnique({
+          where: { id: data.channelId },
+          select: {
+            id: true,
+            name: true,
+            description: true
+          }
+        });
+
+        // 초대 생성
+        const invite = await prisma.channelInvite.create({
+          data: {
+            channelId: data.channelId,
+            inviterId: socket.userId,
+            inviteeId: data.inviteeId,
+            expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days
+          },
+          include: {
+            channel: {
+              select: {
+                id: true,
+                name: true,
+                description: true
+              }
+            },
+            inviter: {
+              select: {
+                id: true,
+                username: true,
+                nickname: true,
+                profileImageUrl: true
+              }
+            },
+            invitee: {
+              select: {
+                id: true,
+                username: true,
+                nickname: true,
+                profileImageUrl: true
+              }
+            }
+          }
+        });
+
+        // 초대 전송 확인
+        socket.emit("channel_invite_sent", {
+          invite,
+          timestamp: new Date()
+        });
+
+        // 초대받는 사람에게 실시간 알림
+        const inviteeSockets = this.activeConnections.get(data.inviteeId);
+        if (inviteeSockets && inviteeSockets.size > 0) {
+          inviteeSockets.forEach((socketId) => {
+            this.io.to(socketId).emit("channel_invite_received", {
+              invite,
+              timestamp: new Date()
+            });
+          });
+        }
+
+        // 알림 생성
+        await prisma.notification.create({
+          data: {
+            userId: data.inviteeId,
+            type: 'channel_invite',
+            title: '채널 초대',
+            content: `${socket.user.nickname}님이 ${channel?.name} 채널에 초대했습니다`
+          }
+        });
+      } catch (error) {
+        console.error("Channel invite error:", error);
+        socket.emit("channel_invite_error", {
+          error: "Failed to send invite"
+        });
+      }
+    });
+
+    // 채널 초대 수락
+    socket.on("accept_channel_invite", async (data: {
+      inviteId: string;
+    }) => {
+      try {
+        // 초대 조회
+        const invite = await prisma.channelInvite.findUnique({
+          where: { id: data.inviteId },
+          include: {
+            channel: true,
+            inviter: {
+              select: {
+                id: true,
+                username: true,
+                nickname: true,
+                profileImageUrl: true
+              }
+            }
+          }
+        });
+
+        if (!invite || invite.inviteeId !== socket.userId) {
+          socket.emit("channel_invite_error", {
+            error: "Invalid invite"
+          });
+          return;
+        }
+
+        if (invite.status !== 'pending') {
+          socket.emit("channel_invite_error", {
+            error: "Invite already processed"
+          });
+          return;
+        }
+
+        // 채널 멤버 추가
+        await prisma.channelMember.create({
+          data: {
+            channelId: invite.channelId,
+            userId: socket.userId,
+            role: 'member'
+          }
+        });
+
+        // 초대 상태 업데이트
+        await prisma.channelInvite.update({
+          where: { id: data.inviteId },
+          data: {
+            status: 'accepted',
+            acceptedAt: new Date()
+          }
+        });
+
+        // 수락 확인
+        socket.emit("channel_invite_accepted", {
+          channelId: invite.channelId,
+          channel: invite.channel,
+          timestamp: new Date()
+        });
+
+        // 채널 멤버들에게 알림
+        const roomId = `channel:${invite.channelId}`;
+        this.io.to(roomId).emit("member_joined_channel", {
+          userId: socket.userId,
+          user: socket.user,
+          timestamp: new Date()
+        });
+
+        // 초대한 사람에게 알림
+        const inviterSockets = this.activeConnections.get(invite.inviterId);
+        if (inviterSockets && inviterSockets.size > 0) {
+          inviterSockets.forEach((socketId) => {
+            this.io.to(socketId).emit("channel_invite_accepted_notification", {
+              acceptedBy: socket.user,
+              channel: invite.channel,
+              timestamp: new Date()
+            });
+          });
+        }
+      } catch (error) {
+        console.error("Accept channel invite error:", error);
+        socket.emit("channel_invite_error", {
+          error: "Failed to accept invite"
+        });
+      }
+    });
   }
 
   /**
