@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
             id: true,
             name: true,
             description: true,
-            isPrivate: true,
+            type: true,
             _count: {
               select: {
                 members: true
