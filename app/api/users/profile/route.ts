@@ -4,8 +4,12 @@ import { hash, compare } from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 import { withAuth, ApiResponse } from '@/lib/middleware/auth';
 
-// 프로필 업데이트 스키마 - nickname과 username 제거 (변경 불가)
+// 프로필 업데이트 스키마
 const updateProfileSchema = z.object({
+  nickname: z.string()
+    .min(2, 'Nickname must be at least 2 characters')
+    .max(50, 'Nickname must be less than 50 characters')
+    .optional(),
   bio: z.string()
     .max(500, 'Bio must be less than 500 characters')
     .optional(),
@@ -113,6 +117,9 @@ async function handleUpdateProfile(request: NextRequest) {
     const user = (request as any).user;
     const body = await request.json();
 
+    console.log('[Profile Update] Request body:', body);
+    console.log('[Profile Update] User ID:', user.id);
+
     // 입력값 검증
     const validation = updateProfileSchema.safeParse(body);
     if (!validation.success) {
@@ -138,6 +145,11 @@ async function handleUpdateProfile(request: NextRequest) {
 
     if (!currentUser) {
       return ApiResponse.notFound('User not found');
+    }
+
+    // nickname 업데이트
+    if (data.nickname !== undefined) {
+      updateData.nickname = data.nickname;
     }
 
     // bio 업데이트
@@ -183,8 +195,11 @@ async function handleUpdateProfile(request: NextRequest) {
 
     // 업데이트할 내용이 없는 경우
     if (Object.keys(updateData).length === 0) {
+      console.log('[Profile Update] No updates provided');
       return ApiResponse.error('No updates provided');
     }
+
+    console.log('[Profile Update] Update data:', updateData);
 
     // 프로필 업데이트
     const updatedUser = await prisma.user.update({
@@ -198,6 +213,7 @@ async function handleUpdateProfile(request: NextRequest) {
         username: true,
         email: true,
         nickname: true,
+        bio: true,  // bio 필드 추가
         profileImageUrl: true,
         isAdmin: true,
         createdAt: true,
@@ -208,7 +224,7 @@ async function handleUpdateProfile(request: NextRequest) {
 
     return ApiResponse.success({
       message: 'Profile updated successfully',
-      profile: updatedUser
+      user: updatedUser  // 'profile' 대신 'user'로 변경 (프론트엔드 호환성)
     });
 
   } catch (error) {
