@@ -6,7 +6,7 @@ import { z } from 'zod';
 // GET: 채널 멤버 목록 조회
 export async function GET(
   request: NextRequest,
-  context: { params: Promise<{ channelId: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   const params = await context.params;
   try {
@@ -19,7 +19,7 @@ export async function GET(
     const membership = await prisma.channelMember.findUnique({
       where: {
         channelId_userId: {
-          channelId: params.channelId,
+          channelId: params.id,
           userId: currentUser.id
         }
       }
@@ -32,7 +32,7 @@ export async function GET(
     // 멤버 목록 조회
     const members = await prisma.channelMember.findMany({
       where: {
-        channelId: params.channelId
+        channelId: params.id
       },
       include: {
         user: {
@@ -82,7 +82,7 @@ const inviteMemberSchema = z.object({
 
 export async function POST(
   request: NextRequest,
-  context: { params: Promise<{ channelId: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   const params = await context.params;
   try {
@@ -95,7 +95,7 @@ export async function POST(
     const inviterMembership = await prisma.channelMember.findUnique({
       where: {
         channelId_userId: {
-          channelId: params.channelId,
+          channelId: params.id,
           userId: currentUser.id
         }
       }
@@ -121,7 +121,7 @@ export async function POST(
     const existingMember = await prisma.channelMember.findUnique({
       where: {
         channelId_userId: {
-          channelId: params.channelId,
+          channelId: params.id,
           userId
         }
       }
@@ -134,7 +134,7 @@ export async function POST(
     // 이미 보류 중인 초대가 있는지 확인
     const existingInvite = await prisma.channelInvite.findFirst({
       where: {
-        channelId: params.channelId,
+        channelId: params.id,
         inviteeId: userId,
         status: 'pending'
       }
@@ -147,7 +147,7 @@ export async function POST(
     // 초대 생성
     const invite = await prisma.channelInvite.create({
       data: {
-        channelId: params.channelId,
+        channelId: params.id,
         inviterId: currentUser.id,
         inviteeId: userId,
         expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7일 후 만료
@@ -182,7 +182,7 @@ export async function POST(
     // 시스템 메시지 생성
     await prisma.channelMessage.create({
       data: {
-        channelId: params.channelId,
+        channelId: params.id,
         senderId: currentUser.id,
         content: message || `${currentUser.nickname}님이 새 멤버를 초대했습니다.`,
         type: 'system'
@@ -212,7 +212,7 @@ export async function DELETE(
     const membership = await prisma.channelMember.findUnique({
       where: {
         channelId_userId: {
-          channelId: params.channelId,
+          channelId: params.id,
           userId: currentUser.id
         }
       }
@@ -224,7 +224,7 @@ export async function DELETE(
 
     // 채널 생성자는 나갈 수 없음
     const channel = await prisma.channel.findUnique({
-      where: { id: params.channelId },
+      where: { id: params.id },
       select: { creatorId: true }
     });
 
@@ -236,7 +236,7 @@ export async function DELETE(
     await prisma.channelMember.delete({
       where: {
         channelId_userId: {
-          channelId: params.channelId,
+          channelId: params.id,
           userId: currentUser.id
         }
       }
@@ -245,7 +245,7 @@ export async function DELETE(
     // 시스템 메시지 생성
     await prisma.channelMessage.create({
       data: {
-        channelId: params.channelId,
+        channelId: params.id,
         senderId: currentUser.id,
         content: `${currentUser.nickname}님이 채널을 나갔습니다.`,
         type: 'system'

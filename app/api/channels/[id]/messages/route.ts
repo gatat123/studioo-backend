@@ -6,7 +6,7 @@ import { z } from 'zod';
 // GET: 채널 메시지 내역 조회
 export async function GET(
   request: NextRequest,
-  context: { params: Promise<{ channelId: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   const params = await context.params;
   try {
@@ -23,7 +23,7 @@ export async function GET(
     const membership = await prisma.channelMember.findUnique({
       where: {
         channelId_userId: {
-          channelId: params.channelId,
+          channelId: params.id,
           userId: currentUser.id
         }
       }
@@ -36,7 +36,7 @@ export async function GET(
     // 메시지 조회
     const messages = await prisma.channelMessage.findMany({
       where: {
-        channelId: params.channelId,
+        channelId: params.id,
         deletedAt: null,
         ...(cursor ? { createdAt: { lt: new Date(cursor) } } : {})
       },
@@ -68,7 +68,7 @@ export async function GET(
     await prisma.channelMember.update({
       where: {
         channelId_userId: {
-          channelId: params.channelId,
+          channelId: params.id,
           userId: currentUser.id
         }
       },
@@ -97,7 +97,7 @@ const sendMessageSchema = z.object({
 
 export async function POST(
   request: NextRequest,
-  context: { params: Promise<{ channelId: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   const params = await context.params;
   try {
@@ -110,7 +110,7 @@ export async function POST(
     const membership = await prisma.channelMember.findUnique({
       where: {
         channelId_userId: {
-          channelId: params.channelId,
+          channelId: params.id,
           userId: currentUser.id
         }
       }
@@ -135,7 +135,7 @@ export async function POST(
     // 메시지 생성
     const message = await prisma.channelMessage.create({
       data: {
-        channelId: params.channelId,
+        channelId: params.id,
         senderId: currentUser.id,
         content,
         type,
@@ -156,7 +156,7 @@ export async function POST(
 
     // 채널 업데이트 시간 갱신
     await prisma.channel.update({
-      where: { id: params.channelId },
+      where: { id: params.id },
       data: { updatedAt: new Date() }
     });
 
