@@ -105,10 +105,12 @@ export async function PATCH(
             data: {
               projectId: scene.projectId,
               userId: authReq.user.userId,
-              action: "image_version_changed",
-              details: {
+              actionType: "image_version_changed",
+              targetType: "image",
+              targetId: imageId,
+              description: `Set ${image.type} image as current version`,
+              metadata: {
                 sceneId: sceneId,
-                imageId: imageId,
                 imageType: image.type,
                 action: "set_as_current",
               },
