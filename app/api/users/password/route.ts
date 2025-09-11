@@ -26,7 +26,7 @@ async function handleChangePassword(request: NextRequest) {
     // 사용자 정보 조회 (비밀번호 포함)
     const existingUser = await prisma.user.findUnique({
       where: { id: user.id },
-      select: { password: true }
+      select: { passwordHash: true }
     });
 
     if (!existingUser) {
@@ -34,13 +34,13 @@ async function handleChangePassword(request: NextRequest) {
     }
 
     // 현재 비밀번호 확인
-    const isPasswordValid = await bcrypt.compare(currentPassword, existingUser.password);
+    const isPasswordValid = await bcrypt.compare(currentPassword, existingUser.passwordHash);
     if (!isPasswordValid) {
       return ApiResponse.badRequest('Current password is incorrect');
     }
 
     // 새 비밀번호와 현재 비밀번호가 같은지 확인
-    const isSamePassword = await bcrypt.compare(newPassword, existingUser.password);
+    const isSamePassword = await bcrypt.compare(newPassword, existingUser.passwordHash);
     if (isSamePassword) {
       return ApiResponse.badRequest('New password must be different from current password');
     }
@@ -52,7 +52,7 @@ async function handleChangePassword(request: NextRequest) {
     await prisma.user.update({
       where: { id: user.id },
       data: {
-        password: hashedPassword,
+        passwordHash: hashedPassword,
         updatedAt: new Date()
       }
     });

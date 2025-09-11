@@ -1,10 +1,10 @@
 import { NextRequest } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { withAuth, ApiResponse } from '@/lib/middleware/auth';
-import { uploadFile } from '@/lib/services/upload';
 import sharp from 'sharp';
-import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
+import fs from 'fs/promises';
+import path from 'path';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
@@ -48,26 +48,17 @@ async function handleUploadProfileImage(request: NextRequest) {
 
     // 파일명 생성
     const filename = `${Date.now()}-${uuidv4().substring(0, 8)}.jpg`;
-    const uploadPath = `profiles/${user.id}`;
+    const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'profiles', user.id);
+    const filePath = path.join(uploadDir, filename);
 
-    // 파일 업로드
-    const uploadResult = await uploadFile({
-      buffer: processedImage,
-      filename,
-      path: uploadPath,
-      mimeType: 'image/jpeg'
-    });
+    // 디렉토리 생성
+    await fs.mkdir(uploadDir, { recursive: true });
 
-    // 이전 프로필 이미지 URL 가져오기
-    const currentUser = await prisma.user.findUnique({
-      where: { id: user.id },
-      select: { profileImageUrl: true }
-    });
-
-    // 이전 이미지가 파일 시스템에 저장된 경우 삭제 로직 추가 가능
+    // 파일 저장
+    await fs.writeFile(filePath, processedImage);
 
     // 데이터베이스에 URL 저장
-    const profileImageUrl = `/uploads/${uploadPath}/${filename}`;
+    const profileImageUrl = `/uploads/profiles/${user.id}/${filename}`;
     
     const updatedUser = await prisma.user.update({
       where: { id: user.id },
@@ -105,12 +96,6 @@ async function handleUploadProfileImage(request: NextRequest) {
 async function handleDeleteProfileImage(request: NextRequest) {
   try {
     const user = (request as any).user;
-
-    // 이전 프로필 이미지 URL 가져오기
-    const currentUser = await prisma.user.findUnique({
-      where: { id: user.id },
-      select: { profileImageUrl: true }
-    });
 
     // 이전 이미지가 파일 시스템에 저장된 경우 삭제 로직 추가 가능
 
