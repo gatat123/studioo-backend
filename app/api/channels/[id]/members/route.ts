@@ -76,7 +76,7 @@ export async function GET(
 
 // POST: 채널에 멤버 초대
 const inviteMemberSchema = z.object({
-  userId: z.string().uuid(),
+  userId: z.string().min(1, 'User ID is required'),
   message: z.string().optional()
 });
 
@@ -106,9 +106,11 @@ export async function POST(
     }
 
     const body = await request.json();
+    console.log('Invite member request body:', body);
     const validation = inviteMemberSchema.safeParse(body);
 
     if (!validation.success) {
+      console.error('Validation failed:', validation.error.issues);
       return NextResponse.json(
         { error: 'Invalid input', details: validation.error.issues },
         { status: 400 }
