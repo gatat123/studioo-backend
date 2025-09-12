@@ -199,7 +199,7 @@ export async function POST(
 // DELETE: 채널 나가기
 export async function DELETE(
   request: NextRequest,
-  context: { params: Promise<{ channelId: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   const params = await context.params;
   try {
