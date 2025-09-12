@@ -22,6 +22,52 @@ const updateAnnotationSchema = z.object({
   content: z.string().max(1000, "내용은 1000자를 초과할 수 없습니다.").optional(),
   metadata: z.record(z.string(), z.any()).optional(),
 });
+
+// 공통 함수: 주석 조회 및 권한 확인
+async function getAnnotationWithPermission(
+  annotationId: string,
+  userId: string,
+  isAdmin: boolean
+) {
+  const annotation = await prisma.annotation.findUnique({
+    where: { id: annotationId },
+    include: {
+      image: {
+        include: {
+          scene: {
+            include: {
+              project: {
+                include: {
+                  participants: {
+                    where: { userId },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+
+  if (!annotation) {
+    return { error: "주석을 찾을 수 없습니다.", status: 404 };
+  }
+
+  const participation = annotation.image.scene.project.participants[0];
+  const isAuthor = annotation.userId === userId;
+  const isProjectCreator = annotation.image.scene.project.creatorId === userId;
+  const isProjectAdmin = participation?.role === "admin";
+
+  return {
+    annotation,
+    hasPermission: isAuthor || isProjectCreator || isProjectAdmin || isAdmin,
+    isAuthor,
+    isProjectCreator,
+    isProjectAdmin,
+  };
+}
+
 // GET /api/annotations/[id] - 특정 주석 상세 조회
 async function getAnnotation(
   req: AuthenticatedRequest,
@@ -96,44 +142,30 @@ async function updateAnnotation(
     const annotationId = params.id;
     const body = await req.json();
     const validatedData = updateAnnotationSchema.parse(body);
-    // 주석 정보 조회
-    const annotation = await prisma.annotation.findUnique({
-      where: { id: annotationId },
-      include: {
-        image: {
-          include: {
-            scene: {
-              include: {
-                project: {
-                  include: {
-                    participants: {
-                      where: { userId: req.user.userId },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    });
-    if (!annotation) {
+    
+    // 공통 함수로 주석 조회 및 권한 확인
+    const result = await getAnnotationWithPermission(
+      annotationId,
+      req.user.userId,
+      req.user.isAdmin
+    );
+    
+    if (result.error) {
       return NextResponse.json(
-        { success: false, error: "주석을 찾을 수 없습니다." },
-        { status: 404 }
+        { success: false, error: result.error },
+        { status: result.status }
       );
     }
-    // 권한 확인
-    const participation = annotation.image.scene.project.participants[0];
-    const isAuthor = annotation.userId === req.user.userId;
-    const isProjectCreator = annotation.image.scene.project.creatorId === req.user.userId;
-    const isProjectAdmin = participation?.role === "admin";
-    if (!isAuthor && !isProjectCreator && !isProjectAdmin && !req.user.isAdmin) {
+    
+    if (!result.hasPermission) {
       return NextResponse.json(
         { success: false, error: "주석 수정 권한이 없습니다." },
         { status: 403 }
       );
     }
+    
+    const { annotation } = result;
+    
     if (annotation.image.scene.project.status !== "active") {
       return NextResponse.json(
         { success: false, error: "활성 상태인 프로젝트에서만 주석을 수정할 수 있습니다." },
@@ -233,39 +265,22 @@ async function deleteAnnotation(
   const params = await context.params;
   try {
     const annotationId = params.id;
-    // 주석 정보 조회
-    const annotation = await prisma.annotation.findUnique({
-      where: { id: annotationId },
-      include: {
-        image: {
-          include: {
-            scene: {
-              include: {
-                project: {
-                  include: {
-                    participants: {
-                      where: { userId: req.user.userId },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    });
-    if (!annotation) {
+    
+    // 공통 함수로 주석 조회 및 권한 확인
+    const result = await getAnnotationWithPermission(
+      annotationId,
+      req.user.userId,
+      req.user.isAdmin
+    );
+    
+    if (result.error) {
       return NextResponse.json(
-        { success: false, error: "주석을 찾을 수 없습니다." },
-        { status: 404 }
+        { success: false, error: result.error },
+        { status: result.status }
       );
     }
-    // 권한 확인
-    const participation = annotation.image.scene.project.participants[0];
-    const isAuthor = annotation.userId === req.user.userId;
-    const isProjectCreator = annotation.image.scene.project.creatorId === req.user.userId;
-    const isProjectAdmin = participation?.role === "admin";
-    if (!isAuthor && !isProjectCreator && !isProjectAdmin && !req.user.isAdmin) {
+    
+    if (!result.hasPermission) {
       return NextResponse.json(
         { success: false, error: "주석 삭제 권한이 없습니다." },
         { status: 403 }
