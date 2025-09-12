@@ -41,7 +41,7 @@ export interface UserPresence {
 }
 
 export class SocketServer {
-  private io: SocketIOServer;
+  private readonly io: SocketIOServer;
   private readonly httpServer: HTTPServer;
   private rooms: Map<string, RoomData> = new Map();
   private userPresence: Map<string, UserPresence> = new Map();

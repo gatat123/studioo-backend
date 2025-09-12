@@ -204,7 +204,7 @@ export class CollaborationService {
         where.sceneId = sceneId;
       }
 
-      const activeUsers = await prisma.userPresence.findMany({
+      return await prisma.userPresence.findMany({
         where,
         include: {
           user: {
@@ -218,8 +218,6 @@ export class CollaborationService {
         },
         orderBy: { lastActivity: "desc" },
       });
-
-      return activeUsers;
     } catch (error) {
       console.error("Failed to get active users:", error);
       throw error;
@@ -445,7 +443,7 @@ export class CollaborationService {
         "join_project",
       ];
 
-      const activities = await prisma.collaborationLog.findMany({
+      return await prisma.collaborationLog.findMany({
         where: {
           projectId,
           actionType: { in: importantActionTypes },
@@ -463,8 +461,6 @@ export class CollaborationService {
         orderBy: { createdAt: "desc" },
         take: limit,
       });
-
-      return activities;
     } catch (error) {
       console.error("Failed to get recent important activity:", error);
       throw error;

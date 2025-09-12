@@ -286,6 +286,9 @@ async function deleteAnnotation(
         { status: 403 }
       );
     }
+    
+    const { annotation } = result;
+    
     await prisma.$transaction(async (tx) => {
       // 주석 삭제
       await tx.annotation.delete({
