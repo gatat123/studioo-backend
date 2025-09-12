@@ -25,8 +25,7 @@ export async function verifyJWT(token: string) {
       throw new Error('JWT_SECRET is not defined');
     }
 
-    const decoded = jwt.verify(token, JWT_SECRET) as any;
-    return decoded;
+    return jwt.verify(token, JWT_SECRET) as any;
   } catch (error) {
     console.error('JWT verification failed:', error);
     return null;

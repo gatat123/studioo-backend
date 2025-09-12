@@ -43,7 +43,7 @@ const DEFAULT_OPTIONS: UploadOptions = {
  * 파일 업로드 서비스 클래스
  */
 export class UploadService {
-  private baseUploadDir: string;
+  private readonly baseUploadDir: string;
 
   constructor() {
     this.baseUploadDir = path.join(process.cwd(), 'public', 'uploads');

@@ -44,7 +44,7 @@ export class CollaborationService {
    */
   static async logActivity(data: CollaborationLogData) {
     try {
-      const log = await prisma.collaborationLog.create({
+      return await prisma.collaborationLog.create({
         data: {
           projectId: data.projectId,
           userId: data.userId,
@@ -65,8 +65,6 @@ export class CollaborationService {
           },
         },
       });
-
-      return log;
     } catch (error) {
       console.error("Failed to log collaboration activity:", error);
       throw error;
@@ -145,7 +143,7 @@ export class CollaborationService {
    */
   static async updateUserPresence(data: UserPresenceData) {
     try {
-      const presence = await prisma.userPresence.upsert({
+      return await prisma.userPresence.upsert({
         where: {
           userId_projectId: {
             userId: data.userId,
@@ -179,8 +177,6 @@ export class CollaborationService {
           },
         },
       });
-
-      return presence;
     } catch (error) {
       console.error("Failed to update user presence:", error);
       throw error;

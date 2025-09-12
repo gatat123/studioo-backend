@@ -99,7 +99,7 @@ export async function getCurrentUser(request: NextRequest) {
       return null;
     }
     
-    const user = await prisma.user.findUnique({
+    return await prisma.user.findUnique({
       where: { id: payload.userId },
       select: {
         id: true,
@@ -110,8 +110,6 @@ export async function getCurrentUser(request: NextRequest) {
         isAdmin: true,
       }
     });
-    
-    return user;
   } catch (error) {
     console.error("Error getting current user:", error);
     return null;

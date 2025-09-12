@@ -42,7 +42,7 @@ export interface UserPresence {
 
 export class SocketServer {
   private io: SocketIOServer;
-  private httpServer: HTTPServer;
+  private readonly httpServer: HTTPServer;
   private rooms: Map<string, RoomData> = new Map();
   private userPresence: Map<string, UserPresence> = new Map();
   private activeConnections: Map<string, Set<string>> = new Map(); // userId -> Set<socketId>
