@@ -1,0 +1,623 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String   @id @default(uuid())
+  username          String   @unique
+  email             String   @unique
+  passwordHash      String   @map("password_hash")
+  nickname          String   @unique
+  profileImageUrl   String?  @map("profile_image_url") @db.Text
+  bio               String?  @db.Text
+  isAdmin           Boolean  @default(false) @map("is_admin")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+  lastLoginAt       DateTime? @map("last_login_at")
+  isActive          Boolean  @default(true) @map("is_active")
+
+  studio            Studio?
+  createdProjects   Project[] @relation("ProjectCreator")
+  participations    ProjectParticipant[]
+  createdScenes     Scene[] @relation("SceneCreator")
+  uploadedImages    Image[] @relation("ImageUploader")
+  imageHistory      ImageHistory[]
+  comments          Comment[]
+  annotations       Annotation[]
+  presence          UserPresence[]
+  collaborationLogs CollaborationLog[]
+  notifications     Notification[]
+  
+  // Friend relationships
+  sentFriendRequests     FriendRequest[] @relation("FriendRequestSender")
+  receivedFriendRequests FriendRequest[] @relation("FriendRequestReceiver")
+  friendsAsUser1         Friendship[]    @relation("FriendshipUser1")
+  friendsAsUser2         Friendship[]    @relation("FriendshipUser2")
+  
+  // Messages
+  sentMessages           Message[]       @relation("MessageSender")
+  receivedMessages       Message[]       @relation("MessageReceiver")
+  
+  // Channels
+  createdChannels        Channel[]       @relation("ChannelCreator")
+  channelMemberships     ChannelMember[]
+  channelMessages        ChannelMessage[]
+  uploadedChannelFiles   ChannelFile[]
+  sentChannelInvites     ChannelInvite[] @relation("ChannelInviter")
+  receivedChannelInvites ChannelInvite[] @relation("ChannelInvitee")
+
+  // Admin System
+  userRoles              UserRole[]
+  assignedUserRoles      UserRole[]      @relation("UserRoleAssigner")
+  systemLogs             SystemLog[]
+  updatedSettings        SystemSetting[] @relation("SettingUpdater")
+  apiUsage               ApiUsage[]
+
+  @@index([username])
+  @@index([email])
+  @@index([nickname])
+  @@map("users")
+}
+
+model Studio {
+  id          String   @id @default(uuid())
+  userId      String   @unique @map("user_id")
+  name        String   @db.VarChar(255)
+  description String?  @db.Text
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projects    Project[]
+  channels    Channel[]
+
+  @@index([userId])
+  @@map("studios")
+}
+
+model Project {
+  id           String   @id @default(uuid())
+  studioId     String   @map("studio_id")
+  creatorId    String   @map("creator_id")
+  name         String   @db.VarChar(255)
+  description  String?  @db.Text
+  deadline     DateTime? @db.Date
+  tag          String?  @db.VarChar(50)
+  inviteCode   String?  @unique @map("invite_code") @db.VarChar(20)
+  status       String   @default("active") @db.VarChar(50)
+  hasUpdates   Boolean  @default(false) @map("has_updates")
+  overallStory String?  @map("overall_story") @db.Text  // 전체 스토리 (스토리보드용)
+  setList      Json?    @map("set_list")  // 세트 리스트
+  characterList Json?   @map("character_list")  // 캐릭터 리스트
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  studio            Studio     @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  creator           User       @relation("ProjectCreator", fields: [creatorId], references: [id])
+  participants      ProjectParticipant[]
+  scenes            Scene[]
+  comments          Comment[]
+  presence          UserPresence[]
+  collaborationLogs CollaborationLog[]
+  notifications     Notification[]
+
+  @@index([studioId])
+  @@index([creatorId])
+  @@index([inviteCode])
+  @@map("projects")
+}
+
+model ProjectParticipant {
+  id           String   @id @default(uuid())
+  projectId    String   @map("project_id")
+  userId       String   @map("user_id")
+  role         String   @default("member") @db.VarChar(50)
+  joinedAt     DateTime @default(now()) @map("joined_at")
+  lastViewedAt DateTime? @map("last_viewed_at")
+
+  project      Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, userId])
+  @@index([projectId])
+  @@index([userId])
+  @@map("project_participants")
+}
+
+model Scene {
+  id          String   @id @default(uuid())
+  projectId   String   @map("project_id")
+  sceneNumber Int      @map("scene_number")
+  description String?  @db.Text
+  notes       String?  @db.Text
+  script      Json?    @map("script")  // 씬 스크립트 (location, place, time, content)
+  createdBy   String   @map("created_by")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  project      Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  creator      User          @relation("SceneCreator", fields: [createdBy], references: [id])
+  images       Image[]
+  imageHistory ImageHistory[]
+  comments     Comment[]
+  presence     UserPresence[]
+
+  @@unique([projectId, sceneNumber])
+  @@index([projectId])
+  @@map("scenes")
+}
+
+model Image {
+  id         String   @id @default(uuid())
+  sceneId    String   @map("scene_id")
+  type       String   @db.VarChar(20)
+  fileUrl    String   @map("file_url") @db.Text
+  fileSize   BigInt?  @map("file_size")
+  width      Int?
+  height     Int?
+  format     String?  @db.VarChar(10)
+  isCurrent  Boolean  @default(true) @map("is_current")
+  uploadedBy String   @map("uploaded_by")
+  uploadedAt DateTime @default(now()) @map("uploaded_at")
+  metadata   Json?
+
+  scene        Scene          @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+  uploader     User           @relation("ImageUploader", fields: [uploadedBy], references: [id])
+  history      ImageHistory[]
+  annotations  Annotation[]
+
+  @@index([sceneId])
+  @@index([type])
+  @@index([sceneId, type, isCurrent])
+  @@map("images")
+}
+
+model ImageHistory {
+  id                String   @id @default(uuid())
+  imageId           String   @map("image_id")
+  sceneId           String   @map("scene_id")
+  versionNumber     Int      @map("version_number")
+  fileUrl           String   @map("file_url") @db.Text
+  uploadedBy        String   @map("uploaded_by")
+  uploadedAt        DateTime @default(now()) @map("uploaded_at")
+  changeDescription String?  @map("change_description") @db.Text
+
+  image     Image  @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  scene     Scene  @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+  uploader  User   @relation(fields: [uploadedBy], references: [id])
+
+  @@index([imageId])
+  @@index([sceneId])
+  @@map("image_history")
+}
+
+model Comment {
+  id              String   @id @default(uuid())
+  projectId       String?  @map("project_id")
+  sceneId         String?  @map("scene_id")
+  parentCommentId String?  @map("parent_comment_id")
+  userId          String   @map("user_id")
+  content         String   @db.Text
+  metadata        Json?    @map("metadata")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+  isEdited        Boolean  @default(false) @map("is_edited")
+  isDeleted       Boolean  @default(false) @map("is_deleted")
+
+  project       Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  scene         Scene?    @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+  parentComment Comment?  @relation("CommentReplies", fields: [parentCommentId], references: [id], onDelete: Cascade)
+  user          User      @relation(fields: [userId], references: [id])
+  replies       Comment[] @relation("CommentReplies")
+
+  @@index([projectId])
+  @@index([sceneId])
+  @@index([userId])
+  @@map("comments")
+}
+
+model Annotation {
+  id          String   @id @default(uuid())
+  imageId     String   @map("image_id")
+  userId      String   @map("user_id")
+  type        String   @db.VarChar(50)
+  positionX   Float    @map("position_x")
+  positionY   Float    @map("position_y")
+  width       Float?
+  height      Float?
+  content     String?  @db.Text
+  drawingData Json?    @map("drawing_data")
+  color       String?  @db.VarChar(7)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  image Image @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id])
+
+  @@index([imageId])
+  @@map("annotations")
+}
+
+model UserPresence {
+  id           String   @id @default(uuid())
+  userId       String   @map("user_id")
+  projectId    String?  @map("project_id")
+  sceneId      String?  @map("scene_id")
+  status       String?  @db.VarChar(20)
+  cursorX      Float?   @map("cursor_x")
+  cursorY      Float?   @map("cursor_y")
+  isTyping     Boolean  @default(false) @map("is_typing")
+  lastActivity DateTime @default(now()) @map("last_activity")
+  socketId     String?  @map("socket_id") @db.VarChar(255)
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  scene   Scene?   @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, projectId])
+  @@index([projectId])
+  @@index([status])
+  @@map("user_presence")
+}
+
+model CollaborationLog {
+  id         String   @id @default(uuid())
+  projectId  String   @map("project_id")
+  userId     String   @map("user_id")
+  actionType String   @map("action_type") @db.VarChar(50)
+  targetType String?  @map("target_type") @db.VarChar(50)
+  targetId   String?  @map("target_id")
+  description String? @db.Text
+  metadata   Json?
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id])
+
+  @@index([projectId])
+  @@index([userId])
+  @@index([createdAt(sort: Desc)])
+  @@map("collaboration_logs")
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  projectId String?  @map("project_id")
+  type      String   @db.VarChar(50)
+  title     String   @db.VarChar(255)
+  content   String?  @db.Text
+  isRead    Boolean  @default(false) @map("is_read")
+  createdAt DateTime @default(now()) @map("created_at")
+  readAt    DateTime? @map("read_at")
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead])
+  @@map("notifications")
+}
+
+model FriendRequest {
+  id          String   @id @default(uuid())
+  senderId    String   @map("sender_id")
+  receiverId  String   @map("receiver_id")
+  status      String   @default("pending") @db.VarChar(20) // pending, accepted, rejected, cancelled
+  message     String?  @db.Text
+  createdAt   DateTime @default(now()) @map("created_at")
+  respondedAt DateTime? @map("responded_at")
+
+  sender   User @relation("FriendRequestSender", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver User @relation("FriendRequestReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+
+  @@unique([senderId, receiverId])
+  @@index([receiverId, status])
+  @@index([senderId, status])
+  @@map("friend_requests")
+}
+
+model Friendship {
+  id        String   @id @default(uuid())
+  user1Id   String   @map("user1_id")
+  user2Id   String   @map("user2_id")
+  user1Memo String?  @map("user1_memo") @db.Text // user1이 user2에 대해 작성한 메모
+  user2Memo String?  @map("user2_memo") @db.Text // user2가 user1에 대해 작성한 메모
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user1 User @relation("FriendshipUser1", fields: [user1Id], references: [id], onDelete: Cascade)
+  user2 User @relation("FriendshipUser2", fields: [user2Id], references: [id], onDelete: Cascade)
+
+  @@unique([user1Id, user2Id])
+  @@index([user1Id])
+  @@index([user2Id])
+  @@map("friendships")
+}
+
+model Message {
+  id         String   @id @default(uuid())
+  senderId   String   @map("sender_id")
+  receiverId String   @map("receiver_id")
+  content    String   @db.Text
+  isRead     Boolean  @default(false) @map("is_read")
+  readAt     DateTime? @map("read_at")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+  
+  sender   User @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver User @relation("MessageReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  
+  @@index([senderId, receiverId])
+  @@index([receiverId, isRead])
+  @@index([createdAt(sort: Desc)])
+  @@map("messages")
+}
+
+model Channel {
+  id          String   @id @default(uuid())
+  name        String   @db.VarChar(100)
+  description String?  @db.Text
+  type        String   @default("public") @db.VarChar(20) // public, private, direct
+  creatorId   String   @map("creator_id")
+  studioId    String?  @map("studio_id")
+  isArchived  Boolean  @default(false) @map("is_archived")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  
+  creator  User              @relation("ChannelCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+  studio   Studio?           @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  members  ChannelMember[]
+  messages ChannelMessage[]
+  files    ChannelFile[]
+  invites  ChannelInvite[]
+  
+  @@index([name])
+  @@index([studioId])
+  @@index([creatorId])
+  @@map("channels")
+}
+
+model ChannelMember {
+  id        String   @id @default(uuid())
+  channelId String   @map("channel_id")
+  userId    String   @map("user_id")
+  role      String   @default("member") @db.VarChar(20) // admin, moderator, member
+  joinedAt  DateTime @default(now()) @map("joined_at")
+  lastReadAt DateTime? @map("last_read_at")
+  
+  channel Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([channelId, userId])
+  @@index([userId])
+  @@index([channelId])
+  @@map("channel_members")
+}
+
+model ChannelMessage {
+  id        String   @id @default(uuid())
+  channelId String   @map("channel_id")
+  senderId  String   @map("sender_id")
+  content   String   @db.Text
+  type      String   @default("text") @db.VarChar(20) // text, image, file, system
+  metadata  Json?    // For file info, image dimensions, etc.
+  editedAt  DateTime? @map("edited_at")
+  deletedAt DateTime? @map("deleted_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  
+  channel Channel       @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  sender  User          @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  files   ChannelFile[]
+  
+  @@index([channelId, createdAt(sort: Desc)])
+  @@index([senderId])
+  @@map("channel_messages")
+}
+
+model ChannelFile {
+  id         String   @id @default(uuid())
+  channelId  String   @map("channel_id")
+  messageId  String?  @map("message_id")
+  uploaderId String   @map("uploader_id")
+  fileName   String   @map("file_name") @db.VarChar(255)
+  fileUrl    String   @map("file_url") @db.Text
+  fileSize   BigInt   @map("file_size")
+  mimeType   String   @map("mime_type") @db.VarChar(100)
+  metadata   Json?    // thumbnails, dimensions for images, etc.
+  createdAt  DateTime @default(now()) @map("created_at")
+  
+  channel  Channel         @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  message  ChannelMessage? @relation(fields: [messageId], references: [id], onDelete: SetNull)
+  uploader User            @relation(fields: [uploaderId], references: [id], onDelete: Cascade)
+  
+  @@index([channelId])
+  @@index([uploaderId])
+  @@map("channel_files")
+}
+
+model ChannelInvite {
+  id         String   @id @default(uuid())
+  channelId  String   @map("channel_id")
+  inviterId  String   @map("inviter_id")
+  inviteeId  String   @map("invitee_id")
+  status     String   @default("pending") @db.VarChar(20) // pending, accepted, rejected, expired
+  expiresAt  DateTime? @map("expires_at")
+  acceptedAt DateTime? @map("accepted_at")
+  createdAt  DateTime @default(now()) @map("created_at")
+  
+  channel Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  inviter User    @relation("ChannelInviter", fields: [inviterId], references: [id], onDelete: Cascade)
+  invitee User    @relation("ChannelInvitee", fields: [inviteeId], references: [id], onDelete: Cascade)
+  
+  @@unique([channelId, inviteeId])
+  @@index([inviteeId, status])
+  @@index([channelId])
+  @@map("channel_invites")
+}
+
+// ============================================================================
+// ADMIN SYSTEM MODELS
+// ============================================================================
+
+model Role {
+  id          String   @id @default(uuid())
+  name        String   @unique @db.VarChar(50) // admin, moderator, member, etc.
+  description String?  @db.Text
+  isSystem    Boolean  @default(false) @map("is_system") // System roles cannot be deleted
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  permissions RolePermission[]
+  userRoles   UserRole[]
+
+  @@index([name])
+  @@index([isSystem])
+  @@map("roles")
+}
+
+model Permission {
+  id          String   @id @default(uuid())
+  name        String   @unique @db.VarChar(100) // create:project, read:user, admin:analytics, etc.
+  resource    String   @db.VarChar(50)          // project, user, system, etc.
+  action      String   @db.VarChar(50)          // create, read, update, delete, admin, etc.
+  description String?  @db.Text
+  isSystem    Boolean  @default(false) @map("is_system") // System permissions cannot be deleted
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  roles RolePermission[]
+
+  @@unique([resource, action])
+  @@index([resource])
+  @@index([action])
+  @@index([isSystem])
+  @@map("permissions")
+}
+
+model RolePermission {
+  id           String   @id @default(uuid())
+  roleId       String   @map("role_id")
+  permissionId String   @map("permission_id")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  // Relations
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([roleId, permissionId])
+  @@index([roleId])
+  @@index([permissionId])
+  @@map("role_permissions")
+}
+
+model UserRole {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  roleId    String   @map("role_id")
+  assignedBy String?  @map("assigned_by")
+  assignedAt DateTime @default(now()) @map("assigned_at")
+  expiresAt  DateTime? @map("expires_at")
+  isActive   Boolean  @default(true) @map("is_active")
+
+  // Relations
+  user       User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role       Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  assignedByUser User? @relation("UserRoleAssigner", fields: [assignedBy], references: [id])
+
+  @@unique([userId, roleId])
+  @@index([userId])
+  @@index([roleId])
+  @@index([assignedBy])
+  @@index([isActive])
+  @@map("user_roles")
+}
+
+model SystemLog {
+  id         String   @id @default(uuid())
+  level      String   @db.VarChar(20)  // info, warn, error, critical
+  action     String   @db.VarChar(100) // user_login, admin_action, system_error, etc.
+  resource   String?  @db.VarChar(50)  // user, project, system, etc.
+  resourceId String?  @map("resource_id")
+  userId     String?  @map("user_id")
+  ipAddress  String?  @map("ip_address") @db.VarChar(45)
+  userAgent  String?  @map("user_agent") @db.Text
+  message    String   @db.Text
+  metadata   Json?    // Additional context data
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  // Relations
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([level])
+  @@index([action])
+  @@index([resource])
+  @@index([userId])
+  @@index([createdAt(sort: Desc)])
+  @@map("system_logs")
+}
+
+model SystemSetting {
+  id          String   @id @default(uuid())
+  key         String   @unique @db.VarChar(100) // max_file_size, maintenance_mode, etc.
+  value       String   @db.Text
+  type        String   @db.VarChar(20) // string, number, boolean, json
+  description String?  @db.Text
+  isPublic    Boolean  @default(false) @map("is_public") // Can be read by non-admin users
+  category    String?  @db.VarChar(50) // general, security, features, etc.
+  updatedBy   String?  @map("updated_by")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  updatedByUser User? @relation("SettingUpdater", fields: [updatedBy], references: [id])
+
+  @@index([key])
+  @@index([category])
+  @@index([isPublic])
+  @@map("system_settings")
+}
+
+model Analytics {
+  id          String   @id @default(uuid())
+  metric      String   @db.VarChar(100) // daily_active_users, project_created, etc.
+  value       Float    // Numeric value of the metric
+  dimensions  Json?    // Additional dimensions (e.g., {country: 'KR', platform: 'web'})
+  timestamp   DateTime @default(now())
+  aggregation String   @db.VarChar(20) // daily, hourly, monthly, total
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([metric])
+  @@index([timestamp(sort: Desc)])
+  @@index([aggregation])
+  @@index([metric, timestamp(sort: Desc)])
+  @@map("analytics")
+}
+
+model ApiUsage {
+  id         String   @id @default(uuid())
+  userId     String?  @map("user_id")
+  endpoint   String   @db.VarChar(200)
+  method     String   @db.VarChar(10)
+  statusCode Int      @map("status_code")
+  responseTime Int    @map("response_time") // in milliseconds
+  ipAddress  String?  @map("ip_address") @db.VarChar(45)
+  userAgent  String?  @map("user_agent") @db.Text
+  timestamp  DateTime @default(now())
+
+  // Relations
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([endpoint])
+  @@index([method])
+  @@index([statusCode])
+  @@index([timestamp(sort: Desc)])
+  @@index([endpoint, timestamp(sort: Desc)])
+  @@map("api_usage")
+}

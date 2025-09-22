@@ -1,0 +1,497 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String   @id @default(uuid())
+  username          String   @unique
+  email             String   @unique
+  passwordHash      String   @map("password_hash")
+  nickname          String   @unique
+  profileImageUrl   String?  @map("profile_image_url")
+  bio               String?
+  isAdmin           Boolean  @default(false) @map("is_admin")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+  lastLoginAt       DateTime? @map("last_login_at")
+  isActive          Boolean  @default(true) @map("is_active")
+
+  studio            Studio?
+  createdProjects   Project[] @relation("ProjectCreator")
+  participations    ProjectParticipant[]
+  createdScenes     Scene[] @relation("SceneCreator")
+  uploadedImages    Image[] @relation("ImageUploader")
+  imageHistory      ImageHistory[]
+  comments          Comment[]
+  annotations       Annotation[]
+  presence          UserPresence[]
+  collaborationLogs CollaborationLog[]
+  notifications     Notification[]
+
+  // Friend relationships
+  sentFriendRequests     FriendRequest[] @relation("FriendRequestSender")
+  receivedFriendRequests FriendRequest[] @relation("FriendRequestReceiver")
+  friendsAsUser1         Friendship[]    @relation("FriendshipUser1")
+  friendsAsUser2         Friendship[]    @relation("FriendshipUser2")
+
+  // Messages
+  sentMessages           Message[]       @relation("MessageSender")
+  receivedMessages       Message[]       @relation("MessageReceiver")
+
+  // Channels
+  createdChannels        Channel[]       @relation("ChannelCreator")
+  channelMemberships     ChannelMember[]
+  channelMessages        ChannelMessage[]
+  uploadedChannelFiles   ChannelFile[]
+  sentChannelInvites     ChannelInvite[] @relation("ChannelInviter")
+  receivedChannelInvites ChannelInvite[] @relation("ChannelInvitee")
+
+  // Admin System
+  userRoles              UserRole[]
+  assignedUserRoles      UserRole[]      @relation("UserRoleAssigner")
+  systemLogs             SystemLog[]
+  updatedSettings        SystemSetting[] @relation("SettingUpdater")
+  apiUsage               ApiUsage[]
+
+  @@map("users")
+}
+
+// Admin System Models
+
+model Role {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  isSystem    Boolean  @default(false) @map("is_system")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  permissions RolePermission[]
+  userRoles   UserRole[]
+
+  @@map("roles")
+}
+
+model Permission {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  resource    String
+  action      String
+  description String?
+  isSystem    Boolean  @default(false) @map("is_system")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  roles       RolePermission[]
+
+  @@unique([resource, action], name: "resource_action")
+  @@map("permissions")
+}
+
+model RolePermission {
+  id           String @id @default(uuid())
+  roleId       String @map("role_id")
+  permissionId String @map("permission_id")
+
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([roleId, permissionId])
+  @@map("role_permissions")
+}
+
+model UserRole {
+  id         String    @id @default(uuid())
+  userId     String    @map("user_id")
+  roleId     String    @map("role_id")
+  assignedBy String?   @map("assigned_by")
+  isActive   Boolean   @default(true) @map("is_active")
+  expiresAt  DateTime? @map("expires_at")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+
+  user       User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role       Role  @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  assigner   User? @relation("UserRoleAssigner", fields: [assignedBy], references: [id])
+
+  @@unique([userId, roleId], name: "userId_roleId")
+  @@map("user_roles")
+}
+
+model SystemLog {
+  id        String   @id @default(uuid())
+  level     String   // 'info', 'warning', 'error', 'critical'
+  action    String
+  resource  String?  // 'user', 'project', 'system', etc.
+  message   String
+  metadata  String?  // JSON string for additional data
+  userId    String?  @map("user_id")
+  ipAddress String?  @map("ip_address")
+  userAgent String?  @map("user_agent")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user      User?    @relation(fields: [userId], references: [id])
+
+  @@map("system_logs")
+}
+
+model SystemSetting {
+  id          String    @id @default(uuid())
+  key         String    @unique
+  value       String
+  type        String    @default("string") // 'string', 'number', 'boolean', 'json'
+  description String?
+  category    String?   // 'general', 'security', 'features', etc.
+  isPublic    Boolean   @default(false) @map("is_public")
+  updatedBy   String?   @map("updated_by")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  updatedByUser User? @relation("SettingUpdater", fields: [updatedBy], references: [id])
+
+  @@map("system_settings")
+}
+
+model Analytics {
+  id          String   @id @default(uuid())
+  metric      String   // 'daily_active_users', 'projects_created', etc.
+  value       Float
+  aggregation String   @default("daily") // 'daily', 'weekly', 'monthly', 'total'
+  metadata    String?  // JSON string for additional data
+  timestamp   DateTime @default(now())
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("analytics")
+}
+
+model ApiUsage {
+  id           String   @id @default(uuid())
+  endpoint     String
+  method       String   // GET, POST, PUT, DELETE, etc.
+  statusCode   Int      @map("status_code")
+  responseTime Int      @map("response_time") // milliseconds
+  userId       String?  @map("user_id")
+  ipAddress    String?  @map("ip_address")
+  userAgent    String?  @map("user_agent")
+  timestamp    DateTime @default(now())
+
+  user         User?    @relation(fields: [userId], references: [id])
+
+  @@map("api_usage")
+}
+
+// Keep existing models simplified for SQLite...
+model Studio {
+  id          String   @id @default(uuid())
+  userId      String   @unique @map("user_id")
+  name        String
+  description String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projects    Project[]
+  channels    Channel[]
+
+  @@map("studios")
+}
+
+model Project {
+  id           String   @id @default(uuid())
+  studioId     String   @map("studio_id")
+  creatorId    String   @map("creator_id")
+  name         String
+  description  String?
+  deadline     DateTime?
+  tag          String?
+  inviteCode   String?  @unique @map("invite_code")
+  status       String   @default("active")
+  hasUpdates   Boolean  @default(false) @map("has_updates")
+  overallStory String?  @map("overall_story")
+  setList      String?  @map("set_list")
+  characterList String? @map("character_list")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  studio            Studio     @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  creator           User       @relation("ProjectCreator", fields: [creatorId], references: [id])
+  participants      ProjectParticipant[]
+  scenes            Scene[]
+  notifications     Notification[]
+  collaborationLogs CollaborationLog[]
+  channels          Channel[]
+
+  @@map("projects")
+}
+
+// Add other simplified models as needed...
+model Scene {
+  id           String   @id @default(uuid())
+  projectId    String   @map("project_id")
+  creatorId    String   @map("creator_id")
+  name         String
+  description  String?
+  sceneNumber  Int?     @map("scene_number")
+  duration     Int?     // Duration in seconds
+  isCompleted  Boolean  @default(false) @map("is_completed")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  project      Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  creator      User     @relation("SceneCreator", fields: [creatorId], references: [id])
+  images       Image[]
+  comments     Comment[]
+  annotations  Annotation[]
+
+  @@map("scenes")
+}
+
+// Minimal required models for the admin system to work
+model ProjectParticipant {
+  id        String   @id @default(uuid())
+  projectId String   @map("project_id")
+  userId    String   @map("user_id")
+  role      String   @default("member")
+  joinedAt  DateTime @default(now()) @map("joined_at")
+
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, userId])
+  @@map("project_participants")
+}
+
+model Image {
+  id          String   @id @default(uuid())
+  sceneId     String?  @map("scene_id")
+  uploaderId  String   @map("uploader_id")
+  filename    String
+  originalName String  @map("original_name")
+  mimeType    String   @map("mime_type")
+  fileSize    Int      @map("file_size")
+  width       Int?
+  height      Int?
+  uploadedAt  DateTime @default(now()) @map("uploaded_at")
+
+  scene       Scene?   @relation(fields: [sceneId], references: [id])
+  uploader    User     @relation("ImageUploader", fields: [uploaderId], references: [id])
+  history     ImageHistory[]
+  comments    Comment[]
+  annotations Annotation[]
+
+  @@map("images")
+}
+
+// Add minimal models for completeness
+model Comment {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  sceneId   String?  @map("scene_id")
+  imageId   String?  @map("image_id")
+  content   String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user      User     @relation(fields: [userId], references: [id])
+  scene     Scene?   @relation(fields: [sceneId], references: [id])
+  image     Image?   @relation(fields: [imageId], references: [id])
+
+  @@map("comments")
+}
+
+model Annotation {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  sceneId   String?  @map("scene_id")
+  imageId   String?  @map("image_id")
+  content   String
+  positionX Float?   @map("position_x")
+  positionY Float?   @map("position_y")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user      User     @relation(fields: [userId], references: [id])
+  scene     Scene?   @relation(fields: [sceneId], references: [id])
+  image     Image?   @relation(fields: [imageId], references: [id])
+
+  @@map("annotations")
+}
+
+// Minimal additional models
+model ImageHistory {
+  id        String   @id @default(uuid())
+  imageId   String   @map("image_id")
+  userId    String   @map("user_id")
+  action    String   // 'uploaded', 'updated', 'deleted'
+  createdAt DateTime @default(now()) @map("created_at")
+
+  image     Image    @relation(fields: [imageId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("image_history")
+}
+
+model UserPresence {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  status    String   @default("offline")
+  lastSeen  DateTime @default(now()) @map("last_seen")
+
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId])
+  @@map("user_presence")
+}
+
+model CollaborationLog {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  projectId String   @map("project_id")
+  action    String
+  details   String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user      User     @relation(fields: [userId], references: [id])
+  project   Project  @relation(fields: [projectId], references: [id])
+
+  @@map("collaboration_logs")
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  projectId String?  @map("project_id")
+  type      String
+  title     String
+  message   String
+  isRead    Boolean  @default(false) @map("is_read")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user      User     @relation(fields: [userId], references: [id])
+  project   Project? @relation(fields: [projectId], references: [id])
+
+  @@map("notifications")
+}
+
+model FriendRequest {
+  id         String   @id @default(uuid())
+  senderId   String   @map("sender_id")
+  receiverId String   @map("receiver_id")
+  status     String   @default("pending")
+  sentAt     DateTime @default(now()) @map("sent_at")
+
+  sender     User     @relation("FriendRequestSender", fields: [senderId], references: [id])
+  receiver   User     @relation("FriendRequestReceiver", fields: [receiverId], references: [id])
+
+  @@unique([senderId, receiverId])
+  @@map("friend_requests")
+}
+
+model Friendship {
+  id        String   @id @default(uuid())
+  user1Id   String   @map("user1_id")
+  user2Id   String   @map("user2_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user1     User     @relation("FriendshipUser1", fields: [user1Id], references: [id])
+  user2     User     @relation("FriendshipUser2", fields: [user2Id], references: [id])
+
+  @@unique([user1Id, user2Id])
+  @@map("friendships")
+}
+
+model Message {
+  id         String   @id @default(uuid())
+  senderId   String   @map("sender_id")
+  receiverId String   @map("receiver_id")
+  content    String
+  isRead     Boolean  @default(false) @map("is_read")
+  sentAt     DateTime @default(now()) @map("sent_at")
+
+  sender     User     @relation("MessageSender", fields: [senderId], references: [id])
+  receiver   User     @relation("MessageReceiver", fields: [receiverId], references: [id])
+
+  @@map("messages")
+}
+
+model Channel {
+  id          String   @id @default(uuid())
+  studioId    String?  @map("studio_id")
+  projectId   String?  @map("project_id")
+  creatorId   String   @map("creator_id")
+  name        String
+  description String?
+  isPrivate   Boolean  @default(false) @map("is_private")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  studio      Studio?  @relation(fields: [studioId], references: [id])
+  project     Project? @relation(fields: [projectId], references: [id])
+  creator     User     @relation("ChannelCreator", fields: [creatorId], references: [id])
+  members     ChannelMember[]
+  messages    ChannelMessage[]
+  files       ChannelFile[]
+  invites     ChannelInvite[]
+
+  @@map("channels")
+}
+
+model ChannelMember {
+  id        String   @id @default(uuid())
+  channelId String   @map("channel_id")
+  userId    String   @map("user_id")
+  role      String   @default("member")
+  joinedAt  DateTime @default(now()) @map("joined_at")
+
+  channel   Channel  @relation(fields: [channelId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([channelId, userId])
+  @@map("channel_members")
+}
+
+model ChannelMessage {
+  id        String   @id @default(uuid())
+  channelId String   @map("channel_id")
+  userId    String   @map("user_id")
+  content   String
+  sentAt    DateTime @default(now()) @map("sent_at")
+
+  channel   Channel  @relation(fields: [channelId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("channel_messages")
+}
+
+model ChannelFile {
+  id        String   @id @default(uuid())
+  channelId String   @map("channel_id")
+  userId    String   @map("user_id")
+  filename  String
+  fileSize  Int      @map("file_size")
+  mimeType  String   @map("mime_type")
+  uploadedAt DateTime @default(now()) @map("uploaded_at")
+
+  channel   Channel  @relation(fields: [channelId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("channel_files")
+}
+
+model ChannelInvite {
+  id        String   @id @default(uuid())
+  channelId String   @map("channel_id")
+  inviterId String   @map("inviter_id")
+  inviteeId String   @map("invitee_id")
+  status    String   @default("pending")
+  sentAt    DateTime @default(now()) @map("sent_at")
+
+  channel   Channel  @relation(fields: [channelId], references: [id])
+  inviter   User     @relation("ChannelInviter", fields: [inviterId], references: [id])
+  invitee   User     @relation("ChannelInvitee", fields: [inviteeId], references: [id])
+
+  @@unique([channelId, inviteeId])
+  @@map("channel_invites")
+}
