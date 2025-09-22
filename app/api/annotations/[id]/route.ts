@@ -62,9 +62,9 @@ async function getAnnotationWithPermission(
     return { error: "주석과 연결된 씬을 찾을 수 없습니다.", status: 404 };
   }
 
-  const participation = annotation.image.scene.project.participants[0];
+  const participation = annotation.image?.scene?.project?.participants?.[0];
   const isAuthor = annotation.userId === userId;
-  const isProjectCreator = annotation.image.scene.project.creatorId === userId;
+  const isProjectCreator = annotation.image?.scene?.project?.creatorId === userId;
   const isProjectAdmin = participation?.role === "admin";
 
   return {
@@ -134,8 +134,8 @@ async function getAnnotation(
     }
 
     // 접근 권한 확인
-    const participation = annotation.image.scene.project.participants[0];
-    const isProjectCreator = annotation.image.scene.project.creatorId === req.user.userId;
+    const participation = annotation.image?.scene?.project?.participants?.[0];
+    const isProjectCreator = annotation.image?.scene?.project?.creatorId === req.user.userId;
     const hasAccess = isProjectCreator || participation || req.user.isAdmin;
     if (!hasAccess) {
       return NextResponse.json(
