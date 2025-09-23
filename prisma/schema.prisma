@@ -86,7 +86,7 @@ model Project {
   creatorId    String   @map("creator_id")
   name         String   
   description  String?  
-  projectType  String   @default("studio") @map("project_type")   // 'studio' or 'work'
+  projectType  String   @map("project_type")   // 'studio' or 'work'
   deadline     DateTime? 
   tag          String?  
   inviteCode   String?  @unique @map("invite_code") 
