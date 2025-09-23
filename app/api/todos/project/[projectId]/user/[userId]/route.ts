@@ -66,7 +66,7 @@ export async function GET(
       },
       orderBy: [
         { isCompleted: 'asc' },
-        { order: 'asc' },
+        { position: 'asc' },
         { createdAt: 'desc' },
       ],
     });
