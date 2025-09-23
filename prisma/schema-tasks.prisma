@@ -1,0 +1,246 @@
+// 업무 관리 관련 스키마 추가분
+// 기존 schema.prisma 파일에 추가할 내용
+
+model Task {
+  id              String    @id @default(uuid())
+  projectId       String    @map("project_id")
+  parentTaskId    String?   @map("parent_task_id")
+  title           String    @db.VarChar(255)
+  description     String?   @db.Text
+  priority        String    @default("medium") @db.VarChar(20) // low, medium, high, urgent
+  status          String    @default("todo") @db.VarChar(20) // todo, in_progress, review, done, cancelled
+  dueDate         DateTime? @map("due_date")
+  startDate       DateTime? @map("start_date")
+  completedAt     DateTime? @map("completed_at")
+  estimatedHours  Float?    @map("estimated_hours")
+  actualHours     Float?    @map("actual_hours")
+  tags            String[]  @db.Text // 태그 배열
+  position        Int       @default(0) // 칸반보드에서의 위치
+  createdBy       String    @map("created_by")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  project         Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  parentTask      Task?     @relation("TaskSubtasks", fields: [parentTaskId], references: [id], onDelete: Cascade)
+  creator         User      @relation("TaskCreator", fields: [createdBy], references: [id])
+
+  subtasks        Task[]    @relation("TaskSubtasks")
+  assignments     TaskAssignment[]
+  todos           Todo[]
+  comments        TaskComment[]
+  attachments     TaskAttachment[]
+  dependencies    TaskDependency[] @relation("TaskDependencyFrom")
+  dependents      TaskDependency[] @relation("TaskDependencyTo")
+  activities      TaskActivity[]
+  watchers        TaskWatcher[]
+  checklists      TaskChecklist[]
+  timeEntries     TimeEntry[]
+
+  @@index([projectId, status])
+  @@index([projectId, priority])
+  @@index([parentTaskId])
+  @@index([dueDate])
+  @@map("tasks")
+}
+
+model TaskAssignment {
+  id           String   @id @default(uuid())
+  taskId       String   @map("task_id")
+  userId       String   @map("user_id")
+  assignedBy   String   @map("assigned_by")
+  assignedAt   DateTime @default(now()) @map("assigned_at")
+  role         String   @default("assignee") @db.VarChar(20) // assignee, reviewer, reporter
+
+  task         Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user         User     @relation("TaskAssignments", fields: [userId], references: [id])
+  assigner     User     @relation("TaskAssigner", fields: [assignedBy], references: [id])
+
+  @@unique([taskId, userId, role])
+  @@index([userId])
+  @@index([taskId])
+  @@map("task_assignments")
+}
+
+model Todo {
+  id           String   @id @default(uuid())
+  taskId       String?  @map("task_id")
+  projectId    String   @map("project_id")
+  userId       String   @map("user_id")
+  title        String   @db.VarChar(255)
+  description  String?  @db.Text
+  isCompleted  Boolean  @default(false) @map("is_completed")
+  completedAt  DateTime? @map("completed_at")
+  dueDate      DateTime? @map("due_date")
+  priority     String   @default("medium") @db.VarChar(20)
+  position     Int      @default(0)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  task         Task?    @relation(fields: [taskId], references: [id], onDelete: SetNull)
+  project      Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user         User     @relation(fields: [userId], references: [id])
+
+  @@index([userId, isCompleted])
+  @@index([projectId])
+  @@index([taskId])
+  @@map("todos")
+}
+
+model TaskComment {
+  id              String   @id @default(uuid())
+  taskId          String   @map("task_id")
+  userId          String   @map("user_id")
+  content         String   @db.Text
+  parentCommentId String?  @map("parent_comment_id")
+  isEdited        Boolean  @default(false) @map("is_edited")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  task            Task          @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user            User          @relation("TaskComments", fields: [userId], references: [id])
+  parentComment   TaskComment?  @relation("TaskCommentReplies", fields: [parentCommentId], references: [id], onDelete: Cascade)
+  replies         TaskComment[] @relation("TaskCommentReplies")
+  mentions        Mention[]
+
+  @@index([taskId])
+  @@index([userId])
+  @@map("task_comments")
+}
+
+model TaskAttachment {
+  id         String   @id @default(uuid())
+  taskId     String   @map("task_id")
+  fileName   String   @map("file_name") @db.VarChar(255)
+  fileUrl    String   @map("file_url") @db.Text
+  fileSize   BigInt   @map("file_size")
+  mimeType   String   @map("mime_type") @db.VarChar(100)
+  uploadedBy String   @map("uploaded_by")
+  uploadedAt DateTime @default(now()) @map("uploaded_at")
+
+  task       Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  uploader   User     @relation("TaskAttachmentUploader", fields: [uploadedBy], references: [id])
+
+  @@index([taskId])
+  @@map("task_attachments")
+}
+
+model TaskDependency {
+  id              String   @id @default(uuid())
+  fromTaskId      String   @map("from_task_id")
+  toTaskId        String   @map("to_task_id")
+  dependencyType  String   @default("finish_to_start") @db.VarChar(20) // finish_to_start, start_to_start, etc.
+  lagTime         Int?     @map("lag_time") // 지연 시간 (일)
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  fromTask        Task     @relation("TaskDependencyFrom", fields: [fromTaskId], references: [id], onDelete: Cascade)
+  toTask          Task     @relation("TaskDependencyTo", fields: [toTaskId], references: [id], onDelete: Cascade)
+
+  @@unique([fromTaskId, toTaskId])
+  @@index([fromTaskId])
+  @@index([toTaskId])
+  @@map("task_dependencies")
+}
+
+model TaskActivity {
+  id          String   @id @default(uuid())
+  taskId      String   @map("task_id")
+  userId      String   @map("user_id")
+  action      String   @db.VarChar(50) // created, updated, assigned, status_changed, etc.
+  fieldName   String?  @map("field_name") @db.VarChar(50)
+  oldValue    String?  @map("old_value") @db.Text
+  newValue    String?  @map("new_value") @db.Text
+  description String?  @db.Text
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  task        Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user        User     @relation("TaskActivities", fields: [userId], references: [id])
+
+  @@index([taskId])
+  @@index([userId])
+  @@index([createdAt(sort: Desc)])
+  @@map("task_activities")
+}
+
+model TaskWatcher {
+  id        String   @id @default(uuid())
+  taskId    String   @map("task_id")
+  userId    String   @map("user_id")
+  addedAt   DateTime @default(now()) @map("added_at")
+
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user      User     @relation("TaskWatchers", fields: [userId], references: [id])
+
+  @@unique([taskId, userId])
+  @@index([userId])
+  @@index([taskId])
+  @@map("task_watchers")
+}
+
+model TaskChecklist {
+  id          String   @id @default(uuid())
+  taskId      String   @map("task_id")
+  title       String   @db.VarChar(255)
+  items       Json     // [{id, text, isCompleted}]
+  createdBy   String   @map("created_by")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  task        Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  creator     User     @relation("TaskChecklistCreator", fields: [createdBy], references: [id])
+
+  @@index([taskId])
+  @@map("task_checklists")
+}
+
+model TimeEntry {
+  id          String   @id @default(uuid())
+  taskId      String   @map("task_id")
+  userId      String   @map("user_id")
+  hours       Float
+  description String?  @db.Text
+  date        DateTime @db.Date
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  task        Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user        User     @relation("TimeEntries", fields: [userId], references: [id])
+
+  @@index([taskId])
+  @@index([userId])
+  @@index([date])
+  @@map("time_entries")
+}
+
+model Mention {
+  id           String   @id @default(uuid())
+  commentId    String   @map("comment_id")
+  userId       String   @map("user_id")
+  mentionedBy  String   @map("mentioned_by")
+  isRead       Boolean  @default(false) @map("is_read")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  comment      TaskComment @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  user         User        @relation("Mentions", fields: [userId], references: [id])
+  mentioner    User        @relation("Mentioner", fields: [mentionedBy], references: [id])
+
+  @@index([userId, isRead])
+  @@map("mentions")
+}
+
+// User 모델에 추가할 관계들 (기존 User 모델에 추가)
+// createdTasks      Task[]             @relation("TaskCreator")
+// taskAssignments   TaskAssignment[]   @relation("TaskAssignments")
+// taskAssignedBy    TaskAssignment[]   @relation("TaskAssigner")
+// todos             Todo[]
+// taskComments      TaskComment[]      @relation("TaskComments")
+// taskAttachments   TaskAttachment[]   @relation("TaskAttachmentUploader")
+// taskActivities    TaskActivity[]     @relation("TaskActivities")
+// taskWatchers      TaskWatcher[]      @relation("TaskWatchers")
+// taskChecklists    TaskChecklist[]    @relation("TaskChecklistCreator")
+// timeEntries       TimeEntry[]        @relation("TimeEntries")
+// mentions          Mention[]          @relation("Mentions")
+// mentionedBy       Mention[]          @relation("Mentioner")
+
+// Project 모델에 추가할 관계 (기존 Project 모델에 추가)
+// tasks            Task[]
+// todos            Todo[]
