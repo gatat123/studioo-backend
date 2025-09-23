@@ -13,12 +13,13 @@ async function createTestUser() {
     const user = await prisma.user.upsert({
       where: { username: 'test2' },
       update: {
-        password: hashedPassword,
+        passwordHash: hashedPassword,
         nickname: 'Test User 2',
+        isActive: true,
       },
       create: {
         username: 'test2',
-        password: hashedPassword,
+        passwordHash: hashedPassword,
         email: 'test2@example.com',
         nickname: 'Test User 2',
         isActive: true,
@@ -33,12 +34,13 @@ async function createTestUser() {
     const admin = await prisma.user.upsert({
       where: { username: 'gatat123' },
       update: {
-        password: adminPassword,
+        passwordHash: adminPassword,
         isAdmin: true,
+        isActive: true,
       },
       create: {
         username: 'gatat123',
-        password: adminPassword,
+        passwordHash: adminPassword,
         email: 'admin@example.com',
         nickname: 'Admin',
         isActive: true,
