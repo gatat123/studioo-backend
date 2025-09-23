@@ -111,7 +111,18 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
 export const POST = withAuth(async (req: AuthenticatedRequest) => {
     try {
       const body = await req.json();
-      const validationResult = createProjectSchema.safeParse(body);
+
+      // Convert snake_case to camelCase for validation
+      const validationBody = {
+        ...body,
+        projectType: body.project_type || body.projectType || 'studio'
+      };
+      delete validationBody.project_type; // Remove snake_case version
+
+      console.log('[Backend API] POST /api/projects - Request body:', body);
+      console.log('[Backend API] Validation body:', validationBody);
+
+      const validationResult = createProjectSchema.safeParse(validationBody);
 
       if (!validationResult.success) {
         return NextResponse.json<ApiResponse>(
@@ -138,6 +149,14 @@ export const POST = withAuth(async (req: AuthenticatedRequest) => {
         );
       }
 
+      console.log('[Backend API] Creating project with data:', {
+        name,
+        description,
+        projectType,
+        deadline,
+        tag,
+      });
+
       const project = await prisma.project.create({
         data: {
           studioId: user.studio.id,
@@ -160,6 +179,12 @@ export const POST = withAuth(async (req: AuthenticatedRequest) => {
             }
           },
         },
+      });
+
+      console.log('[Backend API] Created project:', {
+        id: project.id,
+        name: project.name,
+        projectType: project.projectType,
       });
 
       await prisma.projectParticipant.create({
