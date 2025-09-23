@@ -18,8 +18,9 @@ const updateTaskSchema = z.object({
 // GET /api/tasks/[id] - Get a specific task
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const user = await getCurrentUser(request);
     if (!user) {
@@ -27,7 +28,7 @@ export async function GET(
     }
 
     const task = await prisma.task.findUnique({
-      where: { id: params.id },
+      where: { id: id },
       include: {
         project: {
           select: {
@@ -165,8 +166,9 @@ export async function GET(
 // PUT /api/tasks/[id] - Update a task
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const user = await getCurrentUser(request);
     if (!user) {
@@ -174,7 +176,7 @@ export async function PUT(
     }
 
     const task = await prisma.task.findUnique({
-      where: { id: params.id },
+      where: { id: id },
       select: {
         id: true,
         projectId: true,
@@ -208,7 +210,7 @@ export async function PUT(
 
     const oldStatus = task.status;
     const updatedTask = await prisma.task.update({
-      where: { id: params.id },
+      where: { id: id },
       data: {
         title: validatedData.title,
         description: validatedData.description,
@@ -264,7 +266,7 @@ export async function PUT(
 
     await prisma.taskActivity.create({
       data: {
-        taskId: params.id,
+        taskId: id,
         userId: user.id,
         action: 'updated',
         details: changes,
@@ -276,7 +278,7 @@ export async function PUT(
 
     if (validatedData.status && validatedData.status !== oldStatus) {
       emitToRoom(`project:${task.projectId}`, TASK_EVENTS.STATUS_CHANGED, {
-        taskId: params.id,
+        taskId: id,
         oldStatus,
         newStatus: validatedData.status,
         task: updatedTask,
@@ -303,8 +305,9 @@ export async function PUT(
 // DELETE /api/tasks/[id] - Delete a task
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const user = await getCurrentUser(request);
     if (!user) {
@@ -312,7 +315,7 @@ export async function DELETE(
     }
 
     const task = await prisma.task.findUnique({
-      where: { id: params.id },
+      where: { id: id },
       select: {
         id: true,
         projectId: true,
@@ -346,11 +349,11 @@ export async function DELETE(
 
     // Delete the task (cascade will handle related records)
     await prisma.task.delete({
-      where: { id: params.id },
+      where: { id: id },
     });
 
     // Emit socket event
-    emitToRoom(`project:${task.projectId}`, TASK_EVENTS.DELETED, { taskId: params.id });
+    emitToRoom(`project:${task.projectId}`, TASK_EVENTS.DELETED, { taskId: id });
 
     return NextResponse.json({ message: 'Task deleted successfully' });
   } catch (error) {

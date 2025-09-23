@@ -11,8 +11,9 @@ const updateStatusSchema = z.object({
 // PATCH /api/tasks/[id]/status - Update task status
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const user = await getCurrentUser(request);
     if (!user) {
@@ -23,7 +24,7 @@ export async function PATCH(
     const { status } = updateStatusSchema.parse(body);
 
     const task = await prisma.task.findUnique({
-      where: { id: params.id },
+      where: { id: id },
       select: {
         id: true,
         projectId: true,
@@ -57,7 +58,7 @@ export async function PATCH(
 
     // Update the task status
     const updatedTask = await prisma.task.update({
-      where: { id: params.id },
+      where: { id: id },
       data: {
         status,
         completedAt: status === 'done' && oldStatus !== 'done'
@@ -100,7 +101,7 @@ export async function PATCH(
     // Create activity log
     await prisma.taskActivity.create({
       data: {
-        taskId: params.id,
+        taskId: id,
         userId: user.id,
         action: 'status_changed',
         details: {
@@ -113,7 +114,7 @@ export async function PATCH(
 
     // Emit socket events
     emitToRoom(`project:${task.projectId}`, TASK_EVENTS.STATUS_CHANGED, {
-      taskId: params.id,
+      taskId: id,
       oldStatus,
       newStatus: status,
       task: updatedTask,

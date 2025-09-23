@@ -5,8 +5,9 @@ import { getCurrentUser } from '@/lib/jwt';
 // GET /api/todos/[projectId] - Get all todos for a project
 export async function GET(
   request: NextRequest,
-  { params }: { params: { projectId: string } }
+  { params }: { params: Promise<{ projectId: string }> }
 ) {
+  const { projectId } = await params;
   try {
     const user = await getCurrentUser(request);
     if (!user) {
@@ -15,7 +16,7 @@ export async function GET(
 
     // Check if project exists
     const project = await prisma.project.findUnique({
-      where: { id: params.projectId },
+      where: { id: projectId },
       select: { id: true },
     });
 
@@ -27,7 +28,7 @@ export async function GET(
     const participant = await prisma.projectParticipant.findUnique({
       where: {
         projectId_userId: {
-          projectId: params.projectId,
+          projectId: projectId,
           userId: user.id,
         },
       },
@@ -48,7 +49,7 @@ export async function GET(
 
     // Build where clause
     const where: any = {
-      projectId: params.projectId,
+      projectId: projectId,
     };
 
     if (taskId === 'null') {

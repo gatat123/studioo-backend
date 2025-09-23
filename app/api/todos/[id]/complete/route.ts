@@ -6,8 +6,9 @@ import { emitToRoom, TODO_EVENTS } from '@/lib/socket/emit';
 // PATCH /api/todos/[id]/complete - Toggle todo completion status
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const user = await getCurrentUser(request);
     if (!user) {
@@ -15,7 +16,7 @@ export async function PATCH(
     }
 
     const todo = await prisma.todo.findUnique({
-      where: { id: params.id },
+      where: { id: id },
       select: {
         id: true,
         projectId: true,
@@ -49,7 +50,7 @@ export async function PATCH(
     // Toggle the completion status
     const newCompletionStatus = !todo.isCompleted;
     const updatedTodo = await prisma.todo.update({
-      where: { id: params.id },
+      where: { id: id },
       data: {
         isCompleted: newCompletionStatus,
         completedAt: newCompletionStatus ? new Date() : null,

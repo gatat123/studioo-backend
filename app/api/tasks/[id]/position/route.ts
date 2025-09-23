@@ -12,8 +12,9 @@ const updatePositionSchema = z.object({
 // PATCH /api/tasks/[id]/position - Update task position (for drag and drop)
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const user = await getCurrentUser(request);
     if (!user) {
@@ -24,7 +25,7 @@ export async function PATCH(
     const { position, status } = updatePositionSchema.parse(body);
 
     const task = await prisma.task.findUnique({
-      where: { id: params.id },
+      where: { id },
       select: {
         id: true,
         projectId: true,
@@ -134,7 +135,7 @@ export async function PATCH(
 
       // Update the task itself
       return await tx.task.update({
-        where: { id: params.id },
+        where: { id },
         data: {
           position,
           status: targetStatus,
@@ -189,7 +190,7 @@ export async function PATCH(
 
     await prisma.taskActivity.create({
       data: {
-        taskId: params.id,
+        taskId: id,
         userId: user.id,
         action: 'position_changed',
         details,
@@ -198,7 +199,7 @@ export async function PATCH(
 
     // Emit socket event
     emitToRoom(`project:${task.projectId}`, TASK_EVENTS.POSITION_CHANGED, {
-      taskId: params.id,
+      taskId: id,
       oldPosition,
       newPosition: position,
       oldStatus,

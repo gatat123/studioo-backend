@@ -12,8 +12,9 @@ const assignTaskSchema = z.object({
 // POST /api/tasks/[id]/assign - Assign user to task
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const user = await getCurrentUser(request);
     if (!user) {
@@ -24,7 +25,7 @@ export async function POST(
     const { userId, role } = assignTaskSchema.parse(body);
 
     const task = await prisma.task.findUnique({
-      where: { id: params.id },
+      where: { id },
       select: {
         id: true,
         projectId: true,
@@ -74,7 +75,7 @@ export async function POST(
     const existingAssignment = await prisma.taskAssignment.findUnique({
       where: {
         taskId_userId_role: {
-          taskId: params.id,
+          taskId: id,
           userId: userId,
           role: role,
         },
@@ -91,7 +92,7 @@ export async function POST(
     // Create the assignment
     const assignment = await prisma.taskAssignment.create({
       data: {
-        taskId: params.id,
+        taskId: id,
         userId: userId,
         role: role,
       },
@@ -119,7 +120,7 @@ export async function POST(
     // Create activity log
     await prisma.taskActivity.create({
       data: {
-        taskId: params.id,
+        taskId: id,
         userId: user.id,
         action: 'assigned',
         details: {
@@ -191,8 +192,9 @@ export async function POST(
 // DELETE /api/tasks/[id]/assign - Remove assignment from task
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const user = await getCurrentUser(request);
     if (!user) {
@@ -211,7 +213,7 @@ export async function DELETE(
     }
 
     const task = await prisma.task.findUnique({
-      where: { id: params.id },
+      where: { id },
       select: {
         id: true,
         projectId: true,
@@ -244,7 +246,7 @@ export async function DELETE(
     const assignment = await prisma.taskAssignment.findUnique({
       where: {
         taskId_userId_role: {
-          taskId: params.id,
+          taskId: id,
           userId: userId,
           role: role as 'assignee' | 'reviewer',
         },
@@ -270,7 +272,7 @@ export async function DELETE(
     await prisma.taskAssignment.delete({
       where: {
         taskId_userId_role: {
-          taskId: params.id,
+          taskId: id,
           userId: userId,
           role: role as 'assignee' | 'reviewer',
         },
@@ -280,7 +282,7 @@ export async function DELETE(
     // Create activity log
     await prisma.taskActivity.create({
       data: {
-        taskId: params.id,
+        taskId: id,
         userId: user.id,
         action: 'unassigned',
         details: {

@@ -14,8 +14,9 @@ const updateTodoSchema = z.object({
 // GET /api/todos/[id] - Get a specific todo
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const user = await getCurrentUser(request);
     if (!user) {
@@ -23,7 +24,7 @@ export async function GET(
     }
 
     const todo = await prisma.todo.findUnique({
-      where: { id: params.id },
+      where: { id: id },
       include: {
         user: {
           select: {
@@ -83,8 +84,9 @@ export async function GET(
 // PUT /api/todos/[id] - Update a todo
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const user = await getCurrentUser(request);
     if (!user) {
@@ -92,7 +94,7 @@ export async function PUT(
     }
 
     const todo = await prisma.todo.findUnique({
-      where: { id: params.id },
+      where: { id: id },
       select: {
         id: true,
         projectId: true,
@@ -144,7 +146,7 @@ export async function PUT(
 
     const wasCompleted = todo.isCompleted;
     const updatedTodo = await prisma.todo.update({
-      where: { id: params.id },
+      where: { id: id },
       data: {
         content: validatedData.content,
         isCompleted: validatedData.isCompleted,
@@ -204,8 +206,9 @@ export async function PUT(
 // DELETE /api/todos/[id] - Delete a todo
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const user = await getCurrentUser(request);
     if (!user) {
@@ -213,7 +216,7 @@ export async function DELETE(
     }
 
     const todo = await prisma.todo.findUnique({
-      where: { id: params.id },
+      where: { id: id },
       select: {
         id: true,
         projectId: true,
@@ -247,11 +250,11 @@ export async function DELETE(
 
     // Delete the todo
     await prisma.todo.delete({
-      where: { id: params.id },
+      where: { id: id },
     });
 
     // Emit socket event
-    emitToRoom(`project:${todo.projectId}`, TODO_EVENTS.DELETED, { todoId: params.id });
+    emitToRoom(`project:${todo.projectId}`, TODO_EVENTS.DELETED, { todoId: id });
 
     return NextResponse.json({ message: 'Todo deleted successfully' });
   } catch (error) {
