@@ -105,7 +105,7 @@ export async function GET(
 
     // Group todos by task for better organization
     const todosByTask = new Map();
-    const standaloneTodos = [];
+    const standaloneTodos: typeof todos = [];
 
     todos.forEach(todo => {
       if (todo.taskId) {
