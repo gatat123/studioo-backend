@@ -133,7 +133,7 @@ export async function POST(
 
     // Get updated task with all assignments
     const updatedTask = await prisma.task.findUnique({
-      where: { id: params.id },
+      where: { id },
       include: {
         createdBy: {
           select: {
@@ -167,7 +167,7 @@ export async function POST(
 
     // Emit socket event
     emitToRoom(`project:${task.projectId}`, TASK_EVENTS.ASSIGNED, {
-      taskId: params.id,
+      taskId: id,
       assignment,
       task: updatedTask,
     });
@@ -176,7 +176,7 @@ export async function POST(
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Invalid request data', details: error.errors },
+        { error: 'Invalid request data', details: error.issues },
         { status: 400 }
       );
     }
@@ -295,7 +295,7 @@ export async function DELETE(
 
     // Get updated task
     const updatedTask = await prisma.task.findUnique({
-      where: { id: params.id },
+      where: { id },
       include: {
         createdBy: {
           select: {
@@ -329,7 +329,7 @@ export async function DELETE(
 
     // Emit socket event
     emitToRoom(`project:${task.projectId}`, TASK_EVENTS.UNASSIGNED, {
-      taskId: params.id,
+      taskId: id,
       userId,
       role,
       task: updatedTask,

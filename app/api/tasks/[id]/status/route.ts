@@ -124,7 +124,7 @@ export async function PATCH(
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Invalid status value', details: error.errors },
+        { error: 'Invalid status value', details: error.issues },
         { status: 400 }
       );
     }
