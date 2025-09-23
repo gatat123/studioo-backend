@@ -9,7 +9,7 @@
     "start": "NODE_ENV=production tsx server.ts",
     "start:next": "next start",
     "postinstall": "prisma generate",
-    "migrate:deploy": "prisma migrate deploy",
+    "migrate:deploy": "prisma db push --skip-generate",
     "migrate:dev": "prisma migrate dev",
     "fix:project-types": "tsx scripts/fix-project-types.ts"
   },

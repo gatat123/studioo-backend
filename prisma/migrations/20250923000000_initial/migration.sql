@@ -1,0 +1,3 @@
+-- This migration is already applied to the production database
+-- This file exists to satisfy Prisma's migration requirements
+-- All tables already exist in production
