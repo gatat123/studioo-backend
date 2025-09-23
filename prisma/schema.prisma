@@ -86,6 +86,7 @@ model Project {
   creatorId    String   @map("creator_id")
   name         String   @db.VarChar(255)
   description  String?  @db.Text
+  projectType  String   @default("studio") @map("project_type") @db.VarChar(50)  // 'studio' or 'work'
   deadline     DateTime? @db.Date
   tag          String?  @db.VarChar(50)
   inviteCode   String?  @unique @map("invite_code") @db.VarChar(20)

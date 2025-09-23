@@ -13,6 +13,7 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
       const limit = parseInt(searchParams.get('limit') || '10');
       const tag = searchParams.get('tag');
       const status = searchParams.get('status');
+      const projectType = searchParams.get('type') || 'studio'; // 기본값은 'studio'
 
       const where: any = {
         OR: [
@@ -22,7 +23,8 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
               some: { userId: req.user.userId }
             }
           }
-        ]
+        ],
+        projectType: projectType // 프로젝트 타입 필터 추가
       };
 
       if (tag) where.tag = tag;
@@ -104,7 +106,7 @@ export const POST = withAuth(async (req: AuthenticatedRequest) => {
         );
       }
 
-      const { name, description, deadline, tag } = validationResult.data;
+      const { name, description, deadline, tag, projectType = 'studio' } = validationResult.data;
 
       const user = await prisma.user.findUnique({
         where: { id: req.user.userId },
@@ -124,6 +126,7 @@ export const POST = withAuth(async (req: AuthenticatedRequest) => {
           creatorId: req.user.userId,
           name,
           description,
+          projectType,
           deadline: deadline ? new Date(deadline) : undefined,
           tag,
           inviteCode: generateInviteCode(),

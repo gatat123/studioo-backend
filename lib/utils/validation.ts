@@ -17,6 +17,7 @@ export const loginSchema = z.object({
 export const createProjectSchema = z.object({
   name: z.string().min(1).max(255),
   description: z.string().max(1000).optional(),
+  projectType: z.enum(['studio', 'work']).default('studio').optional(),
   deadline: z.string().datetime().optional(),
   tag: z.string().max(50).optional(),
 });
