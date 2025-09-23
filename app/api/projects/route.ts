@@ -15,6 +15,15 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
       const status = searchParams.get('status');
       const projectType = searchParams.get('type') || 'studio'; // 기본값은 'studio'
 
+      console.log('[Backend API] GET /api/projects - Request params:', {
+        page,
+        limit,
+        tag,
+        status,
+        projectType,
+        userId: req.user.userId
+      });
+
       const where: any = {
         OR: [
           { creatorId: req.user.userId },
@@ -26,6 +35,8 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
         ],
         projectType: projectType // 프로젝트 타입 필터 추가
       };
+
+      console.log('[Backend API] Prisma where clause:', JSON.stringify(where, null, 2));
 
       if (tag) where.tag = tag;
       if (status) where.status = status;
@@ -68,6 +79,13 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
         }),
         prisma.project.count({ where }),
       ]);
+
+      console.log('[Backend API] Found projects:', projects.map(p => ({
+        id: p.id,
+        name: p.name,
+        projectType: p.projectType
+      })));
+      console.log('[Backend API] Total projects found:', total);
 
       return NextResponse.json<ApiResponse>({
         success: true,
