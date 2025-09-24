@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma/db';
 import { withAuth, AuthenticatedRequest } from '@/middleware/auth';
 import { handleOptions } from '@/lib/utils/cors';
+import { getSocketInstance } from '@/lib/socket/server';
 
 // GET /api/work-tasks/[id]/subtasks
 export const GET = withAuth(async (
@@ -151,7 +152,17 @@ export const POST = withAuth(async (
       }
     });
 
-    // Socket events removed - can be added later if needed
+    // Emit socket event for real-time updates
+    const io = getSocketInstance();
+    if (io) {
+      const roomId = `work-task:${workTaskId}`;
+      io.to(roomId).emit('subtask:created', {
+        subtask,
+        workTaskId,
+        timestamp: new Date()
+      });
+      console.log(`[Socket] Emitted subtask:created to room ${roomId}`);
+    }
 
     return NextResponse.json({
       success: true,

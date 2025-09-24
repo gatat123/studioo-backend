@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma/db';
 import { withAuth, AuthenticatedRequest } from '@/middleware/auth';
 import { handleOptions } from '@/lib/utils/cors';
-
+import { getSocketInstance } from '@/lib/socket/server';
 
 // PATCH /api/work-tasks/[id]/subtasks/[subtaskId]
 export const PATCH = withAuth(async (
@@ -140,7 +140,17 @@ export const PATCH = withAuth(async (
       }
     });
 
-    // Socket events removed - can be added later if needed
+    // Emit socket event for real-time updates
+    const io = getSocketInstance();
+    if (io) {
+      const roomId = `work-task:${workTaskId}`;
+      io.to(roomId).emit('subtask:updated', {
+        subtask: updatedSubtask,
+        workTaskId,
+        timestamp: new Date()
+      });
+      console.log(`[Socket] Emitted subtask:updated to room ${roomId}`);
+    }
 
     return NextResponse.json({
       success: true,
@@ -205,7 +215,17 @@ export const DELETE = withAuth(async (
       }
     });
 
-    // Socket events removed - can be added later if needed
+    // Emit socket event for real-time updates
+    const io = getSocketInstance();
+    if (io) {
+      const roomId = `work-task:${workTaskId}`;
+      io.to(roomId).emit('subtask:deleted', {
+        subtaskId,
+        workTaskId,
+        timestamp: new Date()
+      });
+      console.log(`[Socket] Emitted subtask:deleted to room ${roomId}`);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
