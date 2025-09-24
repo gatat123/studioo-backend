@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { verifyToken } from '@/lib/auth/jwt'
-import { prisma } from '@/lib/db'
+import { verifyToken } from '@/lib/utils/jwt'
+import { prisma } from '@/lib/prisma/db'
 import { writeFile, mkdir } from 'fs/promises'
 import { existsSync } from 'fs'
 import path from 'path'
@@ -8,7 +8,7 @@ import path from 'path'
 // GET: 첨부파일 목록 조회
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string; subtaskId: string } }
+  { params }: { params: Promise<{ id: string; subtaskId: string }> }
 ) {
   try {
     const token = request.headers.get('Authorization')?.replace('Bearer ', '')
@@ -21,7 +21,7 @@ export async function GET(
       return NextResponse.json({ error: '유효하지 않은 토큰입니다.' }, { status: 401 })
     }
 
-    const { id: workTaskId, subtaskId } = params
+    const { id: workTaskId, subtaskId } = await params
 
     // 세부작업 존재 확인 및 권한 체크
     const subtask = await prisma.subTask.findFirst({
@@ -44,9 +44,9 @@ export async function GET(
     }
 
     // 권한 체크
-    const isParticipant = subtask.workTask.participants.some(p => p.userId === payload.sub)
-    const isCreator = subtask.workTask.createdById === payload.sub
-    const isAssignee = subtask.assigneeId === payload.sub
+    const isParticipant = subtask.workTask.participants.some(p => p.userId === payload.userId)
+    const isCreator = subtask.workTask.createdById === payload.userId
+    const isAssignee = subtask.assigneeId === payload.userId
 
     if (!isParticipant && !isCreator && !isAssignee) {
       return NextResponse.json({ error: '접근 권한이 없습니다.' }, { status: 403 })
@@ -84,7 +84,7 @@ export async function GET(
 // POST: 파일 업로드
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string; subtaskId: string } }
+  { params }: { params: Promise<{ id: string; subtaskId: string }> }
 ) {
   try {
     const token = request.headers.get('Authorization')?.replace('Bearer ', '')
@@ -97,7 +97,7 @@ export async function POST(
       return NextResponse.json({ error: '유효하지 않은 토큰입니다.' }, { status: 401 })
     }
 
-    const { id: workTaskId, subtaskId } = params
+    const { id: workTaskId, subtaskId } = await params
 
     // 세부작업 존재 확인 및 권한 체크
     const subtask = await prisma.subTask.findFirst({
@@ -120,9 +120,9 @@ export async function POST(
     }
 
     // 권한 체크 (참여자, 생성자, 담당자만 업로드 가능)
-    const isParticipant = subtask.workTask.participants.some(p => p.userId === payload.sub)
-    const isCreator = subtask.workTask.createdById === payload.sub
-    const isAssignee = subtask.assigneeId === payload.sub
+    const isParticipant = subtask.workTask.participants.some(p => p.userId === payload.userId)
+    const isCreator = subtask.workTask.createdById === payload.userId
+    const isAssignee = subtask.assigneeId === payload.userId
 
     if (!isParticipant && !isCreator && !isAssignee) {
       return NextResponse.json({ error: '파일 업로드 권한이 없습니다.' }, { status: 403 })
@@ -187,7 +187,7 @@ export async function POST(
         fileSize: file.size,
         mimeType: file.type,
         fileUrl: `/uploads/work-tasks/${workTaskId}/subtasks/${subtaskId}/${fileName}`,
-        uploadedById: payload.sub
+        uploadedById: payload.userId
       },
       include: {
         uploadedBy: {

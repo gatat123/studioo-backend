@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { verifyToken } from '@/lib/auth/jwt'
-import { prisma } from '@/lib/db'
+import { verifyToken } from '@/lib/utils/jwt'
+import { prisma } from '@/lib/prisma/db'
 import { readFile, unlink } from 'fs/promises'
 import { existsSync } from 'fs'
 import path from 'path'
@@ -8,7 +8,7 @@ import path from 'path'
 // GET: 파일 다운로드
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string; subtaskId: string; attachmentId: string } }
+  { params }: { params: Promise<{ id: string; subtaskId: string; attachmentId: string }> }
 ) {
   try {
     const token = request.headers.get('Authorization')?.replace('Bearer ', '')
@@ -21,7 +21,7 @@ export async function GET(
       return NextResponse.json({ error: '유효하지 않은 토큰입니다.' }, { status: 401 })
     }
 
-    const { id: workTaskId, subtaskId, attachmentId } = params
+    const { id: workTaskId, subtaskId, attachmentId } = await params
 
     // 첨부파일 정보 조회
     const attachment = await prisma.subTaskAttachment.findFirst({
@@ -49,9 +49,9 @@ export async function GET(
 
     // 권한 체크
     const workTask = attachment.subTask.workTask
-    const isParticipant = workTask.participants.some(p => p.userId === payload.sub)
-    const isCreator = workTask.createdById === payload.sub
-    const isAssignee = attachment.subTask.assigneeId === payload.sub
+    const isParticipant = workTask.participants.some(p => p.userId === payload.userId)
+    const isCreator = workTask.createdById === payload.userId
+    const isAssignee = attachment.subTask.assigneeId === payload.userId
 
     if (!isParticipant && !isCreator && !isAssignee) {
       return NextResponse.json({ error: '파일 다운로드 권한이 없습니다.' }, { status: 403 })
@@ -77,7 +77,7 @@ export async function GET(
     const fileBuffer = await readFile(filePath)
 
     // 파일 응답
-    return new NextResponse(fileBuffer, {
+    return new NextResponse(fileBuffer as any, {
       status: 200,
       headers: {
         'Content-Type': attachment.mimeType,
@@ -97,7 +97,7 @@ export async function GET(
 // DELETE: 파일 삭제
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string; subtaskId: string; attachmentId: string } }
+  { params }: { params: Promise<{ id: string; subtaskId: string; attachmentId: string }> }
 ) {
   try {
     const token = request.headers.get('Authorization')?.replace('Bearer ', '')
@@ -110,7 +110,7 @@ export async function DELETE(
       return NextResponse.json({ error: '유효하지 않은 토큰입니다.' }, { status: 401 })
     }
 
-    const { id: workTaskId, subtaskId, attachmentId } = params
+    const { id: workTaskId, subtaskId, attachmentId } = await params
 
     // 첨부파일 정보 조회
     const attachment = await prisma.subTaskAttachment.findFirst({
@@ -138,11 +138,10 @@ export async function DELETE(
 
     // 권한 체크 (업로드한 본인, 작업 생성자, 또는 관리자만 삭제 가능)
     const workTask = attachment.subTask.workTask
-    const isUploader = attachment.uploadedById === payload.sub
-    const isCreator = workTask.createdById === payload.sub
-    const isAdmin = payload.isAdmin
+    const isUploader = attachment.uploadedById === payload.userId
+    const isCreator = workTask.createdById === payload.userId
 
-    if (!isUploader && !isCreator && !isAdmin) {
+    if (!isUploader && !isCreator) {
       return NextResponse.json({ error: '파일 삭제 권한이 없습니다.' }, { status: 403 })
     }
 
