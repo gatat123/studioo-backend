@@ -24,17 +24,11 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
         userId: req.user.userId
       });
 
-      // 프로젝트 타입 필터링 로직 - 단순화
+      // 프로젝트 타입 필터링 로직 - NOT 조건 사용으로 개선
       let projectTypeFilter;
       if (projectType === 'studio') {
-        // Studio 타입 요청 시: 'work'가 아닌 모든 프로젝트 (null, undefined, 'studio' 포함)
-        projectTypeFilter = {
-          OR: [
-            { projectType: 'studio' },
-            { projectType: null },
-            { projectType: { equals: undefined } }
-          ]
-        };
+        // Studio 타입 요청 시: 'work'가 아닌 모든 프로젝트 (null, undefined, 'studio' 자동 포함)
+        projectTypeFilter = { NOT: { projectType: 'work' } };
       } else if (projectType === 'work') {
         // Work 타입 요청 시: projectType이 정확히 'work'인 경우만
         projectTypeFilter = { projectType: 'work' };
