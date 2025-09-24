@@ -49,7 +49,7 @@ model User {
   // Messages
   sentMessages           Message[]       @relation("MessageSender")
   receivedMessages       Message[]       @relation("MessageReceiver")
-  
+
   // Channels
   createdChannels        Channel[]       @relation("ChannelCreator")
   channelMemberships     ChannelMember[]
@@ -57,6 +57,11 @@ model User {
   uploadedChannelFiles   ChannelFile[]
   sentChannelInvites     ChannelInvite[] @relation("ChannelInviter")
   receivedChannelInvites ChannelInvite[] @relation("ChannelInvitee")
+
+  // Work Task Management
+  createdWorkTasks       WorkTask[]           @relation("WorkTaskCreator")
+  workTaskParticipations WorkTaskParticipant[]
+  workTaskComments       WorkTaskComment[]
 
   @@index([username])
   @@index([email])
@@ -562,4 +567,74 @@ model TaskActivity {
   
   @@index([taskId, createdAt])
   @@map("task_activities")
+}
+
+// ============================================
+// Work Task Management Models (separate from Studio)
+// ============================================
+
+model WorkTask {
+  id          String    @id @default(uuid())
+  title       String
+  description String?
+  status      String    @default("pending")     // pending, in_progress, review, completed, cancelled
+  priority    String    @default("medium")      // low, medium, high, urgent
+  dueDate     DateTime? @map("due_date")
+  startDate   DateTime? @map("start_date")
+  completedAt DateTime? @map("completed_at")
+  assigneeId  String?   @map("assignee_id")     // primary assignee
+  createdById String    @map("created_by_id")   // creator
+  position    Int       @default(0)
+  tags        Json?     @default("[]")
+  inviteCode  String?   @unique @map("invite_code")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  createdBy     User                    @relation("WorkTaskCreator", fields: [createdById], references: [id])
+  participants  WorkTaskParticipant[]
+  comments      WorkTaskComment[]
+
+  @@index([status])
+  @@index([priority])
+  @@index([dueDate])
+  @@index([createdById])
+  @@index([assigneeId])
+  @@index([inviteCode])
+  @@map("work_tasks")
+}
+
+model WorkTaskParticipant {
+  id           String   @id @default(uuid())
+  workTaskId   String   @map("work_task_id")
+  userId       String   @map("user_id")
+  role         String   @default("member")  // creator, assignee, member, viewer
+  joinedAt     DateTime @default(now()) @map("joined_at")
+  lastViewedAt DateTime? @map("last_viewed_at")
+
+  workTask WorkTask @relation(fields: [workTaskId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([workTaskId, userId])
+  @@index([workTaskId])
+  @@index([userId])
+  @@map("work_task_participants")
+}
+
+model WorkTaskComment {
+  id         String   @id @default(uuid())
+  workTaskId String   @map("work_task_id")
+  userId     String   @map("user_id")
+  content    String
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+  isEdited   Boolean  @default(false) @map("is_edited")
+  isDeleted  Boolean  @default(false) @map("is_deleted")
+
+  workTask WorkTask @relation(fields: [workTaskId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id])
+
+  @@index([workTaskId])
+  @@index([userId])
+  @@index([createdAt])
+  @@map("work_task_comments")
 }
