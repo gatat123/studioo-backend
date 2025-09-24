@@ -45,7 +45,7 @@ model User {
   receivedFriendRequests FriendRequest[] @relation("FriendRequestReceiver")
   friendsAsUser1         Friendship[]    @relation("FriendshipUser1")
   friendsAsUser2         Friendship[]    @relation("FriendshipUser2")
-  
+
   // Messages
   sentMessages           Message[]       @relation("MessageSender")
   receivedMessages       Message[]       @relation("MessageReceiver")
@@ -62,6 +62,11 @@ model User {
   createdWorkTasks       WorkTask[]           @relation("WorkTaskCreator")
   workTaskParticipations WorkTaskParticipant[]
   workTaskComments       WorkTaskComment[]
+
+  // SubTask Management
+  createdSubTasks        SubTask[]            @relation("SubTaskCreator")
+  assignedSubTasks       SubTask[]            @relation("SubTaskAssignee")
+  subTaskComments        SubTaskComment[]
 
   @@index([username])
   @@index([email])
@@ -593,6 +598,7 @@ model WorkTask {
   createdBy     User                    @relation("WorkTaskCreator", fields: [createdById], references: [id])
   participants  WorkTaskParticipant[]
   comments      WorkTaskComment[]
+  subTasks      SubTask[]               // Added relation to subtasks
 
   @@index([status])
   @@index([priority])
@@ -637,4 +643,57 @@ model WorkTaskComment {
   @@index([userId])
   @@index([createdAt])
   @@map("work_task_comments")
+}
+
+// ============================================
+// SubTask Models (for Work Task hierarchy)
+// ============================================
+
+model SubTask {
+  id          String    @id @default(uuid())
+  workTaskId  String    @map("work_task_id")
+  title       String
+  description String?
+  status      String    @default("todo")        // todo, in_progress, review, done
+  priority    String    @default("medium")      // low, medium, high, urgent
+  dueDate     DateTime? @map("due_date")
+  startDate   DateTime? @map("start_date")
+  completedAt DateTime? @map("completed_at")
+  assigneeId  String?   @map("assignee_id")
+  createdById String    @map("created_by_id")
+  position    Int       @default(0)
+  tags        Json?     @default("[]")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  workTask  WorkTask         @relation(fields: [workTaskId], references: [id], onDelete: Cascade)
+  createdBy User             @relation("SubTaskCreator", fields: [createdById], references: [id])
+  assignee  User?            @relation("SubTaskAssignee", fields: [assigneeId], references: [id])
+  comments  SubTaskComment[]
+
+  @@index([workTaskId, status])
+  @@index([workTaskId, position])
+  @@index([status])
+  @@index([assigneeId])
+  @@index([createdById])
+  @@map("subtasks")
+}
+
+model SubTaskComment {
+  id        String   @id @default(uuid())
+  subTaskId String   @map("subtask_id")
+  userId    String   @map("user_id")
+  content   String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  isEdited  Boolean  @default(false) @map("is_edited")
+  isDeleted Boolean  @default(false) @map("is_deleted")
+
+  subTask SubTask @relation(fields: [subTaskId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id])
+
+  @@index([subTaskId])
+  @@index([userId])
+  @@index([createdAt])
+  @@map("subtask_comments")
 }
