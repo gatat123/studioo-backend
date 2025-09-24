@@ -44,7 +44,8 @@ export function setupWorkTaskHandlers(socket: AuthenticatedSocket, io: any) {
       await socket.join(roomId);
 
       // Check room size after joining
-      const room = socket.adapter.rooms.get(roomId);
+      const rooms = io.sockets.adapter.rooms;
+      const room = rooms.get(roomId);
       const clientCount = room ? room.size : 0;
 
       console.log(`[Socket] User ${socket.user.username} successfully joined work-task room: ${roomId} (${clientCount} clients total)`);
@@ -84,7 +85,8 @@ export function setupWorkTaskHandlers(socket: AuthenticatedSocket, io: any) {
     socket.leave(roomId);
 
     // Check room size after leaving
-    const room = socket.adapter.rooms.get(roomId);
+    const rooms = io.sockets.adapter.rooms;
+    const room = rooms.get(roomId);
     const clientCount = room ? room.size : 0;
 
     console.log(`[Socket] User ${socket.user.username} left work-task room: ${roomId} (${clientCount} clients remaining)`);
