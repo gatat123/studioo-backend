@@ -1,34 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
-import { prisma } from '@/lib/prisma';
-
+import { prisma } from '@/lib/prisma/db';
+import { withAuth, AuthenticatedRequest } from '@/middleware/auth';
+import { handleOptions } from '@/lib/utils/cors';
 
 // GET /api/work-tasks/[id]/subtasks
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+export const GET = withAuth(async (
+  req: AuthenticatedRequest,
+  { params }: { params: { id: string } }
+) => {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
-    const workTaskId = (await params).id;
+    const workTaskId = params.id;
 
     // Verify work task exists and user has access
     const workTask = await prisma.workTask.findFirst({
       where: {
         id: workTaskId,
         OR: [
-          { createdById: session.user.id },
+          { createdById: req.user.userId },
           {
             participants: {
-              some: { userId: session.user.id }
+              some: { userId: req.user.userId }
             }
           }
         ]
@@ -70,42 +61,37 @@ export async function GET(
       ]
     });
 
-    return NextResponse.json(subtasks);
+    return NextResponse.json({
+      success: true,
+      data: subtasks
+    });
   } catch (error) {
     console.error('Error fetching subtasks:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch subtasks' },
+      { success: false, error: 'Failed to fetch subtasks' },
       { status: 500 }
     );
   }
-}
+});
 
 // POST /api/work-tasks/[id]/subtasks
-export async function POST(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+export const POST = withAuth(async (
+  req: AuthenticatedRequest,
+  { params }: { params: { id: string } }
+) => {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
-    const workTaskId = (await params).id;
-    const body = await request.json();
+    const workTaskId = params.id;
+    const body = await req.json();
 
     // Verify work task exists and user has access
     const workTask = await prisma.workTask.findFirst({
       where: {
         id: workTaskId,
         OR: [
-          { createdById: session.user.id },
+          { createdById: req.user.userId },
           {
             participants: {
-              some: { userId: session.user.id }
+              some: { userId: req.user.userId }
             }
           }
         ]
@@ -138,7 +124,7 @@ export async function POST(
         status: body.status || 'todo',
         priority: body.priority || 'medium',
         position: (maxPosition?.position || 0) + 1,
-        createdById: session.user.id,
+        createdById: req.user.userId,
         assigneeId: body.assigneeId,
         dueDate: body.dueDate ? new Date(body.dueDate) : null,
         startDate: body.startDate ? new Date(body.startDate) : null,
@@ -167,12 +153,21 @@ export async function POST(
 
     // Socket events removed - can be added later if needed
 
-    return NextResponse.json(subtask);
+    return NextResponse.json({
+      success: true,
+      data: subtask,
+      message: 'Subtask created successfully'
+    }, { status: 201 });
   } catch (error) {
     console.error('Error creating subtask:', error);
     return NextResponse.json(
-      { error: 'Failed to create subtask' },
+      { success: false, error: 'Failed to create subtask' },
       { status: 500 }
     );
   }
+});
+
+// Handle preflight requests
+export async function OPTIONS(request: NextRequest) {
+  return handleOptions(request);
 }

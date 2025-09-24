@@ -1,25 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/lib/prisma/db';
+import { withAuth, AuthenticatedRequest } from '@/middleware/auth';
+import { handleOptions } from '@/lib/utils/cors';
 
 
 // PATCH /api/work-tasks/[id]/subtasks/[subtaskId]
-export async function PATCH(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string; subtaskId: string }> }
-) {
+export const PATCH = withAuth(async (
+  req: AuthenticatedRequest,
+  { params }: { params: { id: string; subtaskId: string } }
+) => {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
-    const { id: workTaskId, subtaskId } = await params;
-    const body = await request.json();
+    const { id: workTaskId, subtaskId } = params;
+    const body = await req.json();
 
     // Verify subtask exists and user has access
     const subtask = await prisma.subTask.findFirst({
@@ -28,10 +20,10 @@ export async function PATCH(
         workTaskId,
         workTask: {
           OR: [
-            { createdById: session.user.id },
+            { createdById: req.user.userId },
             {
               participants: {
-                some: { userId: session.user.id }
+                some: { userId: req.user.userId }
               }
             }
           ]
@@ -150,31 +142,26 @@ export async function PATCH(
 
     // Socket events removed - can be added later if needed
 
-    return NextResponse.json(updatedSubtask);
+    return NextResponse.json({
+      success: true,
+      data: updatedSubtask
+    });
   } catch (error) {
     console.error('Error updating subtask:', error);
     return NextResponse.json(
-      { error: 'Failed to update subtask' },
+      { success: false, error: 'Failed to update subtask' },
       { status: 500 }
     );
   }
-}
+});
 
 // DELETE /api/work-tasks/[id]/subtasks/[subtaskId]
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string; subtaskId: string }> }
-) {
+export const DELETE = withAuth(async (
+  req: AuthenticatedRequest,
+  { params }: { params: { id: string; subtaskId: string } }
+) => {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
-    const { id: workTaskId, subtaskId } = await params;
+    const { id: workTaskId, subtaskId } = params;
 
     // Verify subtask exists and user has access
     const subtask = await prisma.subTask.findFirst({
@@ -183,10 +170,10 @@ export async function DELETE(
         workTaskId,
         workTask: {
           OR: [
-            { createdById: session.user.id },
+            { createdById: req.user.userId },
             {
               participants: {
-                some: { userId: session.user.id }
+                some: { userId: req.user.userId }
               }
             }
           ]
@@ -224,8 +211,13 @@ export async function DELETE(
   } catch (error) {
     console.error('Error deleting subtask:', error);
     return NextResponse.json(
-      { error: 'Failed to delete subtask' },
+      { success: false, error: 'Failed to delete subtask' },
       { status: 500 }
     );
   }
+});
+
+// Handle preflight requests
+export async function OPTIONS(request: NextRequest) {
+  return handleOptions(request);
 }
