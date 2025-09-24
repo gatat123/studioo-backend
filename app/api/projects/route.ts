@@ -24,16 +24,15 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
         userId: req.user.userId
       });
 
-      // 프로젝트 타입 필터링 로직 개선
+      // 프로젝트 타입 필터링 로직 - 단순화
       let projectTypeFilter;
       if (projectType === 'studio') {
-        // Studio 타입 요청 시: projectType이 'studio'이거나 null/undefined인 경우 (기존 프로젝트 호환성)
+        // Studio 타입 요청 시: 'work'가 아닌 모든 프로젝트 (null, undefined, 'studio' 포함)
         projectTypeFilter = {
           OR: [
             { projectType: 'studio' },
             { projectType: null },
-            { projectType: '' },
-            { projectType: { not: 'work' } } // 'work'가 아닌 모든 값
+            { projectType: { equals: undefined } }
           ]
         };
       } else if (projectType === 'work') {
