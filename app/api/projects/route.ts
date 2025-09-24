@@ -24,37 +24,15 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
         userId: req.user.userId
       });
 
-      // 프로젝트 타입 필터링 로직 - 안전한 OR 조건 사용
-      let projectTypeFilter;
-      if (projectType === 'studio') {
-        // Studio 타입 요청 시: 'studio', null, 또는 빈 값인 프로젝트만
-        projectTypeFilter = {
-          OR: [
-            { projectType: 'studio' },
-            { projectType: null }
-          ]
-        };
-      } else if (projectType === 'work') {
-        // Work 타입 요청 시: projectType이 정확히 'work'인 경우만
-        projectTypeFilter = { projectType: 'work' };
-      } else {
-        // 기타 경우 기본 필터
-        projectTypeFilter = { projectType: projectType };
-      }
-
+      // 사용자/참가자 필터링만 Prisma에서 처리 (projectType 필터링은 JavaScript로 이동)
       const where: any = {
-        AND: [
+        OR: [
+          { creatorId: req.user.userId },
           {
-            OR: [
-              { creatorId: req.user.userId },
-              {
-                participants: {
-                  some: { userId: req.user.userId }
-                }
-              }
-            ]
-          },
-          projectTypeFilter // 개선된 프로젝트 타입 필터 적용
+            participants: {
+              some: { userId: req.user.userId }
+            }
+          }
         ]
       };
 
@@ -63,61 +41,75 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
       if (tag) where.tag = tag;
       if (status) where.status = status;
 
-      const [projects, total] = await Promise.all([
-        prisma.project.findMany({
-          where,
-          include: {
-            studio: true,
-            creator: {
-              select: {
-                id: true,
-                username: true,
-                nickname: true,
-                profileImageUrl: true,
-              }
-            },
-            participants: {
-              include: {
-                user: {
-                  select: {
-                    id: true,
-                    username: true,
-                    nickname: true,
-                    profileImageUrl: true,
-                  }
+      // 먼저 모든 사용자 프로젝트를 가져옴 (페이지네이션 없이)
+      const allUserProjects = await prisma.project.findMany({
+        where,
+        include: {
+          studio: true,
+          creator: {
+            select: {
+              id: true,
+              username: true,
+              nickname: true,
+              profileImageUrl: true,
+            }
+          },
+          participants: {
+            include: {
+              user: {
+                select: {
+                  id: true,
+                  username: true,
+                  nickname: true,
+                  profileImageUrl: true,
                 }
-              }
-            },
-            _count: {
-              select: {
-                scenes: true,
-                comments: true,
               }
             }
           },
-          skip: (page - 1) * limit,
-          take: limit,
-          orderBy: { createdAt: 'desc' },
-        }),
-        prisma.project.count({ where }),
-      ]);
-
-      // Debug: Check actual database values
-      const allProjects = await prisma.project.findMany({
-        select: {
-          id: true,
-          name: true,
-          projectType: true,
-        }
+          _count: {
+            select: {
+              scenes: true,
+              comments: true,
+            }
+          }
+        },
+        orderBy: { createdAt: 'desc' },
       });
-      console.log('[Backend API] All projects in DB:', allProjects);
+
+      // JavaScript에서 projectType 필터링 수행
+      let filteredProjects = allUserProjects;
+      if (projectType === 'studio') {
+        // Studio 타입: 'studio', null, 또는 빈 값인 프로젝트만
+        filteredProjects = allUserProjects.filter(project =>
+          project.projectType === 'studio' ||
+          project.projectType === null ||
+          project.projectType === ''
+        );
+      } else if (projectType === 'work') {
+        // Work 타입: 정확히 'work'인 경우만
+        filteredProjects = allUserProjects.filter(project => project.projectType === 'work');
+      } else {
+        // 기타 경우: 해당 타입과 일치하는 경우만
+        filteredProjects = allUserProjects.filter(project => project.projectType === projectType);
+      }
+
+      // 필터링된 결과에서 페이지네이션 적용
+      const total = filteredProjects.length;
+      const startIndex = (page - 1) * limit;
+      const endIndex = startIndex + limit;
+      const projects = filteredProjects.slice(startIndex, endIndex);
+
+      // Debug: 필터링 과정 로깅
+      console.log('[Backend API] All user projects count:', allUserProjects.length);
+      console.log('[Backend API] Filtered projects count:', filteredProjects.length);
+      console.log('[Backend API] Projects on current page:', projects.length);
 
       console.log('[Backend API] Found projects:', projects.map(p => ({
         id: p.id,
         name: p.name,
         projectType: p.projectType
       })));
-      console.log('[Backend API] Total projects found:', total);
+      console.log('[Backend API] Total filtered projects:', total);
 
       return NextResponse.json<ApiResponse>({
         success: true,
