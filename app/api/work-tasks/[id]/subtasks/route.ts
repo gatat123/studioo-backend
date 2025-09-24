@@ -2,12 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
-import { getSocketIO } from '@/lib/socket';
+
 
 // GET /api/work-tasks/[id]/subtasks
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -18,7 +18,7 @@ export async function GET(
       );
     }
 
-    const workTaskId = params.id;
+    const workTaskId = (await params).id;
 
     // Verify work task exists and user has access
     const workTask = await prisma.workTask.findFirst({
@@ -83,7 +83,7 @@ export async function GET(
 // POST /api/work-tasks/[id]/subtasks
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -94,7 +94,7 @@ export async function POST(
       );
     }
 
-    const workTaskId = params.id;
+    const workTaskId = (await params).id;
     const body = await request.json();
 
     // Verify work task exists and user has access
@@ -165,12 +165,7 @@ export async function POST(
       }
     });
 
-    // Emit socket event for real-time updates
-    const io = getSocketIO();
-    io.to(`work-task-${workTaskId}`).emit('subtask:created', {
-      workTaskId,
-      subtask
-    });
+    // Socket events removed - can be added later if needed
 
     return NextResponse.json(subtask);
   } catch (error) {

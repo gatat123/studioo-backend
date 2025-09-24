@@ -2,12 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
-import { getSocketIO } from '@/lib/socket';
+
 
 // PATCH /api/work-tasks/[id]/subtasks/[subtaskId]
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string; subtaskId: string } }
+  { params }: { params: Promise<{ id: string; subtaskId: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -18,7 +18,7 @@ export async function PATCH(
       );
     }
 
-    const { id: workTaskId, subtaskId } = params;
+    const { id: workTaskId, subtaskId } = await params;
     const body = await request.json();
 
     // Verify subtask exists and user has access
@@ -148,12 +148,7 @@ export async function PATCH(
       }
     });
 
-    // Emit socket event for real-time updates
-    const io = getSocketIO();
-    io.to(`work-task-${workTaskId}`).emit('subtask:updated', {
-      workTaskId,
-      subtask: updatedSubtask
-    });
+    // Socket events removed - can be added later if needed
 
     return NextResponse.json(updatedSubtask);
   } catch (error) {
@@ -168,7 +163,7 @@ export async function PATCH(
 // DELETE /api/work-tasks/[id]/subtasks/[subtaskId]
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string; subtaskId: string } }
+  { params }: { params: Promise<{ id: string; subtaskId: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -179,7 +174,7 @@ export async function DELETE(
       );
     }
 
-    const { id: workTaskId, subtaskId } = params;
+    const { id: workTaskId, subtaskId } = await params;
 
     // Verify subtask exists and user has access
     const subtask = await prisma.subTask.findFirst({
@@ -223,12 +218,7 @@ export async function DELETE(
       }
     });
 
-    // Emit socket event for real-time updates
-    const io = getSocketIO();
-    io.to(`work-task-${workTaskId}`).emit('subtask:deleted', {
-      workTaskId,
-      subtaskId
-    });
+    // Socket events removed - can be added later if needed
 
     return NextResponse.json({ success: true });
   } catch (error) {
