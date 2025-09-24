@@ -99,6 +99,9 @@ export const PATCH = withAuth(async (
       }
     }
 
+    // Store previous status for status change events
+    const previousStatus = subtask.status;
+
     // Update subtask
     const updateData: any = {};
     if (body.title !== undefined) updateData.title = body.title;
@@ -149,6 +152,19 @@ export const PATCH = withAuth(async (
         workTaskId,
         timestamp: new Date()
       });
+
+      // If status changed, emit specific status change event
+      if (body.status && body.status !== previousStatus) {
+        io.to(roomId).emit('subtask:status-changed', {
+          subtask: updatedSubtask,
+          previousStatus,
+          newStatus: body.status,
+          workTaskId,
+          timestamp: new Date()
+        });
+        console.log(`[Socket] Emitted subtask:status-changed to room ${roomId} (${previousStatus} -> ${body.status})`);
+      }
+
       console.log(`[Socket] Emitted subtask:updated to room ${roomId}`);
     }
 

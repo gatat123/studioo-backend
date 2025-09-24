@@ -111,9 +111,11 @@ export function setupWorkTaskHandlers(socket: AuthenticatedSocket, io: any) {
     workTaskId: string;
     subtaskId: string;
     updates: any;
+    previousStatus?: string;
   }) => {
     const roomId = `work-task:${data.workTaskId}`;
 
+    // Broadcast general update
     socket.to(roomId).emit('subtask:updated', {
       subtaskId: data.subtaskId,
       updates: data.updates,
@@ -125,6 +127,22 @@ export function setupWorkTaskHandlers(socket: AuthenticatedSocket, io: any) {
       },
       timestamp: new Date()
     });
+
+    // If status changed, emit specific status change event
+    if (data.updates.status && data.previousStatus && data.updates.status !== data.previousStatus) {
+      socket.to(roomId).emit('subtask:status-changed', {
+        subtaskId: data.subtaskId,
+        previousStatus: data.previousStatus,
+        newStatus: data.updates.status,
+        workTaskId: data.workTaskId,
+        updatedBy: {
+          id: socket.userId,
+          username: socket.user.username,
+          nickname: socket.user.nickname
+        },
+        timestamp: new Date()
+      });
+    }
   });
 
   socket.on('subtask:delete', async (data: {
