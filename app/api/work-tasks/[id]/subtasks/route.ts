@@ -116,7 +116,7 @@ export const POST = withAuth(async (
       select: { position: true }
     });
 
-    // Create subtask
+    // Create subtask - set assigneeId to creator if not provided
     const subtask = await prisma.subTask.create({
       data: {
         workTaskId,
@@ -126,7 +126,7 @@ export const POST = withAuth(async (
         priority: body.priority || 'medium',
         position: (maxPosition?.position || 0) + 1,
         createdById: req.user.userId,
-        assigneeId: body.assigneeId,
+        assigneeId: body.assigneeId || req.user.userId, // Default to creator if not provided
         dueDate: body.dueDate ? new Date(body.dueDate) : null,
         startDate: body.startDate ? new Date(body.startDate) : null,
         tags: body.tags || []
