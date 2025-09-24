@@ -21,16 +21,8 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
       userId: req.user.userId
     });
 
-    const where: any = {
-      OR: [
-        { createdById: req.user.userId },
-        {
-          participants: {
-            some: { userId: req.user.userId }
-          }
-        }
-      ]
-    };
+    // Remove filtering by user - show all work tasks
+    const where: any = {};
 
     if (status) where.status = status;
     if (priority) where.priority = priority;

@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { verifyJWT } from "@/lib/utils/jwt";
 import { CollaborationService } from "@/lib/services/collaboration";
 import { NotificationService } from "@/lib/services/notification";
+import { setupWorkTaskHandlers } from "./work-task-handlers";
 
 // 소켓 인증 인터페이스
 export interface AuthenticatedSocket extends Socket {
@@ -170,6 +171,9 @@ export class SocketServer {
 
       // 채널 실시간 이벤트 핸들러
       this.setupChannelEventHandlers(authSocket);
+
+      // Work Task 실시간 이벤트 핸들러
+      setupWorkTaskHandlers(authSocket, this.io);
 
       // 연결 해제 처리
       socket.on("disconnect", (reason) => {
