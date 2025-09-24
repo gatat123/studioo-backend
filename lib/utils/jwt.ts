@@ -10,7 +10,7 @@ export interface TokenPayload {
 
 export function signToken(payload: TokenPayload): string {
   return jwt.sign(payload, JWT_SECRET, {
-    expiresIn: '7d',
+    expiresIn: '30d', // 30일로 연장
   });
 }
 
