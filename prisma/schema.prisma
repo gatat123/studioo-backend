@@ -67,6 +67,7 @@ model User {
   createdSubTasks        SubTask[]            @relation("SubTaskCreator")
   assignedSubTasks       SubTask[]            @relation("SubTaskAssignee")
   subTaskComments        SubTaskComment[]
+  subTaskAttachments     SubTaskAttachment[]
 
   @@index([username])
   @@index([email])
@@ -666,10 +667,11 @@ model SubTask {
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @updatedAt @map("updated_at")
 
-  workTask  WorkTask         @relation(fields: [workTaskId], references: [id], onDelete: Cascade)
-  createdBy User             @relation("SubTaskCreator", fields: [createdById], references: [id])
-  assignee  User?            @relation("SubTaskAssignee", fields: [assigneeId], references: [id])
-  comments  SubTaskComment[]
+  workTask    WorkTask             @relation(fields: [workTaskId], references: [id], onDelete: Cascade)
+  createdBy   User                 @relation("SubTaskCreator", fields: [createdById], references: [id])
+  assignee    User?                @relation("SubTaskAssignee", fields: [assigneeId], references: [id])
+  comments    SubTaskComment[]
+  attachments SubTaskAttachment[]
 
   @@index([workTaskId, status])
   @@index([workTaskId, position])
@@ -696,4 +698,23 @@ model SubTaskComment {
   @@index([userId])
   @@index([createdAt])
   @@map("subtask_comments")
+}
+
+model SubTaskAttachment {
+  id           String   @id @default(uuid())
+  subTaskId    String   @map("subtask_id")
+  fileName     String   @map("file_name")
+  originalName String   @map("original_name")
+  fileSize     Int      @map("file_size")
+  mimeType     String   @map("mime_type")
+  fileUrl      String   @map("file_url")      // 파일 저장 경로
+  uploadedById String   @map("uploaded_by_id")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  subTask     SubTask  @relation(fields: [subTaskId], references: [id], onDelete: Cascade)
+  uploadedBy  User     @relation(fields: [uploadedById], references: [id])
+
+  @@index([subTaskId])
+  @@index([uploadedById])
+  @@map("subtask_attachments")
 }
