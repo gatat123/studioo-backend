@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma/db';
 import { hashPassword } from '@/lib/utils/password';
-import { generateAccessToken } from '@/lib/jwt';
+import { generateAccessToken, generateRefreshToken } from '@/lib/jwt';
 import { registerSchema } from '@/lib/utils/validation';
 import { ApiResponse } from '@/types';
 import { handleOptions, withCORS } from '@/lib/utils/cors';
@@ -75,8 +75,8 @@ export async function POST(request: NextRequest) {
 
     const { passwordHash: _, ...userWithoutPassword } = user;
     
-    // Generate JWT token
-    const token = generateAccessToken({ 
+    // Generate JWT tokens
+    const accessToken = generateAccessToken({
       userId: user.id,
       email: user.email,
       username: user.username,
@@ -84,15 +84,16 @@ export async function POST(request: NextRequest) {
       isAdmin: user.isAdmin
     });
 
-    return withCORS(NextResponse.json<ApiResponse>(
+    const refreshToken = generateRefreshToken(user.id);
+
+    // Return response in same format as login endpoint
+    return withCORS(NextResponse.json(
       {
-        success: true,
-        data: {
-          user: userWithoutPassword,
-          token,
-          accessToken: token
-        },
         message: 'User registered successfully',
+        user: userWithoutPassword,
+        accessToken,
+        refreshToken,
+        token: accessToken // For backward compatibility
       },
       { status: 201 }
     ), request);

@@ -4,16 +4,24 @@ import type { NextRequest } from 'next/server';
 const allowedOrigins = [
   'https://studioo-production-eb03.up.railway.app',
   'https://studioo.up.railway.app',
+  'https://courageous-spirit-production.up.railway.app',  // Backend self-reference
   'http://localhost:3000',
   'http://localhost:3001'
 ];
 
+// Get allowed origins from environment variable if set
+const getValidOrigins = () => {
+  const envOrigins = process.env.ALLOWED_ORIGINS?.split(',').map(origin => origin.trim());
+  return envOrigins || allowedOrigins;
+};
+
 export function corsHeaders(request: NextRequest) {
   const origin = request.headers.get('origin');
   const headers = new Headers();
+  const validOrigins = getValidOrigins();
 
   // Check if origin is allowed
-  if (origin && allowedOrigins.includes(origin)) {
+  if (origin && validOrigins.includes(origin)) {
     headers.set('Access-Control-Allow-Origin', origin);
   } else if (process.env.NODE_ENV === 'production') {
     // In production, allow the main frontend URL
