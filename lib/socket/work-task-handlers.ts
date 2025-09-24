@@ -13,7 +13,7 @@ export function setupWorkTaskHandlers(socket: AuthenticatedSocket, io: any) {
   // Join work-task room
   socket.on('join:work-task', async (workTaskId: string) => {
     try {
-      console.log(`[Socket] User ${socket.user.username} joining work-task room: ${workTaskId}`);
+      console.log(`[Socket] User ${socket.user.username} (${socket.userId}) joining work-task room: ${workTaskId}`);
 
       // Verify user has access to the work task
       const workTask = await prisma.workTask.findFirst({
@@ -31,6 +31,7 @@ export function setupWorkTaskHandlers(socket: AuthenticatedSocket, io: any) {
       });
 
       if (!workTask) {
+        console.log(`[Socket] Access denied for user ${socket.user.username} to work-task ${workTaskId}`);
         socket.emit('error', {
           type: 'access_denied',
           message: 'Work task access denied'
@@ -42,12 +43,17 @@ export function setupWorkTaskHandlers(socket: AuthenticatedSocket, io: any) {
       const roomId = `work-task:${workTaskId}`;
       await socket.join(roomId);
 
-      console.log(`[Socket] User ${socket.user.username} joined work-task room: ${roomId}`);
+      // Check room size after joining
+      const room = socket.adapter.rooms.get(roomId);
+      const clientCount = room ? room.size : 0;
+
+      console.log(`[Socket] User ${socket.user.username} successfully joined work-task room: ${roomId} (${clientCount} clients total)`);
 
       // Notify the client that they've successfully joined
       socket.emit('joined:work-task', {
         workTaskId,
         roomId,
+        clientCount,
         timestamp: new Date()
       });
 
@@ -77,7 +83,11 @@ export function setupWorkTaskHandlers(socket: AuthenticatedSocket, io: any) {
     const roomId = `work-task:${workTaskId}`;
     socket.leave(roomId);
 
-    console.log(`[Socket] User ${socket.user.username} left work-task room: ${roomId}`);
+    // Check room size after leaving
+    const room = socket.adapter.rooms.get(roomId);
+    const clientCount = room ? room.size : 0;
+
+    console.log(`[Socket] User ${socket.user.username} left work-task room: ${roomId} (${clientCount} clients remaining)`);
 
     // Notify others in the room
     socket.to(roomId).emit('user:left:work-task', {

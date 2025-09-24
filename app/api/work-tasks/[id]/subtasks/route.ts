@@ -156,12 +156,27 @@ export const POST = withAuth(async (
     const io = getSocketInstance();
     if (io) {
       const roomId = `work-task:${workTaskId}`;
-      io.to(roomId).emit('subtask:created', {
+
+      // Check how many clients are in the room
+      const room = io.sockets.adapter.rooms.get(roomId);
+      const clientCount = room ? room.size : 0;
+
+      const createEventData = {
         subtask,
         workTaskId,
         timestamp: new Date()
+      };
+
+      io.to(roomId).emit('subtask:created', createEventData);
+      console.log(`[Socket] Emitted subtask:created to room ${roomId}:`, {
+        subtaskId: subtask.id,
+        title: subtask.title,
+        status: subtask.status,
+        assigneeId: subtask.assigneeId,
+        clientCount
       });
-      console.log(`[Socket] Emitted subtask:created to room ${roomId}`);
+    } else {
+      console.error('[Socket] Socket.IO instance not available for creation');
     }
 
     return NextResponse.json({

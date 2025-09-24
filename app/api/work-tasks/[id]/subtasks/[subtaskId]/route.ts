@@ -147,25 +147,48 @@ export const PATCH = withAuth(async (
     const io = getSocketInstance();
     if (io) {
       const roomId = `work-task:${workTaskId}`;
-      io.to(roomId).emit('subtask:updated', {
+
+      // Check how many clients are in the room
+      const room = io.sockets.adapter.rooms.get(roomId);
+      const clientCount = room ? room.size : 0;
+      console.log(`[Socket] Room ${roomId} has ${clientCount} clients`);
+
+      // Emit general update event
+      const updateEventData = {
         subtask: updatedSubtask,
         workTaskId,
         timestamp: new Date()
+      };
+
+      io.to(roomId).emit('subtask:updated', updateEventData);
+      console.log(`[Socket] Emitted subtask:updated to room ${roomId}:`, {
+        subtaskId: updatedSubtask.id,
+        title: updatedSubtask.title,
+        status: updatedSubtask.status,
+        position: updatedSubtask.position,
+        clientCount
       });
 
       // If status changed, emit specific status change event
       if (body.status && body.status !== previousStatus) {
-        io.to(roomId).emit('subtask:status-changed', {
+        const statusEventData = {
           subtask: updatedSubtask,
           previousStatus,
           newStatus: body.status,
           workTaskId,
           timestamp: new Date()
-        });
-        console.log(`[Socket] Emitted subtask:status-changed to room ${roomId} (${previousStatus} -> ${body.status})`);
-      }
+        };
 
-      console.log(`[Socket] Emitted subtask:updated to room ${roomId}`);
+        io.to(roomId).emit('subtask:status-changed', statusEventData);
+        console.log(`[Socket] Emitted subtask:status-changed to room ${roomId}:`, {
+          subtaskId: updatedSubtask.id,
+          previousStatus,
+          newStatus: body.status,
+          clientCount
+        });
+      }
+    } else {
+      console.error('[Socket] Socket.IO instance not available');
     }
 
     return NextResponse.json({
@@ -235,12 +258,25 @@ export const DELETE = withAuth(async (
     const io = getSocketInstance();
     if (io) {
       const roomId = `work-task:${workTaskId}`;
-      io.to(roomId).emit('subtask:deleted', {
+
+      // Check how many clients are in the room
+      const room = io.sockets.adapter.rooms.get(roomId);
+      const clientCount = room ? room.size : 0;
+
+      const deleteEventData = {
         subtaskId,
         workTaskId,
         timestamp: new Date()
+      };
+
+      io.to(roomId).emit('subtask:deleted', deleteEventData);
+      console.log(`[Socket] Emitted subtask:deleted to room ${roomId}:`, {
+        subtaskId,
+        workTaskId,
+        clientCount
       });
-      console.log(`[Socket] Emitted subtask:deleted to room ${roomId}`);
+    } else {
+      console.error('[Socket] Socket.IO instance not available for deletion');
     }
 
     return NextResponse.json({ success: true });
