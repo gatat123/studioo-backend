@@ -80,6 +80,16 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
         prisma.project.count({ where }),
       ]);
 
+      // Debug: Check actual database values
+      const allProjects = await prisma.project.findMany({
+        select: {
+          id: true,
+          name: true,
+          projectType: true,
+        }
+      });
+      console.log('[Backend API] All projects in DB:', allProjects);
+
       console.log('[Backend API] Found projects:', projects.map(p => ({
         id: p.id,
         name: p.name,
