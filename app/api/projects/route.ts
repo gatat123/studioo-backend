@@ -24,16 +24,40 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
         userId: req.user.userId
       });
 
+      // 프로젝트 타입 필터링 로직 개선
+      let projectTypeFilter;
+      if (projectType === 'studio') {
+        // Studio 타입 요청 시: projectType이 'studio'이거나 null/undefined인 경우 (기존 프로젝트 호환성)
+        projectTypeFilter = {
+          OR: [
+            { projectType: 'studio' },
+            { projectType: null },
+            { projectType: '' },
+            { projectType: { not: 'work' } } // 'work'가 아닌 모든 값
+          ]
+        };
+      } else if (projectType === 'work') {
+        // Work 타입 요청 시: projectType이 정확히 'work'인 경우만
+        projectTypeFilter = { projectType: 'work' };
+      } else {
+        // 기타 경우 기본 필터
+        projectTypeFilter = { projectType: projectType };
+      }
+
       const where: any = {
-        OR: [
-          { creatorId: req.user.userId },
+        AND: [
           {
-            participants: {
-              some: { userId: req.user.userId }
-            }
-          }
-        ],
-        projectType: projectType // 프로젝트 타입 필터 추가
+            OR: [
+              { creatorId: req.user.userId },
+              {
+                participants: {
+                  some: { userId: req.user.userId }
+                }
+              }
+            ]
+          },
+          projectTypeFilter // 개선된 프로젝트 타입 필터 적용
+        ]
       };
 
       console.log('[Backend API] Prisma where clause:', JSON.stringify(where, null, 2));
