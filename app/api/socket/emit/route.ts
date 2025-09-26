@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
       } catch (fetchError) {
         console.error('[Socket Emit API] Failed to forward to socket server:', fetchError);
         return NextResponse.json(
-          { error: 'Failed to emit socket event', details: fetchError.message },
+          { error: 'Failed to emit socket event', details: fetchError instanceof Error ? fetchError.message : String(fetchError) },
           { status: 500 }
         );
       }
