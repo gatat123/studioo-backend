@@ -28,6 +28,7 @@ export async function GET(req: NextRequest) {
         socketServer: !!socketServer,
         globalServer: !!globalServer,
         isConnected: !!(localInstance || globalInstance),
+        httpFallback: null as any,
       },
       urls: {
         internal: process.env.INTERNAL_API_URL || 'not set',
