@@ -50,9 +50,21 @@ export class SocketServer {
 
   constructor(httpServer: HTTPServer) {
     this.httpServer = httpServer;
+
+    // Configure CORS origins based on environment
+    const corsOrigins = process.env.NODE_ENV === 'production'
+      ? [
+          "https://studioo-production-eb03.up.railway.app",
+          "https://studioo-fix-production.up.railway.app",
+          process.env.CORS_ORIGIN
+        ].filter(Boolean)
+      : ["http://localhost:3000", "http://localhost:3001"];
+
+    console.log("[Socket Server] Initializing with CORS origins:", corsOrigins);
+
     this.io = new SocketIOServer(httpServer, {
       cors: {
-        origin: process.env.CORS_ORIGIN || "http://localhost:3000",
+        origin: corsOrigins,
         methods: ["GET", "POST"],
         credentials: true,
       },
