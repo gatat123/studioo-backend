@@ -76,10 +76,35 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
               }
             }
           },
+          subTasks: {
+            include: {
+              createdBy: {
+                select: {
+                  id: true,
+                  username: true,
+                  nickname: true,
+                  profileImageUrl: true,
+                }
+              },
+              assignee: {
+                select: {
+                  id: true,
+                  username: true,
+                  nickname: true,
+                  profileImageUrl: true,
+                }
+              }
+            },
+            orderBy: [
+              { position: 'asc' },
+              { createdAt: 'asc' }
+            ]
+          },
           _count: {
             select: {
               comments: true,
               participants: true,
+              subTasks: true,
             }
           }
         },
@@ -174,6 +199,30 @@ export const POST = withAuth(async (req: AuthenticatedRequest) => {
               }
             }
           }
+        },
+        subTasks: {
+          include: {
+            createdBy: {
+              select: {
+                id: true,
+                username: true,
+                nickname: true,
+                profileImageUrl: true,
+              }
+            },
+            assignee: {
+              select: {
+                id: true,
+                username: true,
+                nickname: true,
+                profileImageUrl: true,
+              }
+            }
+          },
+          orderBy: [
+            { position: 'asc' },
+            { createdAt: 'asc' }
+          ]
         },
       },
     });
