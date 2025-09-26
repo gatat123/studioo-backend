@@ -52,6 +52,17 @@ export const GET = withAuth(async (
             profileImageUrl: true
           }
         },
+        participants: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                nickname: true,
+                profileImageUrl: true
+              }
+            }
+          }
+        },
         comments: {
           select: { id: true }
         }
@@ -144,6 +155,17 @@ export const POST = withAuth(async (
             id: true,
             nickname: true,
             profileImageUrl: true
+          }
+        },
+        participants: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                nickname: true,
+                profileImageUrl: true
+              }
+            }
           }
         },
         comments: {

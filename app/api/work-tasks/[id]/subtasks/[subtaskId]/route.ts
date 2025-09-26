@@ -137,6 +137,17 @@ export const PATCH = withAuth(async (
             profileImageUrl: true
           }
         },
+        participants: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                nickname: true,
+                profileImageUrl: true
+              }
+            }
+          }
+        },
         comments: {
           select: { id: true }
         }

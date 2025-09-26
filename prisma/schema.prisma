@@ -68,6 +68,7 @@ model User {
   assignedSubTasks       SubTask[]            @relation("SubTaskAssignee")
   subTaskComments        SubTaskComment[]
   subTaskAttachments     SubTaskAttachment[]
+  participatingSubtasks  SubTaskParticipant[]
 
   @@index([username])
   @@index([email])
@@ -668,11 +669,12 @@ model SubTask {
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @updatedAt @map("updated_at")
 
-  workTask    WorkTask             @relation(fields: [workTaskId], references: [id], onDelete: Cascade)
-  createdBy   User                 @relation("SubTaskCreator", fields: [createdById], references: [id])
-  assignee    User?                @relation("SubTaskAssignee", fields: [assigneeId], references: [id])
-  comments    SubTaskComment[]
-  attachments SubTaskAttachment[]
+  workTask     WorkTask             @relation(fields: [workTaskId], references: [id], onDelete: Cascade)
+  createdBy    User                 @relation("SubTaskCreator", fields: [createdById], references: [id])
+  assignee     User?                @relation("SubTaskAssignee", fields: [assigneeId], references: [id])
+  comments     SubTaskComment[]
+  attachments  SubTaskAttachment[]
+  participants SubTaskParticipant[]
 
   @@index([workTaskId, status])
   @@index([workTaskId, position])
@@ -718,4 +720,19 @@ model SubTaskAttachment {
   @@index([subTaskId])
   @@index([uploadedById])
   @@map("SubTaskAttachments")
+}
+
+model SubTaskParticipant {
+  id         String   @id @default(uuid())
+  subtaskId  String   @map("subtask_id")
+  userId     String   @map("user_id")
+  joinedAt   DateTime @default(now()) @map("joined_at")
+
+  subtask    SubTask  @relation(fields: [subtaskId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([subtaskId, userId])
+  @@index([subtaskId])
+  @@index([userId])
+  @@map("SubTaskParticipants")
 }

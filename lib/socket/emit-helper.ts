@@ -108,6 +108,20 @@ export const subtaskEvents = {
       newStatus,
       newPosition,
       workTaskId
+    }),
+
+  participantAdded: (workTaskId: string, subtaskId: string, participant: any) =>
+    emitWorkTaskEvent(workTaskId, 'subtask:participant-added', {
+      subtaskId,
+      participant,
+      workTaskId
+    }),
+
+  participantRemoved: (workTaskId: string, subtaskId: string, userId: string) =>
+    emitWorkTaskEvent(workTaskId, 'subtask:participant-removed', {
+      subtaskId,
+      userId,
+      workTaskId
     })
 };
 
