@@ -39,6 +39,20 @@ async function startServer() {
     const socketServer = initializeSocketServer(server);
     console.log("✅ Socket.io 서버 초기화 완료");
 
+    // Socket.io 인스턴스 확인 (디버깅용)
+    if (process.env.NODE_ENV === 'development') {
+      const { getSocketInstance } = require('./lib/socket/server');
+      const { getGlobalSocketInstance } = require('./lib/socket/global-socket');
+
+      setTimeout(() => {
+        const localIO = getSocketInstance();
+        const globalIO = getGlobalSocketInstance();
+        console.log('🔍 Socket.io Instance Check:');
+        console.log('   - Local instance:', !!localIO);
+        console.log('   - Global instance:', !!globalIO);
+      }, 1000);
+    }
+
     // 서버 시작
     server.listen(port, () => {
       console.log(`🌟 Studio Backend Server가 http://${hostname}:${port}에서 실행 중입니다`);

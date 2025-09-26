@@ -5,6 +5,7 @@ import { verifyJWT } from "@/lib/utils/jwt";
 import { CollaborationService } from "@/lib/services/collaboration";
 import { NotificationService } from "@/lib/services/notification";
 import { setupWorkTaskHandlers } from "./work-task-handlers";
+import { setGlobalSocketInstance, setGlobalSocketServer, getGlobalSocketInstance, getGlobalSocketServer } from "./global-socket";
 
 // 소켓 인증 인터페이스
 export interface AuthenticatedSocket extends Socket {
@@ -1780,9 +1781,19 @@ export class SocketServer {
 let socketServer: SocketServer | null = null;
 
 export function initializeSocketServer(httpServer: HTTPServer): SocketServer {
+  // Check for existing global instance first
+  const existingServer = getGlobalSocketServer();
+  if (existingServer) {
+    console.log("Socket.io server already initialized (global)");
+    socketServer = existingServer;
+    return existingServer;
+  }
+
   if (!socketServer) {
     socketServer = new SocketServer(httpServer);
-    console.log("Socket.io server initialized");
+    setGlobalSocketServer(socketServer);
+    setGlobalSocketInstance(socketServer.getIO());
+    console.log("Socket.io server initialized and registered globally");
   }
   return socketServer;
 }
@@ -1792,6 +1803,13 @@ export function getSocketServer(): SocketServer | null {
 }
 
 export function getSocketInstance(): SocketIOServer | null {
+  // Try to get from global first (for Next.js API routes)
+  const globalInstance = getGlobalSocketInstance();
+  if (globalInstance) {
+    return globalInstance;
+  }
+
+  // Fallback to local instance
   return socketServer ? socketServer.getIO() : null;
 }
 

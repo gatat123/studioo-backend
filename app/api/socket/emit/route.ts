@@ -25,7 +25,11 @@ export async function POST(req: NextRequest) {
       console.log(`[Socket Emit API] Socket.io not available, using HTTP fallback`);
 
       // Make an HTTP request to the Socket.io server
-      const socketServerUrl = process.env.SOCKET_SERVER_URL || 'http://localhost:3001';
+      // Railway 환경에서는 내부 서비스 통신 URL 사용
+      // 로컬 개발 환경에서는 127.0.0.1 사용 (IPv4 명시)
+      const socketServerUrl = process.env.NODE_ENV === 'production'
+        ? (process.env.SOCKET_SERVER_URL || process.env.INTERNAL_API_URL || 'https://studioo-backend-production-eb03.up.railway.app')
+        : 'http://127.0.0.1:3001';
 
       try {
         const response = await fetch(`${socketServerUrl}/api/socket/emit`, {

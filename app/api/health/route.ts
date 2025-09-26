@@ -1,39 +1,83 @@
-import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
+import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/lib/prisma';
 import fs from 'fs';
 
-const prisma = new PrismaClient();
-
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
-    // 데이터베이스 연결 확인
-    await prisma.$queryRaw`SELECT 1`;
-    
-    // Storage 디렉토리 확인
+    // Check database connection
+    let dbStatus = 'unknown';
+    let dbLatency = -1;
+
+    try {
+      const startTime = Date.now();
+      await prisma.$queryRaw`SELECT 1`;
+      dbLatency = Date.now() - startTime;
+      dbStatus = 'healthy';
+    } catch (dbError) {
+      dbStatus = 'unhealthy';
+      console.error('[Health Check] Database error:', dbError);
+    }
+
+    // Check storage directory
     const uploadDir = process.env.UPLOAD_DIR || './uploads';
-    const storageExists = fs.existsSync(uploadDir);
-    const storageWritable = storageExists ? fs.accessSync(uploadDir, fs.constants.W_OK) === undefined : false;
-    
-    return NextResponse.json({
-      status: 'healthy',
+    let storageStatus = 'unknown';
+    let storageWritable = false;
+
+    try {
+      const storageExists = fs.existsSync(uploadDir);
+      if (storageExists) {
+        fs.accessSync(uploadDir, fs.constants.W_OK);
+        storageStatus = 'ready';
+        storageWritable = true;
+      } else {
+        storageStatus = 'not_ready';
+      }
+    } catch (e) {
+      storageStatus = 'error';
+    }
+
+    const health = {
+      status: dbStatus === 'healthy' && storageStatus !== 'error' ? 'ok' : 'degraded',
       timestamp: new Date().toISOString(),
+      service: 'studioo-backend',
+      environment: process.env.NODE_ENV || 'development',
+      version: process.env.npm_package_version || '1.0.0',
+      uptime: process.uptime(),
       checks: {
-        database: 'connected',
-        storage: storageExists ? 'ready' : 'not_ready',
-        writable: storageWritable
+        database: {
+          status: dbStatus,
+          latency: dbLatency > 0 ? `${dbLatency}ms` : 'N/A'
+        },
+        storage: {
+          status: storageStatus,
+          writable: storageWritable,
+          path: uploadDir
+        },
+        memory: {
+          used: Math.round(process.memoryUsage().heapUsed / 1024 / 1024),
+          total: Math.round(process.memoryUsage().heapTotal / 1024 / 1024),
+          unit: 'MB'
+        }
+      }
+    };
+
+    return NextResponse.json(health, {
+      status: health.status === 'ok' ? 200 : 503,
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
       }
     });
   } catch (error) {
-    console.error('Health check failed:', error);
+    console.error('[Health Check] Error:', error);
     return NextResponse.json(
       {
-        status: 'unhealthy',
-        timestamp: new Date().toISOString(),
-        error: error instanceof Error ? error.message : 'Unknown error'
+        status: 'error',
+        message: error instanceof Error ? error.message : 'Unknown error',
+        timestamp: new Date().toISOString()
       },
       { status: 503 }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }

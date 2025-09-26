@@ -4,6 +4,7 @@
  */
 
 import { getSocketInstance } from './server';
+import { getGlobalSocketInstance } from './global-socket';
 
 interface EmitOptions {
   room: string;
@@ -17,8 +18,8 @@ interface EmitOptions {
  */
 export async function emitSocketEvent({ room, event, data }: EmitOptions): Promise<boolean> {
   try {
-    // Try direct emission first
-    const io = getSocketInstance();
+    // Try direct emission first - check both local and global instances
+    const io = getSocketInstance() || getGlobalSocketInstance();
 
     if (io) {
       io.to(room).emit(event, data);
@@ -31,10 +32,18 @@ export async function emitSocketEvent({ room, event, data }: EmitOptions): Promi
       return true;
     }
 
-    // Fallback to HTTP emission
-    console.log(`[Socket Helper] Using HTTP fallback for: ${event}`);
+    // In production, Socket.io should be available in the same process
+    // Log error and return false instead of trying HTTP fallback
+    if (process.env.NODE_ENV === 'production') {
+      console.error(`[Socket Helper] Socket.io instance not available in production for: ${event}`);
+      console.error('[Socket Helper] This should not happen - check server initialization');
+      return false;
+    }
 
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    // Only use HTTP fallback in development mode
+    console.log(`[Socket Helper] Using HTTP fallback for: ${event} (dev mode)`);
+
+    const baseUrl = 'http://127.0.0.1:3001';
     const response = await fetch(`${baseUrl}/api/socket/emit`, {
       method: 'PUT',
       headers: {
