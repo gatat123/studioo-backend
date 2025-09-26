@@ -8,67 +8,54 @@ datasource db {
 }
 
 model User {
-  id                String   @id @default(uuid())
-  username          String   @unique
-  email             String   @unique
-  passwordHash      String   @map("password_hash")
-  nickname          String   @unique
-  profileImageUrl   String?  @map("profile_image_url")
-  bio               String?
-  isAdmin           Boolean  @default(false) @map("is_admin")
-  createdAt         DateTime @default(now()) @map("created_at")
-  updatedAt         DateTime @updatedAt @map("updated_at")
-  lastLoginAt       DateTime? @map("last_login_at")
-  isActive          Boolean  @default(true) @map("is_active")
-
-  studio            Studio?
-  createdProjects   Project[] @relation("ProjectCreator")
-  participations    ProjectParticipant[]
-  createdScenes     Scene[] @relation("SceneCreator")
-  uploadedImages    Image[] @relation("ImageUploader")
-  imageHistory      ImageHistory[]
-  comments          Comment[]
-  annotations       Annotation[]
-  presence          UserPresence[]
-  collaborationLogs CollaborationLog[]
-  notifications     Notification[]
-
-  // Task management
-  createdTasks      Task[]           @relation("TaskCreator")
-  taskAssignments   TaskAssignment[]
-  todos             Todo[]
-  taskComments      TaskComment[]
-  taskActivities    TaskActivity[]
-
-  // Friend relationships
-  sentFriendRequests     FriendRequest[] @relation("FriendRequestSender")
-  receivedFriendRequests FriendRequest[] @relation("FriendRequestReceiver")
-  friendsAsUser1         Friendship[]    @relation("FriendshipUser1")
-  friendsAsUser2         Friendship[]    @relation("FriendshipUser2")
-
-  // Messages
-  sentMessages           Message[]       @relation("MessageSender")
-  receivedMessages       Message[]       @relation("MessageReceiver")
-
-  // Channels
-  createdChannels        Channel[]       @relation("ChannelCreator")
+  id                     String                @id @default(uuid())
+  username               String                @unique
+  email                  String                @unique
+  passwordHash           String                @map("password_hash")
+  nickname               String                @unique
+  profileImageUrl        String?               @map("profile_image_url")
+  isAdmin                Boolean               @default(false) @map("is_admin")
+  createdAt              DateTime              @default(now()) @map("created_at")
+  updatedAt              DateTime              @updatedAt @map("updated_at")
+  lastLoginAt            DateTime?             @map("last_login_at")
+  isActive               Boolean               @default(true) @map("is_active")
+  bio                    String?
+  assignedSubTasks       SubTask[]             @relation("SubTaskAssignee")
+  createdSubTasks        SubTask[]             @relation("SubTaskCreator")
+  subTaskAttachments     SubTaskAttachment[]
+  subTaskComments        SubTaskComment[]
+  participatingSubtasks  SubTaskParticipant[]
+  createdWorkTasks       WorkTask[]            @relation("WorkTaskCreator")
+  workTaskComments       WorkTaskComment[]
+  workTaskParticipations WorkTaskParticipant[]
+  annotations            Annotation[]
+  uploadedChannelFiles   ChannelFile[]
+  receivedChannelInvites ChannelInvite[]       @relation("ChannelInvitee")
+  sentChannelInvites     ChannelInvite[]       @relation("ChannelInviter")
   channelMemberships     ChannelMember[]
   channelMessages        ChannelMessage[]
-  uploadedChannelFiles   ChannelFile[]
-  sentChannelInvites     ChannelInvite[] @relation("ChannelInviter")
-  receivedChannelInvites ChannelInvite[] @relation("ChannelInvitee")
-
-  // Work Task Management
-  createdWorkTasks       WorkTask[]           @relation("WorkTaskCreator")
-  workTaskParticipations WorkTaskParticipant[]
-  workTaskComments       WorkTaskComment[]
-
-  // SubTask Management
-  createdSubTasks        SubTask[]            @relation("SubTaskCreator")
-  assignedSubTasks       SubTask[]            @relation("SubTaskAssignee")
-  subTaskComments        SubTaskComment[]
-  subTaskAttachments     SubTaskAttachment[]
-  participatingSubtasks  SubTaskParticipant[]
+  createdChannels        Channel[]             @relation("ChannelCreator")
+  collaborationLogs      CollaborationLog[]
+  comments               Comment[]
+  receivedFriendRequests FriendRequest[]       @relation("FriendRequestReceiver")
+  sentFriendRequests     FriendRequest[]       @relation("FriendRequestSender")
+  friendsAsUser1         Friendship[]          @relation("FriendshipUser1")
+  friendsAsUser2         Friendship[]          @relation("FriendshipUser2")
+  imageHistory           ImageHistory[]
+  uploadedImages         Image[]               @relation("ImageUploader")
+  receivedMessages       Message[]             @relation("MessageReceiver")
+  sentMessages           Message[]             @relation("MessageSender")
+  notifications          Notification[]
+  participations         ProjectParticipant[]
+  createdProjects        Project[]             @relation("ProjectCreator")
+  createdScenes          Scene[]               @relation("SceneCreator")
+  studio                 Studio?
+  taskActivities         TaskActivity[]
+  taskAssignments        TaskAssignment[]
+  taskComments           TaskComment[]
+  createdTasks           Task[]                @relation("TaskCreator")
+  todos                  Todo[]
+  presence               UserPresence[]
 
   @@index([username])
   @@index([email])
@@ -77,49 +64,47 @@ model User {
 }
 
 model Studio {
-  id          String   @id @default(uuid())
-  userId      String   @unique @map("user_id")
-  name        String   
-  description String?  
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  projects    Project[]
+  id          String    @id @default(uuid())
+  userId      String    @unique @map("user_id")
+  name        String
+  description String?
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
   channels    Channel[]
+  projects    Project[]
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@map("studios")
 }
 
 model Project {
-  id           String   @id @default(uuid())
-  studioId     String   @map("studio_id")
-  creatorId    String   @map("creator_id")
-  name         String   
-  description  String?  
-  projectType  String   @map("project_type")   // 'studio' or 'work'
-  deadline     DateTime? 
-  tag          String?  
-  inviteCode   String?  @unique @map("invite_code") 
-  status       String   @default("active") 
-  hasUpdates   Boolean  @default(false) @map("has_updates")
-  overallStory String?  @map("overall_story")   // 전체 스토리 (스토리보드용)
-  setList      Json?    @map("set_list")  // 세트 리스트
-  characterList Json?   @map("character_list")  // 캐릭터 리스트
-  createdAt    DateTime @default(now()) @map("created_at")
-  updatedAt    DateTime @updatedAt @map("updated_at")
-
-  studio            Studio     @relation(fields: [studioId], references: [id], onDelete: Cascade)
-  creator           User       @relation("ProjectCreator", fields: [creatorId], references: [id])
-  participants      ProjectParticipant[]
-  scenes            Scene[]
-  comments          Comment[]
-  presence          UserPresence[]
+  id                String               @id @default(uuid())
+  studioId          String               @map("studio_id")
+  creatorId         String               @map("creator_id")
+  name              String
+  description       String?
+  deadline          DateTime?
+  tag               String?
+  inviteCode        String?              @unique @map("invite_code")
+  status            String               @default("active")
+  hasUpdates        Boolean              @default(false) @map("has_updates")
+  createdAt         DateTime             @default(now()) @map("created_at")
+  updatedAt         DateTime             @updatedAt @map("updated_at")
+  characterList     Json?                @map("character_list")
+  overallStory      String?              @map("overall_story")
+  setList           Json?                @map("set_list")
+  projectType       String               @map("project_type")
   collaborationLogs CollaborationLog[]
+  comments          Comment[]
   notifications     Notification[]
+  participants      ProjectParticipant[]
+  creator           User                 @relation("ProjectCreator", fields: [creatorId], references: [id])
+  studio            Studio               @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  scenes            Scene[]
   tasks             Task[]
   todos             Todo[]
+  presence          UserPresence[]
 
   @@index([studioId])
   @@index([creatorId])
@@ -128,15 +113,14 @@ model Project {
 }
 
 model ProjectParticipant {
-  id           String   @id @default(uuid())
-  projectId    String   @map("project_id")
-  userId       String   @map("user_id")
-  role         String   @default("member") 
-  joinedAt     DateTime @default(now()) @map("joined_at")
+  id           String    @id @default(uuid())
+  projectId    String    @map("project_id")
+  userId       String    @map("user_id")
+  role         String    @default("member")
+  joinedAt     DateTime  @default(now()) @map("joined_at")
   lastViewedAt DateTime? @map("last_viewed_at")
-
-  project      Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  project      Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([projectId, userId])
   @@index([projectId])
@@ -145,21 +129,20 @@ model ProjectParticipant {
 }
 
 model Scene {
-  id          String   @id @default(uuid())
-  projectId   String   @map("project_id")
-  sceneNumber Int      @map("scene_number")
-  description String?  
-  notes       String?  
-  script      Json?    @map("script")  // 씬 스크립트 (location, place, time, content)
-  createdBy   String   @map("created_by")
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-
-  project      Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  creator      User          @relation("SceneCreator", fields: [createdBy], references: [id])
-  images       Image[]
-  imageHistory ImageHistory[]
+  id           String         @id @default(uuid())
+  projectId    String         @map("project_id")
+  sceneNumber  Int            @map("scene_number")
+  description  String?
+  notes        String?
+  createdBy    String         @map("created_by")
+  createdAt    DateTime       @default(now()) @map("created_at")
+  updatedAt    DateTime       @updatedAt @map("updated_at")
+  script       Json?          @map("script")
   comments     Comment[]
+  imageHistory ImageHistory[]
+  images       Image[]
+  creator      User           @relation("SceneCreator", fields: [createdBy], references: [id])
+  project      Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
   presence     UserPresence[]
 
   @@unique([projectId, sceneNumber])
@@ -168,23 +151,22 @@ model Scene {
 }
 
 model Image {
-  id         String   @id @default(uuid())
-  sceneId    String   @map("scene_id")
-  type       String   
-  fileUrl    String   @map("file_url") 
-  fileSize   BigInt?  @map("file_size")
-  width      Int?
-  height     Int?
-  format     String?  
-  isCurrent  Boolean  @default(true) @map("is_current")
-  uploadedBy String   @map("uploaded_by")
-  uploadedAt DateTime @default(now()) @map("uploaded_at")
-  metadata   Json?
-
-  scene        Scene          @relation(fields: [sceneId], references: [id], onDelete: Cascade)
-  uploader     User           @relation("ImageUploader", fields: [uploadedBy], references: [id])
-  history      ImageHistory[]
-  annotations  Annotation[]
+  id          String         @id @default(uuid())
+  sceneId     String         @map("scene_id")
+  type        String
+  fileUrl     String         @map("file_url")
+  fileSize    BigInt?        @map("file_size")
+  width       Int?
+  height      Int?
+  format      String?
+  isCurrent   Boolean        @default(true) @map("is_current")
+  uploadedBy  String         @map("uploaded_by")
+  uploadedAt  DateTime       @default(now()) @map("uploaded_at")
+  metadata    Json?
+  annotations Annotation[]
+  history     ImageHistory[]
+  scene       Scene          @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+  uploader    User           @relation("ImageUploader", fields: [uploadedBy], references: [id])
 
   @@index([sceneId])
   @@index([type])
@@ -197,14 +179,13 @@ model ImageHistory {
   imageId           String   @map("image_id")
   sceneId           String   @map("scene_id")
   versionNumber     Int      @map("version_number")
-  fileUrl           String   @map("file_url") 
+  fileUrl           String   @map("file_url")
   uploadedBy        String   @map("uploaded_by")
   uploadedAt        DateTime @default(now()) @map("uploaded_at")
-  changeDescription String?  @map("change_description") 
-
-  image     Image  @relation(fields: [imageId], references: [id], onDelete: Cascade)
-  scene     Scene  @relation(fields: [sceneId], references: [id], onDelete: Cascade)
-  uploader  User   @relation(fields: [uploadedBy], references: [id])
+  changeDescription String?  @map("change_description")
+  image             Image    @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  scene             Scene    @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+  uploader          User     @relation(fields: [uploadedBy], references: [id])
 
   @@index([imageId])
   @@index([sceneId])
@@ -212,23 +193,22 @@ model ImageHistory {
 }
 
 model Comment {
-  id              String   @id @default(uuid())
-  projectId       String?  @map("project_id")
-  sceneId         String?  @map("scene_id")
-  parentCommentId String?  @map("parent_comment_id")
-  userId          String   @map("user_id")
-  content         String   
-  metadata        Json?    @map("metadata")
-  createdAt       DateTime @default(now()) @map("created_at")
-  updatedAt       DateTime @updatedAt @map("updated_at")
-  isEdited        Boolean  @default(false) @map("is_edited")
-  isDeleted       Boolean  @default(false) @map("is_deleted")
-
-  project       Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  scene         Scene?    @relation(fields: [sceneId], references: [id], onDelete: Cascade)
-  parentComment Comment?  @relation("CommentReplies", fields: [parentCommentId], references: [id], onDelete: Cascade)
-  user          User      @relation(fields: [userId], references: [id])
-  replies       Comment[] @relation("CommentReplies")
+  id              String    @id @default(uuid())
+  projectId       String?   @map("project_id")
+  sceneId         String?   @map("scene_id")
+  parentCommentId String?   @map("parent_comment_id")
+  userId          String    @map("user_id")
+  content         String
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+  isEdited        Boolean   @default(false) @map("is_edited")
+  isDeleted       Boolean   @default(false) @map("is_deleted")
+  metadata        Json?     @map("metadata")
+  parentComment   Comment?  @relation("CommentReplies", fields: [parentCommentId], references: [id], onDelete: Cascade)
+  replies         Comment[] @relation("CommentReplies")
+  project         Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  scene           Scene?    @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+  user            User      @relation(fields: [userId], references: [id])
 
   @@index([projectId])
   @@index([sceneId])
@@ -240,19 +220,18 @@ model Annotation {
   id          String   @id @default(uuid())
   imageId     String   @map("image_id")
   userId      String   @map("user_id")
-  type        String   
+  type        String
   positionX   Float    @map("position_x")
   positionY   Float    @map("position_y")
   width       Float?
   height      Float?
-  content     String?  
+  content     String?
   drawingData Json?    @map("drawing_data")
-  color       String?  
+  color       String?
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
-
-  image Image @relation(fields: [imageId], references: [id], onDelete: Cascade)
-  user  User  @relation(fields: [userId], references: [id])
+  image       Image    @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  user        User     @relation(fields: [userId], references: [id])
 
   @@index([imageId])
   @@map("annotations")
@@ -263,16 +242,15 @@ model UserPresence {
   userId       String   @map("user_id")
   projectId    String?  @map("project_id")
   sceneId      String?  @map("scene_id")
-  status       String?  
+  status       String?
   cursorX      Float?   @map("cursor_x")
   cursorY      Float?   @map("cursor_y")
   isTyping     Boolean  @default(false) @map("is_typing")
   lastActivity DateTime @default(now()) @map("last_activity")
-  socketId     String?  @map("socket_id") 
-
-  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  scene   Scene?   @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+  socketId     String?  @map("socket_id")
+  project      Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  scene        Scene?   @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, projectId])
   @@index([projectId])
@@ -281,18 +259,17 @@ model UserPresence {
 }
 
 model CollaborationLog {
-  id         String   @id @default(uuid())
-  projectId  String   @map("project_id")
-  userId     String   @map("user_id")
-  actionType String   @map("action_type") 
-  targetType String?  @map("target_type") 
-  targetId   String?  @map("target_id")
-  description String? 
-  metadata   Json?
-  createdAt  DateTime @default(now()) @map("created_at")
-
-  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  user    User    @relation(fields: [userId], references: [id])
+  id          String   @id @default(uuid())
+  projectId   String   @map("project_id")
+  userId      String   @map("user_id")
+  actionType  String   @map("action_type")
+  targetType  String?  @map("target_type")
+  targetId    String?  @map("target_id")
+  description String?
+  metadata    Json?
+  createdAt   DateTime @default(now()) @map("created_at")
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user        User     @relation(fields: [userId], references: [id])
 
   @@index([projectId])
   @@index([userId])
@@ -301,34 +278,32 @@ model CollaborationLog {
 }
 
 model Notification {
-  id        String   @id @default(uuid())
-  userId    String   @map("user_id")
-  projectId String?  @map("project_id")
-  type      String   
-  title     String   
-  content   String?  
-  isRead    Boolean  @default(false) @map("is_read")
-  createdAt DateTime @default(now()) @map("created_at")
+  id        String    @id @default(uuid())
+  userId    String    @map("user_id")
+  projectId String?   @map("project_id")
+  type      String
+  title     String
+  content   String?
+  isRead    Boolean   @default(false) @map("is_read")
+  createdAt DateTime  @default(now()) @map("created_at")
   readAt    DateTime? @map("read_at")
-
-  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  project   Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, isRead])
   @@map("notifications")
 }
 
 model FriendRequest {
-  id          String   @id @default(uuid())
-  senderId    String   @map("sender_id")
-  receiverId  String   @map("receiver_id")
-  status      String   @default("pending")  // pending, accepted, rejected, cancelled
-  message     String?  
-  createdAt   DateTime @default(now()) @map("created_at")
+  id          String    @id @default(uuid())
+  senderId    String    @map("sender_id")
+  receiverId  String    @map("receiver_id")
+  status      String    @default("pending")
+  message     String?
+  createdAt   DateTime  @default(now()) @map("created_at")
   respondedAt DateTime? @map("responded_at")
-
-  sender   User @relation("FriendRequestSender", fields: [senderId], references: [id], onDelete: Cascade)
-  receiver User @relation("FriendRequestReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  receiver    User      @relation("FriendRequestReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  sender      User      @relation("FriendRequestSender", fields: [senderId], references: [id], onDelete: Cascade)
 
   @@unique([senderId, receiverId])
   @@index([receiverId, status])
@@ -340,12 +315,11 @@ model Friendship {
   id        String   @id @default(uuid())
   user1Id   String   @map("user1_id")
   user2Id   String   @map("user2_id")
-  user1Memo String?  @map("user1_memo")  // user1이 user2에 대해 작성한 메모
-  user2Memo String?  @map("user2_memo")  // user2가 user1에 대해 작성한 메모
   createdAt DateTime @default(now()) @map("created_at")
-
-  user1 User @relation("FriendshipUser1", fields: [user1Id], references: [id], onDelete: Cascade)
-  user2 User @relation("FriendshipUser2", fields: [user2Id], references: [id], onDelete: Cascade)
+  user1Memo String?  @map("user1_memo")
+  user2Memo String?  @map("user2_memo")
+  user1     User     @relation("FriendshipUser1", fields: [user1Id], references: [id], onDelete: Cascade)
+  user2     User     @relation("FriendshipUser2", fields: [user2Id], references: [id], onDelete: Cascade)
 
   @@unique([user1Id, user2Id])
   @@index([user1Id])
@@ -354,18 +328,17 @@ model Friendship {
 }
 
 model Message {
-  id         String   @id @default(uuid())
-  senderId   String   @map("sender_id")
-  receiverId String   @map("receiver_id")
-  content    String   
-  isRead     Boolean  @default(false) @map("is_read")
+  id         String    @id @default(uuid())
+  senderId   String    @map("sender_id")
+  receiverId String    @map("receiver_id")
+  content    String
+  isRead     Boolean   @default(false) @map("is_read")
   readAt     DateTime? @map("read_at")
-  createdAt  DateTime @default(now()) @map("created_at")
-  updatedAt  DateTime @updatedAt @map("updated_at")
-  
-  sender   User @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
-  receiver User @relation("MessageReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
-  
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+  receiver   User      @relation("MessageReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  sender     User      @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
+
   @@index([senderId, receiverId])
   @@index([receiverId, isRead])
   @@index([createdAt(sort: Desc)])
@@ -373,23 +346,22 @@ model Message {
 }
 
 model Channel {
-  id          String   @id @default(uuid())
-  name        String   
-  description String?  
-  type        String   @default("public")  // public, private, direct
-  creatorId   String   @map("creator_id")
-  studioId    String?  @map("studio_id")
-  isArchived  Boolean  @default(false) @map("is_archived")
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-  
-  creator  User              @relation("ChannelCreator", fields: [creatorId], references: [id], onDelete: Cascade)
-  studio   Studio?           @relation(fields: [studioId], references: [id], onDelete: Cascade)
-  members  ChannelMember[]
-  messages ChannelMessage[]
-  files    ChannelFile[]
-  invites  ChannelInvite[]
-  
+  id          String           @id @default(uuid())
+  name        String
+  description String?
+  type        String           @default("public")
+  creatorId   String           @map("creator_id")
+  studioId    String?          @map("studio_id")
+  isArchived  Boolean          @default(false) @map("is_archived")
+  createdAt   DateTime         @default(now()) @map("created_at")
+  updatedAt   DateTime         @updatedAt @map("updated_at")
+  files       ChannelFile[]
+  invites     ChannelInvite[]
+  members     ChannelMember[]
+  messages    ChannelMessage[]
+  creator     User             @relation("ChannelCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+  studio      Studio?          @relation(fields: [studioId], references: [id], onDelete: Cascade)
+
   @@index([name])
   @@index([studioId])
   @@index([creatorId])
@@ -397,16 +369,15 @@ model Channel {
 }
 
 model ChannelMember {
-  id        String   @id @default(uuid())
-  channelId String   @map("channel_id")
-  userId    String   @map("user_id")
-  role      String   @default("member")  // admin, moderator, member
-  joinedAt  DateTime @default(now()) @map("joined_at")
+  id         String    @id @default(uuid())
+  channelId  String    @map("channel_id")
+  userId     String    @map("user_id")
+  role       String    @default("member")
+  joinedAt   DateTime  @default(now()) @map("joined_at")
   lastReadAt DateTime? @map("last_read_at")
-  
-  channel Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
-  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+  channel    Channel   @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@unique([channelId, userId])
   @@index([userId])
   @@index([channelId])
@@ -414,96 +385,88 @@ model ChannelMember {
 }
 
 model ChannelMessage {
-  id        String   @id @default(uuid())
-  channelId String   @map("channel_id")
-  senderId  String   @map("sender_id")
-  content   String   
-  type      String   @default("text")  // text, image, file, system
-  metadata  Json?    // For file info, image dimensions, etc.
-  editedAt  DateTime? @map("edited_at")
-  deletedAt DateTime? @map("deleted_at")
-  createdAt DateTime @default(now()) @map("created_at")
-  
-  channel Channel       @relation(fields: [channelId], references: [id], onDelete: Cascade)
-  sender  User          @relation(fields: [senderId], references: [id], onDelete: Cascade)
-  files   ChannelFile[]
-  
+  id        String        @id @default(uuid())
+  channelId String        @map("channel_id")
+  senderId  String        @map("sender_id")
+  content   String
+  type      String        @default("text")
+  metadata  Json?
+  editedAt  DateTime?     @map("edited_at")
+  deletedAt DateTime?     @map("deleted_at")
+  createdAt DateTime      @default(now()) @map("created_at")
+  files     ChannelFile[]
+  channel   Channel       @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  sender    User          @relation(fields: [senderId], references: [id], onDelete: Cascade)
+
   @@index([channelId, createdAt(sort: Desc)])
   @@index([senderId])
   @@map("channel_messages")
 }
 
 model ChannelFile {
-  id         String   @id @default(uuid())
-  channelId  String   @map("channel_id")
-  messageId  String?  @map("message_id")
-  uploaderId String   @map("uploader_id")
-  fileName   String   @map("file_name") 
-  fileUrl    String   @map("file_url") 
-  fileSize   BigInt   @map("file_size")
-  mimeType   String   @map("mime_type") 
-  metadata   Json?    // thumbnails, dimensions for images, etc.
-  createdAt  DateTime @default(now()) @map("created_at")
-  
-  channel  Channel         @relation(fields: [channelId], references: [id], onDelete: Cascade)
-  message  ChannelMessage? @relation(fields: [messageId], references: [id], onDelete: SetNull)
-  uploader User            @relation(fields: [uploaderId], references: [id], onDelete: Cascade)
-  
+  id         String          @id @default(uuid())
+  channelId  String          @map("channel_id")
+  messageId  String?         @map("message_id")
+  uploaderId String          @map("uploader_id")
+  fileName   String          @map("file_name")
+  fileUrl    String          @map("file_url")
+  fileSize   BigInt          @map("file_size")
+  mimeType   String          @map("mime_type")
+  metadata   Json?
+  createdAt  DateTime        @default(now()) @map("created_at")
+  channel    Channel         @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  message    ChannelMessage? @relation(fields: [messageId], references: [id])
+  uploader   User            @relation(fields: [uploaderId], references: [id], onDelete: Cascade)
+
   @@index([channelId])
   @@index([uploaderId])
   @@map("channel_files")
 }
 
 model ChannelInvite {
-  id         String   @id @default(uuid())
-  channelId  String   @map("channel_id")
-  inviterId  String   @map("inviter_id")
-  inviteeId  String   @map("invitee_id")
-  status     String   @default("pending")  // pending, accepted, rejected, expired
+  id         String    @id @default(uuid())
+  channelId  String    @map("channel_id")
+  inviterId  String    @map("inviter_id")
+  inviteeId  String    @map("invitee_id")
+  status     String    @default("pending")
   expiresAt  DateTime? @map("expires_at")
   acceptedAt DateTime? @map("accepted_at")
-  createdAt  DateTime @default(now()) @map("created_at")
-  
-  channel Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
-  inviter User    @relation("ChannelInviter", fields: [inviterId], references: [id], onDelete: Cascade)
-  invitee User    @relation("ChannelInvitee", fields: [inviteeId], references: [id], onDelete: Cascade)
-  
+  createdAt  DateTime  @default(now()) @map("created_at")
+  channel    Channel   @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  invitee    User      @relation("ChannelInvitee", fields: [inviteeId], references: [id], onDelete: Cascade)
+  inviter    User      @relation("ChannelInviter", fields: [inviterId], references: [id], onDelete: Cascade)
+
   @@unique([channelId, inviteeId])
   @@index([inviteeId, status])
   @@index([channelId])
   @@map("channel_invites")
 }
 
-// ============================================
-// Task Management Models
-// ============================================
-
 model Task {
-  id           String    @id @default(uuid())
-  projectId    String    @map("project_id")
-  title        String    
-  description  String?   
-  status       String    @default("todo")  // todo, in_progress, review, done
-  priority     String    @default("medium")  // low, medium, high, urgent
-  dueDate      DateTime? @map("due_date")
-  startDate    DateTime? @map("start_date")
-  completedAt  DateTime? @map("completed_at")
-  position     Int       @default(0)
-  tags         Json?     @default("[]")
-  createdById  String    @map("created_by_id")
-  parentTaskId String?   @map("parent_task_id")
-  createdAt    DateTime  @default(now()) @map("created_at")
-  updatedAt    DateTime  @updatedAt @map("updated_at")
-  
-  project      Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  createdBy    User              @relation("TaskCreator", fields: [createdById], references: [id])
-  parentTask   Task?             @relation("SubTasks", fields: [parentTaskId], references: [id])
-  subTasks     Task[]            @relation("SubTasks")
-  assignments  TaskAssignment[]
-  todos        Todo[]
-  comments     TaskComment[]
+  id           String           @id @default(uuid())
+  projectId    String           @map("project_id")
+  title        String
+  description  String?
+  status       String           @default("todo")
+  priority     String           @default("medium")
+  dueDate      DateTime?        @map("due_date")
+  startDate    DateTime?        @map("start_date")
+  completedAt  DateTime?        @map("completed_at")
+  position     Int              @default(0)
+  tags         Json?            @default("[]")
+  createdById  String           @map("created_by_id")
+  parentTaskId String?          @map("parent_task_id")
+  createdAt    DateTime         @default(now()) @map("created_at")
+  updatedAt    DateTime         @updatedAt @map("updated_at")
   activities   TaskActivity[]
-  
+  assignments  TaskAssignment[]
+  comments     TaskComment[]
+  createdBy    User             @relation("TaskCreator", fields: [createdById], references: [id])
+  parentTask   Task?            @relation("SubTasks", fields: [parentTaskId], references: [id])
+  subTasks     Task[]           @relation("SubTasks")
+  project      Project          @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  todos        Todo[]
+
   @@index([projectId, status])
   @@index([projectId, position])
   @@map("tasks")
@@ -513,12 +476,11 @@ model TaskAssignment {
   id        String   @id @default(uuid())
   taskId    String   @map("task_id")
   userId    String   @map("user_id")
-  role      String   @default("assignee")  // assignee, reviewer
+  role      String   @default("assignee")
   createdAt DateTime @default(now()) @map("created_at")
-  
-  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
-  user User @relation(fields: [userId], references: [id])
-  
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id])
+
   @@unique([taskId, userId, role])
   @@index([userId])
   @@map("task_assignments")
@@ -529,17 +491,16 @@ model Todo {
   taskId      String?   @map("task_id")
   userId      String    @map("user_id")
   projectId   String    @map("project_id")
-  content     String    
+  content     String
   isCompleted Boolean   @default(false) @map("is_completed")
   completedAt DateTime? @map("completed_at")
   position    Int       @default(0)
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @updatedAt @map("updated_at")
-  
-  task    Task?   @relation(fields: [taskId], references: [id], onDelete: Cascade)
-  user    User    @relation(fields: [userId], references: [id])
-  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  
+  project     Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  task        Task?     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id])
+
   @@index([userId, isCompleted])
   @@index([projectId, position])
   @@index([taskId])
@@ -550,13 +511,12 @@ model TaskComment {
   id        String   @id @default(uuid())
   taskId    String   @map("task_id")
   userId    String   @map("user_id")
-  content   String   
+  content   String
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
-  
-  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
-  user User @relation(fields: [userId], references: [id])
-  
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id])
+
   @@index([taskId])
   @@map("task_comments")
 }
@@ -565,44 +525,36 @@ model TaskActivity {
   id        String   @id @default(uuid())
   taskId    String   @map("task_id")
   userId    String   @map("user_id")
-  action    String   
+  action    String
   details   Json?
   createdAt DateTime @default(now()) @map("created_at")
-  
-  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
-  user User @relation(fields: [userId], references: [id])
-  
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id])
+
   @@index([taskId, createdAt])
   @@map("task_activities")
 }
 
-// ============================================
-// Work Task Management Models (separate from Studio)
-// ============================================
-
 model WorkTask {
-  id          String    @id @default(uuid())
-  title       String
-  description String?
-  status      String    @default("pending")     // pending, in_progress, review, completed, cancelled
-  priority    String    @default("medium")      // low, medium, high, urgent
-  dueDate     DateTime? @map("due_date")
-  startDate   DateTime? @map("start_date")
-  completedAt DateTime? @map("completed_at")
-  assigneeId  String?   @map("assignee_id")     // primary assignee
-  createdById String    @map("created_by_id")   // creator
-  position    Int       @default(0)
-  tags        Json?     @default("[]")
-  inviteCode  String?   @unique @map("invite_code")
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
-
-  createdBy     User                    @relation("WorkTaskCreator", fields: [createdById], references: [id])
-  participants  WorkTaskParticipant[]
-  comments      WorkTaskComment[]
-  subTasks      SubTask[]               // Added relation to subtasks
-
-  @@map("WorkTask")
+  id           String                @id @default(uuid())
+  title        String
+  description  String?
+  status       String                @default("pending")
+  priority     String                @default("medium")
+  position     Int                   @default(0)
+  assigneeId   String?               @map("assignee_id")
+  completedAt  DateTime?             @map("completed_at")
+  createdAt    DateTime              @default(now()) @map("created_at")
+  createdById  String                @map("created_by_id")
+  dueDate      DateTime?             @map("due_date")
+  inviteCode   String?               @unique @map("invite_code")
+  startDate    DateTime?             @map("start_date")
+  updatedAt    DateTime              @updatedAt @map("updated_at")
+  tags         Json?                 @default("[]")
+  subTasks     SubTask[]
+  createdBy    User                  @relation("WorkTaskCreator", fields: [createdById], references: [id])
+  comments     WorkTaskComment[]
+  participants WorkTaskParticipant[]
 
   @@index([status])
   @@index([priority])
@@ -610,18 +562,18 @@ model WorkTask {
   @@index([createdById])
   @@index([assigneeId])
   @@index([inviteCode])
+  @@map("WorkTask")
 }
 
 model WorkTaskParticipant {
-  id           String   @id @default(uuid())
-  workTaskId   String   @map("work_task_id")
-  userId       String   @map("user_id")
-  role         String   @default("member")  // creator, assignee, member, viewer
-  joinedAt     DateTime @default(now()) @map("joined_at")
+  id           String    @id @default(uuid())
+  workTaskId   String    @map("work_task_id")
+  userId       String    @map("user_id")
+  role         String    @default("member")
+  joinedAt     DateTime  @default(now()) @map("joined_at")
   lastViewedAt DateTime? @map("last_viewed_at")
-
-  workTask WorkTask @relation(fields: [workTaskId], references: [id], onDelete: Cascade)
-  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workTask     WorkTask  @relation(fields: [workTaskId], references: [id], onDelete: Cascade)
 
   @@unique([workTaskId, userId])
   @@index([workTaskId])
@@ -638,9 +590,8 @@ model WorkTaskComment {
   updatedAt  DateTime @updatedAt @map("updated_at")
   isEdited   Boolean  @default(false) @map("is_edited")
   isDeleted  Boolean  @default(false) @map("is_deleted")
-
-  workTask WorkTask @relation(fields: [workTaskId], references: [id], onDelete: Cascade)
-  user     User     @relation(fields: [userId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
+  workTask   WorkTask @relation(fields: [workTaskId], references: [id], onDelete: Cascade)
 
   @@index([workTaskId])
   @@index([userId])
@@ -648,32 +599,27 @@ model WorkTaskComment {
   @@map("WorkTaskComments")
 }
 
-// ============================================
-// SubTask Models (for Work Task hierarchy)
-// ============================================
-
 model SubTask {
-  id          String    @id @default(uuid())
-  workTaskId  String    @map("work_task_id")
-  title       String
-  description String?
-  status      String    @default("todo")        // todo, in_progress, review, done
-  priority    String    @default("medium")      // low, medium, high, urgent
-  dueDate     DateTime? @map("due_date")
-  startDate   DateTime? @map("start_date")
-  completedAt DateTime? @map("completed_at")
-  assigneeId  String?   @map("assignee_id")
-  createdById String    @map("created_by_id")
-  position    Int       @default(0)
-  tags        Json?     @default("[]")
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
-
-  workTask     WorkTask             @relation(fields: [workTaskId], references: [id], onDelete: Cascade)
-  createdBy    User                 @relation("SubTaskCreator", fields: [createdById], references: [id])
+  id           String               @id @default(uuid())
+  title        String
+  description  String?
+  status       String               @default("todo")
+  priority     String               @default("medium")
+  position     Int                  @default(0)
+  assigneeId   String?              @map("assignee_id")
+  completedAt  DateTime?            @map("completed_at")
+  createdAt    DateTime             @default(now()) @map("created_at")
+  createdById  String               @map("created_by_id")
+  dueDate      DateTime?            @map("due_date")
+  startDate    DateTime?            @map("start_date")
+  updatedAt    DateTime             @updatedAt @map("updated_at")
+  workTaskId   String               @map("work_task_id")
+  tags         Json?                @default("[]")
   assignee     User?                @relation("SubTaskAssignee", fields: [assigneeId], references: [id])
-  comments     SubTaskComment[]
+  createdBy    User                 @relation("SubTaskCreator", fields: [createdById], references: [id])
+  workTask     WorkTask             @relation(fields: [workTaskId], references: [id], onDelete: Cascade)
   attachments  SubTaskAttachment[]
+  comments     SubTaskComment[]
   participants SubTaskParticipant[]
 
   @@index([workTaskId, status])
@@ -693,9 +639,8 @@ model SubTaskComment {
   updatedAt DateTime @updatedAt @map("updated_at")
   isEdited  Boolean  @default(false) @map("is_edited")
   isDeleted Boolean  @default(false) @map("is_deleted")
-
-  subTask SubTask @relation(fields: [subTaskId], references: [id], onDelete: Cascade)
-  user    User    @relation(fields: [userId], references: [id])
+  subTask   SubTask  @relation(fields: [subTaskId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id])
 
   @@index([subTaskId])
   @@index([userId])
@@ -710,12 +655,11 @@ model SubTaskAttachment {
   originalName String   @map("original_name")
   fileSize     Int      @map("file_size")
   mimeType     String   @map("mime_type")
-  fileUrl      String   @map("file_url")      // 파일 저장 경로
+  fileUrl      String   @map("file_url")
   uploadedById String   @map("uploaded_by_id")
   createdAt    DateTime @default(now()) @map("created_at")
-
-  subTask     SubTask  @relation(fields: [subTaskId], references: [id], onDelete: Cascade)
-  uploadedBy  User     @relation(fields: [uploadedById], references: [id])
+  subTask      SubTask  @relation(fields: [subTaskId], references: [id], onDelete: Cascade)
+  uploadedBy   User     @relation(fields: [uploadedById], references: [id])
 
   @@index([subTaskId])
   @@index([uploadedById])
@@ -723,13 +667,12 @@ model SubTaskAttachment {
 }
 
 model SubTaskParticipant {
-  id         String   @id @default(uuid())
-  subtaskId  String   @map("subtask_id")
-  userId     String   @map("user_id")
-  joinedAt   DateTime @default(now()) @map("joined_at")
-
-  subtask    SubTask  @relation(fields: [subtaskId], references: [id], onDelete: Cascade)
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String   @id @default(uuid())
+  subtaskId String   @map("subtask_id")
+  userId    String   @map("user_id")
+  joinedAt  DateTime @default(now()) @map("joined_at")
+  subtask   SubTask  @relation(fields: [subtaskId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([subtaskId, userId])
   @@index([subtaskId])
