@@ -57,7 +57,7 @@ export class SocketServer {
           "https://studioo-production-eb03.up.railway.app",
           "https://studioo-fix-production.up.railway.app",
           process.env.CORS_ORIGIN
-        ].filter(Boolean)
+        ].filter((origin): origin is string => Boolean(origin))
       : ["http://localhost:3000", "http://localhost:3001"];
 
     console.log("[Socket Server] Initializing with CORS origins:", corsOrigins);
