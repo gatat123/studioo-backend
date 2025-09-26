@@ -203,6 +203,8 @@ async function handleUpdateProfile(request: NextRequest) {
     console.log('[Profile Update] Update data:', updateData);
 
     // 프로필 업데이트
+    console.log('[Profile Update] Attempting database update for user ID:', user.id);
+
     const updatedUser = await prisma.user.update({
       where: { id: user.id },
       data: {
@@ -222,6 +224,10 @@ async function handleUpdateProfile(request: NextRequest) {
         lastLoginAt: true
       }
     });
+
+    console.log('[Profile Update] Database update successful');
+    console.log('[Profile Update] Updated bio:', updatedUser.bio);
+    console.log('[Profile Update] Updated email:', updatedUser.email);
 
     return ApiResponse.success({
       message: 'Profile updated successfully',

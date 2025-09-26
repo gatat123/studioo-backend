@@ -106,6 +106,9 @@ async function handleUploadProfileImage(request: NextRequest) {
     const base64Image = `data:image/jpeg;base64,${processedImage.toString('base64')}`;
 
     // 데이터베이스에 저장
+    console.log('[Profile Image Upload] Saving to database, user ID:', user.id);
+    console.log('[Profile Image Upload] Base64 image length:', base64Image.length);
+
     const updatedUser = await prisma.user.update({
       where: { id: user.id },
       data: {
@@ -123,6 +126,9 @@ async function handleUploadProfileImage(request: NextRequest) {
         updatedAt: true
       }
     });
+
+    console.log('[Profile Image Upload] Database update successful');
+    console.log('[Profile Image Upload] Updated user profile image URL length:', updatedUser.profileImageUrl?.length);
 
     return ApiResponse.success({
       message: 'Profile image uploaded successfully',
