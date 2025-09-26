@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma/db';
 import { withAuth, AuthenticatedRequest } from '@/middleware/auth';
 import { handleOptions } from '@/lib/utils/cors';
-import { getSocketInstance } from '@/lib/socket/server';
+import { subtaskEvents } from '@/lib/socket/emit-helper';
 
 // PATCH /api/work-tasks/[id]/subtasks/[subtaskId]
 export const PATCH = withAuth(async (
@@ -143,52 +143,20 @@ export const PATCH = withAuth(async (
       }
     });
 
-    // Emit socket event for real-time updates
-    const io = getSocketInstance();
-    if (io) {
-      const roomId = `work-task:${workTaskId}`;
+    // Emit socket events for real-time updates
+    await subtaskEvents.updated(workTaskId, updatedSubtask);
+    console.log(`[Socket] Emitted subtask:updated for work-task:${workTaskId}`);
 
-      // Check how many clients are in the room
-      const room = io.sockets.adapter.rooms.get(roomId);
-      const clientCount = room ? room.size : 0;
-      console.log(`[Socket] Room ${roomId} has ${clientCount} clients`);
+    // If status changed, emit specific status change event
+    if (body.status && body.status !== previousStatus) {
+      await subtaskEvents.statusChanged(workTaskId, updatedSubtask, previousStatus, body.status);
+      console.log(`[Socket] Emitted subtask:status-changed for work-task:${workTaskId}`);
+    }
 
-      // Emit general update event
-      const updateEventData = {
-        subtask: updatedSubtask,
-        workTaskId,
-        timestamp: new Date()
-      };
-
-      io.to(roomId).emit('subtask:updated', updateEventData);
-      console.log(`[Socket] Emitted subtask:updated to room ${roomId}:`, {
-        subtaskId: updatedSubtask.id,
-        title: updatedSubtask.title,
-        status: updatedSubtask.status,
-        position: updatedSubtask.position,
-        clientCount
-      });
-
-      // If status changed, emit specific status change event
-      if (body.status && body.status !== previousStatus) {
-        const statusEventData = {
-          subtask: updatedSubtask,
-          previousStatus,
-          newStatus: body.status,
-          workTaskId,
-          timestamp: new Date()
-        };
-
-        io.to(roomId).emit('subtask:status-changed', statusEventData);
-        console.log(`[Socket] Emitted subtask:status-changed to room ${roomId}:`, {
-          subtaskId: updatedSubtask.id,
-          previousStatus,
-          newStatus: body.status,
-          clientCount
-        });
-      }
-    } else {
-      console.error('[Socket] Socket.IO instance not available');
+    // If position changed, emit order update event
+    if (body.position !== undefined && body.position !== subtask.position) {
+      await subtaskEvents.orderUpdated(workTaskId, updatedSubtask.id, updatedSubtask.status, body.position);
+      console.log(`[Socket] Emitted subtaskOrderUpdated for work-task:${workTaskId}`);
     }
 
     return NextResponse.json({
@@ -255,29 +223,8 @@ export const DELETE = withAuth(async (
     });
 
     // Emit socket event for real-time updates
-    const io = getSocketInstance();
-    if (io) {
-      const roomId = `work-task:${workTaskId}`;
-
-      // Check how many clients are in the room
-      const room = io.sockets.adapter.rooms.get(roomId);
-      const clientCount = room ? room.size : 0;
-
-      const deleteEventData = {
-        subtaskId,
-        workTaskId,
-        timestamp: new Date()
-      };
-
-      io.to(roomId).emit('subtask:deleted', deleteEventData);
-      console.log(`[Socket] Emitted subtask:deleted to room ${roomId}:`, {
-        subtaskId,
-        workTaskId,
-        clientCount
-      });
-    } else {
-      console.error('[Socket] Socket.IO instance not available for deletion');
-    }
+    await subtaskEvents.deleted(workTaskId, subtaskId);
+    console.log(`[Socket] Emitted subtask:deleted for work-task:${workTaskId}`);
 
     return NextResponse.json({ success: true });
   } catch (error) {

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma/db';
 import { withAuth, AuthenticatedRequest } from '@/middleware/auth';
 import { handleOptions } from '@/lib/utils/cors';
-import { getSocketInstance } from '@/lib/socket/server';
+import { subtaskEvents } from '@/lib/socket/emit-helper';
 
 // GET /api/work-tasks/[id]/subtasks
 export const GET = withAuth(async (
@@ -153,31 +153,13 @@ export const POST = withAuth(async (
     });
 
     // Emit socket event for real-time updates
-    const io = getSocketInstance();
-    if (io) {
-      const roomId = `work-task:${workTaskId}`;
-
-      // Check how many clients are in the room
-      const room = io.sockets.adapter.rooms.get(roomId);
-      const clientCount = room ? room.size : 0;
-
-      const createEventData = {
-        subtask,
-        workTaskId,
-        timestamp: new Date()
-      };
-
-      io.to(roomId).emit('subtask:created', createEventData);
-      console.log(`[Socket] Emitted subtask:created to room ${roomId}:`, {
-        subtaskId: subtask.id,
-        title: subtask.title,
-        status: subtask.status,
-        assigneeId: subtask.assigneeId,
-        clientCount
-      });
-    } else {
-      console.error('[Socket] Socket.IO instance not available for creation');
-    }
+    await subtaskEvents.created(workTaskId, subtask);
+    console.log(`[Socket] Emitted subtask:created for work-task:${workTaskId}`, {
+      subtaskId: subtask.id,
+      title: subtask.title,
+      status: subtask.status,
+      assigneeId: subtask.assigneeId
+    });
 
     return NextResponse.json({
       success: true,
