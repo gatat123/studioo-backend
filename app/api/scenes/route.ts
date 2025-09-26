@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { withAuth, type AuthenticatedRequest } from "@/middleware/auth";
+import { sceneEvents } from "@/lib/socket/emit-helper";
 
 const createSceneSchema = z.object({
   projectId: z.string().uuid("유효한 프로젝트 ID가 필요합니다."),
@@ -240,6 +241,9 @@ async function createScene(req: AuthenticatedRequest) {
         metadata: { sceneNumber, description },
       },
     });
+
+    // Socket.io 이벤트 발송
+    await sceneEvents.created(projectId, scene);
 
     return NextResponse.json({
       success: true,

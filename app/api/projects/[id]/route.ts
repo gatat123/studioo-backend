@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { withProjectAccess, type AuthenticatedRequest } from "@/middleware/auth";
+import { projectEvents } from "@/lib/socket/emit-helper";
 
 const updateProjectSchema = z.object({
   name: z.string().min(1).max(255).optional(),
@@ -253,6 +254,9 @@ async function updateProject(req: AuthenticatedRequest, context: { params: { id:
       },
     });
 
+    // Socket.io 이벤트 발송
+    await projectEvents.updated(projectId, updatedProject);
+
     return NextResponse.json({
       message: "프로젝트가 업데이트되었습니다.",
       project: updatedProject,
@@ -310,6 +314,9 @@ async function deleteProject(req: AuthenticatedRequest, context: { params: { id:
     await prisma.project.delete({
       where: { id: projectId },
     });
+
+    // Socket.io 이벤트 발송
+    await projectEvents.deleted(projectId);
 
     return NextResponse.json({
       message: "프로젝트가 삭제되었습니다.",

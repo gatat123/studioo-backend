@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getCurrentUser } from '@/lib/jwt';
 import { prisma } from '@/lib/prisma';
+import { channelEvents } from '@/lib/socket/emit-helper';
 
 // PATCH /api/channels/[id] - Update channel info
 export async function PATCH(
@@ -39,6 +40,9 @@ export async function PATCH(
         description: description || undefined
       }
     });
+
+    // Socket.io 이벤트 발송
+    await channelEvents.updated(id, updatedChannel);
 
     return NextResponse.json({ channel: updatedChannel });
   } catch (error) {
@@ -81,6 +85,9 @@ export async function DELETE(
       where: { id: id },
       data: { isArchived: true }
     });
+
+    // Socket.io 이벤트 발송
+    await channelEvents.deleted(id);
 
     return NextResponse.json({ message: 'Channel deleted successfully' });
   } catch (error) {

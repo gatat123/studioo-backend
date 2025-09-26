@@ -5,6 +5,7 @@ import { createProjectSchema } from '@/lib/utils/validation';
 import { generateInviteCode } from '@/lib/utils/inviteCode';
 import { ApiResponse } from '@/types';
 import { handleOptions } from '@/lib/utils/cors';
+import { projectEvents } from '@/lib/socket/emit-helper';
 
 export const GET = withAuth(async (req: AuthenticatedRequest) => {
     try {
@@ -229,6 +230,9 @@ export const POST = withAuth(async (req: AuthenticatedRequest) => {
           description: `Created project: ${name}`,
         },
       });
+
+      // Socket.io 이벤트 발송
+      await projectEvents.created(project);
 
       return NextResponse.json<ApiResponse>(
         {

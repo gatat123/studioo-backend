@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { withSceneAccess, type AuthenticatedRequest } from "@/middleware/auth";
+import { sceneEvents } from "@/lib/socket/emit-helper";
 
 const updateSceneSchema = z.object({
   sceneNumber: z.number().int().positive("씬 번호는 양수여야 합니다.").optional(),
@@ -250,6 +251,9 @@ async function updateScene(req: AuthenticatedRequest, sceneId: string) {
       },
     });
 
+    // Socket.io 이벤트 발송
+    await sceneEvents.updated(sceneId, updatedScene);
+
     return NextResponse.json({
       success: true,
       message: "씬이 업데이트되었습니다.",
@@ -340,6 +344,9 @@ async function deleteScene(req: AuthenticatedRequest, sceneId: string) {
         metadata: { sceneNumber: scene.sceneNumber },
       },
     });
+
+    // Socket.io 이벤트 발송
+    await sceneEvents.deleted(scene.projectId, sceneId);
 
     return NextResponse.json({
       success: true,

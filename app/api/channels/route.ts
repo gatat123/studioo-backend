@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getCurrentUser } from '@/lib/jwt';
 import { z } from 'zod';
+import { channelEvents } from '@/lib/socket/emit-helper';
 
 // GET: 사용자의 채널 목록 조회
 export async function GET(request: NextRequest) {
@@ -184,6 +185,9 @@ export async function POST(request: NextRequest) {
         type: 'system'
       }
     });
+
+    // Socket.io 이벤트 발송
+    await channelEvents.created(channel);
 
     return NextResponse.json({ channel });
   } catch (error) {

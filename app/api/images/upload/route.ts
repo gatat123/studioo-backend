@@ -6,6 +6,7 @@ import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 import sharp from "sharp";
 import { v4 as uuidv4 } from "uuid";
+import { sceneEvents } from "@/lib/socket/emit-helper";
 
 const uploadImageSchema = z.object({
   sceneId: z.string().uuid("유효한 씬 ID가 필요합니다."),
@@ -175,12 +176,15 @@ async function uploadImage(req: AuthenticatedRequest) {
         targetType: "image",
         targetId: image.id,
         description: `씬 ${scene.sceneNumber}에 이미지를 업로드했습니다.`,
-        metadata: { 
+        metadata: {
           filename: file.name,
           fileSize: file.size,
         },
       },
     });
+
+    // Socket.io 이벤트 발송
+    await sceneEvents.imageUploaded(validSceneId, image);
 
     return NextResponse.json({
       success: true,

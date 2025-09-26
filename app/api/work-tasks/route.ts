@@ -4,6 +4,7 @@ import { withAuth, AuthenticatedRequest } from '@/middleware/auth';
 import { handleOptions } from '@/lib/utils/cors';
 import { generateInviteCode } from '@/lib/utils/inviteCode';
 import { ApiResponse } from '@/types';
+import { workTaskEvents } from '@/lib/socket/emit-helper';
 
 export const GET = withAuth(async (req: AuthenticatedRequest) => {
   try {
@@ -261,6 +262,9 @@ export const POST = withAuth(async (req: AuthenticatedRequest) => {
       id: workTask.id,
       title: workTask.title,
     });
+
+    // Socket.io 이벤트 발송 - WorkTask는 Work 아래에 속하지 않으므로 workTask.id를 room으로 사용
+    await workTaskEvents.created(workTask.id, workTask);
 
     return NextResponse.json<ApiResponse>(
       {

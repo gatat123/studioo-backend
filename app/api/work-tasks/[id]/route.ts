@@ -3,6 +3,7 @@ import { prisma } from '@/lib/prisma/db';
 import { withAuth, AuthenticatedRequest } from '@/middleware/auth';
 import { handleOptions } from '@/lib/utils/cors';
 import { ApiResponse } from '@/types';
+import { workTaskEvents } from '@/lib/socket/emit-helper';
 
 export const GET = withAuth(async (req: AuthenticatedRequest, { params }: { params: { id: string } }) => {
   try {
@@ -211,6 +212,14 @@ export const PATCH = withAuth(async (req: AuthenticatedRequest, { params }: { pa
       }
     }
 
+    // Socket.io 이벤트 발송
+    await workTaskEvents.updated(params.id, updatedWorkTask);
+
+    // 상태 변경 시 별도 이벤트
+    if (status && status !== workTask.status) {
+      await workTaskEvents.statusChanged(params.id, updatedWorkTask, workTask.status, status);
+    }
+
     return NextResponse.json<ApiResponse>({
       success: true,
       data: updatedWorkTask,
@@ -259,6 +268,9 @@ export const DELETE = withAuth(async (req: AuthenticatedRequest, { params }: { p
     await prisma.workTask.delete({
       where: { id: params.id }
     });
+
+    // Socket.io 이벤트 발송 - 삭제된 WorkTask는 자체 room에 이벤트 발송
+    await workTaskEvents.deleted(params.id, params.id);
 
     return NextResponse.json<ApiResponse>({
       success: true,

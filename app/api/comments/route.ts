@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { withAuth, type AuthenticatedRequest } from "@/middleware/auth";
+import { commentEvents } from "@/lib/socket/emit-helper";
 
 const createCommentSchema = z.object({
   content: z.string().min(1, "댓글 내용이 필요합니다.").max(20000, "댓글은 20000자를 초과할 수 없습니다."), // Increased for annotation data
@@ -335,12 +336,19 @@ async function createComment(req: AuthenticatedRequest) {
         targetType,
         targetId: targetId!,
         description,
-        metadata: { 
+        metadata: {
           commentLength: content.length,
           isReply: !!parentCommentId,
         },
       },
     });
+
+    // Socket.io 이벤트 발송
+    const targetTypeForSocket = sceneId ? 'scene' : 'project';
+    const targetIdForSocket = sceneId || targetProjectId;
+    if (targetIdForSocket) {
+      await commentEvents.created(targetTypeForSocket, targetIdForSocket, comment);
+    }
 
     return NextResponse.json({
       success: true,

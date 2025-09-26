@@ -124,3 +124,212 @@ export const subtaskCommentEvents = {
   deleted: (workTaskId: string, subtaskId: string, commentId: string) =>
     emitWorkTaskEvent(workTaskId, 'subtask:comment-deleted', { subtaskId, commentId, workTaskId })
 };
+
+/**
+ * Helper function for project/scene comments
+ */
+export function emitCommentEvent(roomId: string, event: string, data: any) {
+  return emitSocketEvent({
+    room: roomId,
+    event,
+    data: {
+      ...data,
+      timestamp: new Date()
+    }
+  });
+}
+
+/**
+ * Specific event emitters for project/scene comments
+ */
+export const commentEvents = {
+  created: (targetType: 'project' | 'scene', targetId: string, comment: any) => {
+    const room = `${targetType}:${targetId}`;
+    return emitCommentEvent(room, 'comment:created', { comment, targetType, targetId });
+  },
+
+  updated: (targetType: 'project' | 'scene', targetId: string, comment: any) => {
+    const room = `${targetType}:${targetId}`;
+    return emitCommentEvent(room, 'comment:updated', { comment, targetType, targetId });
+  },
+
+  deleted: (targetType: 'project' | 'scene', targetId: string, commentId: string) => {
+    const room = `${targetType}:${targetId}`;
+    return emitCommentEvent(room, 'comment:deleted', { commentId, targetType, targetId });
+  }
+};
+
+/**
+ * Helper function for scene events (storyboard/illustration)
+ */
+export function emitSceneEvent(sceneId: string, event: string, data: any) {
+  return emitSocketEvent({
+    room: `scene:${sceneId}`,
+    event,
+    data: {
+      ...data,
+      timestamp: new Date()
+    }
+  });
+}
+
+/**
+ * Specific event emitters for scenes (storyboard/illustration)
+ */
+export const sceneEvents = {
+  created: (projectId: string, scene: any) =>
+    emitSocketEvent({
+      room: `project:${projectId}`,
+      event: 'scene:created',
+      data: { scene, projectId, timestamp: new Date() }
+    }),
+
+  updated: (sceneId: string, scene: any) =>
+    emitSceneEvent(sceneId, 'scene:updated', { scene, sceneId }),
+
+  deleted: (projectId: string, sceneId: string) =>
+    emitSocketEvent({
+      room: `project:${projectId}`,
+      event: 'scene:deleted',
+      data: { sceneId, projectId, timestamp: new Date() }
+    }),
+
+  imageUploaded: (sceneId: string, image: any) =>
+    emitSceneEvent(sceneId, 'scene:image-uploaded', { image, sceneId }),
+
+  imageUpdated: (sceneId: string, image: any) =>
+    emitSceneEvent(sceneId, 'scene:image-updated', { image, sceneId }),
+
+  imageDeleted: (sceneId: string, imageId: string) =>
+    emitSceneEvent(sceneId, 'scene:image-deleted', { imageId, sceneId }),
+
+  scriptUpdated: (sceneId: string, script: string) =>
+    emitSceneEvent(sceneId, 'scene:script-updated', { script, sceneId })
+};
+
+/**
+ * Helper function for project events
+ */
+export function emitProjectEvent(projectId: string, event: string, data: any) {
+  return emitSocketEvent({
+    room: `project:${projectId}`,
+    event,
+    data: {
+      ...data,
+      timestamp: new Date()
+    }
+  });
+}
+
+/**
+ * Specific event emitters for projects
+ */
+export const projectEvents = {
+  created: (project: any) =>
+    emitProjectEvent(project.id, 'project:created', { project }),
+
+  updated: (projectId: string, project: any) =>
+    emitProjectEvent(projectId, 'project:updated', { project, projectId }),
+
+  deleted: (projectId: string) =>
+    emitProjectEvent(projectId, 'project:deleted', { projectId }),
+
+  participantAdded: (projectId: string, participant: any) =>
+    emitProjectEvent(projectId, 'project:participant-added', { participant, projectId }),
+
+  participantRemoved: (projectId: string, userId: string) =>
+    emitProjectEvent(projectId, 'project:participant-removed', { userId, projectId }),
+
+  participantUpdated: (projectId: string, participant: any) =>
+    emitProjectEvent(projectId, 'project:participant-updated', { participant, projectId })
+};
+
+/**
+ * Helper function for channel events
+ */
+export function emitChannelEvent(channelId: string, event: string, data: any) {
+  return emitSocketEvent({
+    room: `channel:${channelId}`,
+    event,
+    data: {
+      ...data,
+      timestamp: new Date()
+    }
+  });
+}
+
+/**
+ * Specific event emitters for channels
+ */
+export const channelEvents = {
+  created: (channel: any) =>
+    emitChannelEvent(channel.id, 'channel:created', { channel }),
+
+  updated: (channelId: string, channel: any) =>
+    emitChannelEvent(channelId, 'channel:updated', { channel, channelId }),
+
+  deleted: (channelId: string) =>
+    emitChannelEvent(channelId, 'channel:deleted', { channelId }),
+
+  memberAdded: (channelId: string, member: any) =>
+    emitChannelEvent(channelId, 'channel:member-added', { member, channelId }),
+
+  memberRemoved: (channelId: string, userId: string) =>
+    emitChannelEvent(channelId, 'channel:member-removed', { userId, channelId }),
+
+  memberUpdated: (channelId: string, member: any) =>
+    emitChannelEvent(channelId, 'channel:member-updated', { member, channelId }),
+
+  messageCreated: (channelId: string, message: any) =>
+    emitChannelEvent(channelId, 'channel:message-created', { message, channelId })
+};
+
+/**
+ * Helper function for work events
+ */
+export function emitWorkEvent(workId: string, event: string, data: any) {
+  return emitSocketEvent({
+    room: `work:${workId}`,
+    event,
+    data: {
+      ...data,
+      timestamp: new Date()
+    }
+  });
+}
+
+/**
+ * Specific event emitters for work
+ */
+export const workEvents = {
+  created: (work: any) =>
+    emitWorkEvent(work.id, 'work:created', { work }),
+
+  updated: (workId: string, work: any) =>
+    emitWorkEvent(workId, 'work:updated', { work, workId }),
+
+  deleted: (workId: string) =>
+    emitWorkEvent(workId, 'work:deleted', { workId })
+};
+
+/**
+ * Specific event emitters for work tasks
+ */
+export const workTaskEvents = {
+  created: (workId: string, workTask: any) =>
+    emitWorkEvent(workId, 'work-task:created', { workTask, workId }),
+
+  updated: (workTaskId: string, workTask: any) =>
+    emitWorkTaskEvent(workTaskId, 'work-task:updated', { workTask, workTaskId }),
+
+  deleted: (workId: string, workTaskId: string) =>
+    emitWorkEvent(workId, 'work-task:deleted', { workTaskId, workId }),
+
+  statusChanged: (workTaskId: string, workTask: any, previousStatus: string, newStatus: string) =>
+    emitWorkTaskEvent(workTaskId, 'work-task:status-changed', {
+      workTask,
+      previousStatus,
+      newStatus,
+      workTaskId
+    })
+};

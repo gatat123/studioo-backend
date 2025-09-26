@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { withAuth, type AuthenticatedRequest } from "@/middleware/auth";
+import { commentEvents } from "@/lib/socket/emit-helper";
 
 const updateCommentSchema = z.object({
   content: z.string().min(1, "댓글 내용이 필요합니다.").max(2000, "댓글은 2000자를 초과할 수 없습니다."),
@@ -112,13 +113,18 @@ async function updateComment(req: AuthenticatedRequest, context: { params: Promi
         targetType,
         targetId,
         description: "댓글을 수정했습니다.",
-        metadata: { 
+        metadata: {
           commentId,
           newLength: content.length,
           oldLength: comment.content.length,
         },
       },
     });
+
+    // Socket.io 이벤트 발송
+    if (targetId) {
+      await commentEvents.updated(targetType as 'project' | 'scene', targetId, updatedComment);
+    }
 
     return NextResponse.json({
       success: true,
@@ -234,13 +240,18 @@ async function deleteComment(req: AuthenticatedRequest, context: { params: Promi
           targetType,
           targetId,
           description: "답글이 있는 댓글을 삭제했습니다 (내용만 삭제).",
-          metadata: { 
+          metadata: {
             commentId,
             replyCount: comment.replies.length,
             softDelete: true,
           },
         },
       });
+
+      // Socket.io 이벤트 발송 (소프트 삭제)
+      if (targetId) {
+        await commentEvents.updated(targetType as 'project' | 'scene', targetId, updatedComment);
+      }
 
       return NextResponse.json({
         success: true,
@@ -265,12 +276,17 @@ async function deleteComment(req: AuthenticatedRequest, context: { params: Promi
           targetType,
           targetId,
           description: "댓글을 완전히 삭제했습니다.",
-          metadata: { 
+          metadata: {
             commentId,
             hardDelete: true,
           },
         },
       });
+
+      // Socket.io 이벤트 발송 (하드 삭제)
+      if (targetId) {
+        await commentEvents.deleted(targetType as 'project' | 'scene', targetId, commentId);
+      }
 
       return NextResponse.json({
         success: true,
