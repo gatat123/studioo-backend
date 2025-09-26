@@ -1,0 +1,170 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/logs/page.tsx</file>
+  <line>159</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/logs/page.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchLogs</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/permissions/page.tsx</file>
+  <line>257</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/permissions/page.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchData</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/permissions/page.tsx</file>
+  <line>278</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/permissions/page.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchData</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/permissions/page.tsx</file>
+  <line>298</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/permissions/page.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchData</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/permissions/page.tsx</file>
+  <line>318</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/permissions/page.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchData</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/projects/page.tsx</file>
+  <line>112</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/projects/page.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchProjects</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/projects/page.tsx</file>
+  <line>132</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/projects/page.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchProjects</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/users/page.tsx</file>
+  <line>126</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/users/page.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchUsers</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/users/page.tsx</file>
+  <line>146</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/users/page.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchUsers</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/users/page.tsx</file>
+  <line>172</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/users/page.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchUsers</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/UserManagement.tsx</file>
+  <line>85</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/UserManagement.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchUsers</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/UserManagement.tsx</file>
+  <line>105</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/UserManagement.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchUsers</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/UserManagement.tsx</file>
+  <line>127</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/UserManagement.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchUsers</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/hooks/useAuthInitializer.ts</file>
+  <line>31</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/hooks/useAuthInitializer.ts" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>useAuthStore.getState().logout</highlighted_element>
+  <language>TypeScript</language>
+  <offset>8</offset>
+  <length>30</length>
+</problem>
+</problems>

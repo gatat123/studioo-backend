@@ -1,0 +1,14 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/prisma/db.ts</file>
+  <line>4</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/prisma/db.ts" />
+  <problem_class id="ES6ConvertVarToLetConst" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">'let' 또는 'const' 대신 'var'가 사용됩니다</problem_class>
+  <description>'let' 또는 'const' 대신 'var'가 사용됩니다</description>
+  <highlighted_element>var</highlighted_element>
+  <language>JavaScript</language>
+  <offset>2</offset>
+  <length>3</length>
+</problem>
+</problems>

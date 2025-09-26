@@ -1,0 +1,14 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/api/projects/[id]/archive/route.ts</file>
+  <line>33</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/api/projects/[id]/archive/route.ts" />
+  <problem_class id="PointlessArithmeticExpressionJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">무의미한 산술 표현식</problem_class>
+  <description>86400000 * 1을(를) 86400000(으)로 바꿀수 있습니다 #loc</description>
+  <highlighted_element>86400000 * 1</highlighted_element>
+  <language>TypeScript</language>
+  <offset>40</offset>
+  <length>12</length>
+</problem>
+</problems>

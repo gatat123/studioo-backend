@@ -1,0 +1,1154 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/layout.tsx</file>
+  <line>47</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/layout.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>initializeAuth에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>initializeAuth</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/logs/page.tsx</file>
+  <line>101</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/logs/page.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>fetchLogs에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>fetchLogs</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/permissions/page.tsx</file>
+  <line>212</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/permissions/page.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>fetchData에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>fetchData</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/permissions/page.tsx</file>
+  <line>506</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/permissions/page.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleUpdateRole에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleUpdateRole</highlighted_element>
+  <language>JavaScript</language>
+  <offset>30</offset>
+  <length>16</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/users/page.tsx</file>
+  <line>103</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/users/page.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>fetchUsers에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>fetchUsers</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/archive/page.tsx</file>
+  <line>103</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/archive/page.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>fetchArchivedProjects에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>fetchArchivedProjects</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>21</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/settings/page.tsx</file>
+  <line>200</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/settings/page.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>writeText에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>writeText</highlighted_element>
+  <language>JavaScript</language>
+  <offset>24</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/work/page.tsx</file>
+  <line>88</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/work/page.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadData에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadData</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/team/page.tsx</file>
+  <line>57</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/team/page.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadChannels에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadChannels</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/team/page.tsx</file>
+  <line>117</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/team/page.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadChannelMembers에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadChannelMembers</highlighted_element>
+  <language>JavaScript</language>
+  <offset>10</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/team/page.tsx</file>
+  <line>148</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/team/page.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadChannels에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadChannels</highlighted_element>
+  <language>JavaScript</language>
+  <offset>8</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/team/page.tsx</file>
+  <line>156</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/team/page.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadChannelMembers에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadChannelMembers</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/team/page.tsx</file>
+  <line>157</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/team/page.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadMessages에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadMessages</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/team/page.tsx</file>
+  <line>332</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/team/page.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadChannels에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadChannels</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/team/page.tsx</file>
+  <line>753</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/team/page.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>sendMessage에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>sendMessage</highlighted_element>
+  <language>JavaScript</language>
+  <offset>22</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/AdminAuthProvider.tsx</file>
+  <line>32</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/AdminAuthProvider.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>checkAuth에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>checkAuth</highlighted_element>
+  <language>JavaScript</language>
+  <offset>32</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/AdminAuthProvider.tsx</file>
+  <line>37</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/AdminAuthProvider.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>logout에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>logout</highlighted_element>
+  <language>JavaScript</language>
+  <offset>32</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/ProjectStats.tsx</file>
+  <line>24</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/ProjectStats.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>fetchProjectStats에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>fetchProjectStats</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/SystemStatus.tsx</file>
+  <line>79</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/SystemStatus.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>fetchSystemStatus에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>fetchSystemStatus</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/UserManagement.tsx</file>
+  <line>32</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/UserManagement.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>fetchUsers에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>fetchUsers</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/channels/ChannelInvitesDropdown.tsx</file>
+  <line>28</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/channels/ChannelInvitesDropdown.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadInvitations에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadInvitations</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/chat/ChatModal.tsx</file>
+  <line>435</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/chat/ChatModal.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>sendMessage에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>sendMessage</highlighted_element>
+  <language>JavaScript</language>
+  <offset>20</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/comments/CommentInput.tsx</file>
+  <line>41</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/comments/CommentInput.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>fetchUsers에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>fetchUsers</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/AnnotationTools.tsx</file>
+  <line>285</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/AnnotationTools.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>saveToIndexedDB에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>saveToIndexedDB</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/AnnotationTools.tsx</file>
+  <line>326</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/AnnotationTools.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadFromIndexedDB에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadFromIndexedDB</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>210</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleUpload에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleUpload</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>217</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleUpload에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleUpload</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageViewer.tsx</file>
+  <line>65</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageViewer.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>requestFullscreen에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>requestFullscreen</highlighted_element>
+  <language>JavaScript</language>
+  <offset>27</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageViewer.tsx</file>
+  <line>72</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageViewer.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>exitFullscreen에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>exitFullscreen</highlighted_element>
+  <language>JavaScript</language>
+  <offset>15</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/friends/FriendsDropdown.tsx</file>
+  <line>283</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/friends/FriendsDropdown.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleSearch에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleSearch</highlighted_element>
+  <language>JavaScript</language>
+  <offset>8</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/friends/FriendsDropdown.tsx</file>
+  <line>458</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/friends/FriendsDropdown.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>fetchFriends에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>fetchFriends</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/friends/FriendsDropdown.tsx</file>
+  <line>618</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/friends/FriendsDropdown.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>saveMemo에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>saveMemo</highlighted_element>
+  <language>JavaScript</language>
+  <offset>61</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/friends/FriendsDropdown.tsx</file>
+  <line>714</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/friends/FriendsDropdown.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>saveMemo에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>saveMemo</highlighted_element>
+  <language>JavaScript</language>
+  <offset>61</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/layout/Sidebar.tsx</file>
+  <line>93</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/layout/Sidebar.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>fetchProjects에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>fetchProjects</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/layout/Sidebar.tsx</file>
+  <line>103</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/layout/Sidebar.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>fetchProjects에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>fetchProjects</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/messages/MessagesModal.tsx</file>
+  <line>93</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/messages/MessagesModal.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadConversations에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadConversations</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/messages/MessagesModal.tsx</file>
+  <line>95</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/messages/MessagesModal.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadFriends에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadFriends</highlighted_element>
+  <language>JavaScript</language>
+  <offset>8</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/notifications/NotificationDropdown.tsx</file>
+  <line>53</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/notifications/NotificationDropdown.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>requestPermission에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>requestPermission</highlighted_element>
+  <language>JavaScript</language>
+  <offset>19</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/notifications/NotificationDropdown.tsx</file>
+  <line>57</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/notifications/NotificationDropdown.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadNotifications에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadNotifications</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/notifications/NotificationDropdown.tsx</file>
+  <line>271</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/notifications/NotificationDropdown.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>markAsRead에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>markAsRead</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/notifications/NotificationDropdown.tsx</file>
+  <line>413</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/notifications/NotificationDropdown.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleChannelInviteResponse에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleChannelInviteResponse</highlighted_element>
+  <language>JavaScript</language>
+  <offset>28</offset>
+  <length>27</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/notifications/NotificationDropdown.tsx</file>
+  <line>424</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/notifications/NotificationDropdown.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleChannelInviteResponse에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleChannelInviteResponse</highlighted_element>
+  <language>JavaScript</language>
+  <offset>28</offset>
+  <length>27</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/CharacterListModal.tsx</file>
+  <line>49</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/CharacterListModal.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadCharacterList에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadCharacterList</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/CharacterListModal.tsx</file>
+  <line>127</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/CharacterListModal.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadCharacterList에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadCharacterList</highlighted_element>
+  <language>JavaScript</language>
+  <offset>24</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/HistorySection.tsx</file>
+  <line>539</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/HistorySection.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleSubmitComment에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleSubmitComment</highlighted_element>
+  <language>JavaScript</language>
+  <offset>16</offset>
+  <length>19</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/JoinProjectModal.tsx</file>
+  <line>118</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/JoinProjectModal.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleJoin에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleJoin</highlighted_element>
+  <language>JavaScript</language>
+  <offset>20</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/ParticipantsList.tsx</file>
+  <line>81</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/ParticipantsList.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadParticipants에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadParticipants</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>16</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/ProjectGrid.tsx</file>
+  <line>216</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/ProjectGrid.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>fetchProjects에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>fetchProjects</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/ScenePlayModal.tsx</file>
+  <line>97</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/ScenePlayModal.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadScenesData에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadScenesData</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/SceneScript.tsx</file>
+  <line>64</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/SceneScript.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadScript에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadScript</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/SetListModal.tsx</file>
+  <line>48</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/SetListModal.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadSetList에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadSetList</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/SetListModal.tsx</file>
+  <line>130</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/SetListModal.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadSetList에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadSetList</highlighted_element>
+  <language>JavaScript</language>
+  <offset>24</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>122</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleFileUpload에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleFileUpload</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>16</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>229</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleFileUpload에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleFileUpload</highlighted_element>
+  <language>JavaScript</language>
+  <offset>32</offset>
+  <length>16</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/SceneComments.tsx</file>
+  <line>83</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/SceneComments.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleSubmit에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleSubmit</highlighted_element>
+  <language>JavaScript</language>
+  <offset>16</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/SceneDescription.tsx</file>
+  <line>32</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/SceneDescription.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleSave에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleSave</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/team/InviteMemberModal.tsx</file>
+  <line>54</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/team/InviteMemberModal.tsx" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>loadFriendsAndMembers에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>loadFriendsAndMembers</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>21</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/hooks/useAuthInitializer.ts</file>
+  <line>36</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/hooks/useAuthInitializer.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>initAuth에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>initAuth</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/hooks/useStores.ts</file>
+  <line>17</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/hooks/useStores.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>checkAuth에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>checkAuth</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/hooks/useStores.ts</file>
+  <line>71</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/hooks/useStores.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>fetchProjects에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>fetchProjects</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/realtime/message-queue.ts</file>
+  <line>88</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/realtime/message-queue.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>processBatch에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>processBatch</highlighted_element>
+  <language>JavaScript</language>
+  <offset>13</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/realtime/message-queue.ts</file>
+  <line>105</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/realtime/message-queue.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>processBatch에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>processBatch</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts</file>
+  <line>80</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleAnnotationCreate에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleAnnotationCreate</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>22</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts</file>
+  <line>85</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleAnnotationUpdate에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleAnnotationUpdate</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>22</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts</file>
+  <line>90</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleAnnotationDelete에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleAnnotationDelete</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>22</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts</file>
+  <line>95</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleAnnotationResolve에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleAnnotationResolve</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>23</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts</file>
+  <line>105</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleDrawingEndSession에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleDrawingEndSession</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>23</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts</file>
+  <line>125</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleAnnotationGroup에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleAnnotationGroup</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>21</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts</file>
+  <line>58</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleCommentCreate에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleCommentCreate</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>19</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts</file>
+  <line>63</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleCommentUpdate에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleCommentUpdate</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>19</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts</file>
+  <line>68</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleCommentDelete에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleCommentDelete</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>19</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts</file>
+  <line>73</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleCommentReaction에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleCommentReaction</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>21</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts</file>
+  <line>78</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleCommentView에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleCommentView</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts</file>
+  <line>107</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleCommentMention에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleCommentMention</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts</file>
+  <line>84</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleImageUploadComplete에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleImageUploadComplete</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>25</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts</file>
+  <line>94</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleImageUpdate에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleImageUpdate</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts</file>
+  <line>99</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleImageDelete에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleImageDelete</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts</file>
+  <line>104</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleImageRestore에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleImageRestore</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts</file>
+  <line>109</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleImageNewVersion에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleImageNewVersion</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>21</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts</file>
+  <line>114</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleImageRestoreVersion에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleImageRestoreVersion</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>25</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts</file>
+  <line>119</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleImageStartComparison에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleImageStartComparison</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>26</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts</file>
+  <line>134</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/images.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleImageFilter에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleImageFilter</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts</file>
+  <line>62</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleSceneCreate에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleSceneCreate</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts</file>
+  <line>67</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleSceneUpdate에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleSceneUpdate</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts</file>
+  <line>72</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleSceneDelete에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleSceneDelete</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts</file>
+  <line>77</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleSceneReorder에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleSceneReorder</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>18</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts</file>
+  <line>82</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleSceneCopy에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleSceneCopy</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts</file>
+  <line>87</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleSceneStatusChange에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleSceneStatusChange</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>23</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts</file>
+  <line>102</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>handleSceneSaveAsTemplate에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>handleSceneSaveAsTemplate</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>25</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/presence.ts</file>
+  <line>90</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/presence.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>updateDatabasePresence에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>updateDatabasePresence</highlighted_element>
+  <language>JavaScript</language>
+  <offset>9</offset>
+  <length>22</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/presence.ts</file>
+  <line>109</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/presence.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>updateDatabasePresence에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>updateDatabasePresence</highlighted_element>
+  <language>JavaScript</language>
+  <offset>11</offset>
+  <length>22</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/presence.ts</file>
+  <line>129</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/presence.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>updateDatabasePresence에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>updateDatabasePresence</highlighted_element>
+  <language>JavaScript</language>
+  <offset>9</offset>
+  <length>22</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/presence.ts</file>
+  <line>313</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/presence.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>updateDatabasePresence에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>updateDatabasePresence</highlighted_element>
+  <language>JavaScript</language>
+  <offset>9</offset>
+  <length>22</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/server.ts</file>
+  <line>233</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/server.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>notifyFriendsOfPresence에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>notifyFriendsOfPresence</highlighted_element>
+  <language>JavaScript</language>
+  <offset>13</offset>
+  <length>23</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/server.ts</file>
+  <line>809</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/server.ts" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>notifyFriendsOfPresence에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>notifyFriendsOfPresence</highlighted_element>
+  <language>JavaScript</language>
+  <offset>9</offset>
+  <length>23</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/scripts/reset-failed-migration.js</file>
+  <line>65</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/scripts/reset-failed-migration.js" />
+  <problem_class id="JSIgnoredPromiseFromCall" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">프로미스를 반환 하는 메서드 호출의 결과는 무시됩니다</problem_class>
+  <description>resetFailedMigration에서 반환되는 프로미스는 무시됩니다</description>
+  <highlighted_element>resetFailedMigration</highlighted_element>
+  <language>JavaScript</language>
+  <offset>0</offset>
+  <length>20</length>
+</problem>
+</problems>

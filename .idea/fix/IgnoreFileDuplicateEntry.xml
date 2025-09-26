@@ -1,0 +1,74 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/.gitignore</file>
+  <line>38</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/.gitignore" />
+  <problem_class id="IgnoreFileDuplicateEntry" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">파일 중복 무시</problem_class>
+  <description>&lt;code&gt;/.pnp&lt;/code&gt; 패턴이 두 번 이상 정의됩니다#loc</description>
+  <highlighted_element>/.pnp</highlighted_element>
+  <language>IgnoreLang</language>
+  <offset>0</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/.gitignore</file>
+  <line>39</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/.gitignore" />
+  <problem_class id="IgnoreFileDuplicateEntry" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">파일 중복 무시</problem_class>
+  <description>&lt;code&gt;.pnp.*&lt;/code&gt; 패턴이 두 번 이상 정의됩니다#loc</description>
+  <highlighted_element>.pnp.*</highlighted_element>
+  <language>IgnoreLang</language>
+  <offset>0</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/.gitignore</file>
+  <line>52</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/.gitignore" />
+  <problem_class id="IgnoreFileDuplicateEntry" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">파일 중복 무시</problem_class>
+  <description>&lt;code&gt;.DS_Store&lt;/code&gt; 패턴이 두 번 이상 정의됩니다#loc</description>
+  <highlighted_element>.DS_Store</highlighted_element>
+  <language>IgnoreLang</language>
+  <offset>0</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/.gitignore</file>
+  <line>54</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/.gitignore" />
+  <problem_class id="IgnoreFileDuplicateEntry" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">파일 중복 무시</problem_class>
+  <description>&lt;code&gt;*.pem&lt;/code&gt; 패턴이 두 번 이상 정의됩니다#loc</description>
+  <highlighted_element>*.pem</highlighted_element>
+  <language>IgnoreLang</language>
+  <offset>0</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/.gitignore</file>
+  <line>86</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/.gitignore" />
+  <problem_class id="IgnoreFileDuplicateEntry" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">파일 중복 무시</problem_class>
+  <description>&lt;code&gt;.DS_Store&lt;/code&gt; 패턴이 두 번 이상 정의됩니다#loc</description>
+  <highlighted_element>.DS_Store</highlighted_element>
+  <language>IgnoreLang</language>
+  <offset>0</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/.gitignore</file>
+  <line>87</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/.gitignore" />
+  <problem_class id="IgnoreFileDuplicateEntry" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">파일 중복 무시</problem_class>
+  <description>&lt;code&gt;Thumbs.db&lt;/code&gt; 패턴이 두 번 이상 정의됩니다#loc</description>
+  <highlighted_element>Thumbs.db</highlighted_element>
+  <language>IgnoreLang</language>
+  <offset>0</offset>
+  <length>9</length>
+</problem>
+</problems>

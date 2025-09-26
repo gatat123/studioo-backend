@@ -1,0 +1,122 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { verifyAuth } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
+import { z } from 'zod'
+
+const createTaskSchema = z.object({
+  projectId: z.string().uuid(),
+  title: z.string().min(1).max(255),
+  description: z.string().optional(),
+  priority: z.enum(['low', 'medium', 'high']).default('medium'),
+  status: z.enum(['todo', 'in_progress', 'review', 'done']).default('todo'),
+  dueDate: z.string().datetime().optional(),
+  assignedUserIds: z.array(z.string().uuid()).optional()
+})
+
+export async function POST(request: NextRequest) {
+  try {
+    // 인증 확인
+    const userId = await verifyAuth(request)
+    if (!userId) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      )
+    }
+
+    // 요청 데이터 검증
+    const body = await request.json()
+    const validatedData = createTaskSchema.parse(body)
+
+    // 프로젝트 접근 권한 확인
+    const projectMember = await prisma.project_participants.findFirst({
+      where: {
+        project_id: validatedData.projectId,
+        user_id: userId
+      }
+    })
+
+    if (!projectMember) {
+      return NextResponse.json(
+        { error: 'Project not found or access denied' },
+        { status: 404 }
+      )
+    }
+
+    // 업무 생성
+    const task = await prisma.task.create({
+      data: {
+        projectId: validatedData.projectId,
+        title: validatedData.title,
+        description: validatedData.description,
+        priority: validatedData.priority,
+        status: validatedData.status,
+        dueDate: validatedData.dueDate ? new Date(validatedData.dueDate) : null,
+        createdBy: userId,
+        assignedUsers: validatedData.assignedUserIds ? {
+          create: validatedData.assignedUserIds.map(assignedUserId => ({
+            userId: assignedUserId,
+            assignedBy: userId
+          }))
+        } : undefined
+      },
+      include: {
+        assignedUsers: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                nickname: true,
+                profile_image_url: true
+              }
+            }
+          }
+        },
+        todos: {
+          where: {
+            deletedAt: null
+          },
+          select: {
+            id: true,
+            completed: true
+          }
+        }
+      }
+    })
+
+    // 응답 데이터 포맷팅
+    const formattedTask = {
+      id: task.id,
+      title: task.title,
+      description: task.description,
+      status: task.status,
+      priority: task.priority,
+      dueDate: task.dueDate,
+      assignedUsers: task.assignedUsers.map(au => ({
+        id: au.user.id,
+        nickname: au.user.nickname,
+        profileImageUrl: au.user.profile_image_url
+      })),
+      todoCount: task.todos.length,
+      completedTodoCount: task.todos.filter(todo => todo.completed).length,
+      createdAt: task.createdAt,
+      updatedAt: task.updatedAt
+    }
+
+    return NextResponse.json(formattedTask, { status: 201 })
+  } catch (error) {
+    console.error('Error creating task:', error)
+
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: 'Invalid request data', details: error.errors },
+        { status: 400 }
+      )
+    }
+
+    return NextResponse.json(
+      { error: 'Failed to create task' },
+      { status: 500 }
+    )
+  }
+}

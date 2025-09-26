@@ -1,0 +1,3674 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/.cursor/mcp.json</file>
+  <line>12</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.cursor/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'OPENROUTER' 내</description>
+  <highlighted_element>OPENROUTER</highlighted_element>
+  <language>JSON</language>
+  <offset>5</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.cursor/mcp.json</file>
+  <line>12</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.cursor/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'OPENROUTER' 내</description>
+  <highlighted_element>OPENROUTER</highlighted_element>
+  <language>JSON</language>
+  <offset>32</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.cursor/rules/taskmaster/dev_workflow.mdc</file>
+  <line>302</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.cursor/rules/taskmaster/dev_workflow.mdc" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Trae' 내</description>
+  <highlighted_element>Trae</highlighted_element>
+  <language>TEXT</language>
+  <offset>71</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.cursor/rules/taskmaster/dev_workflow.mdc</file>
+  <line>302</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.cursor/rules/taskmaster/dev_workflow.mdc" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'trae' 내</description>
+  <highlighted_element>trae</highlighted_element>
+  <language>TEXT</language>
+  <offset>122</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.cursor/rules/taskmaster/dev_workflow.mdc</file>
+  <line>419</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.cursor/rules/taskmaster/dev_workflow.mdc" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'ripgrep' 내</description>
+  <highlighted_element>ripgrep</highlighted_element>
+  <language>TEXT</language>
+  <offset>15</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.cursor/rules/taskmaster/taskmaster.mdc</file>
+  <line>72</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.cursor/rules/taskmaster/taskmaster.mdc" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'openrouter' 내</description>
+  <highlighted_element>openrouter</highlighted_element>
+  <language>TEXT</language>
+  <offset>9</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.cursor/rules/taskmaster/taskmaster.mdc</file>
+  <line>377</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.cursor/rules/taskmaster/taskmaster.mdc" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'tagname' 내</description>
+  <highlighted_element>tagname</highlighted_element>
+  <language>TEXT</language>
+  <offset>135</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.cursor/rules/taskmaster/taskmaster.mdc</file>
+  <line>547</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.cursor/rules/taskmaster/taskmaster.mdc" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'OPENROUTER' 내</description>
+  <highlighted_element>OPENROUTER</highlighted_element>
+  <language>TEXT</language>
+  <offset>9</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>textmate</language>
+  <offset>0</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env</file>
+  <line>6</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Uocjack' 내</description>
+  <highlighted_element>Uocjack</highlighted_element>
+  <language>textmate</language>
+  <offset>48</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env</file>
+  <line>7</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Wexl' 내</description>
+  <highlighted_element>Wexl</highlighted_element>
+  <language>textmate</language>
+  <offset>18</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env</file>
+  <line>23</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'BLXSBZY' 내</description>
+  <highlighted_element>BLXSBZY</highlighted_element>
+  <language>textmate</language>
+  <offset>26</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env</file>
+  <line>23</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NRIQ' 내</description>
+  <highlighted_element>NRIQ</highlighted_element>
+  <language>textmate</language>
+  <offset>42</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env</file>
+  <line>23</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'SWSG' 내</description>
+  <highlighted_element>SWSG</highlighted_element>
+  <language>textmate</language>
+  <offset>94</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env</file>
+  <line>26</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Tigvn' 내</description>
+  <highlighted_element>Tigvn</highlighted_element>
+  <language>textmate</language>
+  <offset>29</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env.example</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env.example" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>TEXT</language>
+  <offset>0</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env.example</file>
+  <line>6</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env.example" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'nextauth' 내</description>
+  <highlighted_element>nextauth</highlighted_element>
+  <language>TEXT</language>
+  <offset>21</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env.local</file>
+  <line>15</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env.local" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>TEXT</language>
+  <offset>0</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env.local</file>
+  <line>16</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env.local" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'nextauth' 내</description>
+  <highlighted_element>nextauth</highlighted_element>
+  <language>TEXT</language>
+  <offset>21</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env.local</file>
+  <line>19</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env.local" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'dustdio' 내</description>
+  <highlighted_element>dustdio</highlighted_element>
+  <language>TEXT</language>
+  <offset>59</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env.local</file>
+  <line>31</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env.local" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Uploadthing' 내</description>
+  <highlighted_element>Uploadthing</highlighted_element>
+  <language>TEXT</language>
+  <offset>2</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env.local</file>
+  <line>32</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env.local" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'UPLOADTHING' 내</description>
+  <highlighted_element>UPLOADTHING</highlighted_element>
+  <language>TEXT</language>
+  <offset>0</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env.local</file>
+  <line>32</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env.local" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'uploadthing' 내</description>
+  <highlighted_element>uploadthing</highlighted_element>
+  <language>TEXT</language>
+  <offset>24</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env.local</file>
+  <line>48</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env.local" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'XXXXXXXXXX' 내</description>
+  <highlighted_element>XXXXXXXXXX</highlighted_element>
+  <language>TEXT</language>
+  <offset>32</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env.local</file>
+  <line>49</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env.local" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'POSTHOG' 내</description>
+  <highlighted_element>POSTHOG</highlighted_element>
+  <language>TEXT</language>
+  <offset>12</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.env.local</file>
+  <line>49</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.env.local" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'posthog' 내</description>
+  <highlighted_element>posthog</highlighted_element>
+  <language>TEXT</language>
+  <offset>29</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/dev_workflow.instructions.md</file>
+  <line>301</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/dev_workflow.instructions.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Trae' 내</description>
+  <highlighted_element>Trae</highlighted_element>
+  <language>Markdown</language>
+  <offset>72</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/dev_workflow.instructions.md</file>
+  <line>301</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/dev_workflow.instructions.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'trae' 내</description>
+  <highlighted_element>trae</highlighted_element>
+  <language>Markdown</language>
+  <offset>123</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/dev_workflow.instructions.md</file>
+  <line>418</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/dev_workflow.instructions.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'ripgrep' 내</description>
+  <highlighted_element>ripgrep</highlighted_element>
+  <language>Markdown</language>
+  <offset>15</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.taskmaster/docs/prd.txt</file>
+  <line>16</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.taskmaster/docs/prd.txt" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'shadcn' 내</description>
+  <highlighted_element>shadcn</highlighted_element>
+  <language>TEXT</language>
+  <offset>26</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.taskmaster/tasks/tasks.json</file>
+  <line>18</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.taskmaster/tasks/tasks.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'shadcn' 내</description>
+  <highlighted_element>shadcn</highlighted_element>
+  <language>JSON</language>
+  <offset>48</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.taskmaster/tasks/tasks.json</file>
+  <line>19</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.taskmaster/tasks/tasks.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'shadcn' 내</description>
+  <highlighted_element>shadcn</highlighted_element>
+  <language>JSON</language>
+  <offset>252</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.taskmaster/tasks/tasks.json</file>
+  <line>58</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.taskmaster/tasks/tasks.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'hookform' 내</description>
+  <highlighted_element>hookform</highlighted_element>
+  <language>JSON</language>
+  <offset>79</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.taskmaster/tasks/work-log.md</file>
+  <line>6</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.taskmaster/tasks/work-log.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'shadcn' 내</description>
+  <highlighted_element>shadcn</highlighted_element>
+  <language>Markdown</language>
+  <offset>27</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.taskmaster/tasks/work-log.md</file>
+  <line>8</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.taskmaster/tasks/work-log.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'shadcn' 내</description>
+  <highlighted_element>shadcn</highlighted_element>
+  <language>Markdown</language>
+  <offset>4</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>37</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>18</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>117</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'shadcn' 내</description>
+  <highlighted_element>shadcn</highlighted_element>
+  <language>Markdown</language>
+  <offset>17</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>178</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>3</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>191</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'shadcn' 내</description>
+  <highlighted_element>shadcn</highlighted_element>
+  <language>Markdown</language>
+  <offset>3</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/PROJECT_STRUCTURE_GUIDE.md</file>
+  <line>48</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/PROJECT_STRUCTURE_GUIDE.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Studioo' 내</description>
+  <highlighted_element>Studioo</highlighted_element>
+  <language>Markdown</language>
+  <offset>14</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/PROJECT_STRUCTURE_GUIDE.md</file>
+  <line>74</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/PROJECT_STRUCTURE_GUIDE.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Studioo' 내</description>
+  <highlighted_element>Studioo</highlighted_element>
+  <language>Markdown</language>
+  <offset>11</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/README.md</file>
+  <line>35</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/README.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'shadcn' 내</description>
+  <highlighted_element>shadcn</highlighted_element>
+  <language>Markdown</language>
+  <offset>30</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/demo/image-viewer/page.tsx</file>
+  <line>16</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/demo/image-viewer/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>24</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/layout.tsx</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/layout.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Sonner' 내</description>
+  <highlighted_element>Sonner</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>20</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>97</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>54</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>122</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>66</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>122</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>85</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>125</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Lineart' 내</description>
+  <highlighted_element>Lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>17</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>125</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Lineart' 내</description>
+  <highlighted_element>Lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>44</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>181</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>81</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>192</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>82</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>254</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>72</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>257</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'studioo' 내</description>
+  <highlighted_element>studioo</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>52</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>258</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'studioo' 내</description>
+  <highlighted_element>studioo</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>43</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>263</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'studioo' 내</description>
+  <highlighted_element>studioo</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>52</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>264</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'studioo' 내</description>
+  <highlighted_element>studioo</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>43</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>413</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>67</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>443</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>48</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>509</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>26</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>533</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>34</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>547</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>81</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>757</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>50</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>759</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>55</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>799</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>66</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>831</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'studioo' 내</description>
+  <highlighted_element>studioo</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>51</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>832</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'studioo' 내</description>
+  <highlighted_element>studioo</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>59</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>872</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>39</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>882</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>54</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>884</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>105</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>888</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>36</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>888</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>108</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>929</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>57</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>963</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>68</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>1250</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>41</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>1350</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>41</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>1369</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>40</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>1393</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>53</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>1403</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>53</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>1501</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>49</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/scenes/[sceneId]/page.tsx</file>
+  <line>42</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/scenes/[sceneId]/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>12</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/# 협업 시스템 기능 명세서.md</file>
+  <line>10</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/# 협업 시스템 기능 명세서.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>14</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/# 협업 시스템 기능 명세서.md</file>
+  <line>187</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/# 협업 시스템 기능 명세서.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>19</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/# 협업 시스템 기능 명세서.md</file>
+  <line>255</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/# 협업 시스템 기능 명세서.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>2</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/# 협업 시스템 기술 설계 문서.md</file>
+  <line>3</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/# 협업 시스템 기술 설계 문서.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>21</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/.env</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/.env" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>textmate</language>
+  <offset>0</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/.env</file>
+  <line>6</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/.env" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Uocjack' 내</description>
+  <highlighted_element>Uocjack</highlighted_element>
+  <language>textmate</language>
+  <offset>48</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/.env</file>
+  <line>7</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/.env" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Wexl' 내</description>
+  <highlighted_element>Wexl</highlighted_element>
+  <language>textmate</language>
+  <offset>18</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/.env</file>
+  <line>23</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/.env" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'BLXSBZY' 내</description>
+  <highlighted_element>BLXSBZY</highlighted_element>
+  <language>textmate</language>
+  <offset>26</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/.env</file>
+  <line>23</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/.env" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NRIQ' 내</description>
+  <highlighted_element>NRIQ</highlighted_element>
+  <language>textmate</language>
+  <offset>42</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/.env</file>
+  <line>23</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/.env" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'SWSG' 내</description>
+  <highlighted_element>SWSG</highlighted_element>
+  <language>textmate</language>
+  <offset>94</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/.env</file>
+  <line>26</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/.env" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Tigvn' 내</description>
+  <highlighted_element>Tigvn</highlighted_element>
+  <language>textmate</language>
+  <offset>29</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/.env.example</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/.env.example" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>TEXT</language>
+  <offset>0</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/CLAUDE.md</file>
+  <line>10</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/CLAUDE.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>61</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/CLAUDE.md</file>
+  <line>11</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/CLAUDE.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'shadcn' 내</description>
+  <highlighted_element>shadcn</highlighted_element>
+  <language>Markdown</language>
+  <offset>70</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/CLAUDE.md</file>
+  <line>57</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/CLAUDE.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>21</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/CLAUDE.md</file>
+  <line>69</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/CLAUDE.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Tful' 내</description>
+  <highlighted_element>Tful</highlighted_element>
+  <language>Markdown</language>
+  <offset>32</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/CLAUDE.md</file>
+  <line>102</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/CLAUDE.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>Markdown</language>
+  <offset>11</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/CLAUDE.md</file>
+  <line>140</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/CLAUDE.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>4</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/DEPLOYMENT_CHECKLIST.md</file>
+  <line>28</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/DEPLOYMENT_CHECKLIST.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>14</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/DEPLOYMENT_CHECKLIST.md</file>
+  <line>124</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/DEPLOYMENT_CHECKLIST.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>8</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/RAILWAY_SETUP.md</file>
+  <line>11</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/RAILWAY_SETUP.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'studioo' 내</description>
+  <highlighted_element>studioo</highlighted_element>
+  <language>Markdown</language>
+  <offset>21</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/RAILWAY_SETUP.md</file>
+  <line>45</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/RAILWAY_SETUP.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'studioo' 내</description>
+  <highlighted_element>studioo</highlighted_element>
+  <language>Markdown</language>
+  <offset>22</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/RAILWAY_SETUP.md</file>
+  <line>61</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/RAILWAY_SETUP.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>11</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/RAILWAY_SETUP.md</file>
+  <line>64</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/RAILWAY_SETUP.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>43</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/RAILWAY_SETUP.md</file>
+  <line>134</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/RAILWAY_SETUP.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>60</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/README.md</file>
+  <line>19</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/README.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>2</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/README.md</file>
+  <line>28</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/README.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>16</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/images/serve/[...path]/route.ts</file>
+  <line>92</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/images/serve/[...path]/route.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'nosniff' 내</description>
+  <highlighted_element>nosniff</highlighted_element>
+  <language>TypeScript</language>
+  <offset>45</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/images/upload/route.ts</file>
+  <line>8</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/images/upload/route.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'uuidv' 내</description>
+  <highlighted_element>uuidv</highlighted_element>
+  <language>TypeScript</language>
+  <offset>15</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/projects/[id]/invite/route.ts</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/projects/[id]/invite/route.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'uuidv' 내</description>
+  <highlighted_element>uuidv</highlighted_element>
+  <language>TypeScript</language>
+  <offset>15</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/scenes/[id]/images/route.ts</file>
+  <line>11</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/scenes/[id]/images/route.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript</language>
+  <offset>17</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/users/profile/image/v2/route.ts</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/users/profile/image/v2/route.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'uuidv' 내</description>
+  <highlighted_element>uuidv</highlighted_element>
+  <language>TypeScript</language>
+  <offset>15</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/users/profile/route.ts</file>
+  <line>69</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/users/profile/route.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'participations' 내</description>
+  <highlighted_element>participations</highlighted_element>
+  <language>TypeScript</language>
+  <offset>12</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/users/profile/route.ts</file>
+  <line>228</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/users/profile/route.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'user'' 내</description>
+  <highlighted_element>user'</highlighted_element>
+  <language>JavaScript</language>
+  <offset>42</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/page.tsx</file>
+  <line>90</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/page.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'nextjs' 내</description>
+  <highlighted_element>nextjs</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>16</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/auth.ts</file>
+  <line>87</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/auth.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'signin' 내</description>
+  <highlighted_element>signin</highlighted_element>
+  <language>TypeScript</language>
+  <offset>19</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/jwt.ts</file>
+  <line>12</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/jwt.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>TypeScript</language>
+  <offset>15</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/services/collaboration.ts</file>
+  <line>299</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/services/collaboration.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'scene'' 내</description>
+  <highlighted_element>scene'</highlighted_element>
+  <language>JavaScript</language>
+  <offset>30</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/storage.ts</file>
+  <line>10</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/storage.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript</language>
+  <offset>35</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/storage.ts</file>
+  <line>45</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/storage.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript</language>
+  <offset>37</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/upload.ts</file>
+  <line>3</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/upload.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'uuidv' 내</description>
+  <highlighted_element>uuidv</highlighted_element>
+  <language>TypeScript</language>
+  <offset>15</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/upload.ts</file>
+  <line>13</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/upload.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript</language>
+  <offset>38</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/upload.ts</file>
+  <line>69</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/upload.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript</language>
+  <offset>11</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>333</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>63</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>336</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>67</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>339</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>68</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>342</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>92</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>345</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>89</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>348</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>64</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>351</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>64</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>354</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>62</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>357</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>65</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>360</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>76</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>363</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>76</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>366</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>79</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>369</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>68</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>372</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>66</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>375</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>75</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>378</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>65</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>381</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>72</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>384</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>71</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>387</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>75</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>390</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>78</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>393</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>76</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>396</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>88</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>399</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>85</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>402</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>75</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>405</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>78</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>408</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>81</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>411</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>83</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>414</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>72</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/migration.sql</file>
+  <line>417</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>72</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/nixpacks.toml</file>
+  <line>2</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/nixpacks.toml" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Pkgs' 내</description>
+  <highlighted_element>Pkgs</highlighted_element>
+  <language>TEXT</language>
+  <offset>3</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/nixpacks.toml</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/nixpacks.toml" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'cmds' 내</description>
+  <highlighted_element>cmds</highlighted_element>
+  <language>TEXT</language>
+  <offset>0</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql</file>
+  <line>85</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>55</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql</file>
+  <line>87</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>76</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql</file>
+  <line>96</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>57</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql</file>
+  <line>98</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>78</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql</file>
+  <line>107</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>50</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql</file>
+  <line>109</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>67</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql</file>
+  <line>118</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>50</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql</file>
+  <line>120</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/prisma/migrations/20250110000000_add_friend_system/migration.sql" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fkey' 내</description>
+  <highlighted_element>fkey</highlighted_element>
+  <language>GenericSQL</language>
+  <offset>67</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/railway-monitor.ps1</file>
+  <line>146</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/railway-monitor.ps1" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'notmatch' 내</description>
+  <highlighted_element>notmatch</highlighted_element>
+  <language>textmate</language>
+  <offset>55</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/프로젝트_완료_보고서.md</file>
+  <line>90</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/프로젝트_완료_보고서.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>Markdown</language>
+  <offset>16</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/프로젝트_완료_보고서.md</file>
+  <line>99</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/프로젝트_완료_보고서.md" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'shadcn' 내</description>
+  <highlighted_element>shadcn</highlighted_element>
+  <language>Markdown</language>
+  <offset>33</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>50</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>4</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>53</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>4</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>58</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>4</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>61</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>4</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>65</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>105</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>49</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>170</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>33</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>192</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>61</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>203</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>61</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>214</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>75</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>221</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>32</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>227</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>35</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>228</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Lineart' 내</description>
+  <highlighted_element>Lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>12</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>228</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>32</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>335</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>27</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/VersionHistory.tsx</file>
+  <line>50</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/VersionHistory.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>9</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/VersionHistory.tsx</file>
+  <line>79</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/VersionHistory.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>52</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/VersionHistory.tsx</file>
+  <line>197</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/VersionHistory.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>60</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/VersionHistory.tsx</file>
+  <line>198</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/VersionHistory.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>31</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/VersionHistory.tsx</file>
+  <line>286</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/VersionHistory.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>43</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/VersionHistory.tsx</file>
+  <line>363</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/VersionHistory.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>40</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/CreateProjectModal.tsx</file>
+  <line>78</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/CreateProjectModal.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 내</description>
+  <highlighted_element>ABCDEFGHIJKLMNOPQRSTUVWXYZ</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>19</offset>
+  <length>26</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/ScenePlayModal.tsx</file>
+  <line>12</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/ScenePlayModal.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>14</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/ScenePlayModal.tsx</file>
+  <line>43</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/ScenePlayModal.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>30</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>19</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>23</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>47</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>26</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>46</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>26</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>65</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>101</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>41</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>127</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>38</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>135</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>75</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>213</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>32</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/SceneHistory.tsx</file>
+  <line>12</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/SceneHistory.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>9</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/SceneHistory.tsx</file>
+  <line>35</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/SceneHistory.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>15</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/SceneHistory.tsx</file>
+  <line>37</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/SceneHistory.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>26</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/SceneHistory.tsx</file>
+  <line>57</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/SceneHistory.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>15</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/SceneHistory.tsx</file>
+  <line>59</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/SceneHistory.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>26</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/SceneHistory.tsx</file>
+  <line>85</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/SceneHistory.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>21</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/SceneHistory.tsx</file>
+  <line>99</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/SceneHistory.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>32</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/scroll-stack.tsx</file>
+  <line>220</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/scroll-stack.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lerp' 내</description>
+  <highlighted_element>lerp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/scroll-stack.tsx</file>
+  <line>220</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/scroll-stack.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lerp' 내</description>
+  <highlighted_element>lerp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/scroll-stack.tsx</file>
+  <line>222</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/scroll-stack.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Lerp' 내</description>
+  <highlighted_element>Lerp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>17</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/scroll-stack.tsx</file>
+  <line>222</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/scroll-stack.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Lerp' 내</description>
+  <highlighted_element>Lerp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>17</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/scroll-stack.tsx</file>
+  <line>249</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/scroll-stack.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lerp' 내</description>
+  <highlighted_element>lerp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/scroll-stack.tsx</file>
+  <line>249</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/scroll-stack.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lerp' 내</description>
+  <highlighted_element>lerp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/scroll-stack.tsx</file>
+  <line>251</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/scroll-stack.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Lerp' 내</description>
+  <highlighted_element>Lerp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>17</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/scroll-stack.tsx</file>
+  <line>251</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/scroll-stack.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Lerp' 내</description>
+  <highlighted_element>Lerp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>17</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>230</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'highp' 내</description>
+  <highlighted_element>highp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>18</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>253</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'mediump' 내</description>
+  <highlighted_element>mediump</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>18</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>255</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'highp' 내</description>
+  <highlighted_element>highp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>16</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>267</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'mediump' 내</description>
+  <highlighted_element>mediump</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>18</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>269</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'highp' 내</description>
+  <highlighted_element>highp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>16</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>280</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'highp' 내</description>
+  <highlighted_element>highp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>16</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>323</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'highp' 내</description>
+  <highlighted_element>highp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>18</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>345</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'highp' 내</description>
+  <highlighted_element>highp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>18</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>355</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'bilerp' 내</description>
+  <highlighted_element>bilerp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>13</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>355</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'tsize' 내</description>
+  <highlighted_element>tsize</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>50</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>358</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'fract' 내</description>
+  <highlighted_element>fract</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>23</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>370</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'coord' 내</description>
+  <highlighted_element>coord</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>21</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>386</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'mediump' 내</description>
+  <highlighted_element>mediump</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>18</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>388</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'highp' 내</description>
+  <highlighted_element>highp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>16</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>416</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'mediump' 내</description>
+  <highlighted_element>mediump</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>18</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>418</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'highp' 내</description>
+  <highlighted_element>highp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>16</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>439</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'highp' 내</description>
+  <highlighted_element>highp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>18</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>474</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'mediump' 내</description>
+  <highlighted_element>mediump</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>18</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>476</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'highp' 내</description>
+  <highlighted_element>highp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>16</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>500</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'mediump' 내</description>
+  <highlighted_element>mediump</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>18</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>502</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'highp' 내</description>
+  <highlighted_element>highp</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>16</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/splash-cursor.tsx</file>
+  <line>555</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/splash-cursor.tsx" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'gradien' 내</description>
+  <highlighted_element>gradien</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>10</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components.json</file>
+  <line>13</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lucide' 내</description>
+  <highlighted_element>lucide</highlighted_element>
+  <language>JSON</language>
+  <offset>18</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/api/images.ts</file>
+  <line>11</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/api/images.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/api/images.ts</file>
+  <line>26</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/api/images.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript</language>
+  <offset>11</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/api/images.ts</file>
+  <line>90</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/api/images.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript</language>
+  <offset>48</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/api/images.ts</file>
+  <line>158</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/api/images.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript</language>
+  <offset>11</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/indexedDB.ts</file>
+  <line>11</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/indexedDB.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/mock/versionHistory.ts</file>
+  <line>27</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/mock/versionHistory.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Lineart' 내</description>
+  <highlighted_element>Lineart</highlighted_element>
+  <language>TypeScript</language>
+  <offset>12</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/mock/versionHistory.ts</file>
+  <line>38</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/mock/versionHistory.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript</language>
+  <offset>25</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/mock/versionHistory.ts</file>
+  <line>58</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/mock/versionHistory.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript</language>
+  <offset>62</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>7</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'modelcontextprotocol' 내</description>
+  <highlighted_element>modelcontextprotocol</highlighted_element>
+  <language>JSON</language>
+  <offset>10</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>14</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>14</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>27</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>15</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>15</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>30</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>24</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'modelcontextprotocol' 내</description>
+  <highlighted_element>modelcontextprotocol</highlighted_element>
+  <language>JSON</language>
+  <offset>10</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>30</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>30</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>27</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>31</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>31</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>30</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>39</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'modelcontextprotocol' 내</description>
+  <highlighted_element>modelcontextprotocol</highlighted_element>
+  <language>JSON</language>
+  <offset>10</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>45</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>45</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>27</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>46</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>46</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>30</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>55</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'modelcontextprotocol' 내</description>
+  <highlighted_element>modelcontextprotocol</highlighted_element>
+  <language>JSON</language>
+  <offset>10</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>61</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>61</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>27</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>62</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>62</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>30</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>70</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'modelcontextprotocol' 내</description>
+  <highlighted_element>modelcontextprotocol</highlighted_element>
+  <language>JSON</language>
+  <offset>10</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>75</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>75</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>27</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>76</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>76</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>30</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>85</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'modelcontextprotocol' 내</description>
+  <highlighted_element>modelcontextprotocol</highlighted_element>
+  <language>JSON</language>
+  <offset>10</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>90</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>90</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>27</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>91</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>91</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>30</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>100</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'modelcontextprotocol' 내</description>
+  <highlighted_element>modelcontextprotocol</highlighted_element>
+  <language>JSON</language>
+  <offset>10</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>107</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>107</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>27</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>108</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>108</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>30</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>117</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'modelcontextprotocol' 내</description>
+  <highlighted_element>modelcontextprotocol</highlighted_element>
+  <language>JSON</language>
+  <offset>10</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>124</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>124</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>27</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>125</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>125</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>30</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>134</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'modelcontextprotocol' 내</description>
+  <highlighted_element>modelcontextprotocol</highlighted_element>
+  <language>JSON</language>
+  <offset>10</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>139</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>139</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>27</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>140</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>140</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>30</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>154</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'shadcn' 내</description>
+  <highlighted_element>shadcn</highlighted_element>
+  <language>JSON</language>
+  <offset>23</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>232</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>5</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>232</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>23</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>233</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>5</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>233</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>JSON</language>
+  <offset>26</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>249</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>JSON</language>
+  <offset>19</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/mcp.json</file>
+  <line>250</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/mcp.json" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'shadcn' 내</description>
+  <highlighted_element>shadcn</highlighted_element>
+  <language>JSON</language>
+  <offset>28</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/nixpacks.toml</file>
+  <line>2</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/nixpacks.toml" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Pkgs' 내</description>
+  <highlighted_element>Pkgs</highlighted_element>
+  <language>TEXT</language>
+  <offset>3</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/nixpacks.toml</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/nixpacks.toml" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'cmds' 내</description>
+  <highlighted_element>cmds</highlighted_element>
+  <language>TEXT</language>
+  <offset>0</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/tailwind.config.js</file>
+  <line>73</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/tailwind.config.js" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Neue' 내</description>
+  <highlighted_element>Neue</highlighted_element>
+  <language>ECMAScript 6</language>
+  <offset>17</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/types/index.ts</file>
+  <line>98</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/types/index.ts" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/새 텍스트 문서.txt</file>
+  <line>3</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/새 텍스트 문서.txt" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'Postgre' 내</description>
+  <highlighted_element>Postgre</highlighted_element>
+  <language>TEXT</language>
+  <offset>21</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/새 텍스트 문서.txt</file>
+  <line>101</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/새 텍스트 문서.txt" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'lineart' 내</description>
+  <highlighted_element>lineart</highlighted_element>
+  <language>TEXT</language>
+  <offset>38</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/새 텍스트 문서.txt</file>
+  <line>509</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/새 텍스트 문서.txt" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'shadcn' 내</description>
+  <highlighted_element>shadcn</highlighted_element>
+  <language>TEXT</language>
+  <offset>29</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/새 텍스트 문서.txt</file>
+  <line>761</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/새 텍스트 문서.txt" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'datasources' 내</description>
+  <highlighted_element>datasources</highlighted_element>
+  <language>TEXT</language>
+  <offset>4</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/새 텍스트 문서.txt</file>
+  <line>779</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/새 텍스트 문서.txt" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'setex' 내</description>
+  <highlighted_element>setex</highlighted_element>
+  <language>TEXT</language>
+  <offset>12</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/새 텍스트 문서.txt</file>
+  <line>879</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/새 텍스트 문서.txt" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NEXTAUTH' 내</description>
+  <highlighted_element>NEXTAUTH</highlighted_element>
+  <language>TEXT</language>
+  <offset>0</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/새 텍스트 문서.txt</file>
+  <line>902</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/새 텍스트 문서.txt" />
+  <problem_class id="SpellCheckingInspection" severity="TYPO" attribute_key="TYPO">오타</problem_class>
+  <description>오타: 단어 'NIXPACKS' 내</description>
+  <highlighted_element>NIXPACKS</highlighted_element>
+  <language>TEXT</language>
+  <offset>20</offset>
+  <length>8</length>
+</problem>
+</problems>

@@ -1,0 +1,145 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/globals.css</file>
+  <line>138</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/globals.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 scrollbar-thin은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.scrollbar-thin</highlighted_element>
+  <language>CSS</language>
+  <offset>2</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/globals.css</file>
+  <line>142</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/globals.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 scrollbar-thumb-gray-300은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.scrollbar-thumb-gray-300</highlighted_element>
+  <language>CSS</language>
+  <offset>2</offset>
+  <length>25</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/globals.css</file>
+  <line>146</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/globals.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 scrollbar-thumb-gray-700은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.scrollbar-thumb-gray-700</highlighted_element>
+  <language>CSS</language>
+  <offset>8</offset>
+  <length>25</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/globals.css</file>
+  <line>151</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/globals.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 scrollbar-thin은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.scrollbar-thin</highlighted_element>
+  <language>CSS</language>
+  <offset>2</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/globals.css</file>
+  <line>156</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/globals.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 scrollbar-thin은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.scrollbar-thin</highlighted_element>
+  <language>CSS</language>
+  <offset>2</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/globals.css</file>
+  <line>160</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/globals.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 scrollbar-thin은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.scrollbar-thin</highlighted_element>
+  <language>CSS</language>
+  <offset>2</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/globals.css</file>
+  <line>165</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/globals.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 scrollbar-thin은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.scrollbar-thin</highlighted_element>
+  <language>CSS</language>
+  <offset>8</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/globals.css</file>
+  <line>170</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/globals.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 shadow-soft은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.shadow-soft</highlighted_element>
+  <language>CSS</language>
+  <offset>2</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/globals.css</file>
+  <line>174</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/globals.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 shadow-soft-lg은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.shadow-soft-lg</highlighted_element>
+  <language>CSS</language>
+  <offset>2</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/styles/scroll-stack.css</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/styles/scroll-stack.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 scroll-stack-scroller은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.scroll-stack-scroller</highlighted_element>
+  <language>CSS</language>
+  <offset>0</offset>
+  <length>22</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/styles/scroll-stack.css</file>
+  <line>19</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/styles/scroll-stack.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 scroll-stack-card-wrapper은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.scroll-stack-card-wrapper</highlighted_element>
+  <language>CSS</language>
+  <offset>0</offset>
+  <length>26</length>
+</problem>
+</problems>

@@ -1,0 +1,98 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/utils/batch-operations.ts</file>
+  <line>117</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/utils/batch-operations.ts" />
+  <problem_class id="ExceptionCaughtLocallyJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">로컬 제어 흐름에 사용되는 예외</problem_class>
+  <description>예외의 'throw'이(가) 로컬에서 캡처되었습니다 #loc</description>
+  <highlighted_element>throw</highlighted_element>
+  <language>JavaScript</language>
+  <offset>8</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/admin/settings/route.ts</file>
+  <line>136</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/admin/settings/route.ts" />
+  <problem_class id="ExceptionCaughtLocallyJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">로컬 제어 흐름에 사용되는 예외</problem_class>
+  <description>예외의 'throw'이(가) 로컬에서 캡처되었습니다 #loc</description>
+  <highlighted_element>throw</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/admin/settings/route.ts</file>
+  <line>294</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/admin/settings/route.ts" />
+  <problem_class id="ExceptionCaughtLocallyJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">로컬 제어 흐름에 사용되는 예외</problem_class>
+  <description>예외의 'throw'이(가) 로컬에서 캡처되었습니다 #loc</description>
+  <highlighted_element>throw</highlighted_element>
+  <language>JavaScript</language>
+  <offset>14</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/friends/memo/route.ts</file>
+  <line>100</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/friends/memo/route.ts" />
+  <problem_class id="ExceptionCaughtLocallyJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">로컬 제어 흐름에 사용되는 예외</problem_class>
+  <description>예외의 'throw'이(가) 로컬에서 캡처되었습니다 #loc</description>
+  <highlighted_element>throw</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/middleware/auth.ts</file>
+  <line>25</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/middleware/auth.ts" />
+  <problem_class id="ExceptionCaughtLocallyJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">로컬 제어 흐름에 사용되는 예외</problem_class>
+  <description>예외의 'throw'이(가) 로컬에서 캡처되었습니다 #loc</description>
+  <highlighted_element>throw</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>396</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="ExceptionCaughtLocallyJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">로컬 제어 흐름에 사용되는 예외</problem_class>
+  <description>예외의 'throw'이(가) 로컬에서 캡처되었습니다 #loc</description>
+  <highlighted_element>throw</highlighted_element>
+  <language>JavaScript</language>
+  <offset>8</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>452</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="ExceptionCaughtLocallyJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">로컬 제어 흐름에 사용되는 예외</problem_class>
+  <description>예외의 'throw'이(가) 로컬에서 캡처되었습니다 #loc</description>
+  <highlighted_element>throw</highlighted_element>
+  <language>JavaScript</language>
+  <offset>8</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>501</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="ExceptionCaughtLocallyJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">로컬 제어 흐름에 사용되는 예외</problem_class>
+  <description>예외의 'throw'이(가) 로컬에서 캡처되었습니다 #loc</description>
+  <highlighted_element>throw</highlighted_element>
+  <language>JavaScript</language>
+  <offset>8</offset>
+  <length>5</length>
+</problem>
+</problems>

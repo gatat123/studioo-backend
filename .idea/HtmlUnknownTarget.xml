@@ -1,0 +1,50 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/auth/register/page.tsx</file>
+  <line>241</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/auth/register/page.tsx" />
+  <problem_class id="HtmlUnknownTarget" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">링크 내 해결되지 않은 파일</problem_class>
+  <description>파일 'terms'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>terms</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>35</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/auth/register/page.tsx</file>
+  <line>245</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/auth/register/page.tsx" />
+  <problem_class id="HtmlUnknownTarget" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">링크 내 해결되지 않은 파일</problem_class>
+  <description>파일 'privacy'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>privacy</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>35</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/login/page.tsx</file>
+  <line>86</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/login/page.tsx" />
+  <problem_class id="HtmlUnknownTarget" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">링크 내 해결되지 않은 파일</problem_class>
+  <description>파일 'forgot-password'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>forgot-password</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>27</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/page.tsx</file>
+  <line>20</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/page.tsx" />
+  <problem_class id="HtmlUnknownTarget" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">링크 내 해결되지 않은 파일</problem_class>
+  <description>파일 'about'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>about</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>23</offset>
+  <length>5</length>
+</problem>
+</problems>

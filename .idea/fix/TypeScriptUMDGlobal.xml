@@ -1,0 +1,494 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/layout.tsx</file>
+  <line>25</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/layout.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>12</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/login/page.tsx</file>
+  <line>22</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/login/page.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>33</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/login/page.tsx</file>
+  <line>34</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/login/page.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>32</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/profile/page.tsx</file>
+  <line>51</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/profile/page.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>32</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/profile/page.tsx</file>
+  <line>141</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/profile/page.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>38</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/register/page.tsx</file>
+  <line>26</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/register/page.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>33</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/register/page.tsx</file>
+  <line>57</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/register/page.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>32</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/settings/profile/page.tsx</file>
+  <line>112</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/settings/profile/page.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>38</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/layout.tsx</file>
+  <line>9</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/layout.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>12</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>398</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>41</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>403</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>42</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>408</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>43</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>554</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>37</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/AdminAuthProvider.tsx</file>
+  <line>9</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/AdminAuthProvider.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>12</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/SystemStats.tsx</file>
+  <line>23</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/SystemStats.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/SystemStatus.tsx</file>
+  <line>23</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/SystemStatus.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/annotation-modal.tsx</file>
+  <line>84</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/annotation-modal.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>27</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/annotation-modal.tsx</file>
+  <line>109</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/annotation-modal.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>19</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/notifications/NotificationCenter.tsx</file>
+  <line>36</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/notifications/NotificationCenter.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>50</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/AnnotationViewModal.tsx</file>
+  <line>56</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/AnnotationViewModal.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>30</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/AnnotationViewModal.tsx</file>
+  <line>67</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/AnnotationViewModal.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>30</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/NotificationSettings.tsx</file>
+  <line>19</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/NotificationSettings.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/ScenePlayModal.tsx</file>
+  <line>188</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/ScenePlayModal.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>47</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/ScenePlayModal.tsx</file>
+  <line>196</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/ScenePlayModal.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>45</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>35</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>38</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>50</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>35</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>56</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>30</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>105</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>29</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>114</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>25</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/team/CreateChannelModal.tsx</file>
+  <line>30</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/team/CreateChannelModal.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>33</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/optimized-card.tsx</file>
+  <line>7</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/optimized-card.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>12</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/scroll-stack.tsx</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/scroll-stack.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>12</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/scroll-stack.tsx</file>
+  <line>14</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/scroll-stack.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>12</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/skeleton.tsx</file>
+  <line>6</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/skeleton.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>3</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/tilted-card.tsx</file>
+  <line>22</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/tilted-card.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>19</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/tilted-card.tsx</file>
+  <line>24</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/tilted-card.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>13</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/tilted-card.tsx</file>
+  <line>63</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/tilted-card.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>26</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/work/KanbanBoard.tsx</file>
+  <line>43</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/work/KanbanBoard.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>12</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/work/TaskDetailModal.tsx</file>
+  <line>148</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/work/TaskDetailModal.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>37</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/hooks/useOptimizedSocket.ts</file>
+  <line>424</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/hooks/useOptimizedSocket.ts" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript</language>
+  <offset>8</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/layout.tsx</file>
+  <line>23</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/layout.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>12</offset>
+  <length>5</length>
+</problem>
+</problems>

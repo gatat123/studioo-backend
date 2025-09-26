@@ -1,0 +1,14 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/socket/client.ts</file>
+  <line>2</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/socket/client.ts" />
+  <problem_class id="ES6PreferShortImport" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">가져오기를 단축할 수 있습니다</problem_class>
+  <description>가져오기를 단축할 수 있습니다</description>
+  <highlighted_element>'../api/auth'</highlighted_element>
+  <language>JavaScript</language>
+  <offset>24</offset>
+  <length>13</length>
+</problem>
+</problems>

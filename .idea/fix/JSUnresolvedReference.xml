@@ -1,0 +1,26 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/railway-monitor.js</file>
+  <line>234</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/railway-monitor.js" />
+  <problem_class id="JSUnresolvedReference" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">미해결 참조</problem_class>
+  <description>해결되지 않은 변수 deploy #loc</description>
+  <highlighted_element>deploy</highlighted_element>
+  <language>JavaScript</language>
+  <offset>13</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/railway-monitor.js</file>
+  <line>234</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/railway-monitor.js" />
+  <problem_class id="JSUnresolvedReference" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">미해결 참조</problem_class>
+  <description>해결되지 않은 변수 deploy #loc</description>
+  <highlighted_element>deploy</highlighted_element>
+  <language>JavaScript</language>
+  <offset>77</offset>
+  <length>6</length>
+</problem>
+</problems>

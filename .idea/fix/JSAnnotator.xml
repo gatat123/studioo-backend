@@ -1,0 +1,26 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/next-env.d.ts</file>
+  <line>3</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/next-env.d.ts" />
+  <problem_class id="JSAnnotator" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">ECMAScript 사양을 따르지 않습니다</problem_class>
+  <description>프로젝트 외부에 있는 파일이 참조에 있습니다 #loc</description>
+  <highlighted_element>/// &lt;reference path=&quot;./.next/types/routes.d.ts&quot; /&gt;</highlighted_element>
+  <language>JavaScript</language>
+  <offset>0</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/next-env.d.ts</file>
+  <line>3</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/next-env.d.ts" />
+  <problem_class id="JSAnnotator" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">ECMAScript 사양을 따르지 않습니다</problem_class>
+  <description>프로젝트 외부에 있는 파일이 참조에 있습니다 #loc</description>
+  <highlighted_element>/// &lt;reference path=&quot;./.next/types/routes.d.ts&quot; /&gt;</highlighted_element>
+  <language>JavaScript</language>
+  <offset>0</offset>
+  <length>50</length>
+</problem>
+</problems>

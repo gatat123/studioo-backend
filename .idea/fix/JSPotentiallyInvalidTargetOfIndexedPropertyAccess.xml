@@ -1,0 +1,26 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/invite/route.ts</file>
+  <line>43</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/invite/route.ts" />
+  <problem_class id="JSPotentiallyInvalidTargetOfIndexedPropertyAccess" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">색인 생성된 프로퍼티 액세스 타깃이 잘못되었을 수 있습니다</problem_class>
+  <description>색인 생성된 프로퍼티 액세스 타깃이 유효하지 않을 수 있습니다</description>
+  <highlighted_element>participants</highlighted_element>
+  <language>JavaScript</language>
+  <offset>34</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/auth.ts</file>
+  <line>323</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/auth.ts" />
+  <problem_class id="JSPotentiallyInvalidTargetOfIndexedPropertyAccess" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">색인 생성된 프로퍼티 액세스 타깃이 잘못되었을 수 있습니다</problem_class>
+  <description>색인 생성된 프로퍼티 액세스 타깃이 유효하지 않을 수 있습니다</description>
+  <highlighted_element>participants</highlighted_element>
+  <language>JavaScript</language>
+  <offset>34</offset>
+  <length>12</length>
+</problem>
+</problems>

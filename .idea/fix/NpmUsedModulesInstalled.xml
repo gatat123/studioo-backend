@@ -1,0 +1,14 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/test-admin-auth.js</file>
+  <line>6</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/test-admin-auth.js" />
+  <problem_class id="NpmUsedModulesInstalled" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">모듈 종속 요소 누락</problem_class>
+  <description>모듈이 설치되어 있지 않습니다</description>
+  <highlighted_element>'node-fetch'</highlighted_element>
+  <language>ECMAScript 6</language>
+  <offset>22</offset>
+  <length>12</length>
+</problem>
+</problems>

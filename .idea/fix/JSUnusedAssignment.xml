@@ -1,0 +1,62 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/api/projects/[id]/tasks/route.ts</file>
+  <line>98</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/api/projects/[id]/tasks/route.ts" />
+  <problem_class id="JSUnusedAssignment" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 대입</problem_class>
+  <description>변수 초기화가 불필요합니다 #loc</description>
+  <highlighted_element>0</highlighted_element>
+  <language>TypeScript</language>
+  <offset>26</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/api/tasks/[id]/assign/route.ts</file>
+  <line>120</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/api/tasks/[id]/assign/route.ts" />
+  <problem_class id="JSUnusedAssignment" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 대입</problem_class>
+  <description>변수 초기화가 불필요합니다 #loc</description>
+  <highlighted_element>''</highlighted_element>
+  <language>TypeScript</language>
+  <offset>18</offset>
+  <length>2</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/scenes/[sceneId]/images/route.ts</file>
+  <line>217</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/scenes/[sceneId]/images/route.ts" />
+  <problem_class id="JSUnusedAssignment" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 대입</problem_class>
+  <description>'format'에 대입된 값이 사용되지 않습니다 #loc</description>
+  <highlighted_element>format</highlighted_element>
+  <language>TypeScript</language>
+  <offset>8</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/upload.ts</file>
+  <line>226</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/upload.ts" />
+  <problem_class id="JSUnusedAssignment" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 대입</problem_class>
+  <description>'thumbnailFilename'에 대입된 값이 사용되지 않습니다 #loc</description>
+  <highlighted_element>thumbnailFilename</highlighted_element>
+  <language>TypeScript</language>
+  <offset>8</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts</file>
+  <line>490</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts" />
+  <problem_class id="JSUnusedAssignment" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 대입</problem_class>
+  <description>변수 초기화가 불필요합니다 #loc</description>
+  <highlighted_element>&quot;&quot;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>21</offset>
+  <length>2</length>
+</problem>
+</problems>

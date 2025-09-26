@@ -1,0 +1,14 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/jest.setup.js</file>
+  <line>72</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/jest.setup.js" />
+  <problem_class id="JSCheckFunctionSignatures" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">시그니처 불일치</problem_class>
+  <description>&lt;html&gt;인수 타입 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;function&lt;/span&gt;&lt;span style=&quot;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;any&lt;/span&gt;&lt;span style=&quot;&quot;&gt;):&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;number&lt;/span&gt;&lt;/code&gt;을(를) 매개변수 타입 &lt;code&gt;&lt;span style=&quot;&quot;&gt;((&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;this&lt;/span&gt;&lt;span style=&quot;&quot;&gt;:&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;any&lt;/span&gt;&lt;span style=&quot;&quot;&gt;)&amp;#32;=&amp;gt;&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;number&lt;/span&gt;&lt;span style=&quot;&quot;&gt;)&amp;#32;|&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;undefined&lt;/span&gt;&lt;/code&gt;에 할당할 수 없습니다&lt;br/&gt;&amp;nbsp;&amp;nbsp;타입 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;function&lt;/span&gt;&lt;span style=&quot;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;any&lt;/span&gt;&lt;span style=&quot;&quot;&gt;):&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;number&lt;/span&gt;&lt;/code&gt;을(를) 타입 &lt;code&gt;&lt;span style=&quot;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;this&lt;/span&gt;&lt;span style=&quot;&quot;&gt;:&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;any&lt;/span&gt;&lt;span style=&quot;&quot;&gt;)&amp;#32;=&amp;gt;&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;number&lt;/span&gt;&lt;/code&gt;에 할당할 수 없습니다&lt;/html&gt;</description>
+  <highlighted_element>(callback) =&gt; {</highlighted_element>
+  <language>ECMAScript 6</language>
+  <offset>39</offset>
+  <length>15</length>
+</problem>
+</problems>

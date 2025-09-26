@@ -1,0 +1,902 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/settings/profile/page.tsx</file>
+  <line>10</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/settings/profile/page.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;pre&gt;&lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;Separator&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'@/components/ui/separator'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { Separator } from '@/components/ui/separator'</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>0</offset>
+  <length>53</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;dynamic&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'next/dynamic'&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import dynamic from 'next/dynamic'</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>0</offset>
+  <length>34</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>7</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 CardDescription</description>
+  <highlighted_element>CardDescription</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>28</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>7</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 CardHeader</description>
+  <highlighted_element>CardHeader</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>45</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>7</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 CardTitle</description>
+  <highlighted_element>CardTitle</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>57</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>12</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 AvatarImage</description>
+  <highlighted_element>AvatarImage</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>33</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/team/page.tsx</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/team/page.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;pre&gt;&lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;Card,&amp;#32;CardContent,&amp;#32;CardDescription,&amp;#32;CardHeader,&amp;#32;CardTitle&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'@/components/ui/card'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>0</offset>
+  <length>96</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/team/page.tsx</file>
+  <line>11</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/team/page.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Users</description>
+  <highlighted_element>Users</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/team/page.tsx</file>
+  <line>13</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/team/page.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Video</description>
+  <highlighted_element>Video</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/team/page.tsx</file>
+  <line>14</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/team/page.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Phone</description>
+  <highlighted_element>Phone</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/annotations/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/annotations/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/comments/[id]/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/comments/[id]/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/comments/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/comments/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/friends/route.ts</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/friends/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;z&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'zod'&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { z } from 'zod';</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>24</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/images/[id]/history/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/images/[id]/history/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/images/[id]/restore/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/images/[id]/restore/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/images/[id]/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/images/[id]/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/images/upload/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/images/upload/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/notifications/[id]/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/notifications/[id]/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/projects/[id]/invite/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/projects/[id]/invite/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/projects/[id]/participants/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/projects/[id]/participants/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/projects/[id]/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/projects/[id]/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/projects/[id]/scenes/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/projects/[id]/scenes/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/projects/join/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/projects/join/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/scenes/[id]/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/scenes/[id]/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/scenes/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/scenes/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/socket/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/socket/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/socket/route.ts</file>
+  <line>2</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/socket/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;Server&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;as&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;HTTPServer&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;&quot;http&quot;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { Server as HTTPServer } from &quot;http&quot;;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>44</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/socket/route.ts</file>
+  <line>4</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/socket/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 initializeSocketServer</description>
+  <highlighted_element>initializeSocketServer</highlighted_element>
+  <language>TypeScript</language>
+  <offset>26</offset>
+  <length>22</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/studios/[id]/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/studios/[id]/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextResponse</description>
+  <highlighted_element>NextResponse</highlighted_element>
+  <language>TypeScript</language>
+  <offset>22</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/studios/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/studios/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextResponse</description>
+  <highlighted_element>NextResponse</highlighted_element>
+  <language>TypeScript</language>
+  <offset>22</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/users/profile/route.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/users/profile/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextResponse</description>
+  <highlighted_element>NextResponse</highlighted_element>
+  <language>TypeScript</language>
+  <offset>22</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/auth/authOptions.ts</file>
+  <line>6</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/auth/authOptions.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;signToken&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'@/lib/utils/jwt'&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { signToken } from '@/lib/utils/jwt';</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>44</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/socket/events/annotations.ts</file>
+  <line>3</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/socket/events/annotations.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;pre&gt;&lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;NotificationService&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;&quot;@/lib/services/notification&quot;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { NotificationService } from &quot;@/lib/services/notification&quot;;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>66</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/socket/server.ts</file>
+  <line>6</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/socket/server.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;pre&gt;&lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;NotificationService&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;&quot;@/lib/services/notification&quot;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { NotificationService } from &quot;@/lib/services/notification&quot;;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>66</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/upload.ts</file>
+  <line>4</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/upload.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;getUploadPath&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'./storage'&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { getUploadPath } from './storage';</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>42</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/types/next-auth.d.ts</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/types/next-auth.d.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;NextAuth&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;&quot;next-auth&quot;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import NextAuth from &quot;next-auth&quot;;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>33</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/ProjectManagement.tsx</file>
+  <line>7</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/ProjectManagement.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 TableCaption</description>
+  <highlighted_element>TableCaption</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/ProjectManagement.tsx</file>
+  <line>37</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/ProjectManagement.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Calendar</description>
+  <highlighted_element>Calendar</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/UserManagement.tsx</file>
+  <line>7</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/UserManagement.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 TableCaption</description>
+  <highlighted_element>TableCaption</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/admin/UserManagement.tsx</file>
+  <line>40</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/admin/UserManagement.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Filter</description>
+  <highlighted_element>Filter</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/annotation-modal.tsx</file>
+  <line>8</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/annotation-modal.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;pre&gt;&lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&amp;#32;&amp;#32;Select,&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&amp;#32;&amp;#32;SelectContent,&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&amp;#32;&amp;#32;SelectItem,&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&amp;#32;&amp;#32;SelectTrigger,&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;&amp;#32;&amp;#32;SelectValue,&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'@/components/ui/select'&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from '@/compone...</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>0</offset>
+  <length>115</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/chat/ChatModal.tsx</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/chat/ChatModal.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 MoreVertical</description>
+  <highlighted_element>MoreVertical</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>18</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/comments/CommentComposer.tsx</file>
+  <line>10</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/comments/CommentComposer.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Link</description>
+  <highlighted_element>Link</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/comments/CommentComposer.tsx</file>
+  <line>14</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/comments/CommentComposer.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Smile</description>
+  <highlighted_element>Smile</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/comments/CommentSection.tsx</file>
+  <line>3</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/comments/CommentSection.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 useEffect</description>
+  <highlighted_element>useEffect</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>16</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/comments/CommentSection.tsx</file>
+  <line>16</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/comments/CommentSection.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 TabsContent</description>
+  <highlighted_element>TabsContent</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>15</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageUploader.tsx</file>
+  <line>4</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageUploader.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Image</description>
+  <highlighted_element>Image</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>17</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageViewer.tsx</file>
+  <line>16</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageViewer.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Move</description>
+  <highlighted_element>Move</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageViewer.tsx</file>
+  <line>17</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageViewer.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 X</description>
+  <highlighted_element>X</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/ImageViewer.tsx</file>
+  <line>21</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/ImageViewer.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;pre&gt;&lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;Slider&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'@/components/ui/slider'&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { Slider } from '@/components/ui/slider';</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>0</offset>
+  <length>48</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/editor/VersionHistory.tsx</file>
+  <line>15</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/editor/VersionHistory.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Loader2</description>
+  <highlighted_element>Loader2</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/friends/FriendList.tsx</file>
+  <line>14</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/friends/FriendList.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;pre&gt;&lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;Label&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'@/components/ui/label'&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { Label } from '@/components/ui/label';</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>0</offset>
+  <length>46</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/friends/FriendList.tsx</file>
+  <line>15</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/friends/FriendList.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;pre&gt;&lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;Textarea&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'@/components/ui/textarea'&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { Textarea } from '@/components/ui/textarea';</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>0</offset>
+  <length>52</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/friends/FriendList.tsx</file>
+  <line>24</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/friends/FriendList.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Send</description>
+  <highlighted_element>Send</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/layout/Sidebar.tsx</file>
+  <line>4</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/layout/Sidebar.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;Link&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'next/link'&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import Link from 'next/link';</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>0</offset>
+  <length>29</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/layout/Sidebar.tsx</file>
+  <line>14</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/layout/Sidebar.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Plus</description>
+  <highlighted_element>Plus</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/layout/Sidebar.tsx</file>
+  <line>21</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/layout/Sidebar.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Bell</description>
+  <highlighted_element>Bell</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/notifications/NotificationCenter.tsx</file>
+  <line>6</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/notifications/NotificationCenter.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Card</description>
+  <highlighted_element>Card</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>9</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/notifications/NotificationCenter.tsx</file>
+  <line>6</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/notifications/NotificationCenter.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 CardContent</description>
+  <highlighted_element>CardContent</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>15</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/AnnotationViewModal.tsx</file>
+  <line>12</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/AnnotationViewModal.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;Image&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'next/image'&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import Image from 'next/image';</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>0</offset>
+  <length>31</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/CharacterListModal.tsx</file>
+  <line>15</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/CharacterListModal.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Save</description>
+  <highlighted_element>Save</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>15</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/CreateProjectModal.tsx</file>
+  <line>7</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/CreateProjectModal.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;format&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'date-fns'&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { format } from 'date-fns'</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>0</offset>
+  <length>33</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/CreateProjectModal.tsx</file>
+  <line>8</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/CreateProjectModal.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Calendar</description>
+  <highlighted_element>Calendar</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>9</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/OverallStoryModal.tsx</file>
+  <line>12</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/OverallStoryModal.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Save</description>
+  <highlighted_element>Save</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>9</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/ProjectGrid.tsx</file>
+  <line>5</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/ProjectGrid.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Plus</description>
+  <highlighted_element>Plus</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>40</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/ProjectGrid.tsx</file>
+  <line>19</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/ProjectGrid.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 DropdownMenuItem</description>
+  <highlighted_element>DropdownMenuItem</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>16</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/SetListModal.tsx</file>
+  <line>15</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/SetListModal.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Save</description>
+  <highlighted_element>Save</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>15</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/SetListModal.tsx</file>
+  <line>15</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/SetListModal.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Save</description>
+  <highlighted_element>Save</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>15</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx</file>
+  <line>6</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/ImageViewer.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 TabsContent</description>
+  <highlighted_element>TabsContent</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>15</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/scenes/SceneDescription.tsx</file>
+  <line>10</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/scenes/SceneDescription.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 Save</description>
+  <highlighted_element>Save</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>2</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/team/InviteMemberModal.tsx</file>
+  <line>15</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/team/InviteMemberModal.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 UserPlus</description>
+  <highlighted_element>UserPlus</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>17</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/calendar.tsx</file>
+  <line>4</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/calendar.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;pre&gt;&lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;ChevronLeft,&amp;#32;ChevronRight&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;&quot;lucide-react&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { ChevronLeft, ChevronRight } from &quot;lucide-react&quot;</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>0</offset>
+  <length>56</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/calendar.tsx</file>
+  <line>4</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/calendar.tsx" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;pre&gt;&lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;ChevronLeft,&amp;#32;ChevronRight&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;&quot;lucide-react&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { ChevronLeft, ChevronRight } from &quot;lucide-react&quot;</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>0</offset>
+  <length>56</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/indexedDB.ts</file>
+  <line>2</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/indexedDB.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;toast&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'sonner'&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { toast } from 'sonner';</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>31</length>
+</problem>
+</problems>

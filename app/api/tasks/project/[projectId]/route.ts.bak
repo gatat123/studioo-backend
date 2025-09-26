@@ -1,0 +1,96 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { verifyAuth } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
+
+export async function GET(
+  request: NextRequest,
+  context: { params: Promise<{ projectId: string }> }
+) {
+  try {
+    const params = await context.params;
+    // 인증 확인
+    const userId = await verifyAuth(request)
+    if (!userId) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      )
+    }
+
+    // 프로젝트 접근 권한 확인
+    const projectMember = await prisma.project_participants.findFirst({
+      where: {
+        project_id: params.projectId,
+        user_id: userId
+      }
+    })
+
+    if (!projectMember) {
+      return NextResponse.json(
+        { error: 'Project not found or access denied' },
+        { status: 404 }
+      )
+    }
+
+    // 업무 목록 조회
+    const tasks = await prisma.task.findMany({
+      where: {
+        projectId: params.projectId,
+        deletedAt: null
+      },
+      include: {
+        assignedUsers: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                nickname: true,
+                profile_image_url: true
+              }
+            }
+          }
+        },
+        todos: {
+          where: {
+            deletedAt: null
+          },
+          select: {
+            id: true,
+            completed: true
+          }
+        }
+      },
+      orderBy: [
+        { priority: 'desc' },
+        { createdAt: 'desc' }
+      ]
+    })
+
+    // 응답 데이터 포맷팅
+    const formattedTasks = tasks.map(task => ({
+      id: task.id,
+      title: task.title,
+      description: task.description,
+      status: task.status,
+      priority: task.priority,
+      dueDate: task.dueDate,
+      assignedUsers: task.assignedUsers.map(au => ({
+        id: au.user.id,
+        nickname: au.user.nickname,
+        profileImageUrl: au.user.profile_image_url
+      })),
+      todoCount: task.todos.length,
+      completedTodoCount: task.todos.filter(todo => todo.completed).length,
+      createdAt: task.createdAt,
+      updatedAt: task.updatedAt
+    }))
+
+    return NextResponse.json(formattedTasks)
+  } catch (error) {
+    console.error('Error fetching tasks:', error)
+    return NextResponse.json(
+      { error: 'Failed to fetch tasks' },
+      { status: 500 }
+    )
+  }
+}

@@ -1,0 +1,14 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/layout.tsx</file>
+  <line>23</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/layout.tsx" />
+  <problem_class id="TypeScriptUMDGlobal" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">참조된 UMD 전역 변수</problem_class>
+  <description>참조된 UMD 전역 변수</description>
+  <highlighted_element>React</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>12</offset>
+  <length>5</length>
+</problem>
+</problems>

@@ -1,0 +1,62 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/components/friends/FriendList.tsx</file>
+  <line>179</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/friends/FriendList.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchFriends</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/friends/FriendList.tsx</file>
+  <line>180</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/friends/FriendList.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>searchUsers</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/friends/FriendList.tsx</file>
+  <line>219</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/friends/FriendList.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchFriends</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/friends/FriendList.tsx</file>
+  <line>254</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/friends/FriendList.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchFriends</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/friends/FriendList.tsx</file>
+  <line>283</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/friends/FriendList.tsx" />
+  <problem_class id="ES6MissingAwait" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">비동기 함수 호출을 위한 await 누락</problem_class>
+  <description>비동기 함수 호출을 위한 await 누락</description>
+  <highlighted_element>fetchFriends</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>8</offset>
+  <length>12</length>
+</problem>
+</problems>

@@ -1,0 +1,67 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/globals.css</file>
+  <line>99</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/globals.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 backdrop-blur-apple은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.backdrop-blur-apple</highlighted_element>
+  <language>CSS</language>
+  <offset>2</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/globals.css</file>
+  <line>104</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/globals.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 backdrop-blur-apple은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.backdrop-blur-apple</highlighted_element>
+  <language>CSS</language>
+  <offset>8</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/styles/scroll-stack.css</file>
+  <line>1</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/styles/scroll-stack.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 scroll-stack-scroller은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.scroll-stack-scroller</highlighted_element>
+  <language>CSS</language>
+  <offset>0</offset>
+  <length>22</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/styles/scroll-stack.css</file>
+  <line>20</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/styles/scroll-stack.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 scroll-stack-card-wrapper은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.scroll-stack-card-wrapper</highlighted_element>
+  <language>CSS</language>
+  <offset>0</offset>
+  <length>26</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/styles/scroll-stack.css</file>
+  <line>24</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/styles/scroll-stack.css" />
+  <problem_class id="CssUnusedSymbol" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 선택자</problem_class>
+  <hints />
+  <description>선택자 scroll-stack-card은(는) 전혀 사용되지 않습니다</description>
+  <highlighted_element>.scroll-stack-card</highlighted_element>
+  <language>CSS</language>
+  <offset>0</offset>
+  <length>18</length>
+</problem>
+</problems>

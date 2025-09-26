@@ -1,0 +1,26 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/api/users/profile/route.ts</file>
+  <line>25</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/api/users/profile/route.ts" />
+  <problem_class id="TrivialIfJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 'if' 문</problem_class>
+  <description>&lt;code&gt;if&lt;/code&gt; 문을 단순화할 수 있습니다 #loc</description>
+  <highlighted_element>if</highlighted_element>
+  <language>JavaScript</language>
+  <offset>2</offset>
+  <length>2</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/socket/presence.ts</file>
+  <line>353</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/socket/presence.ts" />
+  <problem_class id="TrivialIfJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 'if' 문</problem_class>
+  <description>&lt;code&gt;if&lt;/code&gt; 문을 단순화할 수 있습니다 #loc</description>
+  <highlighted_element>if</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>2</length>
+</problem>
+</problems>

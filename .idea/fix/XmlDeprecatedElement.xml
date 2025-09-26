@@ -1,0 +1,50 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/components/work/QuickAddTask.tsx</file>
+  <line>130</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/work/QuickAddTask.tsx" />
+  <problem_class id="XmlDeprecatedElement" severity="WARNING" attribute_key="DEPRECATED_ATTRIBUTES">지원 중단되는 심볼</problem_class>
+  <description>이 속성은 더 이상 사용되지 않는 것으로 표시됩니다</description>
+  <highlighted_element>onKeyPress</highlighted_element>
+  <language>XML</language>
+  <offset>16</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/work/QuickAddTask.tsx</file>
+  <line>243</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/work/QuickAddTask.tsx" />
+  <problem_class id="XmlDeprecatedElement" severity="WARNING" attribute_key="DEPRECATED_ATTRIBUTES">지원 중단되는 심볼</problem_class>
+  <description>이 속성은 더 이상 사용되지 않는 것으로 표시됩니다</description>
+  <highlighted_element>initialFocus</highlighted_element>
+  <language>XML</language>
+  <offset>26</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/work/TaskDetailModal.tsx</file>
+  <line>392</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/work/TaskDetailModal.tsx" />
+  <problem_class id="XmlDeprecatedElement" severity="WARNING" attribute_key="DEPRECATED_ATTRIBUTES">지원 중단되는 심볼</problem_class>
+  <description>이 속성은 더 이상 사용되지 않는 것으로 표시됩니다</description>
+  <highlighted_element>initialFocus</highlighted_element>
+  <language>XML</language>
+  <offset>30</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/work/TaskDetailModal.tsx</file>
+  <line>500</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/work/TaskDetailModal.tsx" />
+  <problem_class id="XmlDeprecatedElement" severity="WARNING" attribute_key="DEPRECATED_ATTRIBUTES">지원 중단되는 심볼</problem_class>
+  <description>이 속성은 더 이상 사용되지 않는 것으로 표시됩니다</description>
+  <highlighted_element>onKeyPress</highlighted_element>
+  <language>XML</language>
+  <offset>24</offset>
+  <length>10</length>
+</problem>
+</problems>

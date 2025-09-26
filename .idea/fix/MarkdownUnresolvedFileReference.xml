@@ -1,0 +1,146 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/self_improve.instructions.md</file>
+  <line>71</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/self_improve.instructions.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">해결되지 않은 파일 참조</problem_class>
+  <description>디렉터리 '.github'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>.github</highlighted_element>
+  <language>Markdown</language>
+  <offset>38</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/self_improve.instructions.md</file>
+  <line>71</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/self_improve.instructions.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">해결되지 않은 파일 참조</problem_class>
+  <description>디렉터리 'instructions'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>instructions</highlighted_element>
+  <language>Markdown</language>
+  <offset>46</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/self_improve.instructions.md</file>
+  <line>71</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/self_improve.instructions.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">해결되지 않은 파일 참조</problem_class>
+  <description>파일 'vscode_rules.instructions.md'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>vscode_rules.instructions.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>59</offset>
+  <length>28</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/taskmaster.instructions.md</file>
+  <line>557</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/taskmaster.instructions.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">해결되지 않은 파일 참조</problem_class>
+  <description>디렉터리 '.github'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>.github</highlighted_element>
+  <language>Markdown</language>
+  <offset>107</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/taskmaster.instructions.md</file>
+  <line>557</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/taskmaster.instructions.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">해결되지 않은 파일 참조</problem_class>
+  <description>디렉터리 'instructions'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>instructions</highlighted_element>
+  <language>Markdown</language>
+  <offset>115</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/taskmaster.instructions.md</file>
+  <line>557</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/taskmaster.instructions.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">해결되지 않은 파일 참조</problem_class>
+  <description>파일 'dev_workflow.instructions.md'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>dev_workflow.instructions.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>128</offset>
+  <length>28</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/vscode_rules.instructions.md</file>
+  <line>20</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/vscode_rules.instructions.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">해결되지 않은 파일 참조</problem_class>
+  <description>파일 'mdc:filename'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>mdc:filename</highlighted_element>
+  <language>Markdown</language>
+  <offset>51</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/vscode_rules.instructions.md</file>
+  <line>21</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/vscode_rules.instructions.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">해결되지 않은 파일 참조</problem_class>
+  <description>디렉터리 '.github'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>.github</highlighted_element>
+  <language>Markdown</language>
+  <offset>38</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/vscode_rules.instructions.md</file>
+  <line>21</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/vscode_rules.instructions.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">해결되지 않은 파일 참조</problem_class>
+  <description>디렉터리 'instructions'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>instructions</highlighted_element>
+  <language>Markdown</language>
+  <offset>46</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/vscode_rules.instructions.md</file>
+  <line>21</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/vscode_rules.instructions.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">해결되지 않은 파일 참조</problem_class>
+  <description>파일 'prisma.instructions.md'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>prisma.instructions.md</highlighted_element>
+  <language>Markdown</language>
+  <offset>59</offset>
+  <length>22</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/vscode_rules.instructions.md</file>
+  <line>22</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/vscode_rules.instructions.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">해결되지 않은 파일 참조</problem_class>
+  <description>디렉터리 'mdc:prisma'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>mdc:prisma</highlighted_element>
+  <language>Markdown</language>
+  <offset>29</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/vscode_rules.instructions.md</file>
+  <line>22</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/vscode_rules.instructions.md" />
+  <problem_class id="MarkdownUnresolvedFileReference" severity="WARNING" attribute_key="INFO_ATTRIBUTES">해결되지 않은 파일 참조</problem_class>
+  <description>파일 'schema.prisma'을(를) 해결할 수 없습니다</description>
+  <highlighted_element>schema.prisma</highlighted_element>
+  <language>Markdown</language>
+  <offset>40</offset>
+  <length>13</length>
+</problem>
+</problems>

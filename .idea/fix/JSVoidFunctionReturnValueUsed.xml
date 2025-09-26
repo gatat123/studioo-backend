@@ -1,0 +1,14 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/health/route.ts</file>
+  <line>15</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/health/route.ts" />
+  <problem_class id="JSVoidFunctionReturnValueUsed" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">void 함수 반환 값이 사용됨</problem_class>
+  <description>void 함수 반환 값이 사용되었습니다</description>
+  <highlighted_element>fs.accessSync(uploadDir, fs.constants.W_OK)</highlighted_element>
+  <language>TypeScript</language>
+  <offset>44</offset>
+  <length>43</length>
+</problem>
+</problems>

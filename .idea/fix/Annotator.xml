@@ -1,0 +1,340 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/.claude/agents/realtime-collaboration-specialist.md</file>
+  <line>120</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.claude/agents/realtime-collaboration-specialist.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>37</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>52</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>7</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>52</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>12</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>52</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>15</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>52</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>17</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>53</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>10</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>53</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>14</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>54</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>11</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>54</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>16</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>55</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>9</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>55</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>13</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>56</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>11</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>56</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>17</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>62</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>5</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>62</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>9</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>62</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>, 또는 ) 필요 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>21</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>62</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>25</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>62</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element>)</highlighted_element>
+  <language>Markdown</language>
+  <offset>32</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>63</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>8</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>63</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>12</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>64</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>8</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>65</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>10</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>65</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>13</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>66</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>11</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_README.md</file>
+  <line>66</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_README.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>새 줄이나 세미콜론이 필요합니다 #loc</description>
+  <highlighted_element />
+  <language>Markdown</language>
+  <offset>14</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/# 협업 시스템 기술 설계 문서.md</file>
+  <line>377</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/# 협업 시스템 기술 설계 문서.md" />
+  <problem_class id="Annotator" severity="ERROR" attribute_key="WRONG_REFERENCES_ATTRIBUTES">어노테이터</problem_class>
+  <hints />
+  <description>표현식이 필요합니다 #loc</description>
+  <highlighted_element>]</highlighted_element>
+  <language>Markdown</language>
+  <offset>22</offset>
+  <length>1</length>
+</problem>
+</problems>

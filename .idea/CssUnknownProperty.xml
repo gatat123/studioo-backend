@@ -1,0 +1,26 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/styles/scroll-stack.css</file>
+  <line>10</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/styles/scroll-stack.css" />
+  <problem_class id="CssUnknownProperty" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">알 수 없는 프로퍼티</problem_class>
+  <description>알 수 없는 CSS 프로퍼티 &lt;code&gt;-webkit-transform&lt;/code&gt; #loc</description>
+  <highlighted_element>-webkit-transform</highlighted_element>
+  <language>CSS</language>
+  <offset>2</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/styles/scroll-stack.css</file>
+  <line>38</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/styles/scroll-stack.css" />
+  <problem_class id="CssUnknownProperty" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">알 수 없는 프로퍼티</problem_class>
+  <description>알 수 없는 CSS 프로퍼티 &lt;code&gt;-webkit-transform&lt;/code&gt; #loc</description>
+  <highlighted_element>-webkit-transform</highlighted_element>
+  <language>CSS</language>
+  <offset>2</offset>
+  <length>17</length>
+</problem>
+</problems>

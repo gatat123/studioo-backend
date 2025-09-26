@@ -1,0 +1,542 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/logs/page.tsx</file>
+  <line>197</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/logs/page.tsx" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 _getLevelBadgeVariant</description>
+  <highlighted_element>_getLevelBadgeVariant</highlighted_element>
+  <language>JavaScript</language>
+  <offset>8</offset>
+  <length>21</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/api/channels/[id]/route.ts</file>
+  <line>29</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/api/channels/[id]/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 _mockChannels</description>
+  <highlighted_element>_mockChannels</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/api/channels/[id]/route.ts</file>
+  <line>39</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/api/channels/[id]/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 _channelId</description>
+  <highlighted_element>_channelId</highlighted_element>
+  <language>JavaScript</language>
+  <offset>16</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/api/channels/[id]/route.ts</file>
+  <line>63</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/api/channels/[id]/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 _userId</description>
+  <highlighted_element>_userId</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/ArchivedProjectView.tsx</file>
+  <line>127</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/ArchivedProjectView.tsx" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 _handleCommentsUpdate</description>
+  <highlighted_element>_handleCommentsUpdate</highlighted_element>
+  <language>JavaScript</language>
+  <offset>8</offset>
+  <length>21</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/scripts/performance-benchmark.ts</file>
+  <line>539</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/scripts/performance-benchmark.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 _totalTests</description>
+  <highlighted_element>_totalTests</highlighted_element>
+  <language>JavaScript</language>
+  <offset>10</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/scripts/performance-benchmark.ts</file>
+  <line>561</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/scripts/performance-benchmark.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 메서드 _calculateGrade</description>
+  <highlighted_element>_calculateGrade</highlighted_element>
+  <language>JavaScript</language>
+  <offset>10</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/admin/system/status/route.ts</file>
+  <line>6</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/admin/system/status/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 매개변수 req</description>
+  <highlighted_element>req</highlighted_element>
+  <language>JavaScript</language>
+  <offset>46</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/admin/system/status/route.ts</file>
+  <line>206</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/admin/system/status/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 매개변수 arr</description>
+  <highlighted_element>arr</highlighted_element>
+  <language>JavaScript</language>
+  <offset>48</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/channels/[id]/members/route.ts</file>
+  <line>120</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/channels/[id]/members/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 message</description>
+  <highlighted_element>message</highlighted_element>
+  <language>JavaScript</language>
+  <offset>20</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/channels/[id]/messages/route.ts</file>
+  <line>109</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/channels/[id]/messages/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 type</description>
+  <highlighted_element>type</highlighted_element>
+  <language>JavaScript</language>
+  <offset>21</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/channels/[id]/messages/route.ts</file>
+  <line>109</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/channels/[id]/messages/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 metadata</description>
+  <highlighted_element>metadata</highlighted_element>
+  <language>JavaScript</language>
+  <offset>27</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/channels/invitations/[id]/accept/route.ts</file>
+  <line>48</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/channels/invitations/[id]/accept/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 updatedInvite</description>
+  <highlighted_element>updatedInvite</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/comments/[id]/route.ts</file>
+  <line>90</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/comments/[id]/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 targetType</description>
+  <highlighted_element>targetType</highlighted_element>
+  <language>JavaScript</language>
+  <offset>10</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/comments/[id]/route.ts</file>
+  <line>91</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/comments/[id]/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 targetId</description>
+  <highlighted_element>targetId</highlighted_element>
+  <language>JavaScript</language>
+  <offset>10</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/images/serve/[...path]/route.ts</file>
+  <line>8</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/images/serve/[...path]/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 매개변수 request</description>
+  <highlighted_element>request</highlighted_element>
+  <language>JavaScript</language>
+  <offset>30</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/images/upload/route.ts</file>
+  <line>22</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/images/upload/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 type</description>
+  <highlighted_element>type</highlighted_element>
+  <language>JavaScript</language>
+  <offset>10</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/scenes/[sceneId]/images/route.ts</file>
+  <line>25</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/scenes/[sceneId]/images/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 type</description>
+  <highlighted_element>type</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/scenes/[sceneId]/images/route.ts</file>
+  <line>182</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/scenes/[sceneId]/images/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 validatedData</description>
+  <highlighted_element>validatedData</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/scenes/[sceneId]/images/route.ts</file>
+  <line>204</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/scenes/[sceneId]/images/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 fileUrl</description>
+  <highlighted_element>fileUrl</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/images/route.ts</file>
+  <line>123</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/images/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 fileUrl</description>
+  <highlighted_element>fileUrl</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/images/route.ts</file>
+  <line>149</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/images/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 fileExtension</description>
+  <highlighted_element>fileExtension</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/images/route.ts</file>
+  <line>237</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/images/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 type</description>
+  <highlighted_element>type</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/socket/route.ts</file>
+  <line>7</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/socket/route.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 매개변수 req</description>
+  <highlighted_element>req</highlighted_element>
+  <language>JavaScript</language>
+  <offset>31</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/collaboration.ts</file>
+  <line>176</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/collaboration.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 매개변수 projectId</description>
+  <highlighted_element>projectId</highlighted_element>
+  <language>JavaScript</language>
+  <offset>30</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/collaboration.ts</file>
+  <line>176</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/collaboration.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 매개변수 sceneId</description>
+  <highlighted_element>sceneId</highlighted_element>
+  <language>JavaScript</language>
+  <offset>49</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/collaboration.ts</file>
+  <line>213</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/collaboration.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 매개변수 projectId</description>
+  <highlighted_element>projectId</highlighted_element>
+  <language>JavaScript</language>
+  <offset>50</offset>
+  <length>9</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/collaboration.ts</file>
+  <line>426</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/collaboration.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 매개변수 sceneId</description>
+  <highlighted_element>sceneId</highlighted_element>
+  <language>JavaScript</language>
+  <offset>50</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/imageHistory.ts</file>
+  <line>278</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/imageHistory.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 historyCount</description>
+  <highlighted_element>historyCount</highlighted_element>
+  <language>JavaScript</language>
+  <offset>14</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/upload.ts</file>
+  <line>114</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/upload.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 metadata</description>
+  <highlighted_element>metadata</highlighted_element>
+  <language>JavaScript</language>
+  <offset>10</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts</file>
+  <line>187</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 sceneId</description>
+  <highlighted_element>sceneId</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts</file>
+  <line>232</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 sceneId2</description>
+  <highlighted_element>sceneId2</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts</file>
+  <line>275</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 sceneId3</description>
+  <highlighted_element>sceneId3</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts</file>
+  <line>322</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 sceneId4</description>
+  <highlighted_element>sceneId4</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts</file>
+  <line>416</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 sceneId5</description>
+  <highlighted_element>sceneId5</highlighted_element>
+  <language>JavaScript</language>
+  <offset>14</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts</file>
+  <line>525</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 sceneId6</description>
+  <highlighted_element>sceneId6</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts</file>
+  <line>448</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 메서드 getTargetType</description>
+  <highlighted_element>getTargetType</highlighted_element>
+  <language>JavaScript</language>
+  <offset>10</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts</file>
+  <line>457</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 메서드 getTargetId</description>
+  <highlighted_element>getTargetId</highlighted_element>
+  <language>JavaScript</language>
+  <offset>10</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts</file>
+  <line>517</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/comments.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 매개변수 authorId</description>
+  <highlighted_element>authorId</highlighted_element>
+  <language>JavaScript</language>
+  <offset>4</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts</file>
+  <line>256</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/scenes.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 매개변수 userId</description>
+  <highlighted_element>userId</highlighted_element>
+  <language>JavaScript</language>
+  <offset>53</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/presence.ts</file>
+  <line>294</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/presence.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 매개변수 roomId</description>
+  <highlighted_element>roomId</highlighted_element>
+  <language>JavaScript</language>
+  <offset>47</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/railway-monitor.js</file>
+  <line>8</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/railway-monitor.js" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 exec</description>
+  <highlighted_element>exec</highlighted_element>
+  <language>JavaScript</language>
+  <offset>8</offset>
+  <length>4</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/railway-monitor.js</file>
+  <line>11</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/railway-monitor.js" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 readline</description>
+  <highlighted_element>readline</highlighted_element>
+  <language>JavaScript</language>
+  <offset>6</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/railway-monitor.js</file>
+  <line>66</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/railway-monitor.js" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 함수 getDeploymentStatus</description>
+  <highlighted_element>getDeploymentStatus</highlighted_element>
+  <language>JavaScript</language>
+  <offset>15</offset>
+  <length>19</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/server.ts</file>
+  <line>39</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/server.ts" />
+  <problem_class id="JSUnusedLocalSymbols" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 지역 심볼</problem_class>
+  <description>사용하지 않는 상수 socketServer</description>
+  <highlighted_element>socketServer</highlighted_element>
+  <language>JavaScript</language>
+  <offset>10</offset>
+  <length>12</length>
+</problem>
+</problems>

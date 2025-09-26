@@ -1,0 +1,350 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/annotations/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/annotations/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/comments/[id]/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/comments/[id]/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/comments/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/comments/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/friends/route.ts</file>
+  <line>5</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/friends/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;z&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'zod'&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { z } from 'zod';</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>24</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/images/[id]/history/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/images/[id]/history/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/images/[id]/restore/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/images/[id]/restore/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/images/[id]/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/images/[id]/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/images/upload/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/images/upload/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/notifications/[id]/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/notifications/[id]/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/invite/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/invite/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/participants/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/participants/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/scenes/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/scenes/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/projects/archived/route.ts</file>
+  <line>4</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/projects/archived/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;ApiResponse&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'@/types'&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { ApiResponse } from '@/types';</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>38</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/projects/join/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/projects/join/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/scenes/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/scenes/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/socket/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/socket/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextRequest</description>
+  <highlighted_element>NextRequest</highlighted_element>
+  <language>TypeScript</language>
+  <offset>9</offset>
+  <length>11</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/socket/route.ts</file>
+  <line>2</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/socket/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;Server&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;as&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;HTTPServer&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;&quot;http&quot;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { Server as HTTPServer } from &quot;http&quot;;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>44</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/socket/route.ts</file>
+  <line>4</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/socket/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 initializeSocketServer</description>
+  <highlighted_element>initializeSocketServer</highlighted_element>
+  <language>TypeScript</language>
+  <offset>26</offset>
+  <length>22</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/studios/[id]/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/studios/[id]/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextResponse</description>
+  <highlighted_element>NextResponse</highlighted_element>
+  <language>TypeScript</language>
+  <offset>22</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/studios/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/studios/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextResponse</description>
+  <highlighted_element>NextResponse</highlighted_element>
+  <language>TypeScript</language>
+  <offset>22</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/users/profile/route.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/users/profile/route.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 NextResponse</description>
+  <highlighted_element>NextResponse</highlighted_element>
+  <language>TypeScript</language>
+  <offset>22</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/auth/authOptions.ts</file>
+  <line>6</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/auth/authOptions.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;signToken&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'@/lib/utils/jwt'&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { signToken } from '@/lib/utils/jwt';</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>44</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts</file>
+  <line>3</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/annotations.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;pre&gt;&lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;NotificationService&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;&quot;@/lib/services/notification&quot;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { NotificationService } from &quot;@/lib/services/notification&quot;;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>66</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/events/tasks.ts</file>
+  <line>3</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/events/tasks.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>사용하지 않는 import 지정자 TaskPriority</description>
+  <highlighted_element>TaskPriority</highlighted_element>
+  <language>TypeScript</language>
+  <offset>21</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/server.ts</file>
+  <line>6</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/server.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;pre&gt;&lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;NotificationService&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;&quot;@/lib/services/notification&quot;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { NotificationService } from &quot;@/lib/services/notification&quot;;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>66</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/upload.ts</file>
+  <line>4</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/upload.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;{&amp;#32;getUploadPath&amp;#32;}&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;'./storage'&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import { getUploadPath } from './storage';</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>42</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/types/next-auth.d.ts</file>
+  <line>1</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/types/next-auth.d.ts" />
+  <problem_class id="ES6UnusedImports" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용되지 않는 import 문</problem_class>
+  <description>&lt;html&gt;사용하지 않는 &lt;code&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;import&amp;#32;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;NextAuth&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#cf8e6d;&quot;&gt;from&amp;#32;&lt;/span&gt;&lt;span style=&quot;color:#6aab73;&quot;&gt;&quot;next-auth&quot;&lt;/span&gt;&lt;span style=&quot;&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/html&gt;</description>
+  <highlighted_element>import NextAuth from &quot;next-auth&quot;;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>33</length>
+</problem>
+</problems>

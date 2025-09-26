@@ -1,0 +1,26 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/services/upload.ts</file>
+  <line>226</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/services/upload.ts" />
+  <problem_class id="JSUnusedAssignment" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 대입</problem_class>
+  <description>'thumbnailFilename'에 대입된 값이 사용되지 않습니다 #loc</description>
+  <highlighted_element>thumbnailFilename</highlighted_element>
+  <language>TypeScript</language>
+  <offset>8</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/socket/events/comments.ts</file>
+  <line>518</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/socket/events/comments.ts" />
+  <problem_class id="JSUnusedAssignment" severity="WARNING" attribute_key="NOT_USED_ELEMENT_ATTRIBUTES">사용하지 않는 대입</problem_class>
+  <description>변수 초기화가 불필요합니다 #loc</description>
+  <highlighted_element>&quot;&quot;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>21</offset>
+  <length>2</length>
+</problem>
+</problems>

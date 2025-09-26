@@ -1,0 +1,26 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/page.module.css</file>
+  <line>16</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/page.module.css" />
+  <problem_class id="CssUnresolvedCustomProperty" severity="ERROR" attribute_key="ERRORS_ATTRIBUTES">해결되지 않은 사용자 지정 프로퍼티</problem_class>
+  <description>&lt;code&gt;--font-geist-sans&lt;/code&gt; 사용자 지정 프로퍼티를 확인할 수 없습니다 #loc</description>
+  <highlighted_element>--font-geist-sans</highlighted_element>
+  <language>CSS</language>
+  <offset>19</offset>
+  <length>17</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/page.module.css</file>
+  <line>38</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/page.module.css" />
+  <problem_class id="CssUnresolvedCustomProperty" severity="ERROR" attribute_key="ERRORS_ATTRIBUTES">해결되지 않은 사용자 지정 프로퍼티</problem_class>
+  <description>&lt;code&gt;--font-geist-mono&lt;/code&gt; 사용자 지정 프로퍼티를 확인할 수 없습니다 #loc</description>
+  <highlighted_element>--font-geist-mono</highlighted_element>
+  <language>CSS</language>
+  <offset>19</offset>
+  <length>17</length>
+</problem>
+</problems>

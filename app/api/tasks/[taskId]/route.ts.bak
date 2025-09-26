@@ -1,0 +1,223 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { verifyAuth } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
+import { z } from 'zod'
+
+const updateTaskSchema = z.object({
+  title: z.string().min(1).max(255).optional(),
+  description: z.string().optional(),
+  priority: z.enum(['low', 'medium', 'high']).optional(),
+  status: z.enum(['todo', 'in_progress', 'review', 'done']).optional(),
+  dueDate: z.string().datetime().nullable().optional(),
+  assignedUserIds: z.array(z.string().uuid()).optional()
+})
+
+export async function PATCH(
+  request: NextRequest,
+  context: { params: Promise<{ taskId: string }> }
+) {
+  const params = await context.params;
+  try {
+    // 인증 확인
+    const userId = await verifyAuth(request)
+    if (!userId) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      )
+    }
+
+    // 업무 존재 여부 확인
+    const task = await prisma.task.findFirst({
+      where: {
+        id: params.taskId,
+        deletedAt: null
+      },
+      include: {
+        project: {
+          include: {
+            project_participants: {
+              where: {
+                user_id: userId
+              }
+            }
+          }
+        }
+      }
+    })
+
+    if (!task || task.project.project_participants.length === 0) {
+      return NextResponse.json(
+        { error: 'Task not found or access denied' },
+        { status: 404 }
+      )
+    }
+
+    // 요청 데이터 검증
+    const body = await request.json()
+    const validatedData = updateTaskSchema.parse(body)
+
+    // 업무 업데이트
+    const updateData: Record<string, unknown> = {
+      ...validatedData,
+      updatedAt: new Date()
+    }
+
+    // dueDate 처리
+    if ('dueDate' in validatedData) {
+      updateData.dueDate = validatedData.dueDate ? new Date(validatedData.dueDate) : null
+    }
+
+    // assignedUserIds 처리
+    if (validatedData.assignedUserIds) {
+      // 기존 할당 삭제
+      await prisma.taskAssignee.deleteMany({
+        where: {
+          taskId: params.taskId
+        }
+      })
+
+      // 새로운 할당 생성
+      if (validatedData.assignedUserIds.length > 0) {
+        await prisma.taskAssignee.createMany({
+          data: validatedData.assignedUserIds.map(assignedUserId => ({
+            taskId: params.taskId,
+            userId: assignedUserId,
+            assignedBy: userId
+          }))
+        })
+      }
+
+      delete updateData.assignedUserIds
+    }
+
+    const updatedTask = await prisma.task.update({
+      where: {
+        id: params.taskId
+      },
+      data: updateData,
+      include: {
+        assignedUsers: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                nickname: true,
+                profile_image_url: true
+              }
+            }
+          }
+        },
+        todos: {
+          where: {
+            deletedAt: null
+          },
+          select: {
+            id: true,
+            completed: true
+          }
+        }
+      }
+    })
+
+    // 응답 데이터 포맷팅
+    const formattedTask = {
+      id: updatedTask.id,
+      title: updatedTask.title,
+      description: updatedTask.description,
+      status: updatedTask.status,
+      priority: updatedTask.priority,
+      dueDate: updatedTask.dueDate,
+      assignedUsers: updatedTask.assignedUsers.map(au => ({
+        id: au.user.id,
+        nickname: au.user.nickname,
+        profileImageUrl: au.user.profile_image_url
+      })),
+      todoCount: updatedTask.todos.length,
+      completedTodoCount: updatedTask.todos.filter(todo => todo.completed).length,
+      createdAt: updatedTask.createdAt,
+      updatedAt: updatedTask.updatedAt
+    }
+
+    return NextResponse.json(formattedTask)
+  } catch (error) {
+    console.error('Error updating task:', error)
+
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: 'Invalid request data', details: error.errors },
+        { status: 400 }
+      )
+    }
+
+    return NextResponse.json(
+      { error: 'Failed to update task' },
+      { status: 500 }
+    )
+  }
+}
+
+export async function DELETE(
+  request: NextRequest,
+  context: { params: Promise<{ taskId: string }> }
+) {
+  const params = await context.params;
+  try {
+    // 인증 확인
+    const userId = await verifyAuth(request)
+    if (!userId) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      )
+    }
+
+    // 업무 존재 여부 확인
+    const task = await prisma.task.findFirst({
+      where: {
+        id: params.taskId,
+        deletedAt: null
+      },
+      include: {
+        project: {
+          include: {
+            project_participants: {
+              where: {
+                user_id: userId
+              }
+            }
+          }
+        }
+      }
+    })
+
+    if (!task || task.project.project_participants.length === 0) {
+      return NextResponse.json(
+        { error: 'Task not found or access denied' },
+        { status: 404 }
+      )
+    }
+
+    // 소프트 삭제 수행
+    await prisma.task.update({
+      where: {
+        id: params.taskId
+      },
+      data: {
+        deletedAt: new Date(),
+        deletedBy: userId
+      }
+    })
+
+    return NextResponse.json(
+      { message: 'Task deleted successfully' },
+      { status: 200 }
+    )
+  } catch (error) {
+    console.error('Error deleting task:', error)
+    return NextResponse.json(
+      { error: 'Failed to delete task' },
+      { status: 500 }
+    )
+  }
+}

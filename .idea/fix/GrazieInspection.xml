@@ -1,0 +1,230 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/.claude/agents/frontend-react-developer.md</file>
+  <line>117</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.claude/agents/frontend-react-developer.md" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>Consider using &quot;to&quot; with &quot;prefer&quot;.</description>
+  <highlighted_element>Prefer composition over inheritance</highlighted_element>
+  <language>Markdown</language>
+  <offset>2</offset>
+  <length>35</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.claude/agents/security-auditor.md</file>
+  <line>45</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.claude/agents/security-auditor.md" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>This word is normally spelled as one.</description>
+  <highlighted_element>multi-factor</highlighted_element>
+  <language>Markdown</language>
+  <offset>99</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.claude/agents/ui-ux-designer.md</file>
+  <line>91</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.claude/agents/ui-ux-designer.md" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>Consider using either the past participle keyboarded or the present participle keyboarding here.</description>
+  <highlighted_element>keyboard</highlighted_element>
+  <language>Markdown</language>
+  <offset>25</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/dev_workflow.instructions.md</file>
+  <line>82</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/dev_workflow.instructions.md" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>This word is normally spelled as one.</description>
+  <highlighted_element>multi-step</highlighted_element>
+  <language>Markdown</language>
+  <offset>43</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/dev_workflow.instructions.md</file>
+  <line>146</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/dev_workflow.instructions.md" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>It appears that hyphens are missing in the adjective up-to-date.</description>
+  <highlighted_element>up to date</highlighted_element>
+  <language>Markdown</language>
+  <offset>164</offset>
+  <length>10</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/dev_workflow.instructions.md</file>
+  <line>225</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/dev_workflow.instructions.md" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>A determiner may be missing.</description>
+  <highlighted_element>highest</highlighted_element>
+  <language>Markdown</language>
+  <offset>24</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/dev_workflow.instructions.md</file>
+  <line>391</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/dev_workflow.instructions.md" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>Did you mean ??</description>
+  <highlighted_element>.</highlighted_element>
+  <language>Markdown</language>
+  <offset>66</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/taskmaster.instructions.md</file>
+  <line>438</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/taskmaster.instructions.md" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>In American English, abbreviations like &quot;etc.&quot; require a period.</description>
+  <highlighted_element>etc</highlighted_element>
+  <language>Markdown</language>
+  <offset>106</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.github/instructions/vscode_rules.instructions.md</file>
+  <line>50</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.github/instructions/vscode_rules.instructions.md" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>After the auxiliary verb 'do', use the base form of a verb. Did you mean example?</description>
+  <highlighted_element>examples</highlighted_element>
+  <language>Markdown</language>
+  <offset>30</offset>
+  <length>8</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.taskmaster/templates/example_prd.txt</file>
+  <line>29</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.taskmaster/templates/example_prd.txt" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>The past participle is required after &quot;to be&quot;.</description>
+  <highlighted_element>build</highlighted_element>
+  <language>TEXT</language>
+  <offset>110</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/users/page.tsx</file>
+  <line>62</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/users/page.tsx" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>Did you mean the verb log in instead of the noun 'login'?</description>
+  <highlighted_element>login</highlighted_element>
+  <language>JavaScript</language>
+  <offset>53</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/users/page.tsx</file>
+  <line>74</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/users/page.tsx" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>Did you mean the verb log in instead of the noun 'login'?</description>
+  <highlighted_element>login</highlighted_element>
+  <language>JavaScript</language>
+  <offset>44</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/api/auth.ts</file>
+  <line>57</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/api/auth.ts" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>Did you mean the verb log in instead of the noun 'login'?</description>
+  <highlighted_element>login</highlighted_element>
+  <language>JavaScript</language>
+  <offset>21</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/middleware.ts</file>
+  <line>73</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/middleware.ts" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>Did you mean the verb log in instead of the noun 'login'?</description>
+  <highlighted_element>login</highlighted_element>
+  <language>JavaScript</language>
+  <offset>74</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/새 텍스트 문서.txt</file>
+  <line>678</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/새 텍스트 문서.txt" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>Unpaired symbol: '{' seems to be missing</description>
+  <highlighted_element>}</highlighted_element>
+  <language>TEXT</language>
+  <offset>0</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/새 텍스트 문서.txt</file>
+  <line>839</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/새 텍스트 문서.txt" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>Unpaired symbol: '{' seems to be missing</description>
+  <highlighted_element>}</highlighted_element>
+  <language>TEXT</language>
+  <offset>0</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/새 텍스트 문서.txt</file>
+  <line>883</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/새 텍스트 문서.txt" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>Possible typo: you repeated a word</description>
+  <highlighted_element>Storage STORAGE</highlighted_element>
+  <language>TEXT</language>
+  <offset>2</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/새 텍스트 문서.txt</file>
+  <line>984</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/새 텍스트 문서.txt" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>Unpaired symbol: '{' seems to be missing</description>
+  <highlighted_element>}</highlighted_element>
+  <language>TEXT</language>
+  <offset>0</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/.taskmaster/templates/example_prd.txt</file>
+  <line>29</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/.taskmaster/templates/example_prd.txt" />
+  <problem_class id="GrazieInspection" severity="GRAMMAR_ERROR" attribute_key="GRAMMAR_ERROR">문법</problem_class>
+  <description>The past participle is required after &quot;to be&quot;.</description>
+  <highlighted_element>build</highlighted_element>
+  <language>TEXT</language>
+  <offset>110</offset>
+  <length>5</length>
+</problem>
+</problems>

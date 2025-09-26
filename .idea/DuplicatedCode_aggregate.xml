@@ -1,0 +1,90 @@
+<root>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/annotations/route.ts" line="41" start="1517" end="2161" />
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/images/[id]/restore/route.ts" line="23" start="681" end="1346" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/channels/[id]/members/route.ts" line="13" start="339" end="832" />
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/channels/[id]/messages/route.ts" line="104" start="2691" end="3184" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/friends/memo/route.ts" line="19" start="523" end="1283" />
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/friends/requests/route.ts" line="20" start="580" end="1340" />
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/friends/requests/route.ts" line="223" start="6256" end="7016" />
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/friends/route.ts" line="165" start="4370" end="5130" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/friends/memo/route.ts" line="19" start="523" end="1323" />
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/friends/requests/route.ts" line="20" start="580" end="1380" />
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/friends/requests/route.ts" line="223" start="6256" end="7056" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/friends/request/route.ts" line="20" start="571" end="1118" />
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/friends/request/route.ts" line="185" start="5314" end="5861" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/friends/request/route.ts" line="299" start="8512" end="9071" />
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/users/search/route.ts" line="13" start="393" end="952" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/projects/[id]/scenes/[sceneId]/images/route.ts" line="30" start="1022" end="1692" />
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/projects/[id]/scenes/[sceneId]/images/route.ts" line="148" start="4189" end="4859" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/scenes/[id]/images/[imageId]/route.ts" line="19" start="674" end="1377" />
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/scenes/[id]/images/[imageId]/route.ts" line="172" start="4940" end="5643" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/scenes/[id]/images/route.ts" line="51" start="1567" end="2265" />
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/scenes/[id]/images/route.ts" line="281" start="8221" end="8919" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/scenes/[id]/script/route.ts" line="15" start="472" end="1150" />
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/scenes/[id]/script/route.ts" line="75" start="2063" end="2741" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/users/profile/image/route.ts" line="138" start="4737" end="5610" />
+  <fragment file="file://$PROJECT_DIR$/backend/app/api/users/profile/image/v2/route.ts" line="92" start="2481" end="3400" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/components/annotation-modal.tsx" line="103" start="3508" end="3805" />
+  <fragment file="file://$PROJECT_DIR$/components/annotation-modal.tsx" line="118" start="3950" end="4247" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/components/friends/FriendsDropdown.tsx" line="525" start="17265" end="18676" />
+  <fragment file="file://$PROJECT_DIR$/components/friends/FriendsDropdown.tsx" line="621" start="22737" end="24148" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/components/messages/MessagesDropdown.tsx" line="75" start="2007" end="2487" />
+  <fragment file="file://$PROJECT_DIR$/components/messages/MessagesModal.tsx" line="96" start="2758" end="3238" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/components/messages/MessagesDropdown.tsx" line="116" start="3218" end="5813" />
+  <fragment file="file://$PROJECT_DIR$/components/messages/MessagesModal.tsx" line="183" start="5332" end="7927" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/components/ui/scroll-stack.tsx" line="225" start="7096" end="7381" />
+  <fragment file="file://$PROJECT_DIR$/components/ui/scroll-stack.tsx" line="254" start="7942" end="8227" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/components/ui/use-toast.tsx" line="32" start="573" end="3887" />
+  <fragment file="file://$PROJECT_DIR$/hooks/use-toast.ts" line="34" start="594" end="3908" />
+  <fragment file="file://$PROJECT_DIR$/hooks/use-toast.tsx" line="28" start="574" end="3888" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/hooks/use-toast.ts" line="10" start="128" end="3908" />
+  <fragment file="file://$PROJECT_DIR$/hooks/use-toast.tsx" line="4" start="108" end="3888" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/hooks/use-toast.ts" line="29" start="498" end="3908" />
+  <fragment file="file://$PROJECT_DIR$/hooks/use-toast.tsx" line="23" start="478" end="3888" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/lib/api/auth.ts" line="17" start="462" end="1306" />
+  <fragment file="file://$PROJECT_DIR$/lib/api/auth.ts" line="42" start="1569" end="2413" />
+</duplicate>
+<duplicate cost="1" hash="0">
+  <fragment file="file://$PROJECT_DIR$/store/useAuthStore.ts" line="39" start="1130" end="2384" />
+  <fragment file="file://$PROJECT_DIR$/store/useAuthStore.ts" line="88" start="2862" end="4116" />
+</duplicate>
+</root>

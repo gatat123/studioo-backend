@@ -1,0 +1,14 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/lib/socket/server.ts</file>
+  <line>44</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/lib/socket/server.ts" />
+  <problem_class id="TypeScriptFieldCanBeMadeReadonly" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">필드가 읽기 전용일 수 있습니다</problem_class>
+  <description>필드가 읽기 전용일 수 있습니다</description>
+  <highlighted_element>private</highlighted_element>
+  <language>TypeScript</language>
+  <offset>2</offset>
+  <length>7</length>
+</problem>
+</problems>

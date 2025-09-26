@@ -1,0 +1,26 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/server.ts</file>
+  <line>44</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/server.ts" />
+  <problem_class id="HttpUrlsUsage" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">암호화되지 않은 프로토콜이 있는 링크</problem_class>
+  <description>HTTP 링크가 안전하지 않습니다</description>
+  <highlighted_element>http://</highlighted_element>
+  <language>TypeScript</language>
+  <offset>45</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/server.ts</file>
+  <line>49</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/server.ts" />
+  <problem_class id="HttpUrlsUsage" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">암호화되지 않은 프로토콜이 있는 링크</problem_class>
+  <description>HTTP 링크가 안전하지 않습니다</description>
+  <highlighted_element>http://</highlighted_element>
+  <language>TypeScript</language>
+  <offset>32</offset>
+  <length>7</length>
+</problem>
+</problems>

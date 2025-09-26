@@ -1,0 +1,674 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/app/admin/permissions/page.tsx</file>
+  <line>68</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/admin/permissions/page.tsx" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 68~111</description>
+  <highlighted_element>[</highlighted_element>
+  <language>JavaScript</language>
+  <offset>42</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/api/admin/roles/route.ts</file>
+  <line>4</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/api/admin/roles/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 4~47</description>
+  <highlighted_element>[</highlighted_element>
+  <language>JavaScript</language>
+  <offset>28</offset>
+  <length>1</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/api/tasks/[id]/assign/route.ts</file>
+  <line>22</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/api/tasks/[id]/assign/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 22~38</description>
+  <highlighted_element>const { id: taskId } = await params;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>36</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/api/tasks/[id]/comments/route.ts</file>
+  <line>26</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/api/tasks/[id]/comments/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 26~46</description>
+  <highlighted_element>const { id: taskId } = await params;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>36</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/api/tasks/[id]/comments/route.ts</file>
+  <line>127</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/api/tasks/[id]/comments/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 127~147</description>
+  <highlighted_element>const { id: taskId } = await params;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>36</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/api/tasks/[id]/route.ts</file>
+  <line>25</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/api/tasks/[id]/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 25~45</description>
+  <highlighted_element>const { id: taskId } = await params;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>36</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/api/tasks/[id]/route.ts</file>
+  <line>111</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/api/tasks/[id]/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 111~127</description>
+  <highlighted_element>const { id: taskId } = await params;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>36</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/api/tasks/[id]/route.ts</file>
+  <line>218</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/api/tasks/[id]/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 218~234</description>
+  <highlighted_element>const { id: taskId } = await params;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>36</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/api/tasks/[id]/status/route.ts</file>
+  <line>22</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/api/tasks/[id]/status/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 22~38</description>
+  <highlighted_element>const { id: taskId } = await params;</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>36</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx</file>
+  <line>271</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/app/studio/projects/[id]/page.tsx" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 271~290</description>
+  <highlighted_element>const processedScenes = scenesData.map((scene: Scene) =&gt; ({</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>6</offset>
+  <length>59</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/annotation-modal.tsx</file>
+  <line>97</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/annotation-modal.tsx" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 97~103</description>
+  <highlighted_element>const canvas = canvasRef.current;</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>4</offset>
+  <length>33</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/annotation-modal.tsx</file>
+  <line>112</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/annotation-modal.tsx" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 112~118</description>
+  <highlighted_element>const canvas = canvasRef.current;</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>4</offset>
+  <length>33</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/friends/FriendsDropdown.tsx</file>
+  <line>610</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/friends/FriendsDropdown.tsx" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 610~635</description>
+  <highlighted_element>{editingMemo === friendship.friend.id &amp;&amp; (</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>30</offset>
+  <length>42</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/friends/FriendsDropdown.tsx</file>
+  <line>706</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/friends/FriendsDropdown.tsx" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 706~731</description>
+  <highlighted_element>{editingMemo === friendship.friend.id &amp;&amp; (</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>30</offset>
+  <length>42</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/projects/ArchivedProjectView.tsx</file>
+  <line>87</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/projects/ArchivedProjectView.tsx" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 87~105</description>
+  <highlighted_element>const processedScenes = scenesData.map((scene: Scene) =&gt; ({</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>6</offset>
+  <length>59</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/scroll-stack.tsx</file>
+  <line>225</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/scroll-stack.tsx" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 225~234</description>
+  <highlighted_element>lenis.on('scroll', handleScroll);</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>6</offset>
+  <length>33</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/ui/scroll-stack.tsx</file>
+  <line>254</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/ui/scroll-stack.tsx" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 254~263</description>
+  <highlighted_element>lenis.on('scroll', handleScroll);</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>6</offset>
+  <length>33</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/work/TaskDetailModal.tsx</file>
+  <line>87</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/work/TaskDetailModal.tsx" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 87~96</description>
+  <highlighted_element>() =&gt; {</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>12</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/components/work/TaskDetailModal.tsx</file>
+  <line>117</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/components/work/TaskDetailModal.tsx" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 117~126</description>
+  <highlighted_element>() =&gt; {</highlighted_element>
+  <language>TypeScript JSX</language>
+  <offset>23</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/utils/batch-operations.ts</file>
+  <line>51</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/utils/batch-operations.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 51~86</description>
+  <highlighted_element>if (!isValidProjectId(projectId)) {</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>35</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/lib/utils/batch-operations.ts</file>
+  <line>154</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/lib/utils/batch-operations.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 154~189</description>
+  <highlighted_element>if (!isValidProjectId(projectId)) {</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>35</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/scripts/performance-benchmark.ts</file>
+  <line>146</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/scripts/performance-benchmark.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 146~151</description>
+  <highlighted_element>suite.totalDuration = suite.results.reduce((sum, r) =&gt; sum + r.duration, 0)</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>75</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/scripts/performance-benchmark.ts</file>
+  <line>253</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/scripts/performance-benchmark.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 253~258</description>
+  <highlighted_element>suite.totalDuration = suite.results.reduce((sum, r) =&gt; sum + r.duration, 0)</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>75</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/scripts/performance-benchmark.ts</file>
+  <line>349</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/scripts/performance-benchmark.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 349~354</description>
+  <highlighted_element>suite.totalDuration = suite.results.reduce((sum, r) =&gt; sum + r.duration, 0)</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>75</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/scripts/performance-benchmark.ts</file>
+  <line>422</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/scripts/performance-benchmark.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 422~427</description>
+  <highlighted_element>suite.totalDuration = suite.results.reduce((sum, r) =&gt; sum + r.duration, 0)</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>75</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/scripts/performance-benchmark.ts</file>
+  <line>497</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/scripts/performance-benchmark.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 497~502</description>
+  <highlighted_element>suite.totalDuration = suite.results.reduce((sum, r) =&gt; sum + r.duration, 0)</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>75</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/store/useAuthStore.ts</file>
+  <line>39</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/store/useAuthStore.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 39~62</description>
+  <highlighted_element>if (response.user) {</highlighted_element>
+  <language>TypeScript</language>
+  <offset>10</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/store/useAuthStore.ts</file>
+  <line>82</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/store/useAuthStore.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 82~105</description>
+  <highlighted_element>if (response.user) {</highlighted_element>
+  <language>TypeScript</language>
+  <offset>10</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/types/task.ts</file>
+  <line>110</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/types/task.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 110~164</description>
+  <highlighted_element>export interface CreateTaskRequest {</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>36</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/annotations/route.ts</file>
+  <line>158</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/annotations/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 158~174</description>
+  <highlighted_element>if (!image) {</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/channels/[id]/members/route.ts</file>
+  <line>13</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/channels/[id]/members/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 13~30</description>
+  <highlighted_element>const currentUser = await getCurrentUser(request);</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/channels/[id]/messages/route.ts</file>
+  <line>80</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/channels/[id]/messages/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 80~97</description>
+  <highlighted_element>const currentUser = await getCurrentUser(request);</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/channels/invitations/route.ts</file>
+  <line>8</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/channels/invitations/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 8~44</description>
+  <highlighted_element>const currentUser = await getCurrentUser(request);</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/channels/invites/route.ts</file>
+  <line>9</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/channels/invites/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 9~42</description>
+  <highlighted_element>const currentUser = await getCurrentUser(request);</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>50</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/comments/route.ts</file>
+  <line>24</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/comments/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 24~49</description>
+  <highlighted_element>if (!sceneId &amp;&amp; !imageId) {</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>27</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/comments/route.ts</file>
+  <line>113</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/comments/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 113~137</description>
+  <highlighted_element>if (!sceneId &amp;&amp; !imageId) {</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>27</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/friends/memo/route.ts</file>
+  <line>19</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/friends/memo/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 19~45</description>
+  <highlighted_element>const authHeader = request.headers.get('authorization');</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>56</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/friends/request/route.ts</file>
+  <line>19</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/friends/request/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 19~37</description>
+  <highlighted_element>const authHeader = request.headers.get('authorization');</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>56</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/friends/request/route.ts</file>
+  <line>182</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/friends/request/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 182~200</description>
+  <highlighted_element>const authHeader = request.headers.get('authorization');</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>56</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/friends/request/route.ts</file>
+  <line>294</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/friends/request/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 294~312</description>
+  <highlighted_element>const authHeader = request.headers.get('authorization');</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>56</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/friends/requests/route.ts</file>
+  <line>19</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/friends/requests/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 19~45</description>
+  <highlighted_element>const authHeader = request.headers.get('authorization');</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>56</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/friends/requests/route.ts</file>
+  <line>219</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/friends/requests/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 219~245</description>
+  <highlighted_element>const authHeader = request.headers.get('authorization');</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>56</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/friends/route.ts</file>
+  <line>165</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/friends/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 165~189</description>
+  <highlighted_element>const authHeader = request.headers.get('authorization');</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>56</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/scenes/[sceneId]/images/route.ts</file>
+  <line>29</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/projects/[id]/scenes/[sceneId]/images/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 29~55</description>
+  <highlighted_element>const participation = await prisma.projectParticipant.findUnique({</highlighted_element>
+  <language>TypeScript</language>
+  <offset>6</offset>
+  <length>66</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/images/[imageId]/route.ts</file>
+  <line>19</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/images/[imageId]/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 19~47</description>
+  <highlighted_element>const scene = await prisma.scene.findUnique({</highlighted_element>
+  <language>TypeScript</language>
+  <offset>6</offset>
+  <length>45</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/images/[imageId]/route.ts</file>
+  <line>136</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/images/[imageId]/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 136~164</description>
+  <highlighted_element>const scene = await prisma.scene.findUnique({</highlighted_element>
+  <language>TypeScript</language>
+  <offset>6</offset>
+  <length>45</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/images/route.ts</file>
+  <line>48</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/images/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 48~76</description>
+  <highlighted_element>const scene = await prisma.scene.findUnique({</highlighted_element>
+  <language>TypeScript</language>
+  <offset>6</offset>
+  <length>45</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/images/route.ts</file>
+  <line>240</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/images/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 240~268</description>
+  <highlighted_element>const scene = await prisma.scene.findUnique({</highlighted_element>
+  <language>TypeScript</language>
+  <offset>6</offset>
+  <length>45</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/script/route.ts</file>
+  <line>15</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/script/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 15~41</description>
+  <highlighted_element>const scene = await prisma.scene.findUnique({</highlighted_element>
+  <language>TypeScript</language>
+  <offset>6</offset>
+  <length>45</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/script/route.ts</file>
+  <line>75</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/scenes/[id]/script/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 75~101</description>
+  <highlighted_element>const scene = await prisma.scene.findUnique({</highlighted_element>
+  <language>TypeScript</language>
+  <offset>6</offset>
+  <length>45</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/users/profile/image/route.ts</file>
+  <line>138</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/users/profile/image/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 138~174</description>
+  <highlighted_element>/**</highlighted_element>
+  <language>JavaScript</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/users/profile/image/v2/route.ts</file>
+  <line>92</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/users/profile/image/v2/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 92~130</description>
+  <highlighted_element>/**</highlighted_element>
+  <language>JavaScript</language>
+  <offset>0</offset>
+  <length>3</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/users/search/route.ts</file>
+  <line>13</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/users/search/route.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 13~31</description>
+  <highlighted_element>const authHeader = request.headers.get('authorization');</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>56</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/middleware/auth.ts</file>
+  <line>21</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/middleware/auth.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 21~64</description>
+  <highlighted_element>const corsHeaders = {</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>21</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/middleware/auth.ts</file>
+  <line>252</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/middleware/auth.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 252~295</description>
+  <highlighted_element>const corsHeaders = {</highlighted_element>
+  <language>TypeScript</language>
+  <offset>4</offset>
+  <length>21</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/types/task.ts</file>
+  <line>110</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/types/task.ts" />
+  <problem_class id="DuplicatedCode" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">중복 코드 조각</problem_class>
+  <description>중복 코드: 줄 110~164</description>
+  <highlighted_element>export interface CreateTaskRequest {</highlighted_element>
+  <language>TypeScript</language>
+  <offset>0</offset>
+  <length>36</length>
+</problem>
+</problems>

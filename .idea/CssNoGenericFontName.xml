@@ -1,0 +1,26 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/page.module.css</file>
+  <line>16</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/page.module.css" />
+  <problem_class id="CssNoGenericFontName" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">제네릭 글꼴 집합 이름 누락</problem_class>
+  <description>글꼴 프로퍼티 font-family에 제네릭 디폴트 값이 포함되지 않습니다 #loc</description>
+  <highlighted_element>font-family: var(--font-geist-sans)</highlighted_element>
+  <language>CSS</language>
+  <offset>2</offset>
+  <length>35</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/backend/app/page.module.css</file>
+  <line>38</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/backend/app/page.module.css" />
+  <problem_class id="CssNoGenericFontName" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">제네릭 글꼴 집합 이름 누락</problem_class>
+  <description>글꼴 프로퍼티 font-family에 제네릭 디폴트 값이 포함되지 않습니다 #loc</description>
+  <highlighted_element>font-family: var(--font-geist-mono)</highlighted_element>
+  <language>CSS</language>
+  <offset>2</offset>
+  <length>35</length>
+</problem>
+</problems>

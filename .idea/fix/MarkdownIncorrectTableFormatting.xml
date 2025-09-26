@@ -1,0 +1,26 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/MCP_FIXED.md</file>
+  <line>34</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/MCP_FIXED.md" />
+  <problem_class id="MarkdownIncorrectTableFormatting" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">올바르지 않은 테이블 서식</problem_class>
+  <description>테이블 서식이 올바르지 않습니다</description>
+  <highlighted_element>| MCP 서버 | 용도 | |---------|-----| | npm-mcp | NPM 패키지 관리 | | ruff-mcp | Python 린팅 | | code-checker-m...</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>209</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/TEST_SUMMARY.md</file>
+  <line>196</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/TEST_SUMMARY.md" />
+  <problem_class id="MarkdownIncorrectTableFormatting" severity="WEAK WARNING" attribute_key="INFO_ATTRIBUTES">올바르지 않은 테이블 서식</problem_class>
+  <description>테이블 서식이 올바르지 않습니다</description>
+  <highlighted_element>| 항목 | 목표 | 테스트 결과 | 상태 | |------|------|------------|------| | GPU 감지 | 100% 정확도 | 주요 GPU 모두 감지 | ✅...</highlighted_element>
+  <language>Markdown</language>
+  <offset>0</offset>
+  <length>262</length>
+</problem>
+</problems>

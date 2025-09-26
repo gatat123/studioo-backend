@@ -1,0 +1,38 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/.gitignore</file>
+  <line>44</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.gitignore" />
+  <problem_class id="IgnoreFileDuplicateEntry" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">파일 중복 무시</problem_class>
+  <description>&lt;code&gt;npm-debug.log*&lt;/code&gt; 패턴이 두 번 이상 정의됩니다#loc</description>
+  <highlighted_element>npm-debug.log*</highlighted_element>
+  <language>IgnoreLang</language>
+  <offset>0</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.gitignore</file>
+  <line>45</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.gitignore" />
+  <problem_class id="IgnoreFileDuplicateEntry" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">파일 중복 무시</problem_class>
+  <description>&lt;code&gt;yarn-debug.log*&lt;/code&gt; 패턴이 두 번 이상 정의됩니다#loc</description>
+  <highlighted_element>yarn-debug.log*</highlighted_element>
+  <language>IgnoreLang</language>
+  <offset>0</offset>
+  <length>15</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/.gitignore</file>
+  <line>46</line>
+  <module>studio</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/.gitignore" />
+  <problem_class id="IgnoreFileDuplicateEntry" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">파일 중복 무시</problem_class>
+  <description>&lt;code&gt;yarn-error.log*&lt;/code&gt; 패턴이 두 번 이상 정의됩니다#loc</description>
+  <highlighted_element>yarn-error.log*</highlighted_element>
+  <language>IgnoreLang</language>
+  <offset>0</offset>
+  <length>15</length>
+</problem>
+</problems>

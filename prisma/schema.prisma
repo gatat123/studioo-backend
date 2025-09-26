@@ -601,13 +601,14 @@ model WorkTask {
   comments      WorkTaskComment[]
   subTasks      SubTask[]               // Added relation to subtasks
 
+  @@map("WorkTask")
+
   @@index([status])
   @@index([priority])
   @@index([dueDate])
   @@index([createdById])
   @@index([assigneeId])
   @@index([inviteCode])
-  @@map("work_tasks")
 }
 
 model WorkTaskParticipant {
@@ -624,7 +625,7 @@ model WorkTaskParticipant {
   @@unique([workTaskId, userId])
   @@index([workTaskId])
   @@index([userId])
-  @@map("work_task_participants")
+  @@map("WorkTaskParticipants")
 }
 
 model WorkTaskComment {
@@ -643,7 +644,7 @@ model WorkTaskComment {
   @@index([workTaskId])
   @@index([userId])
   @@index([createdAt])
-  @@map("work_task_comments")
+  @@map("WorkTaskComments")
 }
 
 // ============================================
@@ -678,7 +679,7 @@ model SubTask {
   @@index([status])
   @@index([assigneeId])
   @@index([createdById])
-  @@map("subtasks")
+  @@map("SubTask")
 }
 
 model SubTaskComment {
@@ -697,7 +698,7 @@ model SubTaskComment {
   @@index([subTaskId])
   @@index([userId])
   @@index([createdAt])
-  @@map("subtask_comments")
+  @@map("SubTaskComments")
 }
 
 model SubTaskAttachment {
@@ -716,5 +717,5 @@ model SubTaskAttachment {
 
   @@index([subTaskId])
   @@index([uploadedById])
-  @@map("subtask_attachments")
+  @@map("SubTaskAttachments")
 }

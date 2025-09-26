@@ -1,0 +1,266 @@
+<problems>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/admin/permissions/route.ts</file>
+  <line>52</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/admin/permissions/route.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;grouped&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>grouped</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/app/api/admin/settings/route.ts</file>
+  <line>66</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/app/api/admin/settings/route.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;grouped&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>grouped</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>7</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/imageHistory.ts</file>
+  <line>16</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/imageHistory.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;historyEntry&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>historyEntry</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/imageHistory.ts</file>
+  <line>53</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/imageHistory.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;historyEntries&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>historyEntries</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/imageHistory.ts</file>
+  <line>86</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/imageHistory.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;historyEntries&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>historyEntries</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>14</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/imageHistory.ts</file>
+  <line>248</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/imageHistory.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;result&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>result</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/imageHistory.ts</file>
+  <line>401</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/imageHistory.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;result&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>result</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/imageHistory.ts</file>
+  <line>461</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/imageHistory.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;result&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>result</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>29</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;notification&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>notification</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>139</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;notification&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>notification</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>161</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;result&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>result</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>185</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;result&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>result</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>207</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;notification&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>notification</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>229</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;result&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>result</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>6</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>250</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;count&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>count</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>5</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>269</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;notifications&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>notifications</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>341</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;notifications&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>notifications</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>13</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>403</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;notification&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>notification</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>507</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;notification&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>notification</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>534</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;notification&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>notification</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>12</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts</file>
+  <line>555</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/services/notification.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;createdNotifications&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>createdNotifications</highlighted_element>
+  <language>JavaScript</language>
+  <offset>12</offset>
+  <length>20</length>
+</problem>
+<problem>
+  <file>file://$PROJECT_DIR$/../studio-backend/lib/socket/auth.ts</file>
+  <line>411</line>
+  <module>studio-backend</module>
+  <entry_point TYPE="file" FQNAME="file://$PROJECT_DIR$/../studio-backend/lib/socket/auth.ts" />
+  <problem_class id="UnnecessaryLocalVariableJS" severity="WARNING" attribute_key="WARNING_ATTRIBUTES">중복 지역 변수</problem_class>
+  <description>&lt;html&gt;지역 변수 &lt;code&gt;&lt;span style=&quot;color:#a9b7c6;&quot;&gt;newAccessToken&lt;/span&gt;&lt;/code&gt;은(는) 불필요합니다&lt;/html&gt;</description>
+  <highlighted_element>newAccessToken</highlighted_element>
+  <language>JavaScript</language>
+  <offset>10</offset>
+  <length>14</length>
+</problem>
+</problems>
