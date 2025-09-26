@@ -118,6 +118,16 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
 
     console.log('[Work Tasks API] Found work tasks:', workTasks.length);
 
+    // Debug: Log subtasks for each work task
+    workTasks.forEach(wt => {
+      console.log(`[Work Tasks API] WorkTask ${wt.id} has ${wt.subTasks?.length || 0} subtasks`);
+      if (wt.subTasks && wt.subTasks.length > 0) {
+        wt.subTasks.forEach(st => {
+          console.log(`  - SubTask: ${st.id} - ${st.title} (${st.status})`);
+        });
+      }
+    });
+
     return NextResponse.json<ApiResponse>({
       success: true,
       data: {
