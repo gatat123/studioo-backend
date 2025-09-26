@@ -3,6 +3,7 @@ import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { withAuth, type AuthenticatedRequest } from "@/middleware/auth";
 import { NotificationService } from "@/lib/services/notification";
+import { sceneEvents } from "@/lib/socket/emit-helper";
 
 const createAnnotationSchema = z.object({
   imageId: z.string().uuid("유효한 이미지 ID가 필요합니다."),
@@ -242,6 +243,12 @@ async function createAnnotation(req: AuthenticatedRequest) {
         imageFileUrl: image.fileUrl,
       }
     );
+
+    // Socket.io 이벤트 발송 - 주석 생성
+    await sceneEvents.updated(image.sceneId, {
+      ...image.scene,
+      annotations: [annotation]
+    });
 
     return NextResponse.json({
       success: true,

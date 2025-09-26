@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { withAuth, type AuthenticatedRequest } from "@/middleware/auth";
+import { sceneEvents } from "@/lib/socket/emit-helper";
 const updateAnnotationSchema = z.object({
   type: z.enum(["point", "rectangle", "circle", "arrow", "text", "freehand"]).optional(),
   position: z.object({
@@ -238,6 +239,13 @@ async function updateAnnotation(
       });
       return updated;
     });
+
+    // Socket.io 이벤트 발송 - 주석 업데이트
+    await sceneEvents.updated(annotation.image.sceneId, {
+      ...annotation.image.scene,
+      annotations: [updatedAnnotation]
+    });
+
     return NextResponse.json({
       success: true,
       message: "주석이 업데이트되었습니다.",
@@ -312,6 +320,13 @@ async function deleteAnnotation(
         },
       });
     });
+
+    // Socket.io 이벤트 발송 - 주석 삭제
+    await sceneEvents.updated(annotation.image.sceneId, {
+      ...annotation.image.scene,
+      annotationDeleted: annotationId
+    });
+
     return NextResponse.json({
       success: true,
       message: "주석이 삭제되었습니다.",

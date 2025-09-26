@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { withAuth, type AuthenticatedRequest } from "@/middleware/auth";
 import { unlink } from "fs/promises";
 import path from "path";
+import { sceneEvents } from "@/lib/socket/emit-helper";
 
 // GET /api/images/[id] - 이미지 상세 정보 조회
 async function getImage(req: AuthenticatedRequest, context: { params: Promise<{ id: string }> }) {
@@ -178,11 +179,14 @@ async function deleteImage(req: AuthenticatedRequest, context: { params: Promise
         targetType: "image",
         targetId: imageId,
         description: `씬 ${image.scene.sceneNumber}에서 이미지를 삭제했습니다.`,
-        metadata: { 
+        metadata: {
           annotationCount: image.annotations.length,
         },
       },
     });
+
+    // Socket.io 이벤트 발송 - 이미지 삭제
+    await sceneEvents.imageDeleted(image.sceneId, imageId);
 
     return NextResponse.json({
       success: true,

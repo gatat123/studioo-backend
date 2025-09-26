@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { withAuth, type AuthenticatedRequest } from "@/middleware/auth";
+import { sceneEvents } from "@/lib/socket/emit-helper";
 
 // GET /api/scenes/[id]/script - Get scene script
 export async function GET(
@@ -128,6 +129,9 @@ export async function PUT(
           },
         },
       });
+
+      // Socket.io 이벤트 발송 - 스크립트 업데이트
+      await sceneEvents.scriptUpdated(sceneId, body);
 
       return NextResponse.json({
         success: true,
