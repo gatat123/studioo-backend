@@ -68,7 +68,7 @@ export async function GET(request: NextRequest) {
         },
         comments: {
           where: {
-            deletedAt: null  // 삭제되지 않은 댓글만 조회
+            isDeleted: false  // 삭제되지 않은 댓글만 조회
           },
           include: {
             user: {
