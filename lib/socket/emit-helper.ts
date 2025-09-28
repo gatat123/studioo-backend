@@ -313,7 +313,43 @@ export const channelEvents = {
     emitChannelEvent(channelId, 'channel:invite-accepted', { invite, channelId }),
 
   inviteRejected: (channelId: string, invite: any) =>
-    emitChannelEvent(channelId, 'channel:invite-rejected', { invite, channelId })
+    emitChannelEvent(channelId, 'channel:invite-rejected', { invite, channelId }),
+
+  // 사용자가 채널에 성공적으로 참여했을 때 이벤트
+  userJoined: (userId: string, channelData: any) =>
+    emitSocketEvent({
+      room: `user:${userId}`,
+      event: 'channel_joined',
+      data: {
+        channelId: channelData.id,
+        channel: channelData,
+        message: '채널에 성공적으로 참여했습니다.',
+        timestamp: new Date()
+      }
+    }),
+
+  // 채널 목록 업데이트가 필요할 때 (초대 수락 후 등)
+  channelListUpdated: (userId: string) =>
+    emitSocketEvent({
+      room: `user:${userId}`,
+      event: 'channel_list_updated',
+      data: {
+        message: '채널 목록을 다시 불러오세요.',
+        timestamp: new Date()
+      }
+    }),
+
+  // 초대 수락 알림 (초대한 사람에게)
+  inviteAcceptedNotification: (inviterId: string, acceptedBy: any, channel: any) =>
+    emitSocketEvent({
+      room: `user:${inviterId}`,
+      event: 'channel_invite_accepted_notification',
+      data: {
+        acceptedBy,
+        channel,
+        timestamp: new Date()
+      }
+    })
 };
 
 /**

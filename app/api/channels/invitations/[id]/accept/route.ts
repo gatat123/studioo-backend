@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getCurrentUser } from '@/lib/jwt';
+import { emitSocketEvent } from '@/lib/socket/emit-helper';
 
 // POST: 초대 수락
 export async function POST(
@@ -102,7 +103,59 @@ export async function POST(
       return membership;
     });
 
-    return NextResponse.json({ 
+    // Socket.io 이벤트 발생 - 채널 참여 성공 알림
+    try {
+      // 1. 초대 수락한 사용자에게 채널 참여 성공 알림
+      await emitSocketEvent({
+        room: `user:${currentUser.id}`,
+        event: 'channel_joined',
+        data: {
+          channelId: invitation.channelId,
+          channel: result.channel,
+          message: '채널에 성공적으로 참여했습니다.',
+          timestamp: new Date()
+        }
+      });
+
+      // 2. 채널의 모든 멤버들에게 새 멤버 참여 알림
+      await emitSocketEvent({
+        room: `channel:${invitation.channelId}`,
+        event: 'member_joined_channel',
+        data: {
+          userId: currentUser.id,
+          user: {
+            id: currentUser.id,
+            username: currentUser.username,
+            nickname: currentUser.nickname,
+            profileImageUrl: currentUser.profileImageUrl
+          },
+          timestamp: new Date()
+        }
+      });
+
+      // 3. 초대한 사람에게 수락 알림
+      await emitSocketEvent({
+        room: `user:${invitation.inviterId}`,
+        event: 'channel_invite_accepted_notification',
+        data: {
+          acceptedBy: {
+            id: currentUser.id,
+            username: currentUser.username,
+            nickname: currentUser.nickname,
+            profileImageUrl: currentUser.profileImageUrl
+          },
+          channel: result.channel,
+          timestamp: new Date()
+        }
+      });
+
+      console.log(`[Channel Invite] Socket events sent for user ${currentUser.id} joining channel ${invitation.channelId}`);
+    } catch (socketError) {
+      console.error('[Channel Invite] Failed to emit socket events:', socketError);
+      // Socket 이벤트 실패해도 API는 성공으로 처리
+    }
+
+    return NextResponse.json({
       success: true,
       channel: result.channel,
       message: '채널에 성공적으로 참여했습니다.'
