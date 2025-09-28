@@ -352,6 +352,7 @@ model Channel {
   type        String           @default("public")
   creatorId   String           @map("creator_id")
   studioId    String?          @map("studio_id")
+  workTaskId  String?          @map("work_task_id")
   isArchived  Boolean          @default(false) @map("is_archived")
   createdAt   DateTime         @default(now()) @map("created_at")
   updatedAt   DateTime         @updatedAt @map("updated_at")
@@ -361,10 +362,12 @@ model Channel {
   messages    ChannelMessage[]
   creator     User             @relation("ChannelCreator", fields: [creatorId], references: [id], onDelete: Cascade)
   studio      Studio?          @relation(fields: [studioId], references: [id], onDelete: Cascade)
+  workTask    WorkTask?        @relation("ChannelWorkTask", fields: [workTaskId], references: [id], onDelete: SetNull)
 
   @@index([name])
   @@index([studioId])
   @@index([creatorId])
+  @@index([workTaskId])
   @@map("channels")
 }
 
@@ -555,6 +558,7 @@ model WorkTask {
   createdBy    User                  @relation("WorkTaskCreator", fields: [createdById], references: [id])
   comments     WorkTaskComment[]
   participants WorkTaskParticipant[]
+  channels     Channel[]             @relation("ChannelWorkTask")
 
   @@index([status])
   @@index([priority])

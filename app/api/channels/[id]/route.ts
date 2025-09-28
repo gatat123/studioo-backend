@@ -16,7 +16,7 @@ export async function PATCH(
     }
 
     const body = await request.json();
-    const { name, description } = body;
+    const { name, description, workTaskId } = body;
 
     // Check if user is channel admin
     const membership = await prisma.channelMember.findUnique({
@@ -28,8 +28,49 @@ export async function PATCH(
       }
     });
 
-    if (!membership || membership.role !== 'admin') {
-      return NextResponse.json({ error: 'Only channel admin can update settings' }, { status: 403 });
+    // Check if user is channel creator or admin
+    const channel = await prisma.channel.findUnique({
+      where: { id: id }
+    });
+
+    if (!channel) {
+      return NextResponse.json({ error: 'Channel not found' }, { status: 404 });
+    }
+
+    const isCreator = channel.creatorId === currentUser.id;
+    const isAdmin = membership?.role === 'admin';
+
+    if (!isCreator && !isAdmin) {
+      return NextResponse.json({ error: 'Only channel creator or admin can update settings' }, { status: 403 });
+    }
+
+    // If workTaskId is provided, verify it exists and user has access
+    if (workTaskId !== undefined) {
+      if (workTaskId) {
+        const workTask = await prisma.workTask.findUnique({
+          where: { id: workTaskId },
+          include: {
+            createdBy: true,
+            participants: {
+              where: {
+                userId: currentUser.id
+              }
+            }
+          }
+        });
+
+        if (!workTask) {
+          return NextResponse.json({ error: 'Work task not found' }, { status: 404 });
+        }
+
+        // Check if user has access to the work task (creator or participant)
+        const hasAccess = workTask.createdById === currentUser.id ||
+                         workTask.participants.length > 0;
+
+        if (!hasAccess) {
+          return NextResponse.json({ error: 'No access to work task' }, { status: 403 });
+        }
+      }
     }
 
     // Update channel
@@ -37,7 +78,11 @@ export async function PATCH(
       where: { id: id },
       data: {
         name: name || undefined,
-        description: description || undefined
+        description: description || undefined,
+        workTaskId: workTaskId !== undefined ? workTaskId : undefined
+      },
+      include: {
+        workTask: true
       }
     });
 

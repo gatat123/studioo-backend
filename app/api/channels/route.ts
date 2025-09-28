@@ -30,6 +30,17 @@ export async function GET(request: NextRequest) {
             profileImageUrl: true
           }
         },
+        workTask: {
+          select: {
+            id: true,
+            title: true,
+            status: true,
+            priority: true,
+            dueDate: true,
+            createdAt: true,
+            updatedAt: true
+          }
+        },
         members: {
           include: {
             user: {
@@ -89,7 +100,36 @@ export async function GET(request: NextRequest) {
       })
     );
 
-    return NextResponse.json({ channels: channelsWithUnread });
+    // 대기 중인 초대 조회
+    const pendingInvites = await prisma.channelInvite.findMany({
+      where: {
+        inviteeId: currentUser.id,
+        status: 'pending'
+      },
+      include: {
+        channel: {
+          select: {
+            id: true,
+            name: true,
+            description: true
+          }
+        },
+        inviter: {
+          select: {
+            id: true,
+            username: true,
+            nickname: true,
+            profileImageUrl: true
+          }
+        }
+      },
+      orderBy: { createdAt: 'desc' }
+    });
+
+    return NextResponse.json({
+      channels: channelsWithUnread,
+      pendingInvites
+    });
   } catch (error) {
     console.error('Error fetching channels:', error);
     return NextResponse.json({ error: 'Failed to fetch channels' }, { status: 500 });
