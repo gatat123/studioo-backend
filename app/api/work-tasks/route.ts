@@ -13,19 +13,31 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
     const limit = parseInt(searchParams.get('limit') || '10');
     const status = searchParams.get('status');
     const priority = searchParams.get('priority');
+    const creatorOnly = searchParams.get('creatorOnly') === 'true'; // New parameter for Team page
 
     console.log('[Work Tasks API] GET /api/work-tasks - Request params:', {
       page,
       limit,
       status,
       priority,
+      creatorOnly,
       userId: req.user.userId
     });
 
-    // Only show work tasks where user is creator
-    const where: any = {
-      createdById: req.user.userId
-    };
+    // Show only creator's tasks if creatorOnly=true (for Team page)
+    // Otherwise show both created and participating tasks (for Work page)
+    const where: any = creatorOnly
+      ? { createdById: req.user.userId }
+      : {
+          OR: [
+            { createdById: req.user.userId },
+            {
+              participants: {
+                some: { userId: req.user.userId }
+              }
+            }
+          ]
+        };
 
     if (status) where.status = status;
     if (priority) where.priority = priority;
