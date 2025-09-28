@@ -22,16 +22,9 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
       userId: req.user.userId
     });
 
-    // Only show work tasks where user is creator or participant
+    // Only show work tasks where user is creator
     const where: any = {
-      OR: [
-        { createdById: req.user.userId },
-        {
-          participants: {
-            some: { userId: req.user.userId }
-          }
-        }
-      ]
+      createdById: req.user.userId
     };
 
     if (status) where.status = status;
