@@ -69,7 +69,7 @@ export async function POST(
         uploaderId: currentUser.id,
         fileName: file.name,
         fileUrl: `/uploads/channels/${params.id}/${fileName}`,
-        fileSize: file.size,
+        fileSize: BigInt(file.size),
         mimeType: file.type,
         metadata: caption ? { caption } : {}
       },
