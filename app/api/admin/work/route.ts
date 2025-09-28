@@ -18,8 +18,8 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '50');
     const offset = (page - 1) * limit;
 
-    let workTasks = [];
-    let subTasks = [];
+    let workTasks: any[] = [];
+    let subTasks: any[] = [];
     let totalWorkTasks = 0;
     let totalSubTasks = 0;
 
