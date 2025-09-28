@@ -44,6 +44,14 @@ export async function PATCH(
       return NextResponse.json({ error: 'Only channel creator or admin can update settings' }, { status: 403 });
     }
 
+    // Check if workTask is being linked or unlinked
+    const previousChannel = await prisma.channel.findUnique({
+      where: { id: id },
+      include: {
+        workTask: true
+      }
+    });
+
     // If workTaskId is provided, verify it exists and user has access
     if (workTaskId !== undefined) {
       if (workTaskId) {
@@ -88,6 +96,17 @@ export async function PATCH(
 
     // Socket.io 이벤트 발송
     await channelEvents.updated(id, updatedChannel);
+
+    // Work 연결/해제 특별 이벤트 발송
+    if (workTaskId !== undefined) {
+      if (workTaskId && !previousChannel?.workTaskId) {
+        // Work가 새로 연결되었을 때
+        await channelEvents.workLinked(id, workTaskId, updatedChannel.workTask);
+      } else if (!workTaskId && previousChannel?.workTaskId) {
+        // Work 연결이 해제되었을 때
+        await channelEvents.workUnlinked(id);
+      }
+    }
 
     return NextResponse.json({ channel: updatedChannel });
   } catch (error) {

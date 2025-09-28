@@ -34,9 +34,12 @@ export async function GET(request: NextRequest) {
           select: {
             id: true,
             title: true,
+            description: true,
             status: true,
             priority: true,
             dueDate: true,
+            createdById: true,
+            position: true,
             createdAt: true,
             updatedAt: true
           }

@@ -349,7 +349,14 @@ export const channelEvents = {
         channel,
         timestamp: new Date()
       }
-    })
+    }),
+
+  // Work 연결/해제 이벤트
+  workLinked: (channelId: string, workTaskId: string, workTask: any) =>
+    emitChannelEvent(channelId, 'channel:work-linked', { channelId, workTaskId, workTask }),
+
+  workUnlinked: (channelId: string) =>
+    emitChannelEvent(channelId, 'channel:work-unlinked', { channelId })
 };
 
 /**
