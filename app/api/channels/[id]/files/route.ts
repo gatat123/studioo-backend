@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getCurrentUser } from '@/lib/auth';
+import { getCurrentUser } from '@/lib/jwt';
 import { prisma } from '@/lib/prisma';
 import { z } from 'zod';
 import { writeFile, mkdir } from 'fs/promises';
