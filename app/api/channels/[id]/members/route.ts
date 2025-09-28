@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getCurrentUser } from '@/lib/jwt';
 import { z } from 'zod';
+import { channelEvents } from '@/lib/socket/emit-helper';
 
 // GET: 채널 멤버 목록 조회
 export async function GET(
@@ -190,6 +191,15 @@ export async function POST(
         type: 'system'
       }
     });
+
+    // 실시간 초대 알림 전송
+    try {
+      await channelEvents.inviteSent(params.id, userId, invite);
+      console.log(`[Channel Invite] Realtime notification sent to user ${userId} for channel ${params.id}`);
+    } catch (socketError) {
+      console.error('[Channel Invite] Failed to send realtime notification:', socketError);
+      // Socket 오류는 초대 생성을 실패시키지 않음
+    }
 
     return NextResponse.json({ invite });
   } catch (error) {

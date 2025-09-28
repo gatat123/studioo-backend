@@ -207,6 +207,11 @@ export class SocketServer {
     }
     this.activeConnections.get(userId)!.add(socket.id);
 
+    // 사용자의 개인 룸에 참여 (실시간 알림용)
+    const userRoom = `user:${userId}`;
+    socket.join(userRoom);
+    console.log(`User ${socket.user.username} joined personal room: ${userRoom}`);
+
     // 사용자 프레젠스 업데이트
     this.userPresence.set(userId, {
       userId: socket.userId,
@@ -214,7 +219,7 @@ export class SocketServer {
       nickname: socket.user.nickname,
       profileImageUrl: socket.user.profileImageUrl,
       status: "active",
-      currentRoom: "",
+      currentRoom: userRoom,
       lastActivity: new Date(),
     });
 

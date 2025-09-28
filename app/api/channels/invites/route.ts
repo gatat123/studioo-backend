@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getCurrentUser } from '@/lib/jwt';
 import { z } from 'zod';
+import { channelEvents } from '@/lib/socket/emit-helper';
 
 // GET: 받은 채널 초대 목록
 export async function GET(request: NextRequest) {
@@ -145,10 +146,25 @@ export async function PUT(request: NextRequest) {
         }
       });
 
-      return NextResponse.json({ 
-        success: true, 
+      // 실시간 초대 수락 알림
+      try {
+        await channelEvents.inviteAccepted(invite.channelId, {
+          ...invite,
+          acceptedBy: {
+            id: currentUser.id,
+            username: currentUser.username,
+            nickname: currentUser.nickname
+          }
+        });
+        console.log(`[Channel Invite] Acceptance notification sent for channel ${invite.channelId}`);
+      } catch (socketError) {
+        console.error('[Channel Invite] Failed to send acceptance notification:', socketError);
+      }
+
+      return NextResponse.json({
+        success: true,
         channel: invite.channel,
-        message: 'Successfully joined the channel' 
+        message: 'Successfully joined the channel'
       });
     } else {
       // 초대 거절
@@ -157,9 +173,24 @@ export async function PUT(request: NextRequest) {
         data: { status: 'rejected' }
       });
 
-      return NextResponse.json({ 
-        success: true, 
-        message: 'Invite rejected' 
+      // 실시간 초대 거절 알림
+      try {
+        await channelEvents.inviteRejected(invite.channelId, {
+          ...invite,
+          rejectedBy: {
+            id: currentUser.id,
+            username: currentUser.username,
+            nickname: currentUser.nickname
+          }
+        });
+        console.log(`[Channel Invite] Rejection notification sent for channel ${invite.channelId}`);
+      } catch (socketError) {
+        console.error('[Channel Invite] Failed to send rejection notification:', socketError);
+      }
+
+      return NextResponse.json({
+        success: true,
+        message: 'Invite rejected'
       });
     }
   } catch (error) {

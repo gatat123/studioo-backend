@@ -295,7 +295,25 @@ export const channelEvents = {
     emitChannelEvent(channelId, 'channel:member-updated', { member, channelId }),
 
   messageCreated: (channelId: string, message: any) =>
-    emitChannelEvent(channelId, 'channel:message-created', { message, channelId })
+    emitChannelEvent(channelId, 'channel:message-created', { message, channelId }),
+
+  // 채널 초대 이벤트 추가
+  inviteSent: (channelId: string, inviteeId: string, invite: any) =>
+    emitSocketEvent({
+      room: `user:${inviteeId}`, // 초대받는 사용자의 개인 룸으로 전송
+      event: 'channel_invite_received',
+      data: {
+        invite,
+        channelId,
+        timestamp: new Date()
+      }
+    }),
+
+  inviteAccepted: (channelId: string, invite: any) =>
+    emitChannelEvent(channelId, 'channel:invite-accepted', { invite, channelId }),
+
+  inviteRejected: (channelId: string, invite: any) =>
+    emitChannelEvent(channelId, 'channel:invite-rejected', { invite, channelId })
 };
 
 /**
