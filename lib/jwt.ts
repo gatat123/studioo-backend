@@ -89,17 +89,20 @@ export async function getCurrentUser(request: NextRequest) {
   try {
     const authHeader = request.headers.get("authorization");
     const token = extractTokenFromHeader(authHeader);
-    
+
     if (!token) {
+      console.log("No token found in request headers");
       return null;
     }
-    
+
     const payload = verifyAccessToken(token);
     if (!payload) {
+      console.log("Token verification failed");
       return null;
     }
-    
-    return await prisma.user.findUnique({
+
+    // JWT 페이로드에서 isAdmin 정보를 우선 사용하고, DB에서 최신 정보도 가져옴
+    const dbUser = await prisma.user.findUnique({
       where: { id: payload.userId },
       select: {
         id: true,
@@ -108,8 +111,36 @@ export async function getCurrentUser(request: NextRequest) {
         nickname: true,
         profileImageUrl: true,
         isAdmin: true,
+        isActive: true,
       }
     });
+
+    if (!dbUser) {
+      console.log("User not found in database:", payload.userId);
+      return null;
+    }
+
+    if (!dbUser.isActive) {
+      console.log("User account is deactivated:", dbUser.username);
+      return null;
+    }
+
+    // JWT의 isAdmin과 DB의 isAdmin 중 하나라도 true이면 admin으로 처리
+    // 그리고 gatat123 사용자는 임시로 항상 admin 권한 부여
+    const isAdminUser = dbUser.isAdmin || payload.isAdmin || dbUser.username === 'gatat123';
+
+    console.log("User verification successful:", {
+      userId: dbUser.id,
+      username: dbUser.username,
+      jwtIsAdmin: payload.isAdmin,
+      dbIsAdmin: dbUser.isAdmin,
+      finalIsAdmin: isAdminUser
+    });
+
+    return {
+      ...dbUser,
+      isAdmin: isAdminUser,
+    };
   } catch (error) {
     console.error("Error getting current user:", error);
     return null;

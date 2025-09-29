@@ -7,10 +7,7 @@ export async function GET(request: NextRequest) {
   try {
     const currentUser = await getCurrentUser(request);
 
-    // Temporary admin access for gatat123
-    const isAdmin = currentUser?.isAdmin || currentUser?.username === 'gatat123';
-
-    if (!currentUser || !isAdmin) {
+    if (!currentUser || !currentUser.isAdmin) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
