@@ -158,14 +158,14 @@ export async function GET(request: NextRequest) {
 
       // Add latest comment date if exists
       if (subTask.comments && subTask.comments.length > 0) {
-        const latestCommentDate = subTask.comments.reduce((latest, comment) => {
+        const latestCommentDate = subTask.comments.reduce((latest: Date, comment: any) => {
           const commentDate = new Date(comment.updatedAt);
           return commentDate > latest ? commentDate : latest;
         }, new Date(subTask.comments[0].createdAt));
         dates.push(latestCommentDate);
       }
 
-      const lastModifiedAt = dates.reduce((latest, current) => {
+      const lastModifiedAt = dates.reduce((latest: Date, current: Date) => {
         return current > latest ? current : latest;
       });
 
