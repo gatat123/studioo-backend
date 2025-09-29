@@ -51,7 +51,7 @@ export default function AdminAuthProvider({ children }: AdminAuthProviderProps) 
   useEffect(() => {
     // Only redirect if explicitly not authenticated or not an admin
     // But avoid redirecting during initial load or hydration
-    if (isAuthenticated === false || (user && !user.is_admin && user.username !== 'gatat123')) {
+    if (isAuthenticated === false || (user && !user.isAdmin && user.username !== 'gatat123')) {
       console.log('AdminAuthProvider: Redirecting to studio due to auth/admin check failure');
       router.push('/studio');
     }

@@ -63,7 +63,7 @@ export default function UserManagement() {
     }
   };
 
-  const handleToggleUserStatus = async (userId: string, is_active: boolean) => {
+  const handleToggleUserStatus = async (userId: string, isActive: boolean) => {
     try {
       const token = localStorage.getItem('token') || localStorage.getItem('accessToken');
 
@@ -78,7 +78,7 @@ export default function UserManagement() {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ is_active: !is_active }),
+        body: JSON.stringify({ is_active: !isActive }),
       });
 
       if (response.ok) {
@@ -89,7 +89,7 @@ export default function UserManagement() {
     }
   };
 
-  const handleToggleAdmin = async (userId: string, is_admin: boolean) => {
+  const handleToggleAdmin = async (userId: string, isAdmin: boolean) => {
     try {
       const token = localStorage.getItem('token') || 'gatat123-temp-token';
       const response = await fetch(`/api/admin/users/${userId}/admin`, {
@@ -98,7 +98,7 @@ export default function UserManagement() {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ is_admin: !is_admin }),
+        body: JSON.stringify({ isAdmin: !isAdmin }),
       });
 
       if (response.ok) {
@@ -140,9 +140,9 @@ export default function UserManagement() {
 
     const matchesStatus =
       filterStatus === 'all' ||
-      (filterStatus === 'active' && user.is_active) ||
-      (filterStatus === 'inactive' && !user.is_active) ||
-      (filterStatus === 'admin' && user.is_admin);
+      (filterStatus === 'active' && user.isActive) ||
+      (filterStatus === 'inactive' && !user.isActive) ||
+      (filterStatus === 'admin' && user.isAdmin);
 
     return matchesSearch && matchesStatus;
   });
@@ -207,23 +207,23 @@ export default function UserManagement() {
                 </TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>
-                  <Badge variant={user.is_active ? 'default' : 'secondary'}>
-                    {user.is_active ? '활성' : '비활성'}
+                  <Badge variant={user.isActive ? 'default' : 'secondary'}>
+                    {user.isActive ? '활성' : '비활성'}
                   </Badge>
                 </TableCell>
                 <TableCell>
-                  {user.is_admin ? (
+                  {user.isAdmin ? (
                     <Badge variant="destructive">관리자</Badge>
                   ) : (
                     <Badge variant="outline">일반</Badge>
                   )}
                 </TableCell>
                 <TableCell className="text-sm">
-                  {new Date(user.created_at).toLocaleDateString('ko-KR')}
+                  {new Date(user.createdAt).toLocaleDateString('ko-KR')}
                 </TableCell>
                 <TableCell className="text-sm">
-                  {user.last_login_at
-                    ? new Date(user.last_login_at).toLocaleDateString('ko-KR')
+                  {user.lastLoginAt
+                    ? new Date(user.lastLoginAt).toLocaleDateString('ko-KR')
                     : '-'}
                 </TableCell>
                 <TableCell className="text-right">
@@ -231,10 +231,10 @@ export default function UserManagement() {
                     <Button
                       size="sm"
                       variant="ghost"
-                      onClick={() => handleToggleUserStatus(user.id, user.is_active)}
-                      title={user.is_active ? '비활성화' : '활성화'}
+                      onClick={() => handleToggleUserStatus(user.id, user.isActive)}
+                      title={user.isActive ? '비활성화' : '활성화'}
                     >
-                      {user.is_active ? (
+                      {user.isActive ? (
                         <UserX className="w-4 h-4" />
                       ) : (
                         <UserCheck className="w-4 h-4" />
@@ -243,10 +243,10 @@ export default function UserManagement() {
                     <Button
                       size="sm"
                       variant="ghost"
-                      onClick={() => handleToggleAdmin(user.id, user.is_admin)}
-                      title={user.is_admin ? '관리자 해제' : '관리자 설정'}
+                      onClick={() => handleToggleAdmin(user.id, user.isAdmin)}
+                      title={user.isAdmin ? '관리자 해제' : '관리자 설정'}
                     >
-                      <Shield className={cn('w-4 h-4', user.is_admin && 'text-red-600')} />
+                      <Shield className={cn('w-4 h-4', user.isAdmin && 'text-red-600')} />
                     </Button>
                     <Button
                       size="sm"

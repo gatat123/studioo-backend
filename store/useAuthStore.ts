@@ -32,19 +32,19 @@ export const useAuthStore = create<AuthState>()(
       // Login function with actual API call
       login: async (credentials) => {
         set({ isLoading: true, error: null });
-        
+
         try {
           const response = await authAPI.login(credentials);
-          
+
           if (response.user) {
             const user: User = {
               ...response.user,
-              profile_image_url: response.user.profile_image_url || undefined,
-              created_at: response.user.created_at || new Date().toISOString(),
-              updated_at: response.user.updated_at || new Date().toISOString(),
-              is_active: response.user.is_active !== undefined ? response.user.is_active : true,
+              profileImageUrl: response.user.profile_image_url || response.user.profileImageUrl || undefined,
+              createdAt: response.user.created_at || response.user.createdAt || new Date().toISOString(),
+              updatedAt: response.user.updated_at || response.user.updatedAt || new Date().toISOString(),
+              isActive: response.user.is_active !== undefined ? response.user.is_active : (response.user.isActive !== undefined ? response.user.isActive : true),
               // 임시로 특정 사용자를 관리자로 설정 (테스트용)
-              is_admin: response.user.username === 'gatat123' ? true : (response.user.isAdmin || response.user.is_admin || false)
+              isAdmin: response.user.username === 'gatat123' ? true : (response.user.isAdmin || false)
             };
             
             // Set authentication token
@@ -75,19 +75,19 @@ export const useAuthStore = create<AuthState>()(
       // Register function with actual API call
       register: async (data) => {
         set({ isLoading: true, error: null });
-        
+
         try {
           const response = await authAPI.register(data);
-          
+
           if (response.user) {
             const user: User = {
               ...response.user,
-              profile_image_url: response.user.profile_image_url || undefined,
-              created_at: response.user.created_at || new Date().toISOString(),
-              updated_at: response.user.updated_at || new Date().toISOString(),
-              is_active: response.user.is_active !== undefined ? response.user.is_active : true,
+              profileImageUrl: response.user.profile_image_url || response.user.profileImageUrl || undefined,
+              createdAt: response.user.created_at || response.user.createdAt || new Date().toISOString(),
+              updatedAt: response.user.updated_at || response.user.updatedAt || new Date().toISOString(),
+              isActive: response.user.is_active !== undefined ? response.user.is_active : (response.user.isActive !== undefined ? response.user.isActive : true),
               // 임시로 특정 사용자를 관리자로 설정 (테스트용)
-              is_admin: response.user.username === 'gatat123' ? true : (response.user.isAdmin || response.user.is_admin || false)
+              isAdmin: response.user.username === 'gatat123' ? true : (response.user.isAdmin || false)
             };
             
             // Set authentication token
@@ -210,12 +210,12 @@ export const useAuthStore = create<AuthState>()(
           if (sessionUser) {
             const user: User = {
               ...sessionUser,
-              profile_image_url: sessionUser.profile_image_url || undefined,
-              created_at: sessionUser.created_at || new Date().toISOString(),
-              updated_at: sessionUser.updated_at || new Date().toISOString(),
-              is_active: sessionUser.is_active !== undefined ? sessionUser.is_active : true,
+              profileImageUrl: sessionUser.profile_image_url || sessionUser.profileImageUrl || undefined,
+              createdAt: sessionUser.created_at || sessionUser.createdAt || new Date().toISOString(),
+              updatedAt: sessionUser.updated_at || sessionUser.updatedAt || new Date().toISOString(),
+              isActive: sessionUser.is_active !== undefined ? sessionUser.is_active : (sessionUser.isActive !== undefined ? sessionUser.isActive : true),
               // 임시로 특정 사용자를 관리자로 설정 (테스트용)
-              is_admin: sessionUser.username === 'gatat123' ? true : (sessionUser.isAdmin || sessionUser.is_admin || false)
+              isAdmin: sessionUser.username === 'gatat123' ? true : (sessionUser.isAdmin || false)
             };
 
             set({

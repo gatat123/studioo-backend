@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { readFile, stat } from "fs/promises";
 import { existsSync } from "fs";
 import path from "path";
-import { lookup } from "mime-types";
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const mime = require("mime-types");
 
 // OPTIONS /api/images/serve/[...path] - CORS preflight
 export async function OPTIONS(request: NextRequest) {
@@ -72,7 +73,7 @@ export async function GET(
     // 파일 읽기
     const fileBuffer = await readFile(fullPath);
     const extension = path.extname(fullPath).toLowerCase();
-    const mimeType = lookup(extension) || "application/octet-stream";
+    const mimeType = mime.lookup(extension) || "application/octet-stream";
 
     // 응답 헤더 설정
     const headers = new Headers({
