@@ -1,0 +1,45 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 먼지 캐릭터 본체 (둥글둥글한 물결 모양) -->
+  <path d="
+    M 100 30
+    C 85 30, 75 35, 70 45
+    C 60 40, 50 45, 45 55
+    C 35 60, 30 70, 30 85
+    C 25 95, 25 105, 30 115
+    C 30 130, 40 140, 50 145
+    C 45 155, 55 160, 65 160
+    C 70 165, 80 170, 95 170
+    C 100 175, 110 175, 115 170
+    C 130 170, 140 165, 145 160
+    C 155 160, 165 155, 160 145
+    C 170 140, 180 130, 180 115
+    C 185 105, 185 95, 180 85
+    C 180 70, 175 60, 165 55
+    C 160 45, 150 40, 140 45
+    C 135 35, 125 30, 110 30
+    C 105 30, 100 30, 100 30
+    Z
+  " fill="#d4c5b0" stroke="#6b4c3a" stroke-width="2.5"/>
+  
+  <!-- 눈 -->
+  <circle cx="75" cy="80" r="6" fill="#6b4c3a"/>
+  <circle cx="125" cy="80" r="6" fill="#6b4c3a"/>
+  
+  <!-- 눈 하이라이트 -->
+  <circle cx="76" cy="78" r="2" fill="white"/>
+  <circle cx="126" cy="78" r="2" fill="white"/>
+  
+  <!-- 입 (w 모양) -->
+  <path d="M 90 90 Q 95 95, 100 90 Q 105 95, 110 90" 
+    fill="none" stroke="#6b4c3a" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- 볼터치 -->
+  <ellipse cx="60" cy="95" rx="10" ry="6" fill="#f4a09c" opacity="0.6"/>
+  <ellipse cx="140" cy="95" rx="10" ry="6" fill="#f4a09c" opacity="0.6"/>
+  
+  <!-- 팔 -->
+  <path d="M 65 110 Q 45 115, 40 130 Q 38 135, 42 138" 
+    fill="none" stroke="#6b4c3a" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 135 110 Q 155 115, 160 130 Q 162 135, 158 138" 
+    fill="none" stroke="#6b4c3a" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

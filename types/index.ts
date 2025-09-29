@@ -1,4 +1,7 @@
-import { User, Project, Scene, Image, Comment, Annotation, ProjectParticipant, CollaborationLog } from '@prisma/client';
+import { User as PrismaUser, Project, Scene, Image, Comment, Annotation, ProjectParticipant, CollaborationLog } from '@prisma/client';
+
+// Export User type for frontend use (without sensitive fields)
+export type User = Omit<PrismaUser, 'passwordHash'>;
 
 export interface AuthUser {
   id: string;
@@ -45,7 +48,7 @@ export interface WebSocketMessage {
 }
 
 // Base types
-export type UserWithoutPassword = Omit<User, 'passwordHash'>;
+export type UserWithoutPassword = User; // User is already without passwordHash
 export type UserPublic = Pick<User, 'id' | 'username' | 'nickname' | 'profileImageUrl'>;
 
 // Project types
