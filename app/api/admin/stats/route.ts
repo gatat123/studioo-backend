@@ -120,28 +120,38 @@ export async function GET(request: NextRequest) {
     });
 
     const stats = {
-      totalUsers,
-      activeUsers,
-      totalProjects,
-      activeProjects,
-      totalScenes,
-      totalComments,
-      totalWorkTasks,
-      totalSubTasks,
-      recent: {
-        users: recentUsers,
-        projects: recentProjects,
-        workTasks: recentWorkTasks,
-        subTasks: recentSubTasks
+      users: {
+        total: totalUsers,
+        active: activeUsers,
+        recent: recentUsers
       },
-      subTaskStatus: subTaskStatusStats.reduce((acc, item) => {
-        acc[item.status] = item._count.id;
-        return acc;
-      }, {} as Record<string, number>),
-      workTaskPriority: workTaskPriorityStats.reduce((acc, item) => {
-        acc[item.priority] = item._count.id;
-        return acc;
-      }, {} as Record<string, number>)
+      projects: {
+        total: totalProjects,
+        active: activeProjects,
+        recent: recentProjects
+      },
+      scenes: {
+        total: totalScenes
+      },
+      comments: {
+        total: totalComments
+      },
+      workTasks: {
+        total: totalWorkTasks,
+        recent: recentWorkTasks,
+        byPriority: workTaskPriorityStats.reduce((acc, item) => {
+          acc[item.priority] = item._count.id;
+          return acc;
+        }, {} as Record<string, number>)
+      },
+      subTasks: {
+        total: totalSubTasks,
+        recent: recentSubTasks,
+        byStatus: subTaskStatusStats.reduce((acc, item) => {
+          acc[item.status] = item._count.id;
+          return acc;
+        }, {} as Record<string, number>)
+      }
     };
 
     return NextResponse.json(stats);
