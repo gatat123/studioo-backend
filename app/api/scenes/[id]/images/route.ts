@@ -271,6 +271,10 @@ export async function POST(
           io.to(projectRoomId).emit('scene:image-uploaded', eventData);
           io.to(sceneRoomId).emit('scene:image-uploaded', eventData);
 
+          // 프론트엔드 호환성 추가
+          io.to(projectRoomId).emit('image:upload', eventData);
+          io.to(sceneRoomId).emit('image:upload', eventData);
+
           console.log('[Socket.io] Emitted scene:image-uploaded event', {
             projectRoomId,
             sceneRoomId,

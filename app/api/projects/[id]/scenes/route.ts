@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { withProjectAccess, type AuthenticatedRequest } from "@/middleware/auth";
+import { sceneEvents, emitSocketEvent } from "@/lib/socket/emit-helper";
 
 const createSceneSchema = z.object({
   description: z.string().optional(),
@@ -140,6 +141,16 @@ async function createScene(req: AuthenticatedRequest, context: { params: { id: s
       });
 
       return newScene;
+    });
+
+    // Socket.io 실시간 이벤트 발송
+    await sceneEvents.created(projectId, scene);
+
+    // 프론트엔드 호환성을 위한 추가 이벤트
+    await emitSocketEvent({
+      room: `project:${projectId}`,
+      event: 'new_scene',
+      data: { scene, projectId, user: { nickname: 'User' }, timestamp: new Date() }
     });
 
     return NextResponse.json({

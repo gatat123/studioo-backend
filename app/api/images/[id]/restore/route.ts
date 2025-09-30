@@ -3,7 +3,7 @@ import { z } from "zod";
 import { withAuth, type AuthenticatedRequest } from "@/middleware/auth";
 import { ImageHistoryService } from "@/lib/services/imageHistory";
 import { prisma } from "@/lib/prisma";
-import { sceneEvents } from "@/lib/socket/emit-helper";
+import { sceneEvents, emitSocketEvent } from "@/lib/socket/emit-helper";
 
 const restoreImageSchema = z.object({
   versionId: z.string().uuid("유효한 버전 ID가 필요합니다."),
@@ -66,6 +66,19 @@ async function restoreImageVersion(
 
     // Socket.io 이벤트 발송 - 이미지 복원 (업데이트)
     await sceneEvents.imageUpdated(image.sceneId, restoredImage);
+
+    // 프론트엔드 호환성 추가
+    await emitSocketEvent({
+      room: `project:${image.scene.project.id}`,
+      event: 'image:version:change',
+      data: {
+        imageId: restoredImage.id,
+        imageType: restoredImage.type,
+        projectId: image.scene.project.id,
+        sceneId: image.sceneId,
+        timestamp: new Date()
+      }
+    });
 
     return NextResponse.json({
       success: true,

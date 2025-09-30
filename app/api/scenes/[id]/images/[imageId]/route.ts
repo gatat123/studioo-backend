@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { withAuth, type AuthenticatedRequest } from "@/middleware/auth";
+import { emitSocketEvent } from "@/lib/socket/emit-helper";
 
 // PATCH /api/scenes/[id]/images/[imageId] - Update image (set as current)
 export async function PATCH(
@@ -116,6 +117,20 @@ export async function PATCH(
               },
             },
           });
+        });
+
+        // Socket.io 실시간 이벤트 발송
+        // 프론트엔드 호환성을 위한 이벤트
+        await emitSocketEvent({
+          room: `project:${scene.projectId}`,
+          event: 'image:version:change',
+          data: {
+            imageId: imageId,
+            imageType: image.type,
+            projectId: scene.projectId,
+            sceneId: sceneId,
+            timestamp: new Date()
+          }
         });
       }
 
