@@ -1,0 +1,4 @@
+[submodule "frontend-fix"]
+	path = frontend-fix
+	url = https://github.com/gatat123/Studioo.git
+	branch = main
