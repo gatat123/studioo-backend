@@ -7,7 +7,8 @@ import { prisma } from '@/lib/prisma';
 export interface AuthenticatedRequest extends NextRequest {
   user: {
     userId: string;
-    isAdmin: boolean;
+    isAdmin: boolean; // API 내부에서는 isAdmin 사용
+    is_admin: boolean; // 데이터베이스와의 호환성을 위해 추가
   };
 }
 
@@ -43,13 +44,13 @@ export function withAuth(
         const token = authHeader.substring(7);
         const payload = verifyToken(token);
         userId = payload.userId;
-        
-        // Get user admin status
+
+        // Get user admin status from database
         const user = await prisma.user.findUnique({
           where: { id: userId },
-          select: { isAdmin: true }
+          select: { is_admin: true }
         });
-        isAdmin = user?.isAdmin || false;
+        isAdmin = user?.is_admin || false;
       } catch (error) {
         return NextResponse.json(
           { success: false, error: 'Invalid token' },
@@ -58,11 +59,12 @@ export function withAuth(
       }
     } else {
       userId = session.user.id;
-      isAdmin = session.user.isAdmin || false;
+      // Session can have either isAdmin or is_admin
+      isAdmin = session.user.isAdmin || session.user.is_admin || false;
     }
 
     const authenticatedRequest = request as AuthenticatedRequest;
-    authenticatedRequest.user = { userId, isAdmin };
+    authenticatedRequest.user = { userId, isAdmin, is_admin: isAdmin };
 
     // Await params if it's a Promise (Next.js 15.5+)
     const resolvedParams = await context.params;
