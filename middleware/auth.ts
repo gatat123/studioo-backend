@@ -48,9 +48,9 @@ export function withAuth(
         // Get user admin status from database
         const user = await prisma.user.findUnique({
           where: { id: userId },
-          select: { is_admin: true }
+          select: { isAdmin: true }
         });
-        isAdmin = user?.is_admin || false;
+        isAdmin = user?.isAdmin || false;
       } catch (error) {
         return NextResponse.json(
           { success: false, error: 'Invalid token' },
