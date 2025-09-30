@@ -346,15 +346,32 @@ async function createComment(req: AuthenticatedRequest) {
     // Socket.io 이벤트 발송
     const targetTypeForSocket = sceneId ? 'scene' : 'project';
     const targetIdForSocket = sceneId || targetProjectId;
+
+    console.log('[Comments API] 🔔 Preparing to emit socket events');
+    console.log('[Comments API] Target type:', targetTypeForSocket);
+    console.log('[Comments API] Target ID:', targetIdForSocket);
+    console.log('[Comments API] Comment ID:', comment.id);
+
     if (targetIdForSocket) {
+      const roomId = targetTypeForSocket === 'scene' ? `scene:${targetIdForSocket}` : `project:${targetIdForSocket}`;
+
+      console.log('[Comments API] 📡 Room ID:', roomId);
+      console.log('[Comments API] Emitting comment:created event...');
+
+      // 주요 이벤트: comment:created
       await commentEvents.created(targetTypeForSocket, targetIdForSocket, comment);
 
-      // 프론트엔드 호환성을 위한 추가 이벤트
+      // 프론트엔드 호환성을 위한 추가 이벤트: comment:new
+      console.log('[Comments API] Emitting comment:new event...');
       await emitSocketEvent({
-        room: targetTypeForSocket === 'scene' ? `scene:${targetIdForSocket}` : `project:${targetIdForSocket}`,
+        room: roomId,
         event: 'comment:new',
         data: { comment, targetType: targetTypeForSocket, targetId: targetIdForSocket, timestamp: new Date() }
       });
+
+      console.log('[Comments API] ✅ Socket events emission completed');
+    } else {
+      console.error('[Comments API] ❌ ERROR: targetIdForSocket is undefined!');
     }
 
     return NextResponse.json({

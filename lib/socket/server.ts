@@ -341,9 +341,12 @@ export class SocketServer {
       try {
         const { projectId, sceneId } = data;
 
+        console.log(`[SocketServer] 🚪 User ${socket.user.username} attempting to join scene: ${sceneId}`);
+
         // 프로젝트 및 씬 접근 권한 확인
         const hasAccess = await this.checkSceneAccess(socket.userId, projectId, sceneId);
         if (!hasAccess) {
+          console.error(`[SocketServer] ❌ Access denied for user ${socket.user.username} to scene ${sceneId}`);
           socket.emit("error", {
             type: "access_denied",
             message: "씬 접근 권한이 없습니다.",
@@ -352,6 +355,8 @@ export class SocketServer {
         }
 
         const roomId = `scene:${sceneId}`;
+        console.log(`[SocketServer] 📍 Room ID: ${roomId}`);
+
         await this.joinRoom(socket, roomId, { projectId, sceneId });
 
         // 씬의 현재 활성 사용자들 전송
@@ -370,6 +375,9 @@ export class SocketServer {
           })
           .filter(Boolean);
 
+        console.log(`[SocketServer] ✅ User ${socket.user.username} successfully joined scene room ${roomId}`);
+        console.log(`[SocketServer] 👥 Active users in room: ${activeUsers.length}`);
+
         socket.emit("scene_joined", {
           projectId,
           sceneId,
@@ -379,7 +387,7 @@ export class SocketServer {
         });
 
       } catch (error) {
-        console.error("Join scene error:", error);
+        console.error("[SocketServer] ❌ Join scene error:", error);
         socket.emit("error", {
           type: "join_scene_failed",
           message: "씬 참여 중 오류가 발생했습니다.",

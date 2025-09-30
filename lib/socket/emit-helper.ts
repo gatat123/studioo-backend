@@ -22,13 +22,20 @@ export async function emitSocketEvent({ room, event, data }: EmitOptions): Promi
     const io = getSocketInstance() || getGlobalSocketInstance();
 
     if (io) {
-      io.to(room).emit(event, data);
-
       const rooms = io.sockets.adapter.rooms;
       const roomClients = rooms.get(room);
       const clientCount = roomClients ? roomClients.size : 0;
 
-      console.log(`[Socket Helper] Direct emit: ${event} to room ${room} (${clientCount} clients)`);
+      console.log(`[Socket Helper] 🔔 Emitting event: ${event} to room: ${room} (${clientCount} clients connected)`);
+      console.log(`[Socket Helper] 📦 Event data:`, JSON.stringify(data, null, 2));
+
+      if (clientCount === 0) {
+        console.warn(`[Socket Helper] ⚠️  WARNING: Room ${room} has NO clients! Event will not be received.`);
+        console.warn(`[Socket Helper] Available rooms:`, Array.from(rooms.keys()));
+      }
+
+      io.to(room).emit(event, data);
+      console.log(`[Socket Helper] ✅ Event emitted successfully`);
       return true;
     }
 
