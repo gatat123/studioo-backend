@@ -408,3 +408,37 @@ export const workTaskEvents = {
       workTaskId
     })
 };
+
+/**
+ * Helper function for global announcement events
+ */
+export function emitAnnouncementEvent(event: string, data: any) {
+  return emitSocketEvent({
+    room: 'global',
+    event,
+    data: {
+      ...data,
+      timestamp: new Date()
+    }
+  });
+}
+
+/**
+ * Specific event emitters for announcements
+ */
+export const announcementEvents = {
+  created: (announcement: any) =>
+    emitAnnouncementEvent('announcement:created', { announcement }),
+
+  updated: (announcement: any) =>
+    emitAnnouncementEvent('announcement:updated', { announcement }),
+
+  deleted: (announcementId: string) =>
+    emitAnnouncementEvent('announcement:deleted', { announcementId }),
+
+  // 전체 시스템 공지사항 업데이트 알림
+  listUpdated: () =>
+    emitAnnouncementEvent('announcement:list-updated', {
+      message: '공지사항이 업데이트되었습니다. 목록을 다시 불러오세요.'
+    })
+};

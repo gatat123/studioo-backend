@@ -212,6 +212,10 @@ export class SocketServer {
     socket.join(userRoom);
     console.log(`User ${socket.user.username} joined personal room: ${userRoom}`);
 
+    // 전역 공지사항 룸에 참여
+    socket.join('global');
+    console.log(`User ${socket.user.username} joined global room for announcements`);
+
     // 사용자 프레젠스 업데이트
     this.userPresence.set(userId, {
       userId: socket.userId,
