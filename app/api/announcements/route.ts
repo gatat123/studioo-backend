@@ -152,7 +152,7 @@ async function updateOrCreateAnnouncement(req: AuthenticatedRequest) {
       });
 
       // Socket.io 이벤트 발송
-      await announcementEvents.updated(announcement.id, announcement);
+      await announcementEvents.updated(announcement);
 
       return NextResponse.json({
         success: true,
