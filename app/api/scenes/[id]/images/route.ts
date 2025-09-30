@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { withAuth, type AuthenticatedRequest } from "@/middleware/auth";
 import { z } from "zod";
 import sharp from "sharp";
+import { getGlobalSocketInstance } from "@/lib/socket/global-socket";
 
 const uploadImageSchema = z.object({
   type: z.enum(["lineart", "art", "storyboard", "reference", "concept"]),
@@ -244,6 +245,45 @@ export async function POST(
         }
       });
       console.log('All images for scene after save:', allSceneImages);
+
+      // Emit Socket.io event for real-time update
+      try {
+        const io = getGlobalSocketInstance();
+        if (io) {
+          const projectRoomId = `project:${scene.projectId}`;
+          const sceneRoomId = `scene:${sceneId}`;
+
+          const eventData = {
+            image: {
+              id: image.id,
+              type: image.type,
+              fileUrl: image.fileUrl,
+              originalName: file.name,
+              uploadedBy: authReq.user.userId,
+              uploadedAt: image.uploadedAt,
+              uploader: image.uploader,
+            },
+            sceneId,
+            projectId: scene.projectId,
+          };
+
+          // Broadcast to project and scene rooms
+          io.to(projectRoomId).emit('scene:image-uploaded', eventData);
+          io.to(sceneRoomId).emit('scene:image-uploaded', eventData);
+
+          console.log('[Socket.io] Emitted scene:image-uploaded event', {
+            projectRoomId,
+            sceneRoomId,
+            imageId: image.id,
+            type: image.type,
+          });
+        } else {
+          console.warn('[Socket.io] Socket instance not available for broadcasting');
+        }
+      } catch (socketError) {
+        console.error('[Socket.io] Error broadcasting image upload:', socketError);
+        // Don't fail the request if socket broadcast fails
+      }
 
       // Convert BigInt to string for JSON serialization
       const responseData = {
