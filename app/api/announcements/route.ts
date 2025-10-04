@@ -55,7 +55,7 @@ async function getLatestAnnouncement(req: AuthenticatedRequest) {
 async function createAnnouncement(req: AuthenticatedRequest) {
   try {
     // 관리자 권한 확인
-    if (!req.user.is_admin) {
+    if (!req.user.isAdmin) {
       return NextResponse.json(
         { success: false, error: "공지사항 작성 권한이 없습니다. 관리자만 공지사항을 작성할 수 있습니다." },
         { status: 403 }
@@ -113,7 +113,7 @@ async function createAnnouncement(req: AuthenticatedRequest) {
 async function updateOrCreateAnnouncement(req: AuthenticatedRequest) {
   try {
     // 관리자 권한 확인
-    if (!req.user.is_admin) {
+    if (!req.user.isAdmin) {
       return NextResponse.json(
         { success: false, error: "공지사항 수정 권한이 없습니다. 관리자만 공지사항을 수정할 수 있습니다." },
         { status: 403 }
